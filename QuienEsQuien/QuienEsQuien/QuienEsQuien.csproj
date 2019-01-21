@@ -119,6 +119,8 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Modelos\ChatMessage.cs" />
+    <Compile Include="Modelos\clsCarta.cs" />
     <Compile Include="Modelos\clsJugador.cs" />
     <Compile Include="Modelos\clsRespuesta.cs" />
     <Compile Include="Views\MainPage.xaml.cs">
