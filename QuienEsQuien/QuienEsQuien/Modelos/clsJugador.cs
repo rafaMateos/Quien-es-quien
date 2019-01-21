@@ -12,7 +12,7 @@ namespace QuienEsQuien.Modelos
         private String _nickname;
         private int _id;
         private clsRespuesta _respuestas;
-        private bool esGanador;
+        private bool _esGanador;
         #endregion
 
         #region Propiedades publicas
@@ -51,7 +51,17 @@ namespace QuienEsQuien.Modelos
                 _respuestas = value;
             }
         }
+        public bool EsGanador {
 
+            get {
+
+                return _esGanador;
+            }
+            set {
+
+                _esGanador = value;
+            }
+        }
 
         #endregion
 
