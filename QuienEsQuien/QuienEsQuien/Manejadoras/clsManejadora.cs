@@ -1,13 +1,14 @@
-﻿using AdivinaQuienSoyService.Models;
+﻿
+using Modelos;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
-using System.Web;
 
-namespace AdivinaQuienSoyService.Manejadora
+
+namespace Manejadoras
 {
     public class clsManejadora
     {
