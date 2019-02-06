@@ -123,7 +123,9 @@
     <Compile Include="Modelos\clsCarta.cs" />
     <Compile Include="Modelos\clsJugador.cs" />
     <Compile Include="Modelos\clsRespuesta.cs" />
-    <Compile Include="Modelos\clsSala.cs" />
+    <Compile Include="Views\loby_screen.xaml.cs">
+      <DependentUpon>loby_screen.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
@@ -150,6 +152,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="Views\loby_screen.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\MainPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
