@@ -22,7 +22,6 @@ namespace AdivinaQuienSoyService.Hubs
         /// </summary>
         /// <param name="roomName"></param>
         /// <returns></returns>
-
         public async Task JoinRoomAsync(clsSala salita) {
 
             if (await manejadora.canUnirseSala(salita.id))

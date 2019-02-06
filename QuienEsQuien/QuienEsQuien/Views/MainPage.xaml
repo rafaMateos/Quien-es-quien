@@ -9,8 +9,9 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <RelativePanel>
-        
-        
+
+        <Button Click="ButtonJoin_Click" Name="ButtonJoin" Content="Unirse a sala"></Button>
+        <TextBlock RelativePanel.Below="ButtonJoin" Name="userSalas"></TextBlock>
         
     </RelativePanel>
    
