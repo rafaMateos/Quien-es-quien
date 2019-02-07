@@ -33,7 +33,7 @@ namespace AdivinaQuienSoyService
 
             MobileAppSettingsDictionary settings = config.GetMobileAppSettingsProvider().GetMobileAppSettings();
 
-            if (string.IsNullOrEmpty(settings.HostName))
+            if(string.IsNullOrEmpty(settings.HostName))
             {
                 // This middleware is intended to be used locally for debugging. By default, HostName will
                 // only have a value when running in an App Service application.

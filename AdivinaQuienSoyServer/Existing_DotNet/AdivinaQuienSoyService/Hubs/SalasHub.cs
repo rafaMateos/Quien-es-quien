@@ -24,13 +24,10 @@ namespace AdivinaQuienSoyService.Hubs
         /// <returns></returns>
         public async Task JoinRoomAsync(clsSala salita) {
 
-           
                 Groups.Add(Context.ConnectionId, salita.nombre);
                 salita.usuariosConectados++;
                 manejadora.actualizarUsuariosSala(salita);
                 Clients.All.ContarUsuarios(salita);
-            
-
            
         }
 
