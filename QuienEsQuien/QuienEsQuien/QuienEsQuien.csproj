@@ -121,10 +121,12 @@
     </Compile>
     <Compile Include="Manejadoras\clsManejadora.cs" />
     <Compile Include="Modelos\ChatMessage.cs" />
+    <Compile Include="Modelos\clsBase.cs" />
     <Compile Include="Modelos\clsCarta.cs" />
     <Compile Include="Modelos\clsJugador.cs" />
     <Compile Include="Modelos\clsRespuesta.cs" />
     <Compile Include="Modelos\clsSala.cs" />
+    <Compile Include="Viewmodel\viewModel.cs" />
     <Compile Include="Views\loby_screen.xaml.cs">
       <DependentUpon>loby_screen.xaml</DependentUpon>
     </Compile>

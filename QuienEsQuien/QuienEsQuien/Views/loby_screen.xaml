@@ -18,8 +18,31 @@
         <!--SALAS-->
         <ScrollViewer>
 
-            <StackPanel HorizontalAlignment="Stretch" Height="auto" Margin="0,0,0,0" VerticalAlignment="Stretch" Orientation="Vertical">
+            <ListView 
+            Name="listilla"  
+            RightTapped="listilla_RightTapped"
+            ItemsSource="{Binding ListadoDePersonas}" 
+            SelectedItem="{Binding PersonaSeleccionada, Mode=TwoWay}" 
+            RelativePanel.Above="botonera"
+            RelativePanel.Below="resultadoBusqueda"
+            RelativePanel.AlignTopWithPanel="false"
+            Margin="5,5,20,5">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Vertical">
+                            <TextBlock Text="{Binding Path=nombre}" FontSize="16"/>
+                            <TextBlock Text="{Binding Path=apellidos}" Margin="5,0,0,0" FontSize="12"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
 
+                <ListView.Resources>
+                    <MenuFlyout x:Name="miMenuFlyoutListado">
+                        <MenuFlyoutItem Command="{Binding Path=modificarPersonaCommand}" Icon="Edit" Text="Guardar cambios"/>
+                        <MenuFlyoutItem Command="{Binding Path=eliminarCommand}" Icon="Delete" Text="Eliminar"/>
+                    </MenuFlyout>
+                </ListView.Resources>
+            </ListView>
                 <!--Sala 1-->
                 <StackPanel Background="White" Padding="10" HorizontalAlignment="Center" Width="auto" Height="100" Margin="10,10,10,10" Orientation="Horizontal">
                     <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,100,0" >Room 1</TextBlock>
@@ -28,78 +51,6 @@
                     <Button Content="Join" Background="#D32F2F" Margin="10,0,10,0" HorizontalAlignment="Right"></Button>
                 </StackPanel>
 
-                <!--Sala 2-->
-                <StackPanel Background="White" Padding="10" HorizontalAlignment="Center" Height="100" Margin="10,10,10,10" VerticalAlignment="Stretch" Orientation="Horizontal">
-                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,100,0" >Room 2</TextBlock>
-                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center">?</TextBlock>
-                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center">/2</TextBlock>
-                    <Button Content="Join" Background="#D32F2F" Margin="10,0,10,0" ></Button>
-                </StackPanel>
-
-                <!--Sala 3-->
-                <StackPanel Background="White" Padding="10" HorizontalAlignment="Center" Height="100" Margin="10,10,10,10" VerticalAlignment="Stretch" Orientation="Horizontal">
-                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,100,0" >Room 3</TextBlock>
-                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center">?</TextBlock>
-                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center">/2</TextBlock>
-                    <Button Content="Join" Background="#D32F2F" Margin="10,0,10,0" ></Button>
-                </StackPanel>
-
-                <!--Sala 4-->
-                <StackPanel Background="White" Padding="10" HorizontalAlignment="Center" Height="100" Margin="10,10,10,10" VerticalAlignment="Stretch" Orientation="Horizontal">
-                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,100,0" >Room 4</TextBlock>
-                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center">?</TextBlock>
-                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center">/2</TextBlock>
-                    <Button Content="Join" Background="#D32F2F" Margin="10,0,10,0" ></Button>
-                </StackPanel>
-
-                <!--Sala 5-->
-                <StackPanel Background="White" Padding="10" HorizontalAlignment="Center" Height="100" Margin="10,10,10,10" VerticalAlignment="Stretch" Orientation="Horizontal">
-                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,100,0" >Room 5</TextBlock>
-                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center">?</TextBlock>
-                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center">/2</TextBlock>
-                    <Button Content="Join" Background="#D32F2F" Margin="10,0,10,0" ></Button>
-                </StackPanel>
-
-                <!--Sala 6-->
-                <StackPanel Background="White" Padding="10" HorizontalAlignment="Center" Height="100" Margin="10,10,10,10" VerticalAlignment="Stretch" Orientation="Horizontal">
-                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,100,0" >Room 6</TextBlock>
-                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center">?</TextBlock>
-                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center">/2</TextBlock>
-                    <Button Content="Join" Background="#D32F2F" Margin="10,0,10,0" ></Button>
-                </StackPanel>
-
-                <!--Sala 7-->
-                <StackPanel Background="White" Padding="10" HorizontalAlignment="Center" Height="100" Margin="10,10,10,10" VerticalAlignment="Stretch" Orientation="Horizontal">
-                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,100,0" >Room 7</TextBlock>
-                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center">?</TextBlock>
-                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center">/2</TextBlock>
-                    <Button Content="Join" Background="#D32F2F" Margin="10,0,10,0" ></Button>
-                </StackPanel>
-
-                <!--Sala 8-->
-                <StackPanel Background="White" Padding="10" HorizontalAlignment="Center" Height="100" Margin="10,10,10,10" VerticalAlignment="Stretch" Orientation="Horizontal">
-                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,100,0" >Room 8</TextBlock>
-                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center">?</TextBlock>
-                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center">/2</TextBlock>
-                    <Button Content="Join" Background="#D32F2F" Margin="10,0,10,0" ></Button>
-                </StackPanel>
-
-                <!--Sala 9-->
-                <StackPanel Background="White" Padding="10" HorizontalAlignment="Center" Height="100" Margin="10,10,10,10" VerticalAlignment="Stretch" Orientation="Horizontal">
-                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,100,0" >Room 9</TextBlock>
-                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center">?</TextBlock>
-                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center">/2</TextBlock>
-                    <Button Content="Join" Background="#D32F2F" Margin="10,0,10,0" ></Button>
-                </StackPanel>
-
-                <!--Sala 10-->
-                <StackPanel Background="White" Padding="10" HorizontalAlignment="Center" Height="100" Margin="10,10,10,10" VerticalAlignment="Stretch" Orientation="Horizontal">
-                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,100,0" >Room 10</TextBlock>
-                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center">?</TextBlock>
-                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center">/2</TextBlock>
-                    <Button Content="Join" Background="#D32F2F" Margin="10,0,10,0" ></Button>
-                </StackPanel>
-            </StackPanel>
         </ScrollViewer>
     </StackPanel>
 </Page>
