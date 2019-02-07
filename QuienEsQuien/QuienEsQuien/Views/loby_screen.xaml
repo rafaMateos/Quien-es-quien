@@ -5,7 +5,12 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
+    xmlns:vm="using:QuienEsQuien.Viewmodel"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Page.DataContext>
+        <vm:viewModel/>
+    </Page.DataContext>
 
     <StackPanel Padding="10" HorizontalAlignment="Stretch" Height="auto" 
                 VerticalAlignment="Stretch" Orientation="Vertical"
@@ -19,19 +24,18 @@
         <ScrollViewer>
 
             <ListView 
-            Name="listilla"  
+            Name="listSalas"  
             RightTapped="listilla_RightTapped"
-            ItemsSource="{Binding ListadoDePersonas}" 
-            SelectedItem="{Binding PersonaSeleccionada, Mode=TwoWay}" 
-            RelativePanel.Above="botonera"
-            RelativePanel.Below="resultadoBusqueda"
-            RelativePanel.AlignTopWithPanel="false"
+            ItemsSource="{Binding ListadoDeSalas}" 
+            SelectedItem="{Binding salaSeleccionada, Mode=TwoWay}" 
             Margin="5,5,20,5">
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <StackPanel Orientation="Vertical">
-                            <TextBlock Text="{Binding Path=nombre}" FontSize="16"/>
-                            <TextBlock Text="{Binding Path=apellidos}" Margin="5,0,0,0" FontSize="12"/>
+                        <StackPanel Background="White" Padding="10" HorizontalAlignment="Center" Width="auto" Height="100" Margin="10,10,10,10" Orientation="Horizontal">
+                            <TextBlock Text="{Binding Path=nombre}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,100,0" />
+                            <TextBlock Text="{Binding Path=usuariosConectados}" HorizontalAlignment="Center" VerticalAlignment="Center">?</TextBlock>
+                            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center">/2</TextBlock>
+                            <!-- <Button Content="Join" Background="#D32F2F" Margin="10,0,10,0" HorizontalAlignment="Right"></Button> -->
                         </StackPanel>
                     </DataTemplate>
                 </ListView.ItemTemplate>
@@ -43,14 +47,6 @@
                     </MenuFlyout>
                 </ListView.Resources>
             </ListView>
-                <!--Sala 1-->
-                <StackPanel Background="White" Padding="10" HorizontalAlignment="Center" Width="auto" Height="100" Margin="10,10,10,10" Orientation="Horizontal">
-                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,100,0" >Room 1</TextBlock>
-                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center">?</TextBlock>
-                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center">/2</TextBlock>
-                    <Button Content="Join" Background="#D32F2F" Margin="10,0,10,0" HorizontalAlignment="Right"></Button>
-                </StackPanel>
-
         </ScrollViewer>
     </StackPanel>
 </Page>
