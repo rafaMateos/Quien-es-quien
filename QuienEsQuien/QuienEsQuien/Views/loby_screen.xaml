@@ -6,47 +6,52 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     xmlns:vm="using:QuienEsQuien.Viewmodel"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    Background="#536DFE">
 
     <Page.DataContext>
         <vm:viewModel/>
     </Page.DataContext>
 
-    <StackPanel Padding="10" HorizontalAlignment="Stretch" Height="auto" 
-                VerticalAlignment="Stretch" Orientation="Vertical"
-                Background="#536DFE">
-        <StackPanel Padding="10" HorizontalAlignment="Stretch" Margin="0,0,0,0" VerticalAlignment="Stretch" Orientation="Horizontal">
+    <RelativePanel>
+    
+        <StackPanel Name="botoneraSuperior" Padding="10" HorizontalAlignment="Stretch" Margin="0,0,0,0" VerticalAlignment="Stretch" Orientation="Horizontal">
             <Button Content="Speed Join" Background="#D32F2F" Margin="10,0,10,0"></Button>
             <Button Content="Refresh" Background="#D32F2F" Margin="10,0,10,0"></Button>
+            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="Bienvenido "/>
+            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding nickJugador}" />
         </StackPanel>
 
         <!--SALAS-->
-        <ScrollViewer>
+        <!--<ScrollViewer>-->
 
+            <!--RightTapped="listilla_RightTapped"-->
+            
             <ListView 
-            Name="listSalas"  
-            RightTapped="listilla_RightTapped"
-            ItemsSource="{Binding ListadoDeSalas}" 
-            SelectedItem="{Binding salaSeleccionada, Mode=TwoWay}" 
-            Margin="5,5,20,5">
+                Name="listSalas"  
+                ItemsSource="{Binding listadoDeSalas}" 
+                SelectedItem="{Binding salaSeleccionada, Mode=TwoWay}" 
+                Margin="5,5,20,5"
+                RelativePanel.Below="botoneraSuperior"
+                RelativePanel.AlignRightWithPanel="True"
+                RelativePanel.AlignLeftWithPanel="True">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <StackPanel Background="White" Padding="10" HorizontalAlignment="Center" Width="auto" Height="100" Margin="10,10,10,10" Orientation="Horizontal">
                             <TextBlock Text="{Binding Path=nombre}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,100,0" />
                             <TextBlock Text="{Binding Path=usuariosConectados}" HorizontalAlignment="Center" VerticalAlignment="Center">?</TextBlock>
                             <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center">/2</TextBlock>
-                            <!-- <Button Content="Join" Background="#D32F2F" Margin="10,0,10,0" HorizontalAlignment="Right"></Button> -->
+                            <Button Content="Join" Background="#D32F2F" Margin="10,0,10,0" HorizontalAlignment="Right"></Button>
                         </StackPanel>
                     </DataTemplate>
                 </ListView.ItemTemplate>
 
-                <ListView.Resources>
+                <!--<ListView.Resources>
                     <MenuFlyout x:Name="miMenuFlyoutListado">
                         <MenuFlyoutItem Command="{Binding Path=modificarPersonaCommand}" Icon="Edit" Text="Guardar cambios"/>
                         <MenuFlyoutItem Command="{Binding Path=eliminarCommand}" Icon="Delete" Text="Eliminar"/>
                     </MenuFlyout>
-                </ListView.Resources>
+                </ListView.Resources>-->
             </ListView>
-        </ScrollViewer>
-    </StackPanel>
+        <!--</ScrollViewer>-->
+    </RelativePanel>
 </Page>

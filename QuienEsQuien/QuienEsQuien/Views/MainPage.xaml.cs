@@ -1,6 +1,6 @@
 ﻿using Manejadoras;
 using Microsoft.AspNet.SignalR.Client;
-using Modelos;
+using QuienEsQuien.Modelos;
 using System;
 using System.Collections.Generic;
 using System.IO;
