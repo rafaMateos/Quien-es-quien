@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Threading.Tasks;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Core;
@@ -41,12 +42,9 @@ namespace QuienEsQuien.Views
             this.InitializeComponent();
             SignalR();
 
+
             //recoger aqui el objeto sala del navigate to y el nick name
-            if (conn.State == Microsoft.AspNet.SignalR.Client.ConnectionState.Connected) {
-
-                ChatProxy.Invoke("JoinGroup", "Sala 1");
-
-            }
+           
 
         }
 
@@ -54,6 +52,10 @@ namespace QuienEsQuien.Views
 
         private void SignalR()
         {
+
+          
+
+
 
             //Connect to the url 
             //conn = new HubConnection("https://parejasdecartasnervion.azurewebsites.net/");
@@ -72,16 +74,25 @@ namespace QuienEsQuien.Views
         {
             await Windows.ApplicationModel.Core.CoreApplication.MainView.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
             {
-                vm.msgChats.Add(obj);
+                vm.AñadirAChat(obj);
+                
             });
 
         }
 
         private void Btn_send_Click(object sender, RoutedEventArgs e)
         {
+
+            if (conn.State == Microsoft.AspNet.SignalR.Client.ConnectionState.Connected)
+            {
+
+                ChatProxy.Invoke("JoinGroup", "sala 1");
+
+            }
+
             ChatMessage send = new ChatMessage();
-            send.Message = tbx_chat.Text;
-            send.Username = "Juan";
+            send.message = tbx_chat.Text;
+            send.nickName = "Juan";
             send.groupName = "sala 1";
             
 

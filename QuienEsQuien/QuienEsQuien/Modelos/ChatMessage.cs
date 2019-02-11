@@ -8,9 +8,8 @@ namespace QuienEsQuien.Modelos
 {
     public class ChatMessage
     {
-        public string Username { get; set; }
-        public string Message { get; set; }
-
+        public string nickName { get; set; }
+        public string message { get; set; }
         public string groupName { get; set; }
 
     }

@@ -16,7 +16,7 @@ namespace QuienEsQuien.Viewmodel {
 
         private String _nickJugador;
 
-        private List<ChatMessage> _msgsChat;
+        private List<ChatMessage> _msgsChat = new List<ChatMessage>();
         #endregion
 
         #region propiedades publicas
@@ -63,8 +63,20 @@ namespace QuienEsQuien.Viewmodel {
         #endregion
 
         public viewModel() {
+            ChatMessage m = new ChatMessage();
+            m.groupName = "";
+            m.message = "Hola";
+            m.nickName = "dfdfd";
+
+            _msgsChat.Add(m);
             rellenarListaSalasAsync();
             nickJugador = "Manolito Gafotas";
+        }
+
+        public void AñadirAChat(ChatMessage c) {
+
+            _msgsChat.Add(c);
+            NotifyPropertyChanged("_msgsChat");
         }
 
         public async void rellenarListaSalasAsync() {
