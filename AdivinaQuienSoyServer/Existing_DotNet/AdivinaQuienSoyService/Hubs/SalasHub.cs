@@ -26,7 +26,7 @@ namespace AdivinaQuienSoyService.Hubs
 
                 Groups.Add(Context.ConnectionId, salita.nombre);
                 salita.usuariosConectados++;
-                manejadora.actualizarUsuariosSala(salita);
+                //manejadora.actualizarUsuariosSala(salita);
                 Clients.All.ContarUsuarios(salita);
            
         }
@@ -38,7 +38,9 @@ namespace AdivinaQuienSoyService.Hubs
         /// <returns></returns>
         public Task LeaveRoom(String roomName)
         {
+
             return Groups.Remove(Context.ConnectionId, roomName);
+
         }
 
 

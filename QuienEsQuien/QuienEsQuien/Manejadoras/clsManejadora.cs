@@ -12,13 +12,13 @@ namespace Manejadoras
 {
     public class clsManejadora
     {
-        private String stringURIapi = "http://adivinaquiensoyapirest.azurewebsites.net/api/Salas";
+        private String stringURIapi = "https://adivinaquiensoyapirest.azurewebsites.net/api/Salas";
 
         public async Task<Boolean> canUnirseSala(int idSala){
             Boolean veredicto = false;
 
             clsSala sala = new clsSala();
-            Uri UriApi = new Uri("http://adivinaquiensoyapirest.azurewebsites.net/api/Salas/" + idSala);
+            Uri UriApi = new Uri("https://adivinaquiensoyapirest.azurewebsites.net/api/Salas/" + idSala);
             int Usuarios = -1;
             String res;
             HttpClient client = new HttpClient();
@@ -68,5 +68,26 @@ namespace Manejadoras
             return filas;
         }
 
+        public async Task<List<clsSala>> GetSalas()
+        {
+            Boolean veredicto = false;
+
+            List<clsSala> sala =  new List<clsSala>();
+            Uri UriApi = new Uri("https://adivinaquiensoyapirest.azurewebsites.net/api/Salas");
+   
+            String res;
+            HttpClient client = new HttpClient();
+            HttpResponseMessage response = await client.GetAsync(UriApi);
+
+            if (response.IsSuccessStatusCode)
+            {
+
+                res = await response.Content.ReadAsStringAsync();
+                sala = JsonConvert.DeserializeObject<List<clsSala>>(res);
+                
+            }
+
+            return sala;
+        }
     }
 }

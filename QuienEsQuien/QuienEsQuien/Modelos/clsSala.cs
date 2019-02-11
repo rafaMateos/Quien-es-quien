@@ -4,10 +4,29 @@ using System.Linq;
 
 
 namespace QuienEsQuien.Modelos {
-    public class clsSala {
+    public class clsSala : clsBase{
         public int id { get; set; }
         public String nombre { get; set; }
-        public int usuariosConectados { get; set; }
+        private int _usuariosConectados;
+
+
+        public int usuariosConectados {
+
+            get{
+
+                return _usuariosConectados;
+            }
+            set {
+
+                _usuariosConectados = value;
+                NotifyPropertyChanged("usuariosConectados");
+            }
+
+
+        }
+
+
+
 
         public clsSala(int idSala, String nombreSala, int usuarios) {
             id = idSala;

@@ -191,18 +191,36 @@
 
             <RelativePanel Name="contenedorChat" Background="Aquamarine" Margin="5" Grid.Column="0" Grid.Row="1"  Padding="5">
 
-                <Frame Name="contanierChat" Background="Brown" 
+                <ListView Name="contanierChat" Background="Brown" 
                        RelativePanel.AlignLeftWithPanel="True"
                        RelativePanel.AlignRightWithPanel="True"
                        RelativePanel.AlignTopWithPanel="True"
-                       RelativePanel.AlignBottomWith="tbx_chat"/>
+                       RelativePanel.AlignBottomWith="tbx_chat"
+                       ItemsSource="{Binding msgChats}">
+
+                    <ListView.ItemTemplate>
+
+                        <DataTemplate>
+
+                            <StackPanel>
+
+                                <TextBlock Text="{Binding Path= Message}"></TextBlock>
+                                
+                            </StackPanel>
+                            
+                        </DataTemplate>
+                        
+                    </ListView.ItemTemplate>
+                    
+                    
+                </ListView>
 
                 <TextBox Name="tbx_chat"
                         RelativePanel.AlignBottomWithPanel="True"
                         RelativePanel.AlignLeftWithPanel="True"
                         RelativePanel.LeftOf="btn_send"/>
                 
-                <Button Name="btn_send" Content="Send"
+                <Button Click="Btn_send_Click" Name="btn_send" Content="Send"
                         RelativePanel.AlignBottomWithPanel="True"
                         RelativePanel.AlignRightWithPanel="True"/>
             </RelativePanel>

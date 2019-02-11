@@ -27,19 +27,14 @@
             <ListView 
                 Name="listSalas"  
                 ItemsSource="{Binding listadoDeSalas}" 
-                SelectedItem="{Binding salaSeleccionada, Mode=TwoWay}" 
+                SelectedItem="{Binding salaSeleccionada, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
                 Margin="5,5,20,5"
                 RelativePanel.Below="botoneraSuperior"
                 RelativePanel.AlignRightWithPanel="True"
                 RelativePanel.AlignLeftWithPanel="True">
             <ListView.ItemTemplate>
-                <DataTemplate>
-                        <!--<StackPanel Background="White" Padding="10" HorizontalAlignment="Center" Width="auto" Height="100" Margin="10,10,10,10" Orientation="Horizontal">
-                            <TextBlock Text="{Binding Path=nombre}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,100,0" />
-                            <TextBlock Text="{Binding Path=usuariosConectados}" HorizontalAlignment="Center" VerticalAlignment="Center">?</TextBlock>
-                            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center">/2</TextBlock>
-                            <Button Content="Join" Background="#D32F2F" Margin="10,0,10,0" HorizontalAlignment="Right"></Button>
-                        </StackPanel>-->
+                <DataTemplate x:Name="dataTemplateList">
+                      
                     <RelativePanel Background="White" Width="300px">
                         <TextBlock Name="nombreSala" Text="{Binding Path=nombre}"
                                     RelativePanel.AlignLeftWithPanel="True"  

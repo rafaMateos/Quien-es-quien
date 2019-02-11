@@ -11,5 +11,7 @@ namespace QuienEsQuien.Modelos
         public string Username { get; set; }
         public string Message { get; set; }
 
+        public string groupName { get; set; }
+
     }
 }
