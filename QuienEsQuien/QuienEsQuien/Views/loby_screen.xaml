@@ -22,8 +22,6 @@
         </StackPanel>
 
         <!--SALAS-->
-        <!--<ScrollViewer>-->
-
             <!--RightTapped="listilla_RightTapped"-->
             
             <ListView 
@@ -34,16 +32,30 @@
                 RelativePanel.Below="botoneraSuperior"
                 RelativePanel.AlignRightWithPanel="True"
                 RelativePanel.AlignLeftWithPanel="True">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <StackPanel Background="White" Padding="10" HorizontalAlignment="Center" Width="auto" Height="100" Margin="10,10,10,10" Orientation="Horizontal">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                        <!--<StackPanel Background="White" Padding="10" HorizontalAlignment="Center" Width="auto" Height="100" Margin="10,10,10,10" Orientation="Horizontal">
                             <TextBlock Text="{Binding Path=nombre}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,100,0" />
                             <TextBlock Text="{Binding Path=usuariosConectados}" HorizontalAlignment="Center" VerticalAlignment="Center">?</TextBlock>
                             <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center">/2</TextBlock>
                             <Button Content="Join" Background="#D32F2F" Margin="10,0,10,0" HorizontalAlignment="Right"></Button>
-                        </StackPanel>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
+                        </StackPanel>-->
+                    <RelativePanel Background="White" Width="300px">
+                        <TextBlock Name="nombreSala" Text="{Binding Path=nombre}"
+                                    RelativePanel.AlignLeftWithPanel="True"  
+                                    HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        <TextBlock Name="usuariosConectados" Text="{Binding Path=usuariosConectados}"
+                                    RelativePanel.LeftOf="topeUsuarios"  
+                                    HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        <TextBlock Name="topeUsuarios" Text="/2"
+                                    RelativePanel.LeftOf="btnUnir" 
+                                    HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        <Button Name="btnUnir" Content="Join" Background="#D32F2F" 
+                                Margin="10,0,10,0" HorizontalAlignment="Right" RelativePanel.AlignRightWithPanel="True"/>
+                    </RelativePanel>
+
+                </DataTemplate>
+            </ListView.ItemTemplate>
 
                 <!--<ListView.Resources>
                     <MenuFlyout x:Name="miMenuFlyoutListado">
@@ -52,6 +64,5 @@
                     </MenuFlyout>
                 </ListView.Resources>-->
             </ListView>
-        <!--</ScrollViewer>-->
     </RelativePanel>
 </Page>
