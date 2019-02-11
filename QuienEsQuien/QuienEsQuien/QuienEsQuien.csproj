@@ -127,6 +127,9 @@
     <Compile Include="Modelos\clsRespuesta.cs" />
     <Compile Include="Modelos\clsSala.cs" />
     <Compile Include="Viewmodel\viewModel.cs" />
+    <Compile Include="Views\game_screen.xaml.cs">
+      <DependentUpon>game_screen.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\loby_screen.xaml.cs">
       <DependentUpon>loby_screen.xaml</DependentUpon>
     </Compile>
@@ -142,6 +145,21 @@
     <None Include="QuienEsQuien_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\QS_angel.jpg" />
+    <Content Include="Assets\QS_angela.jpg" />
+    <Content Include="Assets\QS_asun.jpg" />
+    <Content Include="Assets\QS_fernando.jpg" />
+    <Content Include="Assets\QS_jorge.jpg" />
+    <Content Include="Assets\QS_jose.jpg" />
+    <Content Include="Assets\QS_leo.jpg" />
+    <Content Include="Assets\QS_luis.jpg" />
+    <Content Include="Assets\QS_nacho.jpg" />
+    <Content Include="Assets\QS_oscar.jpg" />
+    <Content Include="Assets\QS_rafa.jpg" />
+    <Content Include="Assets\QS_rosario.jpg" />
+    <Content Include="Assets\QS_samuel.jpg" />
+    <Content Include="Assets\QS_vicky.jpg" />
+    <Content Include="Assets\QS_yerai.jpg" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />
@@ -156,6 +174,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="Views\game_screen.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\loby_screen.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

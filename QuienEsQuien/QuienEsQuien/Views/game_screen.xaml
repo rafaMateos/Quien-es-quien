@@ -1,0 +1,212 @@
+﻿<Page
+    x:Class="QuienEsQuien.Views.game_screen"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:QuienEsQuien.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    xmlns:vm="using:QuienEsQuien.Viewmodel"
+    Background="#536DFE"
+    >
+
+    <Page.DataContext>
+        <vm:viewModel/>
+    </Page.DataContext>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="5*" MinWidth="620"></ColumnDefinition>
+            <ColumnDefinition Width="2*"  MinWidth="230"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <Grid Grid.Row="0" Grid.Column="0" Background="White" Margin="10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="148"></RowDefinition>
+                <RowDefinition Height="148"></RowDefinition>
+                <RowDefinition Height="148"></RowDefinition>
+                <RowDefinition Height="148"></RowDefinition>
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition MinWidth="100"></ColumnDefinition>
+                <ColumnDefinition MinWidth="100"></ColumnDefinition>
+                <ColumnDefinition MinWidth="100"></ColumnDefinition>
+                <ColumnDefinition MinWidth="100"></ColumnDefinition>
+                <ColumnDefinition MinWidth="100"></ColumnDefinition>
+                <ColumnDefinition MinWidth="100"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <!--#region Fila 0-->
+            <StackPanel Grid.Row="0" Grid.Column="0"  Orientation="Vertical">
+                <Image Source="../Assets/QS_Rafa.jpg" MaxHeight="115"/>
+                <Button HorizontalAlignment="Center">¿Es rafa?</Button>
+            </StackPanel>
+
+            <StackPanel Grid.Row="0" Grid.Column="1"  Orientation="Vertical">
+                <Image Source="../Assets/QS_angel.jpg" MaxHeight="115"/>
+                <Button HorizontalAlignment="Center">¿Es Ángel?</Button>
+            </StackPanel>
+
+            <StackPanel Grid.Row="0" Grid.Column="2"  Orientation="Vertical">
+                <Image Source="../Assets/QS_angela.jpg" MaxHeight="115"/>
+                <Button HorizontalAlignment="Center">¿Es Ángela?</Button>
+            </StackPanel>
+
+            <StackPanel Grid.Row="0" Grid.Column="3"  Orientation="Vertical">
+                <Image Source="../Assets/QS_asun.jpg" MaxHeight="115"/>
+                <Button HorizontalAlignment="Center">¿Es Asun?</Button>
+            </StackPanel>
+
+            <StackPanel Grid.Row="0" Grid.Column="4"  Orientation="Vertical">
+                <Image Source="../Assets/QS_fernando.jpg" MaxHeight="115"/>
+                <Button HorizontalAlignment="Center">¿Es Fernando?</Button>
+            </StackPanel>
+
+            <StackPanel Grid.Row="0" Grid.Column="5"  Orientation="Vertical">
+                <Image Source="../Assets/QS_jorge.jpg" MaxHeight="115"/>
+                <Button HorizontalAlignment="Center">¿Es Jorge?</Button>
+            </StackPanel>
+            <!--#endregion-->
+
+            <!--#region Fila 1-->
+            <StackPanel Grid.Row="1" Grid.Column="0"  Orientation="Vertical">
+                <Image Source="../Assets/QS_jose.jpg" MaxHeight="115"/>
+                <Button HorizontalAlignment="Center">¿Es José?</Button>
+            </StackPanel>
+
+            <StackPanel Grid.Row="1" Grid.Column="1"  Orientation="Vertical">
+                <Image Source="../Assets/QS_Leo.jpg" MaxHeight="115"/>
+                <Button HorizontalAlignment="Center">¿Es Leo?</Button>
+            </StackPanel>
+
+            <StackPanel Grid.Row="1" Grid.Column="2"  Orientation="Vertical">
+                <Image Source="../Assets/QS_Luis.jpg" MaxHeight="115"/>
+                <Button HorizontalAlignment="Center">¿Es Luis?</Button>
+            </StackPanel>
+
+            <StackPanel Grid.Row="1" Grid.Column="3"  Orientation="Vertical">
+                <Image Source="../Assets/QS_Nacho.jpg" MaxHeight="115"/>
+                <Button HorizontalAlignment="Center">¿Es Nacho?</Button>
+            </StackPanel>
+
+            <StackPanel Grid.Row="1" Grid.Column="4"  Orientation="Vertical">
+                <Image Source="../Assets/QS_oscar.jpg" MaxHeight="115"/>
+                <Button HorizontalAlignment="Center">¿Es Óscar?</Button>
+            </StackPanel>
+
+            <StackPanel Grid.Row="1" Grid.Column="5"  Orientation="Vertical">
+                <Image Source="../Assets/QS_Rafa.jpg" MaxHeight="115"/>
+                <Button HorizontalAlignment="Center">¿Es rafa?</Button>
+            </StackPanel>
+            <!--#endregion-->
+
+            <!--#region Fila 2-->
+            <StackPanel Grid.Row="2" Grid.Column="0"  Orientation="Vertical">
+                <Image Source="../Assets/QS_rosario.jpg" MaxHeight="115"/>
+                <Button HorizontalAlignment="Center">¿Es Rosario?</Button>
+            </StackPanel>
+
+            <StackPanel Grid.Row="2" Grid.Column="1"  Orientation="Vertical">
+                <Image Source="../Assets/QS_samuel.jpg" MaxHeight="115"/>
+                <Button HorizontalAlignment="Center">¿Es Samuel?</Button>
+            </StackPanel>
+
+            <StackPanel Grid.Row="2" Grid.Column="2"  Orientation="Vertical">
+                <Image Source="../Assets/QS_vicky.jpg" MaxHeight="115"/>
+                <Button HorizontalAlignment="Center">¿Es Vicky?</Button>
+            </StackPanel>
+
+            <StackPanel Grid.Row="2" Grid.Column="3"  Orientation="Vertical">
+                <Image Source="../Assets/QS_yerai.jpg" MaxHeight="115"/>
+                <Button HorizontalAlignment="Center">¿Es Yeray?</Button>
+            </StackPanel>
+
+            <StackPanel Grid.Row="2" Grid.Column="4"  Orientation="Vertical">
+                <Image Source="../Assets/QS_Rafa.jpg" MaxHeight="115"/>
+                <Button HorizontalAlignment="Center">¿Es rafa?</Button>
+            </StackPanel>
+
+            <StackPanel Grid.Row="2" Grid.Column="5"  Orientation="Vertical">
+                <Image Source="../Assets/QS_Rafa.jpg" MaxHeight="115"/>
+                <Button HorizontalAlignment="Center">¿Es rafa?</Button>
+            </StackPanel>
+            <!--#endregion-->
+            
+            <!--#region Fila 3-->
+            <StackPanel Grid.Row="3" Grid.Column="0"  Orientation="Vertical">
+                <Image Source="../Assets/QS_Rafa.jpg" MaxHeight="115"/>
+                <Button HorizontalAlignment="Center">¿Es rafa?</Button>
+            </StackPanel>
+
+            <StackPanel Grid.Row="3" Grid.Column="1"  Orientation="Vertical">
+                <Image Source="../Assets/QS_Rafa.jpg" MaxHeight="115"/>
+                <Button HorizontalAlignment="Center">¿Es rafa?</Button>
+            </StackPanel>
+
+            <StackPanel Grid.Row="3" Grid.Column="2"  Orientation="Vertical">
+                <Image Source="../Assets/QS_Rafa.jpg" MaxHeight="115"/>
+                <Button HorizontalAlignment="Center">¿Es rafa?</Button>
+            </StackPanel>
+
+            <StackPanel Grid.Row="3" Grid.Column="3"  Orientation="Vertical">
+                <Image Source="../Assets/QS_Rafa.jpg" MaxHeight="115"/>
+                <Button HorizontalAlignment="Center">¿Es rafa?</Button>
+            </StackPanel>
+
+            <StackPanel Grid.Row="3" Grid.Column="4"  Orientation="Vertical">
+                <Image Source="../Assets/QS_Rafa.jpg" MaxHeight="115"/>
+                <Button HorizontalAlignment="Center">¿Es rafa?</Button>
+            </StackPanel>
+
+            <StackPanel Grid.Row="3" Grid.Column="5"  Orientation="Vertical">
+                <Image Source="../Assets/QS_Rafa.jpg" MaxHeight="115"/>
+                <Button HorizontalAlignment="Center">¿Es rafa?</Button>
+            </StackPanel>
+            <!--#endregion-->
+
+        </Grid>
+
+        <Grid Grid.Column="1" MinWidth="200" Background="White" Margin="10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="3*"></RowDefinition>
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+
+            <RelativePanel Name="contenedorTuyo" Background="Aquamarine" Margin="5" Grid.Column="0" Grid.Row="0" Padding="5">
+                <TextBlock Name="tuPersonajeNombre" Text="Tu eres:"  
+                           HorizontalAlignment="Center"
+                       RelativePanel.AlignRightWithPanel="True"/>
+                <Image Name="tuPersonajeImagen" Source="../Assets/QS_Rafa.jpg" 
+                       MaxHeight="130" HorizontalAlignment="Right"
+                       RelativePanel.Below="tuPersonajeNombre"
+                       RelativePanel.AlignRightWithPanel="True"/>
+            </RelativePanel>
+
+            <RelativePanel Name="contenedorChat" Background="Aquamarine" Margin="5" Grid.Column="0" Grid.Row="1"  Padding="5">
+
+                <Frame Name="contanierChat" Background="Brown" 
+                       RelativePanel.AlignLeftWithPanel="True"
+                       RelativePanel.AlignRightWithPanel="True"
+                       RelativePanel.AlignTopWithPanel="True"
+                       RelativePanel.AlignBottomWith="tbx_chat"/>
+
+                <TextBox Name="tbx_chat"
+                        RelativePanel.AlignBottomWithPanel="True"
+                        RelativePanel.AlignLeftWithPanel="True"
+                        RelativePanel.LeftOf="btn_send"/>
+                
+                <Button Name="btn_send" Content="Send"
+                        RelativePanel.AlignBottomWithPanel="True"
+                        RelativePanel.AlignRightWithPanel="True"/>
+            </RelativePanel>
+
+        </Grid>
+    </Grid>
+</Page>
