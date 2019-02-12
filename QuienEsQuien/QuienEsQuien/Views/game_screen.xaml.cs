@@ -75,7 +75,9 @@ namespace QuienEsQuien.Views {
         private async void addMessage(ChatMessage obj) {
 
             await Windows.ApplicationModel.Core.CoreApplication.MainView.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () => {
+
                 vm.AñadirAChat(obj);
+
             });
 
         }
