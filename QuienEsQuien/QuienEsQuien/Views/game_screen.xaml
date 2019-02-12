@@ -202,8 +202,9 @@
 
                         <DataTemplate>
 
-                            <StackPanel>
+                            <StackPanel Orientation="Horizontal">
 
+                                <TextBlock Text="{Binding Path=nickName}"></TextBlock>
                                 <TextBlock Text="{Binding Path=message,Mode=TwoWay}"></TextBlock>
                                 
                             </StackPanel>

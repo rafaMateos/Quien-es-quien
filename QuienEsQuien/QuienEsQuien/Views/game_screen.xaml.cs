@@ -45,6 +45,7 @@ namespace QuienEsQuien.Views {
 
 
         public game_screen() {
+
             this.InitializeComponent();
             vm = (viewModel)this.DataContext;
             SignalR();
@@ -55,17 +56,12 @@ namespace QuienEsQuien.Views {
         }
 
 
-       
-
         private void SignalR() {
 
-
-
-
-
+       
             //Connect to the url 
-            //conn = new HubConnection("https://parejasdecartasnervion.azurewebsites.net/");
-            conn = new HubConnection("http://localhost:50268/");
+            conn = new HubConnection("https://adivinaquiensoy.azurewebsites.net/");
+            //conn = new HubConnection("http://localhost:50268/");
             //ChatHub is the hub name defined in the host program. 
 
             ChatProxy = conn.CreateHubProxy("ChatHub");
@@ -77,6 +73,7 @@ namespace QuienEsQuien.Views {
         }
 
         private async void addMessage(ChatMessage obj) {
+
             await Windows.ApplicationModel.Core.CoreApplication.MainView.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () => {
                 vm.AñadirAChat(obj);
             });
@@ -87,17 +84,21 @@ namespace QuienEsQuien.Views {
             
             if (conn.State == Microsoft.AspNet.SignalR.Client.ConnectionState.Connected) {
 
-                ChatProxy.Invoke("JoinGroup", send.groupName);
+                ChatProxy.Invoke("JoinGroup",sala);
 
             }
 
             send.message = tbx_chat.Text;
-
-
+            send.groupName = sala;
+            send.nickName = vm.nickJugador;
+           
 
             if (conn.State == Microsoft.AspNet.SignalR.Client.ConnectionState.Connected) {
+
                 ChatProxy.Invoke("SendToGroup", send);
             }
+
+          
         }
     }
 }
