@@ -53,8 +53,10 @@ namespace QuienEsQuien.Viewmodel {
                 
                 Views.loby_screen.Position(_salaSeleccionada);
 
+             
+
                 //
-               
+
 
             }
         }

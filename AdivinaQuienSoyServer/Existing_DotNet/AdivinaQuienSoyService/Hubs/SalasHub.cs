@@ -28,6 +28,7 @@ namespace AdivinaQuienSoyService.Hubs
                 salita.usuariosConectados++;
                 //manejadora.actualizarUsuariosSala(salita);
                 Clients.All.ContarUsuarios(salita);
+                Clients.Caller.PasarAJuego(salita.nombre);
            
         }
 

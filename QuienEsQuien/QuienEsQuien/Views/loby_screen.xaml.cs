@@ -55,8 +55,15 @@ namespace QuienEsQuien.Views {
             conn.Start();
 
             SalasProxy.On<clsSala>("ContarUsuarios", onInfo);
+            SalasProxy.On<String>("PasarAJuego", PasarAJugar);
             //ChatProxy.On<ChatMessage>("agregarMensaje", addMessage);
          
+        }
+
+        private void PasarAJugar(string salaNombre) {
+
+            this.Frame.Navigate(typeof(game_screen), salaNombre);
+
         }
 
         private async void addMessage(ChatMessage obj)
@@ -78,7 +85,6 @@ namespace QuienEsQuien.Views {
                 SalasProxy.Invoke("JoinRoomAsync", info);
 
             }
-
         }
 
 
@@ -96,7 +102,6 @@ namespace QuienEsQuien.Views {
              await Windows.ApplicationModel.Core.CoreApplication.MainView.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, async () =>
             {
 
-                
                 clsManejadora manejadora = new clsManejadora();
                 manejadora.actualizarUsuariosSala(obj);
                 
@@ -104,11 +109,7 @@ namespace QuienEsQuien.Views {
                 var sala = (clsSala)listSalas.Items[obj.id - 1];
                 sala.usuariosConectados = obj.usuariosConectados;
 
-                
-                this.Frame.Navigate(typeof(game_screen),obj.nombre); 
-
-
-
+               
             });
 
           
