@@ -25,14 +25,13 @@ namespace QuienEsQuien.Views {
         viewModel miVM = new viewModel();
 
         public login_screen() {
-
             this.InitializeComponent();
             miVM = (viewModel)this.DataContext;
         }
 
         private void HyperButton_Click(object sender, RoutedEventArgs e) {
-            // miVM.nickJugador = txtNickJugador.Text;
-            this.Frame.Navigate(typeof(lobby_screen));
+            String nickelodeon = txtNickJugador.Text;
+            this.Frame.Navigate(typeof(lobby_screen), nickelodeon);
         }
     }
 }

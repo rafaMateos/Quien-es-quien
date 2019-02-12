@@ -49,7 +49,10 @@ namespace QuienEsQuien.Viewmodel {
 
         public String nickJugador {
             get { return _nickJugador; }
-            set { _nickJugador = value; }
+            set {
+                _nickJugador = value;
+                NotifyPropertyChanged("nickJugador");
+            }
         }
 
         #endregion

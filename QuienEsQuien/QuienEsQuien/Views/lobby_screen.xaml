@@ -18,7 +18,7 @@
             <Button Content="Speed Join" Background="#D32F2F" Margin="10,0,10,0"></Button>
             <Button Content="Refresh" Background="#D32F2F" Margin="10,0,10,0"></Button>
             <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="Bienvenido "/>
-            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding nickJugador}" />
+            <TextBlock Name ="nickPlayer" HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding nickJugador, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
         </StackPanel>
 
         <!--SALAS-->

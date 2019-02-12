@@ -30,17 +30,24 @@ namespace QuienEsQuien.Views {
 
     public sealed partial class lobby_screen : Page {
 
-
         public static HubConnection conn { get; set; }
         public IHubProxy ChatProxy { get; set; }
         public static IHubProxy SalasProxy { get; set; }
 
         viewModel miVM = new viewModel();
+        string nick = "manu";
+
+        protected override void OnNavigatedTo(NavigationEventArgs e) {
+            base.OnNavigatedTo(e);
+            miVM.nickJugador = (string) e.Parameter;
+        }
 
         public lobby_screen() {
             this.InitializeComponent();
+            //nickPlayer.Text = nick;
             SignalR();
             miVM = (viewModel)this.DataContext;
+            //miVM.nickJugador = nick;
         }
 
 
