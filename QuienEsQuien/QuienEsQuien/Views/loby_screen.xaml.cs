@@ -35,11 +35,12 @@ namespace QuienEsQuien.Views {
         public IHubProxy ChatProxy { get; set; }
         public static IHubProxy SalasProxy { get; set; }
 
+        viewModel miVM = new viewModel();
 
         public loby_screen() {
             this.InitializeComponent();
             SignalR();
-            
+            miVM = (viewModel)this.DataContext;
         }
 
 

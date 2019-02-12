@@ -77,7 +77,6 @@ namespace QuienEsQuien.Viewmodel {
 
             _msgsChat.Add(m);
             rellenarListaSalasAsync();
-            nickJugador = "Manolito Gafotas";
         }
 
         public void AñadirAChat(ChatMessage c) {
