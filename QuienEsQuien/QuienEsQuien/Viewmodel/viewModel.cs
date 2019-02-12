@@ -2,6 +2,7 @@
 using QuienEsQuien.Modelos;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,7 +17,7 @@ namespace QuienEsQuien.Viewmodel {
 
         private String _nickJugador;
 
-        private List<ChatMessage> _msgsChat = new List<ChatMessage>();
+        private ObservableCollection<ChatMessage> _msgsChat = new ObservableCollection<ChatMessage>();
         #endregion
 
         #region propiedades publicas
@@ -26,7 +27,7 @@ namespace QuienEsQuien.Viewmodel {
             set { _ListadoDeSalas = value; }
         }
 
-        public List<ChatMessage> msgChats {
+        public ObservableCollection<ChatMessage> msgsChats {
 
             get {
 
@@ -36,7 +37,7 @@ namespace QuienEsQuien.Viewmodel {
             set {
 
                 _msgsChat = value;
-                NotifyPropertyChanged("msgChats");
+                NotifyPropertyChanged("msgsChats");
             }
         }
 
@@ -63,6 +64,7 @@ namespace QuienEsQuien.Viewmodel {
         #endregion
 
         public viewModel() {
+
             ChatMessage m = new ChatMessage();
             m.groupName = "";
             m.message = "Hola";
@@ -76,7 +78,7 @@ namespace QuienEsQuien.Viewmodel {
         public void AñadirAChat(ChatMessage c) {
 
             _msgsChat.Add(c);
-            NotifyPropertyChanged("_msgsChat");
+            NotifyPropertyChanged("msgsChats");
         }
 
         public async void rellenarListaSalasAsync() {

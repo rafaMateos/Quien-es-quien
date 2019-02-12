@@ -40,12 +40,11 @@ namespace QuienEsQuien.Views
         public game_screen()
         {
             this.InitializeComponent();
+            vm = (viewModel)this.DataContext;
             SignalR();
-
-
+            
             //recoger aqui el objeto sala del navigate to y el nick name
            
-
         }
 
 

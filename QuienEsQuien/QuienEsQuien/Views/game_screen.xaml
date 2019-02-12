@@ -196,7 +196,7 @@
                        RelativePanel.AlignRightWithPanel="True"
                        RelativePanel.AlignTopWithPanel="True"
                        RelativePanel.AlignBottomWith="tbx_chat"
-                       ItemsSource="{Binding msgChats,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}">
+                       ItemsSource="{Binding msgsChats,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}">
 
                     <ListView.ItemTemplate>
 
@@ -204,7 +204,7 @@
 
                             <StackPanel>
 
-                                <TextBlock Text="{Binding Path=message}"></TextBlock>
+                                <TextBlock Text="{Binding Path=message,Mode=TwoWay}"></TextBlock>
                                 
                             </StackPanel>
                             
