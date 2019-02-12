@@ -30,6 +30,7 @@ namespace QuienEsQuien.Views {
 
     public sealed partial class game_screen : Page {
 
+        ChatMessage send = new ChatMessage();
         viewModel vm = new viewModel();
         public static HubConnection conn { get; set; }
         public IHubProxy ChatProxy { get; set; }
@@ -39,10 +40,12 @@ namespace QuienEsQuien.Views {
             this.InitializeComponent();
             vm = (viewModel)this.DataContext;
             SignalR();
-            //recoger aqui el objeto sala del navigate to y el nick name
+
+            send.nickName = vm.nickJugador;
+            send.groupName = vm.salaSeleccionada.nombre;
+            
 
         }
-
 
 
         private void SignalR() {
@@ -75,15 +78,12 @@ namespace QuienEsQuien.Views {
             
             if (conn.State == Microsoft.AspNet.SignalR.Client.ConnectionState.Connected) {
 
-                ChatProxy.Invoke("JoinGroup", "sala 1");
+                ChatProxy.Invoke("JoinGroup", send.groupName);
 
             }
 
-
-            ChatMessage send = new ChatMessage();
             send.message = tbx_chat.Text;
-            send.nickName = "Juan";
-            send.groupName = "sala 1";
+
 
 
             if (conn.State == Microsoft.AspNet.SignalR.Client.ConnectionState.Connected) {

@@ -15,6 +15,7 @@ namespace QuienEsQuien.Viewmodel {
 
         private clsSala _salaSeleccionada;
 
+
         private String _nickJugador;
 
         private ObservableCollection<ChatMessage> _msgsChat = new ObservableCollection<ChatMessage>();

@@ -64,7 +64,6 @@ namespace QuienEsQuien.Views {
 
                
 
-
             });
         }
 
@@ -95,14 +94,16 @@ namespace QuienEsQuien.Views {
              await Windows.ApplicationModel.Core.CoreApplication.MainView.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, async () =>
             {
 
-                //Actualizar salas con put
+                
                 clsManejadora manejadora = new clsManejadora();
                 manejadora.actualizarUsuariosSala(obj);
-                //addToGroup(obj.nombre);
+                
 
                 var sala = (clsSala)listSalas.Items[obj.id - 1];
                 sala.usuariosConectados = obj.usuariosConectados;
-                
+
+
+                this.Frame.Navigate(typeof(game_screen)); 
 
 
 
