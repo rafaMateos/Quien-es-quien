@@ -45,8 +45,8 @@ namespace QuienEsQuien.Views {
         {
             
             //Connect to the url 
-            //conn = new HubConnection("https://parejasdecartasnervion.azurewebsites.net/");
-            conn = new HubConnection("http://localhost:50268/");
+            conn = new HubConnection("https://adivinaquiensoy.azurewebsites.net/");
+            //conn = new HubConnection("http://localhost:50268/");
             //ChatHub is the hub name defined in the host program. 
             SalasProxy = conn.CreateHubProxy("SalasHub");
             //ChatProxy = conn.CreateHubProxy("ChatHub");
@@ -101,7 +101,7 @@ namespace QuienEsQuien.Views {
                 //addToGroup(obj.nombre);
 
                 var sala = (clsSala)listSalas.Items[obj.id - 1];
-                sala.usuariosConectados++;
+                sala.usuariosConectados = obj.usuariosConectados;
                 
 
 

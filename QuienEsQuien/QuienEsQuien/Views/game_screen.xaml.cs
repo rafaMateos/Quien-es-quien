@@ -20,39 +20,34 @@ using Windows.UI.Xaml.Navigation;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
-namespace QuienEsQuien.Views
-{
+namespace QuienEsQuien.Views {
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
     /// 
-  
-    
 
-    public sealed partial class game_screen : Page
-    {
+
+
+    public sealed partial class game_screen : Page {
 
         viewModel vm = new viewModel();
         public static HubConnection conn { get; set; }
         public IHubProxy ChatProxy { get; set; }
 
 
-        public game_screen()
-        {
+        public game_screen() {
             this.InitializeComponent();
             vm = (viewModel)this.DataContext;
             SignalR();
-            
             //recoger aqui el objeto sala del navigate to y el nick name
-           
+
         }
 
 
 
-        private void SignalR()
-        {
+        private void SignalR() {
 
-          
+
 
 
 
@@ -60,7 +55,7 @@ namespace QuienEsQuien.Views
             //conn = new HubConnection("https://parejasdecartasnervion.azurewebsites.net/");
             conn = new HubConnection("http://localhost:50268/");
             //ChatHub is the hub name defined in the host program. 
-         
+
             ChatProxy = conn.CreateHubProxy("ChatHub");
             conn.Start();
 
@@ -69,38 +64,31 @@ namespace QuienEsQuien.Views
 
         }
 
-        private async void addMessage(ChatMessage obj)
-        {
-            await Windows.ApplicationModel.Core.CoreApplication.MainView.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
-            {
+        private async void addMessage(ChatMessage obj) {
+            await Windows.ApplicationModel.Core.CoreApplication.MainView.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () => {
                 vm.AñadirAChat(obj);
-                
             });
 
         }
 
-        private void Btn_send_Click(object sender, RoutedEventArgs e)
-        {
-
-            if (conn.State == Microsoft.AspNet.SignalR.Client.ConnectionState.Connected)
-            {
+        private void Btn_send_Click(object sender, RoutedEventArgs e) {
+            
+            if (conn.State == Microsoft.AspNet.SignalR.Client.ConnectionState.Connected) {
 
                 ChatProxy.Invoke("JoinGroup", "sala 1");
 
             }
 
+
             ChatMessage send = new ChatMessage();
             send.message = tbx_chat.Text;
             send.nickName = "Juan";
             send.groupName = "sala 1";
-            
 
-            if (conn.State == Microsoft.AspNet.SignalR.Client.ConnectionState.Connected)
-            {
+
+            if (conn.State == Microsoft.AspNet.SignalR.Client.ConnectionState.Connected) {
                 ChatProxy.Invoke("SendToGroup", send);
             }
-
-
         }
     }
 }
