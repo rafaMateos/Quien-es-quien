@@ -19,7 +19,7 @@ namespace QuienEsQuien.Modelos {
         }
 
         public bool estaBajada {
-            get {  return _estaBajada }
+            get { return _estaBajada; }
             set {  _estaBajada = value; }
         }
 
