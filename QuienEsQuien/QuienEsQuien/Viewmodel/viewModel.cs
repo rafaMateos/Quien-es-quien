@@ -15,6 +15,7 @@ namespace QuienEsQuien.Viewmodel {
 
         private clsSala _salaSeleccionada;
 
+        public String salaActual;
 
         private String _nickJugador;
 
@@ -49,6 +50,7 @@ namespace QuienEsQuien.Viewmodel {
             set {
 
                 _salaSeleccionada = value;
+                
                 Views.loby_screen.Position(_salaSeleccionada);
 
                 //

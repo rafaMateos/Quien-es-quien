@@ -1,6 +1,7 @@
 ﻿using Manejadoras;
 using Microsoft.AspNet.SignalR.Client;
 using QuienEsQuien.Modelos;
+using QuienEsQuien.Viewmodel;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -29,6 +30,7 @@ namespace QuienEsQuien.Views {
 
     public sealed partial class loby_screen : Page {
 
+       
         public static HubConnection conn { get; set; }
         public IHubProxy ChatProxy { get; set; }
         public static IHubProxy SalasProxy { get; set; }
@@ -102,8 +104,8 @@ namespace QuienEsQuien.Views {
                 var sala = (clsSala)listSalas.Items[obj.id - 1];
                 sala.usuariosConectados = obj.usuariosConectados;
 
-
-                this.Frame.Navigate(typeof(game_screen)); 
+                
+                this.Frame.Navigate(typeof(game_screen),obj.nombre); 
 
 
 

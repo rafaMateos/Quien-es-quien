@@ -34,6 +34,14 @@ namespace QuienEsQuien.Views {
         viewModel vm = new viewModel();
         public static HubConnection conn { get; set; }
         public IHubProxy ChatProxy { get; set; }
+        string sala;
+
+
+        protected override void OnNavigatedTo(NavigationEventArgs e) {
+
+            base.OnNavigatedTo(e);
+            sala = (String)e.Parameter;
+        }
 
 
         public game_screen() {
@@ -42,11 +50,12 @@ namespace QuienEsQuien.Views {
             SignalR();
 
             send.nickName = vm.nickJugador;
-            send.groupName = vm.salaSeleccionada.nombre;
-            
-
+            send.groupName = sala;
+ 
         }
 
+
+       
 
         private void SignalR() {
 
