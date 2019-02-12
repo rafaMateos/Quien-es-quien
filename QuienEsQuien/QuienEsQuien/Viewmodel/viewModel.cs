@@ -31,13 +31,8 @@ namespace QuienEsQuien.Viewmodel {
 
         public ObservableCollection<ChatMessage> msgsChats {
 
-            get {
-
-                return _msgsChat;
-
-            }
-            set {
-
+            get {  return _msgsChat; }
+            set { 
                 _msgsChat = value;
                 NotifyPropertyChanged("msgsChats");
             }
@@ -45,19 +40,10 @@ namespace QuienEsQuien.Viewmodel {
 
         public clsSala salaSeleccionada {
 
-            get { return _salaSeleccionada; }
-
-            set {
-
-                _salaSeleccionada = value;
-                
-                Views.loby_screen.Position(_salaSeleccionada);
-
-             
-
-                //
-
-
+            get { return _salaSeleccionada; } 
+            set { 
+                _salaSeleccionada = value; 
+                Views.lobby_screen.Position(_salaSeleccionada); 
             }
         }
 
@@ -90,9 +76,7 @@ namespace QuienEsQuien.Viewmodel {
             clsManejadora manejadora = new clsManejadora();
 
             _ListadoDeSalas = await manejadora.GetSalas();
-            NotifyPropertyChanged("listadoDeSalas");
-            
-         
+            NotifyPropertyChanged("listadoDeSalas"); 
         }
 
     }

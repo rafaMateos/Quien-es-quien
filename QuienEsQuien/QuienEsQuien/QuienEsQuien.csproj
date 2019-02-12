@@ -127,11 +127,17 @@
     <Compile Include="Modelos\clsRespuesta.cs" />
     <Compile Include="Modelos\clsSala.cs" />
     <Compile Include="Viewmodel\viewModel.cs" />
+    <Compile Include="Views\about_screen.xaml.cs">
+      <DependentUpon>about_screen.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\home_screen.xaml.cs">
+      <DependentUpon>home_screen.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\game_screen.xaml.cs">
       <DependentUpon>game_screen.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\loby_screen.xaml.cs">
-      <DependentUpon>loby_screen.xaml</DependentUpon>
+    <Compile Include="Views\lobby_screen.xaml.cs">
+      <DependentUpon>lobby_screen.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\login_screen.xaml.cs">
       <DependentUpon>login_screen.xaml</DependentUpon>
@@ -177,11 +183,19 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="Views\about_screen.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\home_screen.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\game_screen.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\loby_screen.xaml">
+    <Page Include="Views\lobby_screen.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

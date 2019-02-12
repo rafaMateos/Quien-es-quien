@@ -32,7 +32,7 @@ namespace QuienEsQuien.Views {
 
         private void HyperButton_Click(object sender, RoutedEventArgs e) {
             // miVM.nickJugador = txtNickJugador.Text;
-            this.Frame.Navigate(typeof(loby_screen));
+            this.Frame.Navigate(typeof(lobby_screen));
         }
     }
 }

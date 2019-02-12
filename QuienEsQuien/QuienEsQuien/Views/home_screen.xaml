@@ -1,0 +1,30 @@
+﻿<Page
+    x:Class="QuienEsQuien.Views.home_screen"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:QuienEsQuien.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    xmlns:vm="using:QuienEsQuien.Viewmodel"
+    Background="#536DFE">
+
+
+    <Page.DataContext>
+        <vm:viewModel/>
+    </Page.DataContext>
+
+    <StackPanel Orientation="Vertical" HorizontalAlignment="Center" Margin="10">
+
+        <Image Source="../Assets/SplashScreen.scale-200.png" Height="303" Width="766" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+        <TextBlock HorizontalAlignment="Center" Margin="0,10,0,0"> Hola cara de cola</TextBlock>
+        <Button Content="Entrar al juego" Margin="10"
+                 Click="HyperButton_EntrarJuego_Click"
+                 HorizontalAlignment="Center"/>
+        <Button Content="Sobre nosotros" Margin="10"
+                 Click="HyperButton_About_Click"
+                 HorizontalAlignment="Center"/>
+    </StackPanel>
+
+</Page>

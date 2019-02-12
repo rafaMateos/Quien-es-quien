@@ -52,13 +52,13 @@ namespace QuienEsQuien.Views {
 
             send.nickName = vm.nickJugador;
             send.groupName = sala;
- 
+
         }
 
 
         private void SignalR() {
 
-       
+
             //Connect to the url 
             conn = new HubConnection("https://adivinaquiensoy.azurewebsites.net/");
             //conn = new HubConnection("http://localhost:50268/");
@@ -81,24 +81,25 @@ namespace QuienEsQuien.Views {
         }
 
         private void Btn_send_Click(object sender, RoutedEventArgs e) {
-            
+
             if (conn.State == Microsoft.AspNet.SignalR.Client.ConnectionState.Connected) {
 
-                ChatProxy.Invoke("JoinGroup",sala);
+                ChatProxy.Invoke("JoinGroup", sala);
 
             }
 
             send.message = tbx_chat.Text;
             send.groupName = sala;
             send.nickName = vm.nickJugador;
-           
 
             if (conn.State == Microsoft.AspNet.SignalR.Client.ConnectionState.Connected) {
 
                 ChatProxy.Invoke("SendToGroup", send);
             }
+        }
 
-          
+        private void Btn_Salir_Click(object sender, RoutedEventArgs e) {
+            this.Frame.Navigate(typeof(lobby_screen));
         }
     }
 }

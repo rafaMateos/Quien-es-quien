@@ -8,13 +8,11 @@ using System.Net.Http;
 using System.Threading.Tasks;
 
 
-namespace Manejadoras
-{
-    public class clsManejadora
-    {
+namespace Manejadoras {
+    public class clsManejadora {
         private String stringURIapi = "https://adivinaquiensoyapirest.azurewebsites.net/api/Salas";
 
-        public async Task<Boolean> canUnirseSala(int idSala){
+        public async Task<Boolean> canUnirseSala(int idSala) {
             Boolean veredicto = false;
 
             clsSala sala = new clsSala();
@@ -24,17 +22,17 @@ namespace Manejadoras
             HttpClient client = new HttpClient();
             HttpResponseMessage response = await client.GetAsync(UriApi);
 
-            if (response.IsSuccessStatusCode){
+            if (response.IsSuccessStatusCode) {
 
                 res = await response.Content.ReadAsStringAsync();
                 sala = JsonConvert.DeserializeObject<clsSala>(res);
                 Usuarios = sala.usuariosConectados;
             }
 
-            if (Usuarios < 2){
+            if (Usuarios < 2) {
                 veredicto = true;
             }
-            
+
             return veredicto;
         }
 
@@ -44,7 +42,7 @@ namespace Manejadoras
         /// <param name="salita"></param>
         /// <returns></returns>
         public async Task<int> actualizarUsuariosSala(clsSala salita) {
-            
+
             HttpClient mihttpClient = new HttpClient();
             String datos;
             int filas = -1;
@@ -68,23 +66,21 @@ namespace Manejadoras
             return filas;
         }
 
-        public async Task<List<clsSala>> GetSalas()
-        {
+        public async Task<List<clsSala>> GetSalas() {
             Boolean veredicto = false;
 
-            List<clsSala> sala =  new List<clsSala>();
+            List<clsSala> sala = new List<clsSala>();
             Uri UriApi = new Uri("https://adivinaquiensoyapirest.azurewebsites.net/api/Salas");
-   
+
             String res;
             HttpClient client = new HttpClient();
             HttpResponseMessage response = await client.GetAsync(UriApi);
 
-            if (response.IsSuccessStatusCode)
-            {
+            if (response.IsSuccessStatusCode) {
 
                 res = await response.Content.ReadAsStringAsync();
                 sala = JsonConvert.DeserializeObject<List<clsSala>>(res);
-                
+
             }
 
             return sala;

@@ -216,10 +216,15 @@
                     
                 </ListView>
 
-                <TextBox Name="tbx_chat"
+                <Button Click="Btn_Salir_Click" Name="btn_Salir" Content="SALIR"
                         RelativePanel.AlignBottomWithPanel="True"
                         RelativePanel.AlignLeftWithPanel="True"
-                        RelativePanel.LeftOf="btn_send"/>
+                        Background="Aquamarine"/>
+
+                <TextBox Name="tbx_chat"
+                        RelativePanel.AlignBottomWithPanel="True"
+                        RelativePanel.LeftOf="btn_send"
+                        RelativePanel.RightOf="btn_Salir"/>
                 
                 <Button Click="Btn_send_Click" Name="btn_send" Content="Send"
                         RelativePanel.AlignBottomWithPanel="True"

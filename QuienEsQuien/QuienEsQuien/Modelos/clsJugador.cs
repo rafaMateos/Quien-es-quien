@@ -16,51 +16,22 @@ namespace QuienEsQuien.Modelos
         #endregion
 
         #region Propiedades publicas
-        public String NickName {
-
-            get {
-
-                return _nickname;
-            }
-            set {
-
-                _nickname = value;
-            }
+        public String NickName { 
+            get { return _nickname; }
+            set {  _nickname = value; }
 
         }
-        public int Id {
-
-            get {
-
-                return _id;
-            }
-            set {
-
-                _id = value;
-            }
+        public int Id { 
+            get {  return _id; }
+            set { _id = value; }
         }
-        public clsRespuesta Respuestas {
-
-            get {
-
-                return _respuestas;
-
-            }
-            set {
-
-                _respuestas = value;
-            }
+        public clsRespuesta Respuestas { 
+            get { return _respuestas; }
+            set { _respuestas = value; }
         }
-        public bool EsGanador {
-
-            get {
-
-                return _esGanador;
-            }
-            set {
-
-                _esGanador = value;
-            }
+        public bool EsGanador { 
+            get { return _esGanador; }
+            set { _esGanador = value; }
         }
 
         #endregion
