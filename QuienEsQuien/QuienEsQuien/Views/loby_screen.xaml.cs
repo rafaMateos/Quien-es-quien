@@ -56,16 +56,25 @@ namespace QuienEsQuien.Views {
             conn.Start();
 
             SalasProxy.On<clsSala>("ContarUsuarios", onInfo);
-            SalasProxy.On<String>("PasarAJuego", PasarAJugar);
+             SalasProxy.On<String>("PasarAJuego", PasarAJugar);
             //ChatProxy.On<ChatMessage>("agregarMensaje", addMessage);
          
         }
 
-        private void PasarAJugar(string salaNombre) {
+        
+        private async void PasarAJugar(string salaNombre) {
 
-            this.Frame.Navigate(typeof(game_screen), salaNombre);
+
+            await Windows.ApplicationModel.Core.CoreApplication.MainView.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, async () => {
+
+                this.Frame.Navigate(typeof(game_screen), salaNombre);
+
+            });
+
+            
 
         }
+        
 
         private async void addMessage(ChatMessage obj)
         {
@@ -113,7 +122,14 @@ namespace QuienEsQuien.Views {
                
             });
 
-          
+
+            if (conn.State == Microsoft.AspNet.SignalR.Client.ConnectionState.Connected) {
+
+                SalasProxy.Invoke("PasarAsalaServer", obj.nombre);
+
+            }
+
+
         }
 
     }

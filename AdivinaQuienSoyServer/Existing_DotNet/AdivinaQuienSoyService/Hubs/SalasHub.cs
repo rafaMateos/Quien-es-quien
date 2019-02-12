@@ -28,8 +28,14 @@ namespace AdivinaQuienSoyService.Hubs
                 salita.usuariosConectados++;
                 //manejadora.actualizarUsuariosSala(salita);
                 Clients.All.ContarUsuarios(salita);
-                Clients.Caller.PasarAJuego(salita.nombre);
+               
            
+        }
+
+        public void PasarAsalaServer(string salaNombre) {
+
+            Clients.Caller.PasarAJuego(salaNombre);
+
         }
 
         /// <summary>
