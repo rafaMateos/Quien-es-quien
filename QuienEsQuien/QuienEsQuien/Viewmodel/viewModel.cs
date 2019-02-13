@@ -20,6 +20,8 @@ namespace QuienEsQuien.Viewmodel {
         private String _nickJugador;
 
         private ObservableCollection<ChatMessage> _msgsChat = new ObservableCollection<ChatMessage>();
+
+        private List<clsCarta> _listadoDeCartas;
         #endregion
 
         #region propiedades publicas
@@ -55,6 +57,11 @@ namespace QuienEsQuien.Viewmodel {
             }
         }
 
+        public List<clsCarta> listadoDeCartas {
+            get { return _listadoDeCartas; }
+            set { _listadoDeCartas = value; }
+        }
+
         #endregion
 
         public viewModel() {
@@ -82,5 +89,31 @@ namespace QuienEsQuien.Viewmodel {
             NotifyPropertyChanged("listadoDeSalas"); 
         }
 
+        public void rellenarListadoDeCartas() {
+            listadoDeCartas.Add(new clsCarta(0,"",""));
+            listadoDeCartas.Add(new clsCarta(1,"",""));
+            listadoDeCartas.Add(new clsCarta(2,"",""));
+            listadoDeCartas.Add(new clsCarta(3,"",""));
+            listadoDeCartas.Add(new clsCarta(4,"",""));
+            listadoDeCartas.Add(new clsCarta(5,"",""));
+            listadoDeCartas.Add(new clsCarta(6,"",""));
+            listadoDeCartas.Add(new clsCarta(7,"",""));
+            listadoDeCartas.Add(new clsCarta(8,"",""));
+            listadoDeCartas.Add(new clsCarta(9,"",""));
+            listadoDeCartas.Add(new clsCarta(10,"",""));
+            listadoDeCartas.Add(new clsCarta(11,"",""));
+            listadoDeCartas.Add(new clsCarta(12,"",""));
+            listadoDeCartas.Add(new clsCarta(13,"",""));
+            listadoDeCartas.Add(new clsCarta(14,"",""));
+            listadoDeCartas.Add(new clsCarta(15,"",""));
+            listadoDeCartas.Add(new clsCarta(16,"",""));
+            listadoDeCartas.Add(new clsCarta(17,"",""));
+            listadoDeCartas.Add(new clsCarta(18,"",""));
+            listadoDeCartas.Add(new clsCarta(19,"",""));
+            listadoDeCartas.Add(new clsCarta(20,"",""));
+            listadoDeCartas.Add(new clsCarta(21,"",""));
+            listadoDeCartas.Add(new clsCarta(22,"",""));
+            listadoDeCartas.Add(new clsCarta(23,"",""));
+        }
     }
 }
