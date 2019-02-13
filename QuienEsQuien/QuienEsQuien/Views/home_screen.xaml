@@ -14,14 +14,14 @@
         <vm:viewModel/>
     </Page.DataContext>
 
-    <StackPanel Orientation="Vertical" HorizontalAlignment="Center" Margin="10">
+    <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10">
 
-        <Image Source="../Assets/SplashScreen.scale-200.png" Height="303" Width="766" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+        <Image Source="../Assets/SplashScreen.scale-200.png" Height="303" Width="766" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin=" 0,0,0,150"/>
 
-        <TextBlock HorizontalAlignment="Center" Margin="0,10,0,0"> Hola cara de cola</TextBlock>
         <Button Content="Entrar al juego" Margin="10"
                  Click="HyperButton_EntrarJuego_Click"
-                 HorizontalAlignment="Center"/>
+                 HorizontalAlignment="Center"
+                Background="#D32F2F"/>
         <Button Content="Sobre nosotros" Margin="10"
                  Click="HyperButton_About_Click"
                  HorizontalAlignment="Center"/>

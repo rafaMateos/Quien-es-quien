@@ -24,17 +24,17 @@ namespace QuienEsQuien.Viewmodel {
         private ObservableCollection<ChatMessage> _msgsChat = new ObservableCollection<ChatMessage>();
 
         private List<clsCarta> _listadoDeCartas = new List<clsCarta>();
+
+        private int _cartaGanadora;
         #endregion
 
         #region propiedades publicas
-        public List<clsSala> listadoDeSalas {
-
+        public List<clsSala> listadoDeSalas { 
             get { return _ListadoDeSalas; }
             set { _ListadoDeSalas = value; }
         }
 
-        public ObservableCollection<ChatMessage> msgsChats {
-
+        public ObservableCollection<ChatMessage> msgsChats { 
             get {  return _msgsChat; }
             set { 
                 _msgsChat = value;
@@ -42,8 +42,7 @@ namespace QuienEsQuien.Viewmodel {
             }
         }
 
-        public clsSala salaSeleccionada {
-
+        public clsSala salaSeleccionada { 
             get { return _salaSeleccionada; } 
             set { 
                 _salaSeleccionada = value;
@@ -63,6 +62,11 @@ namespace QuienEsQuien.Viewmodel {
         public List<clsCarta> listadoDeCartas {
             get { return _listadoDeCartas; }
             set { _listadoDeCartas = value; }
+        }
+
+        public int cartaGanadora {
+            get { return _cartaGanadora; }
+            set { _cartaGanadora = value; }
         }
 
         #endregion
@@ -94,11 +98,11 @@ namespace QuienEsQuien.Viewmodel {
         }
 
         public void rellenarListadoDeCartas() {
-            listadoDeCartas.Add(new clsCarta(0,"Ängel",     "../Assets/QS_angel.jpg"));
+            listadoDeCartas.Add(new clsCarta(0,"Ángel",     "../Assets/QS_angel.jpg"));
             listadoDeCartas.Add(new clsCarta(1,"Óscar",     "../Assets/QS_oscar.jpg"));
             listadoDeCartas.Add(new clsCarta(2,"Fernando",  "../Assets/QS_fernando.jpg"));
             listadoDeCartas.Add(new clsCarta(3,"Jorge",     "../Assets/QS_jorge.jpg"));
-            listadoDeCartas.Add(new clsCarta(4,"-",     "../Assets/QS_Rafa.jpg"));
+            listadoDeCartas.Add(new clsCarta(4,"Dylan",     "../Assets/QS_dylan.jpg"));
             listadoDeCartas.Add(new clsCarta(5,"Ángela",    "../Assets/angela.jpg"));
             listadoDeCartas.Add(new clsCarta(6,"-",     "../Assets/QS_Rafa.jpg"));
             listadoDeCartas.Add(new clsCarta(7,"Nacho",     "../Assets/QS_nacho.jpg"));
@@ -118,6 +122,13 @@ namespace QuienEsQuien.Viewmodel {
             listadoDeCartas.Add(new clsCarta(21,"-",    "../Assets/QS_Rafa.jpg"));
             listadoDeCartas.Add(new clsCarta(22,"Vicky",    "../Assets/QS_vicky.jpg"));
             listadoDeCartas.Add(new clsCarta(23,"Samuel",   "../Assets/QS_samuel.jpg"));
+
+            Random rnd = new Random();
+            cartaGanadora = rnd.Next(0, 24);
+
+            listadoDeCartas[cartaGanadora].esGanadora = true;
+
+            NotifyPropertyChanged("listadoDeCartas");
         }
     }
 }

@@ -15,9 +15,8 @@
     <RelativePanel>
     
         <StackPanel Name="botoneraSuperior" Padding="10" HorizontalAlignment="Stretch" Margin="0,0,0,0" VerticalAlignment="Stretch" Orientation="Horizontal">
-            <Button Content="Speed Join" Background="#D32F2F" Margin="10,0,10,0"></Button>
-            <Button Content="Refresh" Background="#D32F2F" Margin="10,0,10,0"></Button>
-            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="Bienvenido "/>
+            <Button Content="Volver al menú" Background="#D32F2F" Margin="10,0,10,0"></Button>
+            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="Bienvenido " Margin="10,0,10,0"/>
             <TextBlock Name ="nickPlayer" HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding nickJugador, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
         </StackPanel>
 
@@ -31,11 +30,12 @@
                 Margin="5,5,20,5"
                 RelativePanel.Below="botoneraSuperior"
                 RelativePanel.AlignRightWithPanel="True"
-                RelativePanel.AlignLeftWithPanel="True">
+                RelativePanel.AlignLeftWithPanel="True"
+                HorizontalAlignment="Center">
             <ListView.ItemTemplate>
                 <DataTemplate x:Name="dataTemplateList">
                       
-                    <RelativePanel Background="White" Width="300px">
+                    <RelativePanel Background="White" Width="600px" HorizontalAlignment="Center" Padding="10" Margin="5">
                         <TextBlock Name="nombreSala" Text="{Binding Path=nombre}"
                                     RelativePanel.AlignLeftWithPanel="True"  
                                     HorizontalAlignment="Center" VerticalAlignment="Center"/>
@@ -43,10 +43,13 @@
                                     RelativePanel.LeftOf="topeUsuarios"  
                                     HorizontalAlignment="Center" VerticalAlignment="Center"/>
                         <TextBlock Name="topeUsuarios" Text="/2"
-                                    RelativePanel.LeftOf="btnUnir" 
-                                    HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                        <Button Name="btnUnir" Content="Join" Background="#D32F2F" 
-                                Margin="10,0,10,0" HorizontalAlignment="Right" RelativePanel.AlignRightWithPanel="True"/>
+                                    HorizontalAlignment="Center" VerticalAlignment="Center"
+                                   RelativePanel.AlignRightWithPanel="True"/>
+                        <TextBlock Name="txtUnirse" Text="Haz clic para unirte a la sala"
+                                   HorizontalAlignment="Center" VerticalAlignment="Center"
+                                   RelativePanel.LeftOf="usuariosConectados"
+                                   RelativePanel.RightOf="nombreSala"
+                                   Foreground="Gray"/>
                     </RelativePanel>
 
                 </DataTemplate>

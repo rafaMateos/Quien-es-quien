@@ -14,12 +14,18 @@
         <vm:viewModel/>
     </Page.DataContext>
 
-    <StackPanel Orientation="Vertical" HorizontalAlignment="Center" Margin="10">
-        <TextBlock > Bienvenido, introduce tu nick: </TextBlock>
+
+    <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10">
+
+        <Image Source="../Assets/SplashScreen.scale-200.png" Height="303" Width="766" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin=" 0,0,0,150"/>
+
+        <TextBlock HorizontalAlignment="Center" Text="Bienvenido, introduce tu nick:"/>
         <TextBlock Text="{Binding nickJugador, Mode=TwoWay}"/>
-        <TextBox Name="txtNickJugador"/>
+        <TextBox Name="txtNickJugador" MaxWidth="350" Margin="0,0,0,20"/>
         <Button Content="Entrar"
                  Click="HyperButton_Click"
-                 HorizontalAlignment="Center"/>
+                 HorizontalAlignment="Center"
+                Background="#D32F2F"/>
     </StackPanel>
+
 </Page>
