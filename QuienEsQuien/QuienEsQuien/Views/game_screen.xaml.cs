@@ -131,6 +131,7 @@ namespace QuienEsQuien.Views {
 
         private void Btn_Salir_Click(object sender, RoutedEventArgs e) {
             this.Frame.Navigate(typeof(lobby_screen));
+
         }
     }
 }
