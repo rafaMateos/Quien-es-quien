@@ -15,12 +15,12 @@
     </Page.DataContext>
 
     <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10">
-        <TextBlock HorizontalAlignment="Center" > Hecho por: </TextBlock>
-        <TextBlock HorizontalAlignment="Center" > Dylan </TextBlock>
-        <TextBlock HorizontalAlignment="Center" > Rafa </TextBlock>
-        <TextBlock HorizontalAlignment="Center" > Luis </TextBlock>
-        <TextBlock HorizontalAlignment="Center" > DAM Nervión </TextBlock>
-        <Button Content="Volver" Margin="10"
+        <TextBlock HorizontalAlignment="Center" FontSize="30" > Hecho por: </TextBlock>
+        <TextBlock HorizontalAlignment="Center" FontSize="25" > Dylan </TextBlock>
+        <TextBlock HorizontalAlignment="Center" FontSize="25" > Rafa </TextBlock>
+        <TextBlock HorizontalAlignment="Center" FontSize="25" > Luis </TextBlock>
+        <TextBlock HorizontalAlignment="Center" > DAM IES Nervión </TextBlock>
+        <Button Content="Volver" Margin="0,50,0,0"
                  Click="HyperButton_back_Click"
                  HorizontalAlignment="Center"
                 Background="#D32F2F"/>
