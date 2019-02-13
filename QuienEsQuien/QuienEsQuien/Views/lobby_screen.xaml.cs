@@ -36,6 +36,7 @@ namespace QuienEsQuien.Views {
 
         viewModel miVM = new viewModel();
         string nick = "manu";
+        Boolean estaSala = false;
         App myApp = (Application.Current as App);
 
         protected override void OnNavigatedTo(NavigationEventArgs e) {
@@ -74,8 +75,9 @@ namespace QuienEsQuien.Views {
 
             await Windows.ApplicationModel.Core.CoreApplication.MainView.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, async () => {
 
-                if (!myApp.sala.Equals("")) {
+                if (!myApp.sala.Equals("") && estaSala == false) {
 
+                    estaSala = true;
                     this.Frame.Navigate(typeof(game_screen));
 
                 }
