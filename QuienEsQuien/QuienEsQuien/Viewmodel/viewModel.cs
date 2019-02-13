@@ -6,10 +6,12 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.UI.Xaml;
 
 namespace QuienEsQuien.Viewmodel {
     public class viewModel : clsBase {
 
+        App myApp = (Application.Current as App);
         #region propiedades privadas
         private List<clsSala> _ListadoDeSalas;
 
@@ -44,7 +46,8 @@ namespace QuienEsQuien.Viewmodel {
 
             get { return _salaSeleccionada; } 
             set { 
-                _salaSeleccionada = value; 
+                _salaSeleccionada = value;
+                myApp.sala = _salaSeleccionada.nombre;
                 Views.lobby_screen.Position(_salaSeleccionada); 
             }
         }

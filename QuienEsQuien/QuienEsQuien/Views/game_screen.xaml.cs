@@ -36,13 +36,10 @@ namespace QuienEsQuien.Views {
         public static HubConnection conn { get; set; }
         public IHubProxy ChatProxy { get; set; }
         string sala;
+        App myApp = (Application.Current as App);
 
 
-        protected override void OnNavigatedTo(NavigationEventArgs e) {
-
-            base.OnNavigatedTo(e);
-            sala = (String)e.Parameter;
-        }
+      
 
 
         public game_screen() {
@@ -55,6 +52,13 @@ namespace QuienEsQuien.Views {
 
             send.nickName = vm.nickJugador;
             send.groupName = sala;
+
+            if (conn.State == Microsoft.AspNet.SignalR.Client.ConnectionState.Connected ) {
+
+                ChatProxy.Invoke("JoinGroup", myApp.sala);
+
+            }
+
         }
 
 
@@ -81,6 +85,8 @@ namespace QuienEsQuien.Views {
                 Thread.Sleep(1000);
                 i++;
             }while (i<10 || !(conn.State == Microsoft.AspNet.SignalR.Client.ConnectionState.Connected));
+
+           
 
             if (i==10 && !(conn.State == Microsoft.AspNet.SignalR.Client.ConnectionState.Connected))
             {
@@ -110,14 +116,10 @@ namespace QuienEsQuien.Views {
 
         private void Btn_send_Click(object sender, RoutedEventArgs e) {
 
-            if (conn.State == Microsoft.AspNet.SignalR.Client.ConnectionState.Connected) {
-
-                ChatProxy.Invoke("JoinGroup", sala);
-
-            }
+          
 
             send.message = tbx_chat.Text;
-            send.groupName = sala;
+            send.groupName = myApp.sala;
             send.nickName = vm.nickJugador;
 
             if (conn.State == Microsoft.AspNet.SignalR.Client.ConnectionState.Connected) {

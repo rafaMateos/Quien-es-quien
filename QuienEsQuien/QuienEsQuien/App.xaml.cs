@@ -27,6 +27,10 @@ namespace QuienEsQuien
         /// Inicializa el objeto de aplicación Singleton. Esta es la primera línea de código creado
         /// ejecutado y, como tal, es el equivalente lógico de main() o WinMain().
         /// </summary>
+        /// 
+
+        public String sala = "";
+
         public App()
         {
             this.InitializeComponent();

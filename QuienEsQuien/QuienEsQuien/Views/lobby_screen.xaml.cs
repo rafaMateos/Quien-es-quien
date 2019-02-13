@@ -36,6 +36,7 @@ namespace QuienEsQuien.Views {
 
         viewModel miVM = new viewModel();
         string nick = "manu";
+        App myApp = (Application.Current as App);
 
         protected override void OnNavigatedTo(NavigationEventArgs e) {
             base.OnNavigatedTo(e);
@@ -70,9 +71,15 @@ namespace QuienEsQuien.Views {
 
         private async void PasarAJugar(string salaNombre) {
 
+
             await Windows.ApplicationModel.Core.CoreApplication.MainView.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, async () => {
 
-                this.Frame.Navigate(typeof(game_screen), salaNombre);
+                if (!myApp.sala.Equals("")) {
+
+                    this.Frame.Navigate(typeof(game_screen));
+
+                }
+               
 
             });
 
@@ -105,6 +112,7 @@ namespace QuienEsQuien.Views {
         */
 
         private async void onInfo(clsSala obj) {
+
             await Windows.ApplicationModel.Core.CoreApplication.MainView.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, async () => {
 
                 clsManejadora manejadora = new clsManejadora();
@@ -114,8 +122,10 @@ namespace QuienEsQuien.Views {
                 var sala = (clsSala)listSalas.Items[obj.id - 1];
                 sala.usuariosConectados = obj.usuariosConectados;
 
+             
 
             });
+
 
 
             if (conn.State == Microsoft.AspNet.SignalR.Client.ConnectionState.Connected) {
