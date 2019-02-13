@@ -45,8 +45,8 @@
                         <TextBlock Name="topeUsuarios" Text="/2"
                                     RelativePanel.LeftOf="btnUnir" 
                                     HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                        <Button Name="btnUnir" Content="Join" Background="#D32F2F" 
-                                Margin="10,0,10,0" HorizontalAlignment="Right" RelativePanel.AlignRightWithPanel="True"/>
+                        <!--<Button Name="btnUnir" Content="Join" Background="#D32F2F" 
+                                Margin="10,0,10,0" HorizontalAlignment="Right" RelativePanel.AlignRightWithPanel="True"/>-->
                     </RelativePanel>
 
                 </DataTemplate>

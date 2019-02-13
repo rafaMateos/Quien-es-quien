@@ -126,6 +126,7 @@ namespace QuienEsQuien.Views {
 
                 ChatProxy.Invoke("SendToGroup", send);
             }
+            tbx_chat.Text = "";
         }
 
         private void Btn_Salir_Click(object sender, RoutedEventArgs e) {
