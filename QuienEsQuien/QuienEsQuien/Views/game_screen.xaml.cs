@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Threading;
 using System.Threading.Tasks;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
@@ -50,9 +51,10 @@ namespace QuienEsQuien.Views {
             vm = (viewModel)this.DataContext;
             SignalR();
 
+            cargando();
+
             send.nickName = vm.nickJugador;
             send.groupName = sala;
-
         }
 
 
@@ -70,6 +72,30 @@ namespace QuienEsQuien.Views {
             ChatProxy.On<ChatMessage>("agregarMensaje", addMessage);
             //ChatProxy.On<ChatMessage>("agregarMensaje", addMessage);
 
+        }
+
+        private async void cargando()
+        {
+            int i=0;
+            do {
+                Thread.Sleep(1000);
+                i++;
+            }while (i<10 || !(conn.State == Microsoft.AspNet.SignalR.Client.ConnectionState.Connected));
+
+            if (i==10 && !(conn.State == Microsoft.AspNet.SignalR.Client.ConnectionState.Connected))
+            {
+                ContentDialog noFunca = new ContentDialog();
+                noFunca.Title = "Error";
+                noFunca.Content = "Ha ocurrido un fallo en la conexion :'(";
+                noFunca.PrimaryButtonText = "Salir";
+
+                ContentDialogResult resultado = await noFunca.ShowAsync();
+
+                if (resultado == ContentDialogResult.Primary)
+                {
+                    this.Frame.Navigate(typeof(login_screen));
+                }
+            }
         }
 
         private async void addMessage(ChatMessage obj) {

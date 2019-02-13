@@ -16,7 +16,7 @@
 
     <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10">
         <TextBlock HorizontalAlignment="Center" > Hecho por: </TextBlock>
-        <TextBlock HorizontalAlignment="Center" > Dylan: </TextBlock>
+        <TextBlock HorizontalAlignment="Center" > Dylan </TextBlock>
         <TextBlock HorizontalAlignment="Center" > Rafa </TextBlock>
         <TextBlock HorizontalAlignment="Center" > Luis </TextBlock>
         <TextBlock HorizontalAlignment="Center" > DAM Nervión </TextBlock>
