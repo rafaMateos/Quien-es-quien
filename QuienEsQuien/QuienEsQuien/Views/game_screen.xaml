@@ -228,8 +228,8 @@
                         Background="Yellow"/>
 
                     <TextBox Name="tbx_chat"
-                        RelativePanel.LeftOf="btn_Pasar"
-                        RelativePanel.RightOf="btn_Salir"
+                        RelativePanel.LeftOf="btn_send"
+                        RelativePanel.RightOf="btn_Pasar"
                          />
 
                     <Button Click="Btn_send_Click" Name="btn_send" 
