@@ -43,11 +43,11 @@ namespace AdivinaQuienSoyService.Hubs
         /// </summary>
         /// <param name="roomName"></param>
         /// <returns></returns>
-        public Task LeaveRoom(String roomName)
+        public void LeaveRoom(string salita)
         {
+            Groups.Remove(Context.ConnectionId, salita);
 
-            return Groups.Remove(Context.ConnectionId, roomName);
-
+            Clients.All.Descontar(salita);
         }
 
 
@@ -61,6 +61,7 @@ namespace AdivinaQuienSoyService.Hubs
         public void SendToGroup(clsInfoChat info)
         {
             Clients.Group(info.groupName).ReceiveMessage(info.userName, info.Message);
+
         }
 
 

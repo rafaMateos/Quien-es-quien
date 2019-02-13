@@ -66,16 +66,33 @@ namespace QuienEsQuien.Views {
 
 
             //Connect to the url 
-            conn = new HubConnection("https://adivinaquiensoy.azurewebsites.net/");
-            //conn = new HubConnection("http://localhost:50268/");
+            //conn = new HubConnection("https://adivinaquiensoy.azurewebsites.net/");
+            conn = new HubConnection("http://localhost:50268/");
             //ChatHub is the hub name defined in the host program. 
 
             ChatProxy = conn.CreateHubProxy("ChatHub");
             conn.Start();
 
             ChatProxy.On<ChatMessage>("agregarMensaje", addMessage);
+            ChatProxy.On("abandoPartida", volverLobby);
+           
             //ChatProxy.On<ChatMessage>("agregarMensaje", addMessage);
 
+        }
+
+        private async void volverLobby() {
+
+
+            await Windows.ApplicationModel.Core.CoreApplication.MainView.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () => {
+
+                myApp.esVolver = true;
+
+                this.Frame.Navigate(typeof(lobby_screen));
+
+
+            });
+
+           
         }
 
         private async void cargando()
@@ -130,8 +147,12 @@ namespace QuienEsQuien.Views {
         }
 
         private void Btn_Salir_Click(object sender, RoutedEventArgs e) {
-            this.Frame.Navigate(typeof(lobby_screen));
+
+            ChatProxy.Invoke("LeaveGroup", myApp.sala);
+           
 
         }
+
+
     }
 }

@@ -28,9 +28,12 @@ namespace AdivinaQuienSoyService.Hubs
         /// </summary>
         /// <param name="groupName"></param>
         /// <returns></returns>
-        public Task LeaveGroup(string groupName)
+        public void LeaveGroup(string groupName)
         {
-            return Groups.Remove(Context.ConnectionId, groupName);
+            Clients.Group(groupName).abandoPartida();
+            Groups.Remove(Context.ConnectionId, groupName);
+            
+
         }
 
         /// <summary>
