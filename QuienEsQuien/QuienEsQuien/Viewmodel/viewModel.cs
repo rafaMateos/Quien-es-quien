@@ -118,7 +118,7 @@ namespace QuienEsQuien.Viewmodel {
             listadoDeCartas.Add(new clsCarta(17,"José",     "../Assets/QS_jose.jpg"));
             listadoDeCartas.Add(new clsCarta(18,"-",    "../Assets/QS_Rafa.jpg"));
             listadoDeCartas.Add(new clsCarta(19,"Leo",      "../Assets/QS_leo.jpg"));
-            listadoDeCartas.Add(new clsCarta(20,"-",    "../Assets/QS_Rafa.jpg"));
+            listadoDeCartas.Add(new clsCarta(20,"Sefran",    "../Assets/QS_sefran.jpg"));
             listadoDeCartas.Add(new clsCarta(21,"-",    "../Assets/QS_Rafa.jpg"));
             listadoDeCartas.Add(new clsCarta(22,"Vicky",    "../Assets/QS_vicky.jpg"));
             listadoDeCartas.Add(new clsCarta(23,"Samuel",   "../Assets/QS_samuel.jpg"));
