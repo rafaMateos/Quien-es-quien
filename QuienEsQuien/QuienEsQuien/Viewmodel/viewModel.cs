@@ -23,7 +23,7 @@ namespace QuienEsQuien.Viewmodel {
 
         private ObservableCollection<ChatMessage> _msgsChat = new ObservableCollection<ChatMessage>();
 
-        private List<clsCarta> _listadoDeCartas;
+        private List<clsCarta> _listadoDeCartas = new List<clsCarta>();
         #endregion
 
         #region propiedades publicas
