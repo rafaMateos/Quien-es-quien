@@ -153,6 +153,8 @@ namespace QuienEsQuien.Views {
 
         }
 
+        private void Btn_Pasar_Click(object sender, RoutedEventArgs e) {
 
+        }
     }
 }

@@ -221,14 +221,20 @@
                     
                     <Button Click="Btn_Salir_Click" Name="btn_Salir" Content="SALIR"
                         RelativePanel.AlignLeftWithPanel="True"
-                        Background="Aquamarine"/>
+                        Background="Green"/>
+
+                    <Button Click="Btn_Pasar_Click" Name="btn_Pasar" Content="Pasar"
+                        RelativePanel.RightOf="btn_Salir"
+                        Background="Yellow"/>
 
                     <TextBox Name="tbx_chat"
-                        RelativePanel.LeftOf="btn_send"
+                        RelativePanel.LeftOf="btn_Pasar"
                         RelativePanel.RightOf="btn_Salir"
                          />
 
-                    <Button Click="Btn_send_Click" Name="btn_send" Content="Send" RelativePanel.AlignRightWithPanel="True"/>
+                    <Button Click="Btn_send_Click" Name="btn_send" 
+                            Content="Send" RelativePanel.AlignRightWithPanel="True"
+                            Background="Purple"/>
                 </RelativePanel>
                 
 
