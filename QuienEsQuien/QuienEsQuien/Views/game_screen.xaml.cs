@@ -133,9 +133,7 @@ namespace QuienEsQuien.Views {
 
         private void Btn_send_Click(object sender, RoutedEventArgs e) {
 
-          
-
-            send.message = tbx_chat.Text;
+            send.message = myApp.nickJugador +": "+tbx_chat.Text;
             send.groupName = myApp.sala;
             send.nickName = vm.nickJugador;
 

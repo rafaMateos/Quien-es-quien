@@ -30,6 +30,7 @@ namespace QuienEsQuien
         /// 
 
         public String sala = "";
+        public String nickJugador = "";
         public bool esVolver = false;
 
         public App()

@@ -36,23 +36,23 @@ namespace QuienEsQuien.Views {
         public static IHubProxy SalasProxy { get; set; }
 
         viewModel miVM = new viewModel();
-        string nick = "manu";
         Boolean estaSala = false;
         App myApp = (Application.Current as App);
+        string nick = "ERROR" ;
 
         protected override void OnNavigatedTo(NavigationEventArgs e) {
 
             base.OnNavigatedTo(e);
+            miVM.nickJugador = myApp.nickJugador;
 
             if (!myApp.esVolver) {
 
-                miVM.nickJugador = (string)e.Parameter;
+               // miVM.nickJugador = (string)e.Parameter;
 
             } else {
-
                 myApp.esVolver = false;
 
-                //Legamos hasta aqui
+                //Llegamos hasta aqui
                 cargando();
 
                 if (conn.State == Microsoft.AspNet.SignalR.Client.ConnectionState.Connected) {
@@ -61,12 +61,7 @@ namespace QuienEsQuien.Views {
                     myApp.sala = "";
 
                 }
-                
-
             }
-
-         
-
             //Aqui invokar al LeeveRoom segun el parametro que pasemo.
 
 
@@ -75,10 +70,8 @@ namespace QuienEsQuien.Views {
 
         public lobby_screen() {
             this.InitializeComponent();
-            //nickPlayer.Text = nick;
             SignalR();
             miVM = (viewModel)this.DataContext;
-            //miVM.nickJugador = nick;
         }
 
 

@@ -23,6 +23,7 @@ namespace QuienEsQuien.Views {
     public sealed partial class login_screen : Page {
 
         viewModel miVM = new viewModel();
+        App myApp = (Application.Current as App);
 
         public login_screen() {
             this.InitializeComponent();
@@ -30,8 +31,8 @@ namespace QuienEsQuien.Views {
         }
 
         private void HyperButton_Click(object sender, RoutedEventArgs e) {
-            String nickelodeon = txtNickJugador.Text;
-            this.Frame.Navigate(typeof(lobby_screen), nickelodeon);
+            myApp.nickJugador = txtNickJugador.Text;
+            this.Frame.Navigate(typeof(lobby_screen));
         }
     }
 }
