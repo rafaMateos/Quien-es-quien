@@ -63,7 +63,6 @@ namespace QuienEsQuien.Views {
                     SalasProxy.Invoke("LeaveRoom", myApp.sala);
                     myApp.sala = "";
 
-
                 }
             }
             //Aqui invokar al LeeveRoom segun el parametro que pasemo.
@@ -214,7 +213,7 @@ namespace QuienEsQuien.Views {
             {
                 Thread.Sleep(1000);
                 i++;
-            } while (i < 10);
+            } while (i < 5);
             
 
             //Probar porque esto no actualiza y no entr<a en el onDescontar
