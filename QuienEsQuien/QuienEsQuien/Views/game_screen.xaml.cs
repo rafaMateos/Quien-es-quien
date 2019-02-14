@@ -38,10 +38,6 @@ namespace QuienEsQuien.Views {
         string sala;
         App myApp = (Application.Current as App);
 
-
-      
-
-
         public game_screen() {
 
             this.InitializeComponent();
