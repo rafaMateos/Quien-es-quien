@@ -94,10 +94,10 @@ namespace QuienEsQuien.Views {
         private async void cargando() {
 
             ContentDialog PasandoASala = new ContentDialog();
+
+
             PasandoASala.Title = "Loading";
             PasandoASala.Content = "Conectando a sala...";
-            PasandoASala.PrimaryButtonText = "Ok";
-
             ContentDialogResult resultadoEsperar = ContentDialogResult.Primary;
             await PasandoASala.ShowAsync();
 
@@ -109,8 +109,9 @@ namespace QuienEsQuien.Views {
                 i++;
             } while (i < 10 || !(conn.State == Microsoft.AspNet.SignalR.Client.ConnectionState.Connected));
 
+          
 
-           if(resultadoEsperar == ContentDialogResult.Primary)
+            if (resultadoEsperar == ContentDialogResult.Primary)
             PasandoASala.Hide();
 
            
