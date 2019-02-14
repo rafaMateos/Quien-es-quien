@@ -40,6 +40,8 @@ namespace QuienEsQuien.Views {
         App myApp = (Application.Current as App);
         string nick = "ERROR" ;
 
+        int contadorCargando = 0;
+
         protected override void OnNavigatedTo(NavigationEventArgs e) {
 
             base.OnNavigatedTo(e);
@@ -58,7 +60,7 @@ namespace QuienEsQuien.Views {
                 if (conn.State == Microsoft.AspNet.SignalR.Client.ConnectionState.Connected) {
 
                     SalasProxy.Invoke("LeaveRoom", myApp.sala);
-                    myApp.sala = "";
+                    
 
                 }
             }
@@ -95,16 +97,27 @@ namespace QuienEsQuien.Views {
         //Aqui descontaremos igual que en onInfo 
         private async void onDescontar(string sala) {
 
+
+            if (contadorCargando == 0)
+            {
+               cargando();
+               contadorCargando++;
+            }
+
             await Windows.ApplicationModel.Core.CoreApplication.MainView.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, async () => {
 
                 int id = ObtenerIDSala(sala);
 
                 var salaEdit = (clsSala)listSalas.Items[id - 1];
-                salaEdit.usuariosConectados = salaEdit.usuariosConectados - 1;
 
+                    salaEdit.usuariosConectados = salaEdit.usuariosConectados - 1;
+                    clsManejadora manejadora = new clsManejadora();
+                    manejadora.actualizarUsuariosSala(salaEdit);
 
-                clsManejadora manejadora = new clsManejadora();
-                manejadora.actualizarUsuariosSala(salaEdit);
+                if (salaEdit.usuariosConectados == 0)
+                {
+                    myApp.sala = "";
+                }
 
 
             });
@@ -205,7 +218,7 @@ namespace QuienEsQuien.Views {
             {
                 Thread.Sleep(1000);
                 i++;
-            } while (i < 10 || !(conn.State == Microsoft.AspNet.SignalR.Client.ConnectionState.Connected));
+            } while (i < 10 || miVM.listadoDeSalas!=null);
 
 
 
