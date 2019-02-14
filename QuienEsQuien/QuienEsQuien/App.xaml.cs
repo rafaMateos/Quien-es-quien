@@ -94,6 +94,7 @@ namespace QuienEsQuien
             player.AutoPlay = false;
             player.Source = MediaSource.CreateFromStorageFile(file);
             player.Play();
+            player.Volume = 0.3;
         }
 
         /// <summary>

@@ -74,7 +74,12 @@ namespace QuienEsQuien.Viewmodel {
 
         public clsCarta cartaSeleccionada {
             get { return _cartaSeleccionada; }
-            set { _cartaSeleccionada = value; }
+            set {
+                _cartaSeleccionada = value;
+                listadoDeCartas[cartaSeleccionada.idCarta].estaBajada = true;
+                NotifyPropertyChanged("cartaSeleccionada");
+                NotifyPropertyChanged("listadoDeCartas");
+            }
         }
 
         #endregion
@@ -84,7 +89,7 @@ namespace QuienEsQuien.Viewmodel {
             ChatMessage m = new ChatMessage();
             m.groupName = "";
             m.message = "Bienvenido Usuario...";
-            m.nickName = "Lider Supremo";
+            m.nickName = "Lider Supremo: ";
 
             _msgsChat.Add(m);
             rellenarListaSalasAsync();
