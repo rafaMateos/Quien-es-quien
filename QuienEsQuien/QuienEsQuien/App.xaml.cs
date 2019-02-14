@@ -51,7 +51,7 @@ namespace QuienEsQuien
         protected override void OnLaunched(LaunchActivatedEventArgs e)
         {
 
-            cargarMusikita();
+            //cargarMusikita();
 
             Frame rootFrame = Window.Current.Content as Frame;
 

@@ -34,8 +34,7 @@
                 SelectedItem="{Binding cartaSeleccionada, Mode=TwoWay}">
                 <GridView.ItemTemplate>
                     <DataTemplate x:Name="cartitaTemplate">
-                        <StackPanel x:Name="cartaSelectPanel" Height="120" Width="100" Margin="12"  Opacity="{Binding Path=estaBajada, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Converter = {StaticResource conversorEstadoCarta}}"  >
-                            <!--AutomationProperties.Name="{x:Bind }"-->
+                        <StackPanel x:Name="cartaSelectPanel" Height="120" Width="100" Margin="12"  Opacity="{Binding Path=estaBajada, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Converter = {StaticResource conversorEstadoCarta}}">
                             <Image Source="{Binding Path=imagenUri}" Height="66" Width="66" Stretch="UniformToFill" HorizontalAlignment="Stretch" Margin="18,0,17,0" VerticalAlignment="Stretch"/>
                             <StackPanel>
                                 <TextBlock Text="{Binding Path=nombreCarta}"/>
@@ -44,7 +43,7 @@
                         </StackPanel>
                     </DataTemplate>
                 </GridView.ItemTemplate>
-
+                
                 <GridView.ItemsPanel>
                     <ItemsPanelTemplate>
                         <ItemsWrapGrid MaximumRowsOrColumns="6" Orientation="Horizontal"/>
