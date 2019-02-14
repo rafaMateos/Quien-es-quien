@@ -84,7 +84,7 @@
 
                     <ListView.ItemTemplate>
 
-                        <DataTemplate>
+                        <DataTemplate >
 
                             <StackPanel Orientation="Horizontal">
 
@@ -95,6 +95,7 @@
 
                         </DataTemplate>
 
+                        
                     </ListView.ItemTemplate>
 
 
@@ -111,7 +112,7 @@
                         RelativePanel.RightOf="btn_Salir"
                         Background="Yellow"/>
 
-                    <TextBox Name="tbx_chat"
+                    <TextBox KeyDown="Tbx_chat_KeyDown" Name="tbx_chat"
                         RelativePanel.LeftOf="btn_send"
                         RelativePanel.RightOf="btn_Pasar"
                          />

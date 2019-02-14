@@ -123,6 +123,13 @@ namespace QuienEsQuien.Views {
 
                 vm.AñadirAChat(obj);
 
+                contanierChat.ScrollIntoView(contanierChat.Items[contanierChat.Items.Count -1]);
+
+
+                contanierChat.SelectedItem = contanierChat.Items.Count - 1;
+
+                
+
             });
 
         }
@@ -133,21 +140,48 @@ namespace QuienEsQuien.Views {
             send.groupName = myApp.sala;
             send.nickName = vm.nickJugador;
 
+
             if (conn.State == Microsoft.AspNet.SignalR.Client.ConnectionState.Connected) {
 
                 ChatProxy.Invoke("SendToGroup", send);
             }
+
+
+
             tbx_chat.Text = "";
         }
+
+
 
         private void Btn_Salir_Click(object sender, RoutedEventArgs e) {
 
             ChatProxy.Invoke("LeaveGroup", myApp.sala);
-           
 
         }
 
         private void Btn_Pasar_Click(object sender, RoutedEventArgs e) {
+
+        }
+
+        private void Tbx_chat_KeyDown(object sender, KeyRoutedEventArgs e)
+        {
+
+            if(e.Key == Windows.System.VirtualKey.Enter) {
+
+                send.message = myApp.nickJugador + ": " + tbx_chat.Text;
+                send.groupName = myApp.sala;
+                send.nickName = vm.nickJugador;
+
+
+                if (conn.State == Microsoft.AspNet.SignalR.Client.ConnectionState.Connected)
+                {
+
+                    ChatProxy.Invoke("SendToGroup", send);
+                }
+
+
+                tbx_chat.Text = "";
+            }
 
         }
     }
