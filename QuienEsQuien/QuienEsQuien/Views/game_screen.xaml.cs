@@ -49,7 +49,7 @@ namespace QuienEsQuien.Views {
             send.nickName = vm.nickJugador;
             send.groupName = sala;
 
-            if (conn.State == Microsoft.AspNet.SignalR.Client.ConnectionState.Connected ) {
+            if (conn.State == Microsoft.AspNet.SignalR.Client.ConnectionState.Connected) {
 
                 ChatProxy.Invoke("JoinGroup", myApp.sala);
 
@@ -71,7 +71,7 @@ namespace QuienEsQuien.Views {
 
             ChatProxy.On<ChatMessage>("agregarMensaje", addMessage);
             ChatProxy.On("abandoPartida", volverLobby);
-           
+
             //ChatProxy.On<ChatMessage>("agregarMensaje", addMessage);
 
         }
@@ -88,21 +88,19 @@ namespace QuienEsQuien.Views {
 
             });
 
-           
+
         }
 
-        private async void cargando()
-        {
-            int i=0;
+        private async void cargando() {
+            int i = 0;
             do {
                 Thread.Sleep(1000);
                 i++;
-            }while (i<10 || !(conn.State == Microsoft.AspNet.SignalR.Client.ConnectionState.Connected));
+            } while (i < 10 || !(conn.State == Microsoft.AspNet.SignalR.Client.ConnectionState.Connected));
 
-           
 
-            if (i==10 && !(conn.State == Microsoft.AspNet.SignalR.Client.ConnectionState.Connected))
-            {
+
+            if (i == 10 && !(conn.State == Microsoft.AspNet.SignalR.Client.ConnectionState.Connected)) {
                 ContentDialog noFunca = new ContentDialog();
                 noFunca.Title = "Error";
                 noFunca.Content = "Ha ocurrido un fallo en la conexion :'(";
@@ -110,8 +108,7 @@ namespace QuienEsQuien.Views {
 
                 ContentDialogResult resultado = await noFunca.ShowAsync();
 
-                if (resultado == ContentDialogResult.Primary)
-                {
+                if (resultado == ContentDialogResult.Primary) {
                     this.Frame.Navigate(typeof(login_screen));
                 }
             }
@@ -121,37 +118,27 @@ namespace QuienEsQuien.Views {
 
             await Windows.ApplicationModel.Core.CoreApplication.MainView.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () => {
 
-                vm.AñadirAChat(obj);
-
-                contanierChat.ScrollIntoView(contanierChat.Items[contanierChat.Items.Count -1]);
-
-
-                contanierChat.SelectedItem = contanierChat.Items.Count - 1;
-
-                
-
+                vm.AñadirAChat(obj); 
+                contanierChat.ScrollIntoView(contanierChat.Items[contanierChat.Items.Count - 1]);
+                 
+                contanierChat.SelectedItem = contanierChat.Items.Count - 1; 
             });
 
         }
 
         private void Btn_send_Click(object sender, RoutedEventArgs e) {
 
-            send.message = myApp.nickJugador +": "+tbx_chat.Text;
+            send.message = myApp.nickJugador + ": " + tbx_chat.Text;
             send.groupName = myApp.sala;
             send.nickName = vm.nickJugador;
-
-
+             
             if (conn.State == Microsoft.AspNet.SignalR.Client.ConnectionState.Connected) {
 
                 ChatProxy.Invoke("SendToGroup", send);
             }
 
-
-
             tbx_chat.Text = "";
         }
-
-
 
         private void Btn_Salir_Click(object sender, RoutedEventArgs e) {
 
@@ -163,26 +150,19 @@ namespace QuienEsQuien.Views {
 
         }
 
-        private void Tbx_chat_KeyDown(object sender, KeyRoutedEventArgs e)
-        {
+        private void Tbx_chat_KeyDown(object sender, KeyRoutedEventArgs e) {
 
-            if(e.Key == Windows.System.VirtualKey.Enter) {
+            if (e.Key == Windows.System.VirtualKey.Enter) {
 
                 send.message = myApp.nickJugador + ": " + tbx_chat.Text;
                 send.groupName = myApp.sala;
-                send.nickName = vm.nickJugador;
+                send.nickName = vm.nickJugador; 
 
-
-                if (conn.State == Microsoft.AspNet.SignalR.Client.ConnectionState.Connected)
-                {
-
+                if (conn.State == Microsoft.AspNet.SignalR.Client.ConnectionState.Connected) { 
                     ChatProxy.Invoke("SendToGroup", send);
-                }
-
-
+                } 
                 tbx_chat.Text = "";
-            }
-
+            } 
         }
     }
 }

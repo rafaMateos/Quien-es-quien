@@ -8,11 +8,16 @@
     mc:Ignorable="d"
     xmlns:vm="using:QuienEsQuien.Viewmodel"
     Background="#536DFE"
+    xmlns:ConverterCarta="using:QuienEsQuien.Converters"
     >
 
     <Page.DataContext>
         <vm:viewModel/>
     </Page.DataContext>
+
+    <Page.Resources>
+        <ConverterCarta:converterEstadoCarta x:Key="conversorEstadoCarta"></ConverterCarta:converterEstadoCarta>
+    </Page.Resources>
 
     <Grid>
         <Grid.RowDefinitions>
@@ -26,16 +31,15 @@
         <Grid Grid.Row="0" Grid.Column="0" Background="White" Margin="10">
             <GridView 
                 ItemsSource="{Binding listadoDeCartas}"
-                SelectedItem="{Binding cartaSeleccionada, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                SelectedItem="{Binding cartaSeleccionada, Mode=TwoWay}">
                 <GridView.ItemTemplate>
                     <DataTemplate x:Name="cartitaTemplate">
-                        <StackPanel x:Name="cartaSelectPanel" Height="120" Width="100" Margin="12"  Opacity="1"  >
+                        <StackPanel x:Name="cartaSelectPanel" Height="120" Width="100" Margin="12"  Opacity="{Binding Path=estaBajada, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Converter = {StaticResource conversorEstadoCarta}}"  >
                             <!--AutomationProperties.Name="{x:Bind }"-->
                             <Image Source="{Binding Path=imagenUri}" Height="66" Width="66" Stretch="UniformToFill" HorizontalAlignment="Stretch" Margin="18,0,17,0" VerticalAlignment="Stretch"/>
                             <StackPanel>
                                 <TextBlock Text="{Binding Path=nombreCarta}"/>
                                 <TextBlock Text="{Binding Path=esGanadora}"/>
-                                <TextBlock Text="{Binding Path=estaBajada}"/>
                             </StackPanel>
                         </StackPanel>
                     </DataTemplate>
