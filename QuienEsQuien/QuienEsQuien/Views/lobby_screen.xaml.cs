@@ -99,10 +99,9 @@ namespace QuienEsQuien.Views {
         //Aqui descontaremos igual que en onInfo 
         private async void onDescontar(string sala) {
 
-                cargando();
+                cargando2();
             //¿Esto no lo hace si ponemos await????????
                
-
                 await Windows.ApplicationModel.Core.CoreApplication.MainView.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, async () => {
 
                     int id = ObtenerIDSala(sala);
@@ -207,21 +206,47 @@ namespace QuienEsQuien.Views {
             }
         }
 
-        private async void cargando()
+        private async void cargando2()
         {
-            /*
+            
             int i = 0;
             do
             {
                 Thread.Sleep(1000);
                 i++;
             } while (i < 10);
-            */
+            
 
             //Probar porque esto no actualiza y no entr<a en el onDescontar
-             miVM.rellenarListaSalasAsync();
-
+            
             if (!(miVM.listadoDeSalas != null))
+            {
+                ContentDialog noFunca = new ContentDialog();
+                noFunca.Title = "Error";
+                noFunca.Content = "Ha ocurrido un fallo en la conexion :'(";
+                noFunca.PrimaryButtonText = "Salir";
+
+                ContentDialogResult resultado = await noFunca.ShowAsync();
+
+                if (resultado == ContentDialogResult.Primary)
+                {
+                    this.Frame.Navigate(typeof(login_screen));
+                }
+            }
+        }
+
+        private async void cargando()
+        {
+            int i = 0;
+            do
+            {
+                Thread.Sleep(1000);
+                i++;
+            } while (i < 10 || !(conn.State == Microsoft.AspNet.SignalR.Client.ConnectionState.Connected));
+
+
+
+            if (i == 10 && !(conn.State == Microsoft.AspNet.SignalR.Client.ConnectionState.Connected))
             {
                 ContentDialog noFunca = new ContentDialog();
                 noFunca.Title = "Error";
