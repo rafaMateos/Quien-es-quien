@@ -89,7 +89,9 @@ namespace QuienEsQuien.Viewmodel {
             NotifyPropertyChanged("msgsChats");
         }
 
-        public async void rellenarListaSalasAsync() {
+        public async 
+        Task
+rellenarListaSalasAsync() {
 
             clsManejadora manejadora = new clsManejadora();
 

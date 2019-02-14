@@ -8,6 +8,7 @@ using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using System.Threading;
+using System.Threading.Tasks;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Core;
@@ -60,7 +61,8 @@ namespace QuienEsQuien.Views {
                 if (conn.State == Microsoft.AspNet.SignalR.Client.ConnectionState.Connected) {
 
                     SalasProxy.Invoke("LeaveRoom", myApp.sala);
-                    
+                    myApp.sala = "";
+
 
                 }
             }
@@ -97,30 +99,24 @@ namespace QuienEsQuien.Views {
         //Aqui descontaremos igual que en onInfo 
         private async void onDescontar(string sala) {
 
+                cargando();
+            //¿Esto no lo hace si ponemos await????????
+               
 
-            if (contadorCargando == 0)
-            {
-               cargando();
-               contadorCargando++;
-            }
+                await Windows.ApplicationModel.Core.CoreApplication.MainView.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, async () => {
 
-            await Windows.ApplicationModel.Core.CoreApplication.MainView.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, async () => {
+                    int id = ObtenerIDSala(sala);
 
-                int id = ObtenerIDSala(sala);
-
-                var salaEdit = (clsSala)listSalas.Items[id - 1];
+                    var salaEdit = (clsSala)listSalas.Items[id - 1];
 
                     salaEdit.usuariosConectados = salaEdit.usuariosConectados - 1;
                     clsManejadora manejadora = new clsManejadora();
                     manejadora.actualizarUsuariosSala(salaEdit);
 
-                if (salaEdit.usuariosConectados == 0)
-                {
-                    myApp.sala = "";
-                }
+                   
 
 
-            });
+                });
 
             
 
@@ -213,16 +209,19 @@ namespace QuienEsQuien.Views {
 
         private async void cargando()
         {
+            /*
             int i = 0;
             do
             {
                 Thread.Sleep(1000);
                 i++;
-            } while (i < 10 || miVM.listadoDeSalas!=null);
+            } while (i < 10);
+            */
 
+            //Probar porque esto no actualiza y no entr<a en el onDescontar
+             miVM.rellenarListaSalasAsync();
 
-
-            if (i == 10 && !(conn.State == Microsoft.AspNet.SignalR.Client.ConnectionState.Connected))
+            if (!(miVM.listadoDeSalas != null))
             {
                 ContentDialog noFunca = new ContentDialog();
                 noFunca.Title = "Error";
