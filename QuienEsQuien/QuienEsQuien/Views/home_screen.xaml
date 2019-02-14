@@ -21,10 +21,13 @@
         <Button Content="Entrar al juego" Margin="10"
                  Click="HyperButton_EntrarJuego_Click"
                  HorizontalAlignment="Center"
-                Background="#D32F2F"/>
+                Background="#D32F2F"
+                Foreground="White"
+                CornerRadius="10"/>
         <Button Content="Sobre nosotros" Margin="10"
                  Click="HyperButton_About_Click"
-                 HorizontalAlignment="Center"/>
+                 HorizontalAlignment="Center"
+                CornerRadius="10"/>
     </StackPanel>
 
 </Page>

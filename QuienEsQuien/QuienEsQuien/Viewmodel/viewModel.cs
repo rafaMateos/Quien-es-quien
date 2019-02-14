@@ -26,28 +26,31 @@ namespace QuienEsQuien.Viewmodel {
         private List<clsCarta> _listadoDeCartas = new List<clsCarta>();
 
         private int _cartaGanadora;
+
+        private clsCarta _cartaSeleccionada;
+
         #endregion
 
         #region propiedades publicas
-        public List<clsSala> listadoDeSalas { 
+        public List<clsSala> listadoDeSalas {
             get { return _ListadoDeSalas; }
             set { _ListadoDeSalas = value; }
         }
 
-        public ObservableCollection<ChatMessage> msgsChats { 
-            get {  return _msgsChat; }
-            set { 
+        public ObservableCollection<ChatMessage> msgsChats {
+            get { return _msgsChat; }
+            set {
                 _msgsChat = value;
                 NotifyPropertyChanged("msgsChats");
             }
         }
 
-        public clsSala salaSeleccionada { 
-            get { return _salaSeleccionada; } 
-            set { 
+        public clsSala salaSeleccionada {
+            get { return _salaSeleccionada; }
+            set {
                 _salaSeleccionada = value;
                 myApp.sala = _salaSeleccionada.nombre;
-                Views.lobby_screen.Position(_salaSeleccionada); 
+                Views.lobby_screen.Position(_salaSeleccionada);
             }
         }
 
@@ -69,14 +72,19 @@ namespace QuienEsQuien.Viewmodel {
             set { _cartaGanadora = value; }
         }
 
+        public clsCarta cartaSeleccionada {
+            get { return _cartaSeleccionada; }
+            set { _cartaSeleccionada = value; }
+        }
+
         #endregion
 
         public viewModel() {
 
             ChatMessage m = new ChatMessage();
             m.groupName = "";
-            m.message = "Hola";
-            m.nickName = "dfdfd";
+            m.message = "Bienvenido Usuario...";
+            m.nickName = "Lider Supremo";
 
             _msgsChat.Add(m);
             rellenarListaSalasAsync();
@@ -89,41 +97,39 @@ namespace QuienEsQuien.Viewmodel {
             NotifyPropertyChanged("msgsChats");
         }
 
-        public async 
-        Task
-rellenarListaSalasAsync() {
+        public async Task rellenarListaSalasAsync() {
 
             clsManejadora manejadora = new clsManejadora();
 
             _ListadoDeSalas = await manejadora.GetSalas();
-            NotifyPropertyChanged("listadoDeSalas"); 
+            NotifyPropertyChanged("listadoDeSalas");
         }
 
         public void rellenarListadoDeCartas() {
-            listadoDeCartas.Add(new clsCarta(0,"Ángel",     "../Assets/QS_angel.jpg"));
-            listadoDeCartas.Add(new clsCarta(1,"Óscar",     "../Assets/QS_oscar.jpg"));
-            listadoDeCartas.Add(new clsCarta(2,"Fernando",  "../Assets/QS_fernando.jpg"));
-            listadoDeCartas.Add(new clsCarta(3,"Jorge",     "../Assets/QS_jorge.jpg"));
-            listadoDeCartas.Add(new clsCarta(4,"Dylan",     "../Assets/QS_dylan.jpg"));
-            listadoDeCartas.Add(new clsCarta(5,"Ángela",    "../Assets/angela.jpg"));
-            listadoDeCartas.Add(new clsCarta(6,"Miguel Ángel","../Assets/QS_miguelangel.jpg"));
-            listadoDeCartas.Add(new clsCarta(7,"Nacho",     "../Assets/QS_nacho.jpg"));
-            listadoDeCartas.Add(new clsCarta(8,"Yeray",     "../Assets/QS_yerai.jpg"));
-            listadoDeCartas.Add(new clsCarta(9,"Rafa",      "../Assets/QS_Rafa.jpg"));
-            listadoDeCartas.Add(new clsCarta(10,"Asun",     "../Assets/QS_asun.jpg"));
-            listadoDeCartas.Add(new clsCarta(11,"-",    "../Assets/QS_Rafa.jpg"));
-            listadoDeCartas.Add(new clsCarta(12,"Luis",     "../Assets/QS_luis.jpg"));
-            listadoDeCartas.Add(new clsCarta(13,"-",    "../Assets/QS_Rafa.jpg"));
-            listadoDeCartas.Add(new clsCarta(14,"-",    "../Assets/QS_Rafa.jpg"));
-            listadoDeCartas.Add(new clsCarta(15,"Rosario",  "../Assets/QS_rosario.jpg"));
-            listadoDeCartas.Add(new clsCarta(16,"-",    "../Assets/QS_Rafa.jpg"));
-            listadoDeCartas.Add(new clsCarta(17,"José",     "../Assets/QS_jose.jpg"));
-            listadoDeCartas.Add(new clsCarta(18,"-",    "../Assets/QS_Rafa.jpg"));
-            listadoDeCartas.Add(new clsCarta(19,"Leo",      "../Assets/QS_leo.jpg"));
-            listadoDeCartas.Add(new clsCarta(20,"Sefran",    "../Assets/QS_sefran.jpg"));
-            listadoDeCartas.Add(new clsCarta(21,"-",    "../Assets/QS_Rafa.jpg"));
-            listadoDeCartas.Add(new clsCarta(22,"Vicky",    "../Assets/QS_vicky.jpg"));
-            listadoDeCartas.Add(new clsCarta(23,"Samuel",   "../Assets/QS_samuel.jpg"));
+            listadoDeCartas.Add(new clsCarta(0, "Ángel", "../Assets/QS_angel.jpg"));
+            listadoDeCartas.Add(new clsCarta(1, "Óscar", "../Assets/QS_oscar.jpg"));
+            listadoDeCartas.Add(new clsCarta(2, "Fernando", "../Assets/QS_fernando.jpg"));
+            listadoDeCartas.Add(new clsCarta(3, "Jorge", "../Assets/QS_jorge.jpg"));
+            listadoDeCartas.Add(new clsCarta(4, "Dylan", "../Assets/QS_dylan.jpg"));
+            listadoDeCartas.Add(new clsCarta(5, "Ángela", "../Assets/angela.jpg"));
+            listadoDeCartas.Add(new clsCarta(6, "Miguel Ángel", "../Assets/QS_miguelangel.jpg"));
+            listadoDeCartas.Add(new clsCarta(7, "Nacho", "../Assets/QS_nacho.jpg"));
+            listadoDeCartas.Add(new clsCarta(8, "Yeray", "../Assets/QS_yerai.jpg"));
+            listadoDeCartas.Add(new clsCarta(9, "Rafa", "../Assets/QS_Rafa.jpg"));
+            listadoDeCartas.Add(new clsCarta(10, "Asun", "../Assets/QS_asun.jpg"));
+            listadoDeCartas.Add(new clsCarta(11, "-", "../Assets/QS_Rafa.jpg"));
+            listadoDeCartas.Add(new clsCarta(12, "Luis", "../Assets/QS_luis.jpg"));
+            listadoDeCartas.Add(new clsCarta(13, "-", "../Assets/QS_Rafa.jpg"));
+            listadoDeCartas.Add(new clsCarta(14, "-", "../Assets/QS_Rafa.jpg"));
+            listadoDeCartas.Add(new clsCarta(15, "Rosario", "../Assets/QS_rosario.jpg"));
+            listadoDeCartas.Add(new clsCarta(16, "-", "../Assets/QS_Rafa.jpg"));
+            listadoDeCartas.Add(new clsCarta(17, "José", "../Assets/QS_jose.jpg"));
+            listadoDeCartas.Add(new clsCarta(18, "-", "../Assets/QS_Rafa.jpg"));
+            listadoDeCartas.Add(new clsCarta(19, "Leo", "../Assets/QS_leo.jpg"));
+            listadoDeCartas.Add(new clsCarta(20, "Sefran", "../Assets/QS_sefran.jpg"));
+            listadoDeCartas.Add(new clsCarta(21, "-", "../Assets/QS_Rafa.jpg"));
+            listadoDeCartas.Add(new clsCarta(22, "Vicky", "../Assets/QS_vicky.jpg"));
+            listadoDeCartas.Add(new clsCarta(23, "Samuel", "../Assets/QS_samuel.jpg"));
 
             Random rnd = new Random();
             cartaGanadora = rnd.Next(0, 24);

@@ -14,8 +14,8 @@
 
     <RelativePanel>
     
-        <StackPanel Name="botoneraSuperior" Padding="10" HorizontalAlignment="Stretch" Margin="0,0,0,0" VerticalAlignment="Stretch" Orientation="Horizontal">
-            <Button Content="Volver al menú" Background="#D32F2F" Margin="10,0,10,0"></Button>
+        <StackPanel Name="botoneraSuperior" Padding="10" HorizontalAlignment="Stretch" Margin="0,10,0,0" VerticalAlignment="Stretch" Orientation="Horizontal">
+            <Button Content="Volver al menú" CornerRadius="10" Background="#D32F2F" Margin="10,0,10,0" Foreground="White"></Button>
             <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="Bienvenido " Margin="10,0,10,0"/>
             <TextBlock Name ="nickPlayer" HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding nickJugador, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
         </StackPanel>
@@ -35,7 +35,9 @@
             <ListView.ItemTemplate>
                 <DataTemplate x:Name="dataTemplateList">
                       
-                    <RelativePanel Background="White" Width="600px" HorizontalAlignment="Center" Padding="10" Margin="5">
+                    <RelativePanel Background="White" Width="600px" 
+                                   HorizontalAlignment="Center" Padding="20" Margin="5"
+                                   CornerRadius="10">
                         <TextBlock Name="nombreSala" Text="{Binding Path=nombre}"
                                     RelativePanel.AlignLeftWithPanel="True"  
                                     HorizontalAlignment="Center" VerticalAlignment="Center"/>

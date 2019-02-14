@@ -25,10 +25,11 @@
 
         <Grid Grid.Row="0" Grid.Column="0" Background="White" Margin="10">
             <GridView 
-                ItemsSource="{Binding listadoDeCartas}">
+                ItemsSource="{Binding listadoDeCartas}"
+                SelectedItem="{Binding cartaSeleccionada, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
                 <GridView.ItemTemplate>
                     <DataTemplate x:Name="cartitaTemplate">
-                        <StackPanel Height="120" Width="100" Margin="12" >
+                        <StackPanel Height="120" Width="100" Margin="12"  Opacity="1"  >
                             <!--AutomationProperties.Name="{x:Bind }"-->
                             <Image Source="{Binding Path=imagenUri}" Height="50" Width="50" Stretch="UniformToFill"/>
                             <StackPanel Margin="0,12">
@@ -67,6 +68,9 @@
                        MaxHeight="130" HorizontalAlignment="Right"
                        RelativePanel.Below="tuPersonajeNombre"
                        RelativePanel.AlignRightWithPanel="True"/>
+                <TextBlock Name="turno" Text="xXxXxXxX"  
+                           HorizontalAlignment="Center"
+                       RelativePanel.Below="tuPersonajeImagen"/>
             </RelativePanel>
 
             <RelativePanel Name="contenedorChat" Background="Aquamarine" Margin="5" Grid.Column="0" Grid.Row="1"  Padding="5">

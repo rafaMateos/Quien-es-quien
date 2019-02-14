@@ -6,13 +6,8 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    xmlns:vm="using:QuienEsQuien.Viewmodel"
     Background="#536DFE">
 
-
-    <Page.DataContext>
-        <vm:viewModel/>
-    </Page.DataContext>
 
     <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10">
         <TextBlock HorizontalAlignment="Center" FontSize="30" > Hecho por: </TextBlock>
@@ -23,6 +18,8 @@
         <Button Content="Volver" Margin="0,50,0,0"
                  Click="HyperButton_back_Click"
                  HorizontalAlignment="Center"
-                Background="#D32F2F"/>
+                Background="#D32F2F"
+                CornerRadius="10"
+                Foreground="White"/>
     </StackPanel>
 </Page>

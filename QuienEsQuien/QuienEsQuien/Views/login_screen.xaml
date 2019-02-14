@@ -25,7 +25,9 @@
         <Button Content="Entrar"
                  Click="HyperButton_Click"
                  HorizontalAlignment="Center"
-                Background="#D32F2F"/>
+                Background="#D32F2F"
+                CornerRadius="10"
+                Foreground="White"/>
     </StackPanel>
 
 </Page>
