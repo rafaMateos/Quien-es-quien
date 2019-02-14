@@ -154,6 +154,7 @@
     <None Include="QuienEsQuien_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\cancion.mp3" />
     <Content Include="Assets\icono-88.scale-200.png" />
     <Content Include="Assets\icono-app-300.scale-200.png" />
     <Content Include="Assets\icono-quiensoy.png" />

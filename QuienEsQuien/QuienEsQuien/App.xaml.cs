@@ -8,6 +8,8 @@ using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.Media.Core;
+using Windows.Media.Playback;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -32,11 +34,13 @@ namespace QuienEsQuien
         public String sala = "";
         public String nickJugador = "";
         public bool esVolver = false;
+        MediaPlayer player;
 
         public App()
         {
             this.InitializeComponent();
             this.Suspending += OnSuspending;
+            player = new MediaPlayer();
         }
 
         /// <summary>
@@ -46,6 +50,9 @@ namespace QuienEsQuien
         /// <param name="e">Información detallada acerca de la solicitud y el proceso de inicio.</param>
         protected override void OnLaunched(LaunchActivatedEventArgs e)
         {
+
+            cargarMusikita();
+
             Frame rootFrame = Window.Current.Content as Frame;
 
             // No repetir la inicialización de la aplicación si la ventana tiene contenido todavía,
@@ -78,6 +85,15 @@ namespace QuienEsQuien
                 // Asegurarse de que la ventana actual está activa.
                 Window.Current.Activate();
             }
+        }
+
+        private async void cargarMusikita() {
+            Windows.Storage.StorageFolder folder = await Windows.ApplicationModel.Package.Current.InstalledLocation.GetFolderAsync(@"Assets");
+            Windows.Storage.StorageFile file = await folder.GetFileAsync("cancion.mp3");
+
+            player.AutoPlay = false;
+            player.Source = MediaSource.CreateFromStorageFile(file);
+            player.Play();
         }
 
         /// <summary>
