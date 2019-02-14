@@ -1,4 +1,5 @@
-﻿<Page
+﻿<Page Name="Principal"
+      
     x:Class="QuienEsQuien.Views.game_screen"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"

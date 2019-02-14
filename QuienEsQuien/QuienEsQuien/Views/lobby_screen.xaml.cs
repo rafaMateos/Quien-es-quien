@@ -111,7 +111,6 @@ namespace QuienEsQuien.Views {
                     clsManejadora manejadora = new clsManejadora();
                     manejadora.actualizarUsuariosSala(salaEdit);
 
-                   
 
 
                 });
