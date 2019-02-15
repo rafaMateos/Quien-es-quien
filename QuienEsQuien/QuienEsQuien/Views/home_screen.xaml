@@ -23,11 +23,11 @@
                  HorizontalAlignment="Center"
                 Background="#D32F2F"
                 Foreground="White"
-                CornerRadius="10"/>
+               />
         <Button Content="Sobre nosotros" Margin="10"
                  Click="HyperButton_About_Click"
                  HorizontalAlignment="Center"
-                CornerRadius="10"/>
+                />
     </StackPanel>
 
 </Page>

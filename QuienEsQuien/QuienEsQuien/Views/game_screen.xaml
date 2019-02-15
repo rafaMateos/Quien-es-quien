@@ -16,6 +16,7 @@
         <vm:viewModel/>
     </Page.DataContext>
 
+   
     <Page.Resources>
         <ConverterCarta:converterEstadoCarta x:Key="conversorEstadoCarta"></ConverterCarta:converterEstadoCarta>
     </Page.Resources>
@@ -57,6 +58,13 @@
             </GridView>
 
         </Grid>
+
+        <RelativePanel Name="Cargando" Visibility="Collapsed" HorizontalAlignment="Center" VerticalAlignment="Center" Background="White" Width="500" Height="500">
+
+            <TextBlock  Text="Uniendote a sala.." FontSize="50" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.AlignVerticalCenterWithPanel="True">
+                
+            </TextBlock>
+        </RelativePanel>
 
         <Grid Grid.Column="1" MinWidth="200" Background="White" Margin="10">
             <Grid.RowDefinitions>
