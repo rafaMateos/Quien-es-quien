@@ -35,6 +35,7 @@ namespace QuienEsQuien
         public String nickJugador = "";
         public bool esVolver = false;
         MediaPlayer player;
+        public bool miTurno = false;
 
         public App()
         {

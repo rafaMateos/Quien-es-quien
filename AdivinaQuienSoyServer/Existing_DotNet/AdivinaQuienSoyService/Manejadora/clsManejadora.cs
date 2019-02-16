@@ -67,5 +67,58 @@ namespace AdivinaQuienSoyService.Manejadora
             return filas;
         }
 
+        public int ObtenerIDSala(string nombre)
+        {
+
+            int id = 0;
+
+            switch (nombre)
+            {
+
+                case "sala 1":
+                    id = 1;
+                    break;
+
+                case "sala 2":
+                    id = 2;
+                    break;
+
+                case "sala 3":
+                    id = 3;
+                    break;
+
+                case "sala 4":
+                    id = 4;
+                    break;
+
+                case "sala 5":
+                    id = 5;
+                    break;
+
+                case "sala 6":
+                    id = 6;
+                    break;
+
+                case "sala 7":
+                    id = 7;
+                    break;
+
+                case "sala 8":
+                    id = 8;
+                    break;
+
+                case "sala 9":
+                    id = 9;
+                    break;
+
+                case "sala 10":
+                    id = 10;
+                    break;
+            }
+
+            return id;
+
+        }
+
     }
 }

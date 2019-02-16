@@ -38,7 +38,7 @@ namespace QuienEsQuien.Views {
 
         viewModel miVM = new viewModel();
         Boolean estaSala = false;
-        App myApp = (Application.Current as App);
+         static App myApp = (Application.Current as App);
         string nick = "ERROR" ;
 
         int contadorCargando = 0;
@@ -189,19 +189,43 @@ namespace QuienEsQuien.Views {
         }
 
 
-        private async void addMessage(ChatMessage obj) {
-            await Windows.ApplicationModel.Core.CoreApplication.MainView.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, async () => {
 
-            });
-        }
+        public static async void Position(clsSala info) {
 
-        public static void Position(clsSala info) {
+            if (info.usuariosConectados != 2)
+            {
 
-            if (conn.State == Microsoft.AspNet.SignalR.Client.ConnectionState.Connected) {
+                if (conn.State == Microsoft.AspNet.SignalR.Client.ConnectionState.Connected)
+                {
 
-                SalasProxy.Invoke("JoinRoomAsync", info);
+                    if (info.usuariosConectados == 0)
+                    {
+                        myApp.miTurno = true;
+                    }
+                    else
+                    {
+                        myApp.miTurno = false;
+                    }
+
+                    SalasProxy.Invoke("JoinRoomAsync", info);
+
+                }
 
             }
+            else {
+
+                ContentDialog noFunca = new ContentDialog();
+                noFunca.Title = "Sala llena";
+                noFunca.Content = "Utilize otra sala para jugar";
+                noFunca.PrimaryButtonText = "OK";
+                ContentDialogResult resultado = await noFunca.ShowAsync();
+
+                
+
+            }
+          
+
+           
         }
 
         private async void cargando2()

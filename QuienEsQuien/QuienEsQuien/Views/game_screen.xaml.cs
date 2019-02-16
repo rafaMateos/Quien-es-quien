@@ -27,10 +27,11 @@ namespace QuienEsQuien.Views {
     /// </summary>
     /// 
 
-
+        
 
     public sealed partial class game_screen : Page {
 
+        
         ChatMessage send = new ChatMessage();
         viewModel vm = new viewModel();
         public static HubConnection conn { get; set; }
@@ -93,11 +94,6 @@ namespace QuienEsQuien.Views {
 
         private async void cargando() {
 
-
-            Cargando.Visibility = Visibility.Visible;
-
-           
-
             int i = 0;
             do {
                 Thread.Sleep(1000);
@@ -105,7 +101,10 @@ namespace QuienEsQuien.Views {
             } while (i < 10 || !(conn.State == Microsoft.AspNet.SignalR.Client.ConnectionState.Connected));
 
 
-            Cargando.Visibility = Visibility.Collapsed;
+            if (myApp.miTurno)
+                turno.Text = "Es tu turno";
+            else
+                turno.Text = "No es tu turno";
 
 
             if (i == 10 && !(conn.State == Microsoft.AspNet.SignalR.Client.ConnectionState.Connected)) {

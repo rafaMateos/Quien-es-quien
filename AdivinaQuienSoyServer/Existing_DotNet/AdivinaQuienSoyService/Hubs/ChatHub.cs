@@ -1,4 +1,5 @@
-﻿using AdivinaQuienSoyService.Models;
+﻿using AdivinaQuienSoyService.Manejadora;
+using AdivinaQuienSoyService.Models;
 using Microsoft.AspNet.SignalR;
 using System;
 using System.Collections.Generic;
@@ -10,18 +11,22 @@ namespace AdivinaQuienSoyService.Hubs
 {
     public class ChatHub : Hub
     {
+
+        clsManejadora maneja = new clsManejadora();
+        int id = 0;
         /// <summary>
         /// Añade una conexion a un grupo
         /// </summary>
         /// <param name="groupName"></param>
         /// <returns></returns>
+
         public Task JoinGroup(string groupName)
         {
-
             return Groups.Add(Context.ConnectionId, groupName);
-            //await Groups.Add(Context.ConnectionId, groupName);
-            //Clients.Group(groupName).addChatMessage(Context.User.Identity.Name + " joined.");
+
         }
+
+
 
         /// <summary>
         /// Elimina una conexion del grupo
@@ -31,11 +36,9 @@ namespace AdivinaQuienSoyService.Hubs
         public void LeaveGroup(string groupName)
         {
             Clients.Group(groupName).abandoPartida();
-            Groups.Remove(Context.ConnectionId, groupName);
-            
+            Groups.Remove(Context.ConnectionId, groupName);  
 
         }
-
         /// <summary>
         /// Envia el mensaje a los clientes conectados al grupo
         /// </summary>
@@ -44,5 +47,7 @@ namespace AdivinaQuienSoyService.Hubs
         {
             Clients.Group(message.groupName).agregarMensaje(message);
         }
+
+       
     }
 }

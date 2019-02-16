@@ -16,6 +16,7 @@ namespace AdivinaQuienSoyService.Hubs
     {
 
         private static int contadorUser = 0;
+
         private clsManejadora manejadora = new clsManejadora();
         /// <summary>
         /// Añade una conexion a una sala.
@@ -49,7 +50,6 @@ namespace AdivinaQuienSoyService.Hubs
 
             Clients.All.Descontar(salita);
         }
-
 
         /// <summary>
         /// Enviar mensaje a grupo
