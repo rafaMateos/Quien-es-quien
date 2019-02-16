@@ -72,9 +72,24 @@ namespace QuienEsQuien.Views {
 
             ChatProxy.On<ChatMessage>("agregarMensaje", addMessage);
             ChatProxy.On("abandoPartida", volverLobby);
-
+            ChatProxy.On("cambiarTurno", cambiarTurno);
             //ChatProxy.On<ChatMessage>("agregarMensaje", addMessage);
 
+        }
+
+        private async void cambiarTurno()
+        {
+            await Windows.ApplicationModel.Core.CoreApplication.MainView.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () => {
+
+                if (myApp.miTurno){
+                    myApp.miTurno = false;
+                    turno.Text = "No es mi turno";
+                }
+                else{
+                    myApp.miTurno = true;
+                    turno.Text = "Es mi turno";
+                }
+            });
         }
 
         private async void volverLobby() {
@@ -155,7 +170,13 @@ namespace QuienEsQuien.Views {
 
         private void Btn_Pasar_Click(object sender, RoutedEventArgs e) {
 
-            ChatProxy.Invoke("");
+            if (myApp.miTurno)
+            {
+                if (conn.State == Microsoft.AspNet.SignalR.Client.ConnectionState.Connected)
+                {
+                    ChatProxy.Invoke("pasarTurno",myApp.sala);
+                }
+            }
 
         }
 
