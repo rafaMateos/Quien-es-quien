@@ -111,6 +111,8 @@ namespace QuienEsQuien.Views {
 
         private async void cargando() {
 
+           
+
             int i = 0;
             do {
                 Thread.Sleep(1000);
@@ -136,6 +138,8 @@ namespace QuienEsQuien.Views {
                     this.Frame.Navigate(typeof(login_screen));
                 }
             }
+
+            
         }
 
         private async void addMessage(ChatMessage obj) {
@@ -166,6 +170,7 @@ namespace QuienEsQuien.Views {
 
         private void Btn_Salir_Click(object sender, RoutedEventArgs e) {
 
+            Cargando.Visibility = Visibility.Visible;
             ChatProxy.Invoke("LeaveGroup", myApp.sala);
 
         }

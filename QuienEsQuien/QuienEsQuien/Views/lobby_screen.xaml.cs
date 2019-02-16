@@ -192,6 +192,8 @@ namespace QuienEsQuien.Views {
 
         public static async void Position(clsSala info) {
 
+           
+
             if (info.usuariosConectados != 2)
             {
 
@@ -297,6 +299,7 @@ namespace QuienEsQuien.Views {
 
             await Windows.ApplicationModel.Core.CoreApplication.MainView.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, async () => {
 
+                Cargando.Visibility = Visibility.Visible;
                 clsManejadora manejadora = new clsManejadora();
                 manejadora.actualizarUsuariosSala(obj);
 
@@ -310,6 +313,7 @@ namespace QuienEsQuien.Views {
             });
 
 
+         
 
             if (conn.State == Microsoft.AspNet.SignalR.Client.ConnectionState.Connected) {
 

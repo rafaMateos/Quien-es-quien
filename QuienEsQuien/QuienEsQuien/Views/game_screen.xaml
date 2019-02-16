@@ -86,12 +86,7 @@
             </GridView.ItemsPanel>
         </GridView>
 
-        <RelativePanel Name="Cargando" Visibility="Collapsed" HorizontalAlignment="Center" VerticalAlignment="Center" Background="White" Width="500" Height="500">
-
-            <TextBlock  Text="Uniendote a sala.." FontSize="50" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.AlignVerticalCenterWithPanel="True">
-
-            </TextBlock>
-        </RelativePanel>
+  
 
         <!--<RelativePanel Name="contenedorTuyo" 
                        Background="Aquamarine" Margin="5,0,0,5" Padding="5"
@@ -162,6 +157,29 @@
             </RelativePanel>
 
 
+        </RelativePanel>
+
+
+        <RelativePanel
+            Visibility="Collapsed"
+            Name="Cargando"
+            HorizontalAlignment="Center" 
+            VerticalAlignment="Center" 
+            Background="White" Width="300" 
+             BorderBrush="Black"
+            BorderThickness="5"
+            Height="300" RelativePanel.AlignHorizontalCenterWithPanel="True"
+            RelativePanel.AlignVerticalCenterWithPanel="True"
+           >
+
+            <TextBlock  
+                Text="Saliendo de la partida.." 
+              
+                FontSize="25" 
+                RelativePanel.AlignHorizontalCenterWithPanel="True"
+                RelativePanel.AlignVerticalCenterWithPanel="True">
+
+            </TextBlock>
         </RelativePanel>
 
     </RelativePanel>
