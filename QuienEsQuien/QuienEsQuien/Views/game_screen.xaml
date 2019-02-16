@@ -31,14 +31,17 @@
         </Grid.ColumnDefinitions>
 
         <Grid Grid.Row="0" Grid.Column="0" Background="White" Margin="10">
-            <GridView 
+            <GridView
+                Name="gridImagenes"
                 ItemsSource="{Binding listadoDeCartas}"
-                SelectedItem="{Binding cartaSeleccionada, Mode=TwoWay}">
+                SelectedItem="{Binding cartaSeleccionada, Mode=TwoWay}"
+                >
                 <GridView.ItemTemplate>
-                    <DataTemplate x:Name="cartitaTemplate">
+                    <DataTemplate x:Name="cartitaTemplate" >
                         <StackPanel x:Name="cartaSelectPanel" 
                                     Height="200" Width="150" Margin="12"  
-                                    Opacity="{Binding Path=estaBajada, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Converter = {StaticResource conversorEstadoCarta}}">
+                                    Opacity="{Binding Path=estaBajada, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Converter = {StaticResource conversorEstadoCarta}}"
+                                    >
                             <Image Source="{Binding Path=imagenUri}" 
                                    Height="165" Width="165" Stretch="UniformToFill" 
                                    HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>

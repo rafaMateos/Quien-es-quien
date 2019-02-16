@@ -155,6 +155,8 @@ namespace QuienEsQuien.Views {
 
         private void Btn_Pasar_Click(object sender, RoutedEventArgs e) {
 
+            ChatProxy.Invoke("");
+
         }
 
         private void Tbx_chat_KeyDown(object sender, KeyRoutedEventArgs e) {

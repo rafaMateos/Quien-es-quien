@@ -82,6 +82,10 @@ namespace QuienEsQuien.Viewmodel {
                     listadoDeCartas[cartaSeleccionada.idCarta].estaBajada = !listadoDeCartas[cartaSeleccionada.idCarta].estaBajada;
                     NotifyPropertyChanged("cartaSeleccionada");
                     NotifyPropertyChanged("listadoDeCartas");
+                    //petara aqui?
+                    /*_cartaSeleccionada = null;
+                    NotifyPropertyChanged("cartaSeleccionada");*/
+                    
                 }
                 else {
 
