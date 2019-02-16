@@ -10,6 +10,7 @@ using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.Media.Core;
 using Windows.Media.Playback;
+using Windows.UI.Core.Preview;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -83,9 +84,33 @@ namespace QuienEsQuien
                     //parámetro de navegación
                     rootFrame.Navigate(typeof(home_screen), e.Arguments);
                 }
+
+
+                SystemNavigationManagerPreview.GetForCurrentView().CloseRequested += App_CloseRequested;
                 // Asegurarse de que la ventana actual está activa.
                 Window.Current.Activate();
             }
+        }
+
+        private async void App_CloseRequested(object sender, SystemNavigationCloseRequestedPreviewEventArgs e)
+        {
+
+
+            ContentDialog noFunca = new ContentDialog();
+            noFunca.Title = "¿Estas seguro de quieres salir?";
+            noFunca.Content = "Vas a salir del juego..";
+            noFunca.PrimaryButtonText = "Aceptar";
+            noFunca.SecondaryButtonText = "Cancelar";
+            ContentDialogResult result = await noFunca.ShowAsync();
+
+            if (result == ContentDialogResult.Primary)
+            {
+
+                game_screen salir = new game_screen();
+                salir.SalirPaSiempre();
+
+            }
+
         }
 
         private async void cargarMusikita() {
@@ -121,5 +146,7 @@ namespace QuienEsQuien
             //TODO: Guardar el estado de la aplicación y detener toda actividad en segundo plano
             deferral.Complete();
         }
+
+         
     }
 }

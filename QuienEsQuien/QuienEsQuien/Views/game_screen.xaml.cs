@@ -56,6 +56,8 @@ namespace QuienEsQuien.Views {
 
             }
 
+
+
         }
 
 
@@ -166,6 +168,10 @@ namespace QuienEsQuien.Views {
 
             ChatProxy.Invoke("LeaveGroup", myApp.sala);
 
+        }
+
+        public void SalirPaSiempre() {
+            ChatProxy.Invoke("LeaveGroup", myApp.sala);
         }
 
         private void Btn_Pasar_Click(object sender, RoutedEventArgs e) {
