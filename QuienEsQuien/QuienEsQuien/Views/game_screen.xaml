@@ -21,149 +21,149 @@
         <ConverterCarta:converterEstadoCarta x:Key="conversorEstadoCarta"></ConverterCarta:converterEstadoCarta>
     </Page.Resources>
 
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition></RowDefinition>
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="5*" MinWidth="620"></ColumnDefinition>
-            <ColumnDefinition Width="2*"  MinWidth="230"></ColumnDefinition>
-        </Grid.ColumnDefinitions>
+    <RelativePanel Padding="10" Margin="10">
 
-        <Grid Grid.Row="0" Grid.Column="0" Background="White" Margin="10">
-            <GridView
-                Name="gridImagenes"
+        <StackPanel Name="botoneraSuperior" Orientation="Horizontal"
+                    RelativePanel.AlignTopWithPanel="True"
+                    RelativePanel.AlignLeftWithPanel="True"
+                    Padding="5">
+
+            <Button Click="Btn_Salir_Click" Name="btn_Salir" Content="Salir"
+                        Background="Green" Margin="0,0,5,0"/>
+
+            <ComboBox  ItemsSource="{Binding Path=listadoSecundarioDeCartas, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" 
+                           PlaceholderText="¿Eres ... ?"
+                           Width="250" Margin="50,0,5,0">
+
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal" ScrollViewer.VerticalScrollMode="Enabled">
+                            <Image Source="{Binding Path=imagenUri}" 
+                                       Height="25" Width="25" Stretch="UniformToFill" 
+                                       HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                            <TextBlock Text="{Binding Path=nombreCarta}" VerticalAlignment="Center" Padding="10,0,0,0"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+
+            <Button Content="Confirmar seleccion" Background="#D32F2F" 
+                    Foreground="White" Margin="0,0,5,0"/>
+
+            <Button Click="Btn_Pasar_Click" Name="btn_Pasar" Content="Pasar turno"
+                        Background="Yellow" Margin="50,0,5,0"/>
+        </StackPanel>
+
+        <GridView Name="gridImagenes"
+                  RelativePanel.Below="botoneraSuperior"
+                  RelativePanel.AlignLeftWithPanel="True"
+                  RelativePanel.AlignBottomWithPanel="True"
+                  RelativePanel.LeftOf="contenedorChat"
                 ItemsSource="{Binding listadoDeCartas}"
-                SelectedItem="{Binding cartaSeleccionada, Mode=TwoWay}"
-                >
-                <GridView.ItemTemplate>
-                    <DataTemplate x:Name="cartitaTemplate" >
-                        <StackPanel x:Name="cartaSelectPanel" 
+                SelectedItem="{Binding cartaSeleccionada, Mode=TwoWay}" 
+                  Background="White">
+            <GridView.ItemTemplate>
+                <DataTemplate x:Name="cartitaTemplate" >
+                    <StackPanel x:Name="cartaSelectPanel" 
                                     Height="200" Width="150" Margin="12"  
                                     Opacity="{Binding Path=estaBajada, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Converter = {StaticResource conversorEstadoCarta}}"
                                     >
-                            <Image Source="{Binding Path=imagenUri}" 
+                        <Image Source="{Binding Path=imagenUri}" 
                                    Height="165" Width="165" Stretch="UniformToFill" 
                                    HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
-                            <StackPanel>
-                                <TextBlock Text="{Binding Path=nombreCarta}"/>
-                                <TextBlock Text="{Binding Path=esGanadora}"/>
-                            </StackPanel>
+                        <StackPanel>
+                            <TextBlock Text="{Binding Path=nombreCarta}"/>
+                            <TextBlock Text="{Binding Path=esGanadora}"/>
                         </StackPanel>
-                    </DataTemplate>
-                </GridView.ItemTemplate>
+                    </StackPanel>
+                </DataTemplate>
+            </GridView.ItemTemplate>
 
-                <GridView.ItemsPanel>
-                    <ItemsPanelTemplate>
-                        <ItemsWrapGrid MaximumRowsOrColumns="6" Orientation="Horizontal"/>
-                    </ItemsPanelTemplate>
-                </GridView.ItemsPanel>
-            </GridView>
-
-
-            <StackPanel Orientation="Horizontal"> 
-                <ComboBox  ItemsSource="{Binding Path=listadoSecundarioDeCartas, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" 
-                           PlaceholderText="¿Eres ... ?"
-                           Width="250">
-
-                    <ComboBox.ItemTemplate>
-                        <DataTemplate>
-                            <StackPanel Orientation="Horizontal" ScrollViewer.VerticalScrollMode="Enabled">
-                                <Image Source="{Binding Path=imagenUri}" 
-                                       Height="25" Width="25" Stretch="UniformToFill" 
-                                       HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
-                                <TextBlock Text="{Binding Path=nombreCarta}" VerticalAlignment="Center" Padding="10,0,0,0"/>
-                            </StackPanel>
-                        </DataTemplate>
-                    </ComboBox.ItemTemplate> 
-                </ComboBox>
-                <Button Content="Confirmar seleccion" Background="#D32F2F" Foreground="White"></Button>
-            </StackPanel>
-
-        </Grid>
+            <GridView.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <ItemsWrapGrid MaximumRowsOrColumns="6" Orientation="Horizontal"/>
+                </ItemsPanelTemplate>
+            </GridView.ItemsPanel>
+        </GridView>
 
         <RelativePanel Name="Cargando" Visibility="Collapsed" HorizontalAlignment="Center" VerticalAlignment="Center" Background="White" Width="500" Height="500">
 
             <TextBlock  Text="Uniendote a sala.." FontSize="50" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.AlignVerticalCenterWithPanel="True">
-                
+
             </TextBlock>
         </RelativePanel>
 
-        <Grid Grid.Column="1" MinWidth="200" Background="White" Margin="10">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="*"></RowDefinition>
-                <RowDefinition Height="3*"></RowDefinition>
-            </Grid.RowDefinitions>
-
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition></ColumnDefinition>
-            </Grid.ColumnDefinitions>
-
-            <RelativePanel Name="contenedorTuyo" Background="Aquamarine" Margin="5" Grid.Column="0" Grid.Row="0" Padding="5">
-                <TextBlock Name="tuPersonajeNombre" Text="Tu eres:"  
-                           HorizontalAlignment="Center"
+        <!--<RelativePanel Name="contenedorTuyo" 
+                       Background="Aquamarine" Margin="5,0,0,5" Padding="5"
+                       RelativePanel.AlignRightWithPanel="True"
+                       RelativePanel.AlignLeftWith="contenedorChat">
+            <TextBlock Name="tuPersonajeNombre" Text="Tu eres:"  
+                       HorizontalAlignment="Center"
+                       RelativePanel.AlignLeftWithPanel="True"/>
+            <Image Name="tuPersonajeImagen" Source="../Assets/QS_Rafa.jpg" 
+                       MaxHeight="130" HorizontalAlignment="Right"
+                       RelativePanel.Below="tuPersonajeNombre"
                        RelativePanel.AlignRightWithPanel="True"/>
+            <TextBlock Name="turno" Text="xXxXxXxX"  
+                           HorizontalAlignment="Center"
+                       RelativePanel.Below="tuPersonajeImagen"/>
+        </RelativePanel>-->
+
+        <RelativePanel Name="contenedorChat" 
+                       Background="Aquamarine"
+                       RelativePanel.AlignRightWithPanel="True"
+                       RelativePanel.AlignBottomWithPanel="True"
+                       RelativePanel.AlignTopWithPanel="True"
+                       Width="330"
+                       Margin="5,0,0,0" >
+
+            <RelativePanel Name="contenedorTuyo" 
+                       Background="Aquamarine" Margin="5,0,0,5" Padding="5"
+                       RelativePanel.AlignBottomWithPanel="False"
+                           HorizontalAlignment="Left">
+                <TextBlock Name="tuPersonajeNombre" Text="Tu eres:"
+                       RelativePanel.AlignLeftWithPanel="True"/>
                 <Image Name="tuPersonajeImagen" Source="../Assets/QS_Rafa.jpg" 
                        MaxHeight="130" HorizontalAlignment="Right"
                        RelativePanel.Below="tuPersonajeNombre"
                        RelativePanel.AlignRightWithPanel="True"/>
                 <TextBlock Name="turno" Text="xXxXxXxX"  
-                           HorizontalAlignment="Center"
+                       HorizontalAlignment="Center"
                        RelativePanel.Below="tuPersonajeImagen"/>
             </RelativePanel>
 
-            <RelativePanel Name="contenedorChat" Background="Aquamarine" Margin="5" Grid.Column="0" Grid.Row="1"  Padding="5">
-
-                <ListView Name="contanierChat" Background="Brown" 
+            <ListView Name="contanierChat" Background="Brown" 
                        RelativePanel.AlignLeftWithPanel="True"
                        RelativePanel.AlignRightWithPanel="True"
-                       RelativePanel.AlignTopWithPanel="True"
                        RelativePanel.Above="contenedorSend"
-                       ItemsSource="{Binding msgsChats,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}">
-
-                    <ListView.ItemTemplate>
-
-                        <DataTemplate >
-
-                            <StackPanel Orientation="Horizontal">
-
-                                <TextBlock Text="{Binding Path=nickName}"></TextBlock>
-                                <TextBlock Text="{Binding Path=message,Mode=TwoWay}"></TextBlock>
-
-                            </StackPanel>
-
-                        </DataTemplate>
+                      RelativePanel.Below="contenedorTuyo"
+                       ItemsSource="{Binding msgsChats,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"> 
+                <ListView.ItemTemplate> 
+                    <DataTemplate > 
+                        <StackPanel Orientation="Horizontal"> 
+                            <TextBlock Text="{Binding Path=nickName}"></TextBlock>
+                            <TextBlock Text="{Binding Path=message,Mode=TwoWay}"></TextBlock> 
+                        </StackPanel> 
+                    </DataTemplate> 
+                </ListView.ItemTemplate> 
+            </ListView>
 
 
-                    </ListView.ItemTemplate>
+            <RelativePanel Name="contenedorSend" RelativePanel.AlignBottomWithPanel="True" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignLeftWithPanel="True">
 
-
-                </ListView>
-
-
-                <RelativePanel Name="contenedorSend" RelativePanel.AlignBottomWithPanel="True" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignLeftWithPanel="True">
-
-                    <Button Click="Btn_Salir_Click" Name="btn_Salir" Content="SALIR"
-                        RelativePanel.AlignLeftWithPanel="True"
-                        Background="Green"/>
-
-                    <Button Click="Btn_Pasar_Click" Name="btn_Pasar" Content="Pasar"
-                        RelativePanel.RightOf="btn_Salir"
-                        Background="Yellow"/>
-
-                    <TextBox KeyDown="Tbx_chat_KeyDown" Name="tbx_chat"
+                <TextBox KeyDown="Tbx_chat_KeyDown" Name="tbx_chat"
                         RelativePanel.LeftOf="btn_send"
-                        RelativePanel.RightOf="btn_Pasar"
+                        RelativePanel.AlignLeftWithPanel="True"
                          />
 
-                    <Button Click="Btn_send_Click" Name="btn_send" 
+                <Button Click="Btn_send_Click" Name="btn_send" 
                             Content="Send" RelativePanel.AlignRightWithPanel="True"
                             Background="Purple"/>
-                </RelativePanel>
-
-
             </RelativePanel>
 
-        </Grid>
-    </Grid>
+
+        </RelativePanel>
+
+    </RelativePanel>
+
 </Page>
