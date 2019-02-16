@@ -117,7 +117,7 @@ namespace QuienEsQuien.Views {
 
 
             if (myApp.miTurno)
-                turno.Text = "Es mi turno turno";
+                turno.Text = "Es mi turno";
             else
                 turno.Text = "No es mi turno";
 
