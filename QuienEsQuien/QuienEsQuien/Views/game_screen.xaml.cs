@@ -102,9 +102,9 @@ namespace QuienEsQuien.Views {
 
 
             if (myApp.miTurno)
-                turno.Text = "Es tu turno";
+                turno.Text = "Es mi turno turno";
             else
-                turno.Text = "No es tu turno";
+                turno.Text = "No es mi turno";
 
 
             if (i == 10 && !(conn.State == Microsoft.AspNet.SignalR.Client.ConnectionState.Connected)) {
