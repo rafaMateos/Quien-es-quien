@@ -29,6 +29,8 @@ namespace QuienEsQuien.Viewmodel {
 
         private clsCarta _cartaSeleccionada;
 
+        private List<clsCarta> _listadoSecundarioDeCartas = new List<clsCarta>();
+
         #endregion
 
         #region propiedades publicas
@@ -67,6 +69,11 @@ namespace QuienEsQuien.Viewmodel {
             set { _listadoDeCartas = value; }
         }
 
+        public List<clsCarta> listadoSecundarioDeCartas {
+            get { return _listadoSecundarioDeCartas; }
+            set { _listadoSecundarioDeCartas = value; }
+        }
+
         public int cartaGanadora {
             get { return _cartaGanadora; }
             set { _cartaGanadora = value; }
@@ -76,8 +83,7 @@ namespace QuienEsQuien.Viewmodel {
             get { return _cartaSeleccionada; }
             set {
 
-                if (myApp.miTurno)
-                {
+                if (myApp.miTurno) {
                     _cartaSeleccionada = value;
                     listadoDeCartas[cartaSeleccionada.idCarta].estaBajada = !listadoDeCartas[cartaSeleccionada.idCarta].estaBajada;
                     NotifyPropertyChanged("cartaSeleccionada");
@@ -85,7 +91,15 @@ namespace QuienEsQuien.Viewmodel {
                     //petara aqui?
                     /*_cartaSeleccionada = null;
                     NotifyPropertyChanged("cartaSeleccionada");*/
-                    
+
+                    listadoSecundarioDeCartas = new List<clsCarta>();
+
+                    foreach (clsCarta cartita in listadoDeCartas) {
+                        if (!cartita.estaBajada) {
+                            listadoSecundarioDeCartas.Add(cartita);
+                        }
+                    }
+                    NotifyPropertyChanged("listadoSecundarioDeCartas");
                 }
                 else {
 
@@ -107,6 +121,8 @@ namespace QuienEsQuien.Viewmodel {
             _msgsChat.Add(m);
             rellenarListaSalasAsync();
             rellenarListadoDeCartas();
+
+            listadoSecundarioDeCartas = listadoDeCartas;
         }
 
         public void AñadirAChat(ChatMessage c) {
