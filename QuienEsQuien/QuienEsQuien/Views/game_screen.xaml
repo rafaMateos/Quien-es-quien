@@ -60,22 +60,25 @@
                 </GridView.ItemsPanel>
             </GridView>
 
-            <ComboBox  ItemsSource="{Binding Path=listadoSecundarioDeCartas, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" 
-                       PlaceholderText="¿Eres ... ?"
-                       Width="250">
 
-                <ComboBox.ItemTemplate>
-                    <DataTemplate>
-                        <StackPanel Orientation="Horizontal" ScrollViewer.VerticalScrollMode="Enabled">
-                            <Image Source="{Binding Path=imagenUri}" 
-                                   Height="25" Width="25" Stretch="UniformToFill" 
-                                   HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
-                            <TextBlock Text="{Binding Path=nombreCarta}" VerticalAlignment="Center" Padding="10,0,0,0"/>
-                        </StackPanel>
-                    </DataTemplate>
-                </ComboBox.ItemTemplate>
-                
-            </ComboBox>
+            <StackPanel Orientation="Horizontal"> 
+                <ComboBox  ItemsSource="{Binding Path=listadoSecundarioDeCartas, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" 
+                           PlaceholderText="¿Eres ... ?"
+                           Width="250">
+
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal" ScrollViewer.VerticalScrollMode="Enabled">
+                                <Image Source="{Binding Path=imagenUri}" 
+                                       Height="25" Width="25" Stretch="UniformToFill" 
+                                       HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                <TextBlock Text="{Binding Path=nombreCarta}" VerticalAlignment="Center" Padding="10,0,0,0"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate> 
+                </ComboBox>
+                <Button Content="Confirmar seleccion" Background="#D32F2F" Foreground="White"></Button>
+            </StackPanel>
 
         </Grid>
 
