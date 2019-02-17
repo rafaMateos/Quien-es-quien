@@ -26,7 +26,7 @@
         <StackPanel Name="botoneraSuperior" Orientation="Horizontal"
                     RelativePanel.AlignTopWithPanel="True"
                     RelativePanel.AlignLeftWithPanel="True"
-                    Padding="5">
+                    Padding="0,5">
 
             <Button Click="Btn_Salir_Click" Name="btn_Salir" Content="Salir"
                         Background="Green" Margin="0,0,5,0"/>
@@ -167,20 +167,25 @@
             HorizontalAlignment="Center" 
             VerticalAlignment="Center" 
             Background="White" Width="300" 
-             BorderBrush="Black"
-            BorderThickness="5"
+            BorderBrush="Black"
+            BorderThickness="2"
             Height="300" RelativePanel.AlignHorizontalCenterWithPanel="True"
             RelativePanel.AlignVerticalCenterWithPanel="True"
-           >
+            CornerRadius="10" >
 
             <TextBlock  
-                Text="Saliendo de la partida.." 
-              
+                Name="textito"
+                Text="Saliendo de la sala..." 
                 FontSize="25" 
                 RelativePanel.AlignHorizontalCenterWithPanel="True"
-                RelativePanel.AlignVerticalCenterWithPanel="True">
+                RelativePanel.AlignVerticalCenterWithPanel="True" />
 
-            </TextBlock>
+
+            <ProgressBar IsIndeterminate="True" Margin="20" RelativePanel.Below="textito"
+                         RelativePanel.AlignLeftWithPanel="True"
+                         RelativePanel.AlignRightWithPanel="True"/>
+
+
         </RelativePanel>
 
     </RelativePanel>

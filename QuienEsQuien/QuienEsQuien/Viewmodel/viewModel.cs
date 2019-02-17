@@ -144,7 +144,7 @@ namespace QuienEsQuien.Viewmodel {
 
             ChatMessage m = new ChatMessage();
             m.groupName = "";
-            m.message = "Bienvenido Usuario...";
+            m.message = " Bienvenido Usuario...";
             m.nickName = "Lider Supremo: ";
 
             _msgsChat.Add(m);

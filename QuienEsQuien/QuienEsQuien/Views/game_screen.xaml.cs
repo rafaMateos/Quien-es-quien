@@ -27,11 +27,11 @@ namespace QuienEsQuien.Views {
     /// </summary>
     /// 
 
-        
+
 
     public sealed partial class game_screen : Page {
 
-        
+
         ChatMessage send = new ChatMessage();
         viewModel vm = new viewModel();
         public static HubConnection conn { get; set; }
@@ -53,11 +53,7 @@ namespace QuienEsQuien.Views {
             if (conn.State == Microsoft.AspNet.SignalR.Client.ConnectionState.Connected) {
 
                 ChatProxy.Invoke("JoinGroup", myApp.sala);
-
             }
-
-
-
         }
 
 
@@ -82,8 +78,7 @@ namespace QuienEsQuien.Views {
 
         }
 
-        private async void finalizarPartidaPorGanador(string obj)
-        {
+        private async void finalizarPartidaPorGanador(string obj) {
 
             await Windows.ApplicationModel.Core.CoreApplication.MainView.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, async () => {
 
@@ -94,8 +89,7 @@ namespace QuienEsQuien.Views {
 
                 ContentDialogResult resultado = await noFunca.ShowAsync();
 
-                if (resultado == ContentDialogResult.Primary)
-                {
+                if (resultado == ContentDialogResult.Primary) {
                     Cargando.Visibility = Visibility.Visible;
                     ChatProxy.Invoke("LeaveGroup", myApp.sala);
                 }
@@ -107,40 +101,27 @@ namespace QuienEsQuien.Views {
 
         }
 
-        private async void comprobarGanador(clsCarta obj)
-        {
+        private async void comprobarGanador(clsCarta obj) {
             await Windows.ApplicationModel.Core.CoreApplication.MainView.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, async () => {
 
-                if (vm.personageGanador.nombreCarta.Equals(obj.nombreCarta))
-                {
+                if (vm.personageGanador.nombreCarta.Equals(obj.nombreCarta)) {
 
-                    if (conn.State == Microsoft.AspNet.SignalR.Client.ConnectionState.Connected)
-                    {
-                        ChatProxy.Invoke("Ganador", myApp.nickJugador,myApp.sala);
+                    if (conn.State == Microsoft.AspNet.SignalR.Client.ConnectionState.Connected) {
+                        ChatProxy.Invoke("Ganador", myApp.nickJugador, myApp.sala);
                     }
-
-
-                }
-                else {
-
-
-                    
-
-                }
-               
-            });
-
+                } else {
+                     
+                } 
+            }); 
         }
 
-        private async void cambiarTurno()
-        {
+        private async void cambiarTurno() {
             await Windows.ApplicationModel.Core.CoreApplication.MainView.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () => {
 
-                if (myApp.miTurno){
+                if (myApp.miTurno) {
                     myApp.miTurno = false;
                     turno.Text = "No es mi turno";
-                }
-                else{
+                } else {
                     myApp.miTurno = true;
                     turno.Text = "Es mi turno";
                 }
@@ -190,17 +171,17 @@ namespace QuienEsQuien.Views {
                 }
             }
 
-            
+
         }
 
         private async void addMessage(ChatMessage obj) {
 
             await Windows.ApplicationModel.Core.CoreApplication.MainView.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () => {
 
-                vm.AñadirAChat(obj); 
+                vm.AñadirAChat(obj);
                 contanierChat.ScrollIntoView(contanierChat.Items[contanierChat.Items.Count - 1]);
-                 
-                contanierChat.SelectedItem = contanierChat.Items.Count - 1; 
+
+                contanierChat.SelectedItem = contanierChat.Items.Count - 1;
             });
 
         }
@@ -210,7 +191,7 @@ namespace QuienEsQuien.Views {
             send.message = myApp.nickJugador + ": " + tbx_chat.Text;
             send.groupName = myApp.sala;
             send.nickName = vm.nickJugador;
-             
+
             if (conn.State == Microsoft.AspNet.SignalR.Client.ConnectionState.Connected) {
 
                 ChatProxy.Invoke("SendToGroup", send);
@@ -232,11 +213,9 @@ namespace QuienEsQuien.Views {
 
         private void Btn_Pasar_Click(object sender, RoutedEventArgs e) {
 
-            if (myApp.miTurno)
-            {
-                if (conn.State == Microsoft.AspNet.SignalR.Client.ConnectionState.Connected)
-                {
-                    ChatProxy.Invoke("pasarTurno",myApp.sala);
+            if (myApp.miTurno) {
+                if (conn.State == Microsoft.AspNet.SignalR.Client.ConnectionState.Connected) {
+                    ChatProxy.Invoke("pasarTurno", myApp.sala);
                 }
             }
 
@@ -248,25 +227,20 @@ namespace QuienEsQuien.Views {
 
                 send.message = myApp.nickJugador + ": " + tbx_chat.Text;
                 send.groupName = myApp.sala;
-                send.nickName = vm.nickJugador; 
+                send.nickName = vm.nickJugador;
 
-                if (conn.State == Microsoft.AspNet.SignalR.Client.ConnectionState.Connected) { 
+                if (conn.State == Microsoft.AspNet.SignalR.Client.ConnectionState.Connected) {
                     ChatProxy.Invoke("SendToGroup", send);
-                } 
+                }
                 tbx_chat.Text = "";
-            } 
-        }
-
-        private void ConfirmarSeleccion_Click(object sender, RoutedEventArgs e)
-        {
-           
-            if (conn.State == Microsoft.AspNet.SignalR.Client.ConnectionState.Connected)
-            {
-                ChatProxy.Invoke("sendPosibleWinner", vm.cartaGanadoraSeleccionada,myApp.sala);
             }
-
         }
 
+        private void ConfirmarSeleccion_Click(object sender, RoutedEventArgs e) {
 
+            if (conn.State == Microsoft.AspNet.SignalR.Client.ConnectionState.Connected) {
+                ChatProxy.Invoke("sendPosibleWinner", vm.cartaGanadoraSeleccionada, myApp.sala);
+            } 
+        } 
     }
 }
