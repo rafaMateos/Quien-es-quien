@@ -39,6 +39,8 @@ namespace QuienEsQuien.Views {
         string sala;
         App myApp = (Application.Current as App);
 
+       
+
         public game_screen() {
 
             this.InitializeComponent();
@@ -130,14 +132,13 @@ namespace QuienEsQuien.Views {
             });
         }
 
+       
+
         private async void volverLobby() {
 
+            await Windows.ApplicationModel.Core.CoreApplication.MainView.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, async () => {
 
-            await Windows.ApplicationModel.Core.CoreApplication.MainView.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () => {
-
-                Cargando.Visibility = Visibility.Visible;
                 myApp.esVolver = true;
-
                 this.Frame.Navigate(typeof(lobby_screen));
 
 
