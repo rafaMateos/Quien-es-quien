@@ -81,8 +81,8 @@ namespace QuienEsQuien.Views {
         private void SignalR() {
 
             //Connect to the url 
-            //conn = new HubConnection("https://adivinaquiensoy.azurewebsites.net/");
-            conn = new HubConnection("http://localhost:50268/");
+            conn = new HubConnection("https://adivinaquiensoy.azurewebsites.net/");
+            //conn = new HubConnection("http://localhost:50268/");
             //ChatHub is the hub name defined in the host program. 
             SalasProxy = conn.CreateHubProxy("SalasHub");
             //ChatProxy = conn.CreateHubProxy("ChatHub");
@@ -299,12 +299,12 @@ namespace QuienEsQuien.Views {
 
             await Windows.ApplicationModel.Core.CoreApplication.MainView.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, async () => {
 
-                Cargando.Visibility = Visibility.Visible;
+                if (!myApp.sala.Equals("")) {
+                    Cargando.Visibility = Visibility.Visible;
+                }
+               
                 clsManejadora manejadora = new clsManejadora();
                 manejadora.actualizarUsuariosSala(obj);
-
-
-
 
                 var sala = (clsSala)listSalas.Items[obj.id - 1];
                 sala.usuariosConectados = obj.usuariosConectados;
@@ -312,8 +312,6 @@ namespace QuienEsQuien.Views {
 
             });
 
-
-         
 
             if (conn.State == Microsoft.AspNet.SignalR.Client.ConnectionState.Connected) {
 
