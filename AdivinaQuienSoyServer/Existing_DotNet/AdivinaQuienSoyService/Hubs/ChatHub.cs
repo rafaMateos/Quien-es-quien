@@ -44,6 +44,7 @@ namespace AdivinaQuienSoyService.Hubs
             Clients.Group(groupname).finalizarPartidaPorGanador(nickname);
         }
        
+
         /// <summary>
         /// Elimina una conexion del grupo
         /// </summary>
