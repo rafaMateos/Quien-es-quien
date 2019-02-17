@@ -135,6 +135,7 @@ namespace QuienEsQuien.Views {
 
             await Windows.ApplicationModel.Core.CoreApplication.MainView.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () => {
 
+                Cargando.Visibility = Visibility.Visible;
                 myApp.esVolver = true;
 
                 this.Frame.Navigate(typeof(lobby_screen));
