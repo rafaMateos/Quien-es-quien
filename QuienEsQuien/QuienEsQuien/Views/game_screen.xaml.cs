@@ -76,8 +76,34 @@ namespace QuienEsQuien.Views {
             ChatProxy.On("abandoPartida", volverLobby);
             ChatProxy.On("cambiarTurno", cambiarTurno);
             ChatProxy.On<clsCarta>("comprobarGanador", comprobarGanador);
+            ChatProxy.On<string>("finalizarPartidaPorGanador", finalizarPartidaPorGanador);
 
             //ChatProxy.On<ChatMessage>("agregarMensaje", addMessage);
+
+        }
+
+        private async void finalizarPartidaPorGanador(string obj)
+        {
+
+            await Windows.ApplicationModel.Core.CoreApplication.MainView.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, async () => {
+
+                ContentDialog noFunca = new ContentDialog();
+                noFunca.Title = "Ganador!!!!!!!!";
+                noFunca.Content = "El ganador es: " + obj;
+                noFunca.PrimaryButtonText = "Volver a jugar";
+
+                ContentDialogResult resultado = await noFunca.ShowAsync();
+
+                if (resultado == ContentDialogResult.Primary)
+                {
+                    Cargando.Visibility = Visibility.Visible;
+                    ChatProxy.Invoke("LeaveGroup", myApp.sala);
+                }
+
+
+
+            });
+
 
         }
 
@@ -87,20 +113,18 @@ namespace QuienEsQuien.Views {
 
                 if (vm.cartaGanadora.Equals(obj))
                 {
-                    ContentDialog noFunca = new ContentDialog();
-                    noFunca.Title = "Ganaste perro";
-                    noFunca.Content = "Acertaste el personaje";
-                    noFunca.PrimaryButtonText = "Aceptar";
-                    ContentDialogResult resultado = await noFunca.ShowAsync();
+
+                    if (conn.State == Microsoft.AspNet.SignalR.Client.ConnectionState.Connected)
+                    {
+                        ChatProxy.Invoke("Ganador", myApp.nickJugador,myApp.sala);
+                    }
+
 
                 }
                 else {
 
-                    ContentDialog noFunca = new ContentDialog();
-                    noFunca.Title = "Perdiste perro";
-                    noFunca.Content = "No acertaste el personaje";
-                    noFunca.PrimaryButtonText = "Aceptar";
-                    ContentDialogResult resultado = await noFunca.ShowAsync();
+
+                    
 
                 }
                

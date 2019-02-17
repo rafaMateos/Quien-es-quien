@@ -35,8 +35,15 @@ namespace AdivinaQuienSoyService.Hubs
         public void sendPosibleWinner(clsCarta carta, string grupo) {
 
             Clients.Group(grupo, Context.ConnectionId).comprobarGanador(carta);//vaya sacada de polla v2 by dylan nene
+
+          
         }
 
+        public void Ganador(string nickname,string groupname) {
+
+            Clients.Group(groupname).finalizarPartidaPorGanador(nickname);
+        }
+       
         /// <summary>
         /// Elimina una conexion del grupo
         /// </summary>
