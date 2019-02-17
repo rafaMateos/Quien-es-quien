@@ -101,13 +101,15 @@ namespace QuienEsQuien.Views {
 
         }
 
-        private async void comprobarGanador(clsCarta obj) {
+        private async void comprobarGanador(clsCarta obj,string nickname) {
+
             await Windows.ApplicationModel.Core.CoreApplication.MainView.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, async () => {
 
                 if (vm.personageGanador.nombreCarta.Equals(obj.nombreCarta)) {
 
                     if (conn.State == Microsoft.AspNet.SignalR.Client.ConnectionState.Connected) {
-                        ChatProxy.Invoke("Ganador", myApp.nickJugador, myApp.sala);
+
+                        ChatProxy.Invoke("Ganador", nickname, myApp.sala);
                     }
                 } else {
                      
@@ -208,6 +210,7 @@ namespace QuienEsQuien.Views {
         }
 
         public void SalirPaSiempre() {
+
             ChatProxy.Invoke("LeaveGroup", myApp.sala);
         }
 
@@ -239,7 +242,7 @@ namespace QuienEsQuien.Views {
         private void ConfirmarSeleccion_Click(object sender, RoutedEventArgs e) {
 
             if (conn.State == Microsoft.AspNet.SignalR.Client.ConnectionState.Connected) {
-                ChatProxy.Invoke("sendPosibleWinner", vm.cartaGanadoraSeleccionada, myApp.sala);
+                ChatProxy.Invoke("sendPosibleWinner", vm.cartaGanadoraSeleccionada, myApp.sala, myApp.nickJugador);
             } 
         } 
     }
