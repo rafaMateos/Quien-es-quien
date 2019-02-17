@@ -34,12 +34,12 @@ namespace AdivinaQuienSoyService.Hubs
 
         public void sendPosibleWinner(clsCarta carta, string grupo,string nickname) {
 
-            Clients.Group(grupo,Context.ConnectionId).comprobarGanador(carta, nickname);//vaya sacada de polla v2 by dylan nene
+            Clients.Group(grupo,Context.ConnectionId).comprobarGanador(carta,nickname);//vaya sacada de polla v2 by dylan nene
 
           
         }
 
-        public void Ganador(string groupname,string nickname) {
+        public void Ganador(string nickname, string groupname) {
 
             Clients.Group(groupname).finalizarPartidaPorGanador(nickname);
         }

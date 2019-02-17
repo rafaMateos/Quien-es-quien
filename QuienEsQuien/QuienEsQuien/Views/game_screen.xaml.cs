@@ -71,7 +71,7 @@ namespace QuienEsQuien.Views {
             ChatProxy.On<ChatMessage>("agregarMensaje", addMessage);
             ChatProxy.On("abandoPartida", volverLobby);
             ChatProxy.On("cambiarTurno", cambiarTurno);
-            ChatProxy.On<clsCarta>("comprobarGanador", comprobarGanador);
+            ChatProxy.On<clsCarta,string>("comprobarGanador", comprobarGanador);
             ChatProxy.On<string>("finalizarPartidaPorGanador", finalizarPartidaPorGanador);
 
             //ChatProxy.On<ChatMessage>("agregarMensaje", addMessage);
@@ -109,7 +109,7 @@ namespace QuienEsQuien.Views {
 
                     if (conn.State == Microsoft.AspNet.SignalR.Client.ConnectionState.Connected) {
 
-                        ChatProxy.Invoke("Ganador", nickname, myApp.sala);
+                        await ChatProxy.Invoke("Ganador", nickname, myApp.sala);
                     }
                 } else {
                      
