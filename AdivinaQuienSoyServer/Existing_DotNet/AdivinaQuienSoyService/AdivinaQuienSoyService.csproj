@@ -163,6 +163,7 @@
     <Compile Include="Hubs\SalasHub.cs" />
     <Compile Include="Manejadora\clsManejadora.cs" />
     <Compile Include="Models\AdivinaQuienSoyContext.cs" />
+    <Compile Include="Models\clsCarta.cs" />
     <Compile Include="Models\clsInfoChat.cs" />
     <Compile Include="Models\clsSala.cs" />
     <Compile Include="Startup.cs" />

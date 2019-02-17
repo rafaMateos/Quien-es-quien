@@ -1,5 +1,6 @@
 ﻿using AdivinaQuienSoyService.Manejadora;
 using AdivinaQuienSoyService.Models;
+using divinaQuienSoyService.Models;
 using Microsoft.AspNet.SignalR;
 using System;
 using System.Collections.Generic;
@@ -26,7 +27,15 @@ namespace AdivinaQuienSoyService.Hubs
 
         }
 
+        public void pasarTurno(String groupName) {
 
+            Clients.Group(groupName).cambiarTurno();
+        }
+
+        public void sendPosibleWinner(clsCarta carta, string grupo) {
+
+            Clients.Group(grupo, Context.ConnectionId).comprobarGanador(carta);//vaya sacada de polla v2 by dylan nene
+        }
 
         /// <summary>
         /// Elimina una conexion del grupo

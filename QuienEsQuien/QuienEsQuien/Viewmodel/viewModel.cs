@@ -12,6 +12,7 @@ namespace QuienEsQuien.Viewmodel {
     public class viewModel : clsBase {
 
         App myApp = (Application.Current as App);
+
         #region propiedades privadas
         private List<clsSala> _ListadoDeSalas;
 
@@ -30,6 +31,10 @@ namespace QuienEsQuien.Viewmodel {
         private clsCarta _cartaSeleccionada;
 
         private List<clsCarta> _listadoSecundarioDeCartas = new List<clsCarta>();
+
+        private clsCarta _personajeGanador;
+
+        private clsCarta _cartaGanadoraSeleccionada;
 
         #endregion
 
@@ -109,6 +114,30 @@ namespace QuienEsQuien.Viewmodel {
             }
         }
 
+        public clsCarta personageGanador {
+
+            get {
+
+                return _personajeGanador;
+            }
+            set {
+
+                _personajeGanador = value;
+            }
+        }
+
+        public clsCarta cartaGanadoraSeleccionada {
+
+            get {
+
+                return _cartaGanadoraSeleccionada;
+            }
+            set {
+
+
+                _cartaGanadoraSeleccionada = value;
+            }
+        }
         #endregion
 
         public viewModel() {
@@ -122,8 +151,25 @@ namespace QuienEsQuien.Viewmodel {
             rellenarListaSalasAsync();
             rellenarListadoDeCartas();
 
+            _personajeGanador = ObtenerPersonajePartida();
+
             listadoSecundarioDeCartas = listadoDeCartas;
         }
+
+
+        public clsCarta ObtenerPersonajePartida() {
+
+            Random random = new Random();
+            clsCarta personaje;
+
+            int randomPersonaje = random.Next(0, 23);
+
+            personaje = _listadoDeCartas[randomPersonaje];
+
+            return personaje;
+            
+        }
+
 
         public void AñadirAChat(ChatMessage c) {
 

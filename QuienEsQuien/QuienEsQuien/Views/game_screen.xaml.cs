@@ -65,8 +65,8 @@ namespace QuienEsQuien.Views {
 
 
             //Connect to the url 
-            conn = new HubConnection("https://adivinaquiensoy.azurewebsites.net/");
-            //conn = new HubConnection("http://localhost:50268/");
+            //conn = new HubConnection("https://adivinaquiensoy.azurewebsites.net/");
+            conn = new HubConnection("http://localhost:50268/");
             //ChatHub is the hub name defined in the host program. 
 
             ChatProxy = conn.CreateHubProxy("ChatHub");
@@ -204,6 +204,14 @@ namespace QuienEsQuien.Views {
                 } 
                 tbx_chat.Text = "";
             } 
+        }
+
+        private void ConfirmarSeleccion_Click(object sender, RoutedEventArgs e)
+        {
+
+            //vm.cartaGanadoraSeleccionada;
+
+
         }
     }
 }
