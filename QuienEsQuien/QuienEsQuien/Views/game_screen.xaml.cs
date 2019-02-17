@@ -111,7 +111,7 @@ namespace QuienEsQuien.Views {
         {
             await Windows.ApplicationModel.Core.CoreApplication.MainView.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, async () => {
 
-                if (vm.cartaGanadora.Equals(obj))
+                if (vm.personageGanador.nombreCarta.Equals(obj.nombreCarta))
                 {
 
                     if (conn.State == Microsoft.AspNet.SignalR.Client.ConnectionState.Connected)
@@ -163,8 +163,6 @@ namespace QuienEsQuien.Views {
         }
 
         private async void cargando() {
-
-           
 
             int i = 0;
             do {
