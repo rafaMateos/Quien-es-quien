@@ -75,7 +75,36 @@ namespace QuienEsQuien.Views {
             ChatProxy.On<ChatMessage>("agregarMensaje", addMessage);
             ChatProxy.On("abandoPartida", volverLobby);
             ChatProxy.On("cambiarTurno", cambiarTurno);
+            ChatProxy.On<clsCarta>("comprobarGanador", comprobarGanador);
+
             //ChatProxy.On<ChatMessage>("agregarMensaje", addMessage);
+
+        }
+
+        private async void comprobarGanador(clsCarta obj)
+        {
+            await Windows.ApplicationModel.Core.CoreApplication.MainView.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, async () => {
+
+                if (vm.cartaGanadora.Equals(obj))
+                {
+                    ContentDialog noFunca = new ContentDialog();
+                    noFunca.Title = "Ganaste perro";
+                    noFunca.Content = "Acertaste el personaje";
+                    noFunca.PrimaryButtonText = "Aceptar";
+                    ContentDialogResult resultado = await noFunca.ShowAsync();
+
+                }
+                else {
+
+                    ContentDialog noFunca = new ContentDialog();
+                    noFunca.Title = "Perdiste perro";
+                    noFunca.Content = "No acertaste el personaje";
+                    noFunca.PrimaryButtonText = "Aceptar";
+                    ContentDialogResult resultado = await noFunca.ShowAsync();
+
+                }
+               
+            });
 
         }
 
@@ -208,10 +237,15 @@ namespace QuienEsQuien.Views {
 
         private void ConfirmarSeleccion_Click(object sender, RoutedEventArgs e)
         {
+           
 
-            //vm.cartaGanadoraSeleccionada;
-
+            if (conn.State == Microsoft.AspNet.SignalR.Client.ConnectionState.Connected)
+            {
+                ChatProxy.Invoke("sendPosibleWinner", vm.cartaGanadoraSeleccionada,myApp.sala);
+            }
 
         }
+
+
     }
 }
