@@ -299,9 +299,11 @@ namespace QuienEsQuien.Views {
 
             await Windows.ApplicationModel.Core.CoreApplication.MainView.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, async () => {
 
+                /*
                 if (!myApp.sala.Equals("")) {
                     Cargando.Visibility = Visibility.Visible;
                 }
+                */
                
                 clsManejadora manejadora = new clsManejadora();
                 manejadora.actualizarUsuariosSala(obj);

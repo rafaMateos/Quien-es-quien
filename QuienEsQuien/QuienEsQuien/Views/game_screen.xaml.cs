@@ -38,12 +38,13 @@ namespace QuienEsQuien.Views {
         public IHubProxy ChatProxy { get; set; }
         string sala;
         App myApp = (Application.Current as App);
+        private CoreDispatcher _dispatcher;
 
-       
 
         public game_screen() {
 
             this.InitializeComponent();
+            _dispatcher = Window.Current.Dispatcher;
             vm = (viewModel)this.DataContext;
             SignalR();
 
@@ -132,15 +133,33 @@ namespace QuienEsQuien.Views {
             });
         }
 
+
+        public async void ActualizarUi() {
+
+            await _dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
+            {
+                Cargando.Visibility = Visibility.Visible;
+
+               
+            });
+
+        }
        
 
         private async void volverLobby() {
 
-            await Windows.ApplicationModel.Core.CoreApplication.MainView.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, async () => {
+            ActualizarUi();
 
+            int i = 0;
+            do
+            {
+                Thread.Sleep(1000);
+                i++;
+            } while (i < 3);
+            await Windows.ApplicationModel.Core.CoreApplication.MainView.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () => {
+                
                 myApp.esVolver = true;
                 this.Frame.Navigate(typeof(lobby_screen));
-
 
             });
 
@@ -206,7 +225,8 @@ namespace QuienEsQuien.Views {
 
         private void Btn_Salir_Click(object sender, RoutedEventArgs e) {
 
-            Cargando.Visibility = Visibility.Visible;
+
+            vm.visibilidad = "Visible";
             ChatProxy.Invoke("LeaveGroup", myApp.sala);
 
         }

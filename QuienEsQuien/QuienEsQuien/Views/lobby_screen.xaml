@@ -69,7 +69,7 @@
 
 
         <RelativePanel
-            Visibility="Collapsed"
+            Visibility="{Binding visibilidad}"
             Name="Cargando"
             HorizontalAlignment="Center" 
             VerticalAlignment="Center" 

@@ -21,6 +21,7 @@ namespace QuienEsQuien.Viewmodel {
         public String salaActual;
 
         private String _nickJugador;
+        private String _visibilidad;
 
         private ObservableCollection<ChatMessage> _msgsChat = new ObservableCollection<ChatMessage>();
 
@@ -56,6 +57,8 @@ namespace QuienEsQuien.Viewmodel {
             get { return _salaSeleccionada; }
             set {
                 _salaSeleccionada = value;
+                _visibilidad = "Visible";
+                NotifyPropertyChanged("visibilidad");
                 myApp.sala = _salaSeleccionada.nombre;
                 Views.lobby_screen.Position(_salaSeleccionada);
             }
@@ -138,6 +141,19 @@ namespace QuienEsQuien.Viewmodel {
                 _cartaGanadoraSeleccionada = value;
             }
         }
+
+        public string visibilidad {
+
+            get {
+
+                return _visibilidad;
+            }
+            set {
+
+                _visibilidad = value;
+                NotifyPropertyChanged("Visibilidad");
+            }
+        }
         #endregion
 
         public viewModel() {
@@ -146,6 +162,8 @@ namespace QuienEsQuien.Viewmodel {
             m.groupName = "";
             m.message = " Bienvenido Usuario...";
             m.nickName = "Lider Supremo: ";
+
+            _visibilidad = "Collapsed";
 
             _msgsChat.Add(m);
             rellenarListaSalasAsync();

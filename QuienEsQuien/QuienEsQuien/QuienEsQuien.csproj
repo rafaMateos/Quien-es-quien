@@ -121,6 +121,7 @@
     </Compile>
     <Compile Include="Manejadoras\clsManejadora.cs" />
     <Compile Include="Modelos\ChatMessage.cs" />
+    <Compile Include="Modelos\clsBaseOtroHilo.cs" />
     <Compile Include="Modelos\clsBase.cs" />
     <Compile Include="Modelos\clsCarta.cs" />
     <Compile Include="Modelos\clsJugador.cs" />
