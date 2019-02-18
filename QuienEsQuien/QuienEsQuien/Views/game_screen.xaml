@@ -251,7 +251,7 @@
 
 
         <RelativePanel
-            Visibility="Collapsed"
+            Visibility="Visible"
             Name="ConfirmarGanadorPorFallos"
             HorizontalAlignment="Center" 
             VerticalAlignment="Center" 
@@ -262,14 +262,23 @@
             RelativePanel.AlignVerticalCenterWithPanel="True"
             CornerRadius="10" >
 
-            <TextBlock Name="TextoGandorOPerdedor"
-                       Text=""
-                       RelativePanel.AlignHorizontalCenterWithPanel="True"
+            <StackPanel  RelativePanel.AlignHorizontalCenterWithPanel="True"
                        RelativePanel.AlignVerticalCenterWithPanel="True"
+                         >
+
+                <TextBlock Name="TextoGandorOPerdedor"
+                       Text=""
+                      
                        FontSize="25"
                        >
-                
-            </TextBlock>
+
+                </TextBlock>
+
+                <Button Content="Volver al lobby" Click="Button_Click_1">
+                </Button>
+
+            </StackPanel >
+           
                
 
 

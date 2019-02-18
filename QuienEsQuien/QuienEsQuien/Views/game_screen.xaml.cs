@@ -164,7 +164,7 @@ namespace QuienEsQuien.Views {
 
                 if (conn.State == Microsoft.AspNet.SignalR.Client.ConnectionState.Connected)
                 {
-                    await ChatProxy.Invoke("GanadoPorFallos", myApp.sala, myApp.nickJugador);
+                    await ChatProxy.Invoke("GanadorPorFallos", myApp.sala, myApp.nickJugador);
                 }
             }
             
@@ -371,6 +371,14 @@ namespace QuienEsQuien.Views {
 
             ConfirmarGanador.Visibility = Visibility.Collapsed;
             
+            ChatProxy.Invoke("LeaveGroup", myApp.sala);
+
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e) {
+
+            ConfirmarGanadorPorFallos.Visibility = Visibility.Collapsed;
+
             ChatProxy.Invoke("LeaveGroup", myApp.sala);
 
         }
