@@ -93,6 +93,7 @@ namespace QuienEsQuien.Views {
                 ContentDialogResult resultado = await noFunca.ShowAsync();
 
                 if (resultado == ContentDialogResult.Primary) {
+
                     Cargando.Visibility = Visibility.Visible;
                     ChatProxy.Invoke("LeaveGroup", myApp.sala);
                 }
@@ -156,6 +157,8 @@ namespace QuienEsQuien.Views {
                 Thread.Sleep(1000);
                 i++;
             } while (i < 3);
+
+
             await Windows.ApplicationModel.Core.CoreApplication.MainView.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () => {
                 
                 myApp.esVolver = true;
