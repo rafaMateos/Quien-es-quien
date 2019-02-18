@@ -16,7 +16,7 @@
         <vm:viewModel/>
     </Page.DataContext>
 
-   
+
     <Page.Resources>
         <ConverterCarta:converterEstadoCarta x:Key="conversorEstadoCarta"></ConverterCarta:converterEstadoCarta>
     </Page.Resources>
@@ -29,10 +29,11 @@
                     Padding="0,5">
 
             <Button Click="Btn_Salir_Click" Name="btn_Salir" Content="Salir"
-                        Background="Green" Margin="0,0,5,0"/>
+                        Background="#D32F2F" Margin="0,0,5,0" Foreground="White"
+                    FontWeight="Bold"/>
 
             <ComboBox  ItemsSource="{Binding Path=listadoSecundarioDeCartas, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" 
-                           PlaceholderText="¿Eres ... ?"
+                           PlaceholderText="Preguntar por..."
                            Width="220" Margin="50,0,5,0"
                            SelectedItem="{Binding cartaGanadoraSeleccionada,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}">
 
@@ -96,7 +97,7 @@
             </GridView.ItemsPanel>
         </GridView>
 
-  
+
 
         <!--<RelativePanel Name="contenedorTuyo" 
                        Background="Aquamarine" Margin="5,0,0,5" Padding="5"
@@ -115,7 +116,6 @@
         </RelativePanel>-->
 
         <RelativePanel Name="contenedorChat" 
-                       Background="Aquamarine"
                        RelativePanel.AlignRightWithPanel="True"
                        RelativePanel.AlignBottomWithPanel="True"
                        RelativePanel.AlignTopWithPanel="True"
@@ -123,66 +123,76 @@
                        Margin="5,0,0,0" >
 
             <RelativePanel Name="contenedorTuyo" 
-                       Background="Aquamarine" Margin="0,5" Padding="5"
+                       Background="#D32F2F" Margin="0,5" Padding="5"
                        RelativePanel.AlignBottomWithPanel="False"
                        RelativePanel.AlignRightWithPanel="True"
                        RelativePanel.AlignLeftWithPanel="True" >
 
-                <TextBlock Name="turno" Text="xXxXxXxX"  
+                <TextBlock Name="txtNickJugador" Text="{Binding Path=nickJugador, Mode=TwoWay}"
                        HorizontalAlignment="Center"
                        RelativePanel.AlignHorizontalCenterWithPanel="True"
                        RelativePanel.AlignTopWithPanel="True"
-                       FontSize="20"/>
+                           Foreground="white"/>
+                
+                <TextBlock Name="turno" Text="xXxXxXxX"  
+                       HorizontalAlignment="Center"
+                       RelativePanel.AlignHorizontalCenterWithPanel="True"
+                       RelativePanel.Below="txtNickJugador"
+                       FontSize="20" Foreground="white"/>
 
                 <TextBlock Name="txtTuEres" Text="Tu eres: "
                        RelativePanel.AlignLeftWithPanel="True"
-                       RelativePanel.Below="turno"/>
+                       RelativePanel.Below="turno" Foreground="white"/>
 
                 <TextBlock Name="tuPersonajeNombre" Text="{Binding personageGanador.nombreCarta}"
                        RelativePanel.RightOf="txtTuEres"
                        Margin="5,0"
-                       RelativePanel.Below="turno"/>
+                       RelativePanel.Below="turno" Foreground="white"/>
 
                 <Image Name="tuPersonajeImagen" Source="{Binding personageGanador.imagenUri}" 
                        MaxHeight="130" HorizontalAlignment="Center"
                        RelativePanel.Below="tuPersonajeNombre"
                        RelativePanel.AlignRightWithPanel="True"
                        RelativePanel.AlignLeftWithPanel="True"/>
-                
+
             </RelativePanel>
 
-            <ListView Name="contanierChat" Background="Brown" 
+            <ListView Name="contanierChat" Background="#D32F2F" 
                       RelativePanel.AlignLeftWithPanel="True"
                       RelativePanel.AlignRightWithPanel="True"
                       RelativePanel.Above="contenedorSend"
                       RelativePanel.Below="contenedorTuyo"
                       Margin="0,5"
                       HorizontalAlignment="Stretch"
-                      ItemsSource="{Binding msgsChats,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"> 
-                <ListView.ItemTemplate> 
+                      ItemsSource="{Binding msgsChats,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}">
+                <ListView.ItemTemplate>
                     <DataTemplate >
                         <!--<StackPanel Orientation="Horizontal">
                             <TextBlock Text="{Binding Path=nickName}"/>
                             <TextBlock Text="{Binding Path=message, Mode=TwoWay}" TextWrapping="WrapWholeWords"/>
                         </StackPanel>-->
                         <Grid>
-                            <TextBlock Text="{Binding Path=nickName}"/>
-                            <TextBlock Text="{Binding Path=message, Mode=TwoWay}" TextWrapping="WrapWholeWords"/>
+                            <TextBlock Text="{Binding Path=nickName}" Foreground="white" FontWeight="ExtraBlack"/>
+                            <TextBlock Text="{Binding Path=message, Mode=TwoWay}" TextWrapping="Wrap" Foreground="white"/>
                         </Grid>
-                    </DataTemplate> 
-                </ListView.ItemTemplate> 
+                    </DataTemplate>
+                </ListView.ItemTemplate>
             </ListView>
 
 
-            <RelativePanel Name="contenedorSend" RelativePanel.AlignBottomWithPanel="True" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignLeftWithPanel="True">
+            <RelativePanel Name="contenedorSend" 
+                           RelativePanel.AlignBottomWithPanel="True" 
+                           RelativePanel.AlignRightWithPanel="True" 
+                           RelativePanel.AlignLeftWithPanel="True">
 
-                <TextBox KeyDown="Tbx_chat_KeyDown" Name="tbx_chat"
-                        RelativePanel.LeftOf="btn_send"
-                        RelativePanel.AlignLeftWithPanel="True" />
+                <TextBox KeyDown="Tbx_chat_KeyDown" Name="tbx_chat" 
+                         Margin="0,0,5,0"
+                         RelativePanel.LeftOf="btn_send" 
+                         RelativePanel.AlignLeftWithPanel="True" />
 
                 <Button Click="Btn_send_Click" Name="btn_send" 
-                        Content="Send" RelativePanel.AlignRightWithPanel="True"
-                        Background="Purple"/>
+                        Content="Enviar" RelativePanel.AlignRightWithPanel="True"
+                        Background="#D32F2F" Foreground="White"/>
             </RelativePanel>
 
 
@@ -277,23 +287,15 @@
             CornerRadius="10" >
 
             <StackPanel  RelativePanel.AlignHorizontalCenterWithPanel="True"
-                       RelativePanel.AlignVerticalCenterWithPanel="True"
-                         >
-
+                         RelativePanel.AlignVerticalCenterWithPanel="True" >
                 <TextBlock Name="TextoGandorOPerdedor"
-                       Text=""
-                      
-                       FontSize="25"
-                       >
-
+                       Text="" 
+                       FontSize="25" >
                 </TextBlock>
-
-                <Button Content="Volver al lobby" Click="Button_Click_1">
-                </Button>
-
+                <Button Content="Volver al lobby" Click="Button_Click_1"/>
             </StackPanel >
-           
-               
+
+
 
 
 

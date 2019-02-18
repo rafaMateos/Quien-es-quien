@@ -205,25 +205,24 @@ namespace QuienEsQuien.Viewmodel {
         #endregion
 
         public viewModel() {
-
-            ChatMessage m = new ChatMessage();
-            m.groupName = "";
-            m.message = " Bienvenido Usuario...";
-            m.nickName = "Sistema: ";
+            
+            nickJugador = myApp.nickJugador;
 
             _visibilidad = "Collapsed";
-
-            _msgsChat.Add(m);
-            NotifyPropertyChanged("msgsChats");
-
             rellenarListaSalasAsync();
             rellenarListadoDeCartas();
-
-            //_personajeGanador = ObtenerPersonajePartida();
-
             listadoSecundarioDeCartas = listadoDeCartas;
+            anadirMensajesInicioChat();
         }
 
+        private void anadirMensajesInicioChat() {
+            ChatMessage m = new ChatMessage();
+            m.groupName = "sala 1";
+            m.nickName = "Sistema: ";
+            m.message = " Bienvenido Usuario...";
+            _msgsChat.Add(m);
+            NotifyPropertyChanged("msgsChats");
+        }
 
         /*public clsCarta ObtenerPersonajePartida() {
 

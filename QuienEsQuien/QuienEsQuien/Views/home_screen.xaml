@@ -23,6 +23,7 @@
                  HorizontalAlignment="Center"
                 Background="#D32F2F"
                 Foreground="White"
+                FontSize="25"
                />
         <Button Content="Sobre nosotros" Margin="10"
                  Click="HyperButton_About_Click"
