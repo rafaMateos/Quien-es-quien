@@ -135,6 +135,18 @@ namespace QuienEsQuien.Views {
 
         public async void ActualizarUi() {
 
+            await _dispatcher.RunAsync(CoreDispatcherPriority.Normal, () => {
+                ConfirmarGanador.Visibility = Visibility.Collapsed;
+
+
+            });
+
+            int i = 0;
+            do {
+                Thread.Sleep(1000);
+                i++;
+            } while (i < 1);
+
             await _dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
             {
                 Cargando.Visibility = Visibility.Visible;

@@ -107,9 +107,13 @@ namespace QuienEsQuien.Views {
 
                     var salaEdit = (clsSala)listSalas.Items[id - 1];
 
-                    salaEdit.usuariosConectados = salaEdit.usuariosConectados - 1;
-                    clsManejadora manejadora = new clsManejadora();
-                    manejadora.actualizarUsuariosSala(salaEdit);
+                    if (salaEdit.usuariosConectados > 0) {
+
+                        salaEdit.usuariosConectados = salaEdit.usuariosConectados - 1;
+                        clsManejadora manejadora = new clsManejadora();
+                        manejadora.actualizarUsuariosSala(salaEdit);
+                    }
+                   
 
 
 
@@ -245,6 +249,8 @@ namespace QuienEsQuien.Views {
             
             if (!(miVM.listadoDeSalas != null))
             {
+
+                //Cambiar esto porque peta
                 ContentDialog noFunca = new ContentDialog();
                 noFunca.Title = "Error";
                 noFunca.Content = "Ha ocurrido un fallo en la conexion :'(";
