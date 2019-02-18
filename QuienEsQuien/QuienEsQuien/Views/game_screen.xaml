@@ -251,7 +251,7 @@
 
 
         <RelativePanel
-            Visibility="Visible"
+            Visibility="Collapsed"
             Name="ConfirmarGanadorPorFallos"
             HorizontalAlignment="Center" 
             VerticalAlignment="Center" 

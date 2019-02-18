@@ -227,6 +227,12 @@ namespace QuienEsQuien.Views {
 
             });
 
+            await _dispatcher.RunAsync(CoreDispatcherPriority.Normal, () => {
+                ConfirmarGanadorPorFallos.Visibility = Visibility.Collapsed;
+
+
+            });
+
             int i = 0;
             do {
                 Thread.Sleep(1000);
