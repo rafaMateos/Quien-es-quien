@@ -51,18 +51,9 @@
             <Button Content="Adivinar personaje" Background="#D32F2F" 
                     Foreground="White" Margin="0,0,5,0" Click="ConfirmarSeleccion_Click"/>
 
-
-            <Ellipse Margin="5,0,0,0" x:Name="primerIntento" Width="25" Height="25" Fill="#FF5CEA5C">
-                
-            </Ellipse>
-
-            <Ellipse  Margin="5,0,0,0"  x:Name="segundoIntento" Width="25" Height="25" Fill="#FF5CEA5C">
-
-            </Ellipse>
-
-            <Ellipse  Margin="5,0,0,0"  x:Name="tercerIntento" Width="25" Height="25" Fill="#FF5CEA5C">
-
-            </Ellipse>
+            <Ellipse Margin="15,0,0,0" x:Name="primerIntento" Width="25" Height="25" Fill="#FF5CEA5C"/>
+            <Ellipse  Margin="5,0,0,0"  x:Name="segundoIntento" Width="25" Height="25" Fill="#FF5CEA5C"/>
+            <Ellipse  Margin="5,0,0,0"  x:Name="tercerIntento" Width="25" Height="25" Fill="#FF5CEA5C"/>
 
             <Button Click="Btn_Pasar_Click" Name="btn_Pasar" Content="Pasar turno"
                         Background="Yellow" Margin="50,0,5,0"/>
@@ -75,15 +66,15 @@
                   RelativePanel.LeftOf="contenedorChat"
                   ItemsSource="{Binding listadoDeCartas}"
                   SelectedItem="{Binding cartaSeleccionada, Mode=TwoWay}" 
-                  Background="White">
+                  HorizontalAlignment="Center">
             <GridView.ItemTemplate>
                 <DataTemplate x:Name="cartitaTemplate" >
                     <RelativePanel x:Name="cartaSelectPanel" 
-                                   Height="170" Width="120" Margin="2"  
+                                   Height="160" Width="120" Margin="2"  
                                    Opacity="{Binding Path=estaBajada, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Converter = {StaticResource conversorEstadoCarta}}" 
                                    HorizontalAlignment="Center">
                         <Image Source="{Binding Path=imagenUri}" 
-                                   Height="170" Width="120" Stretch="UniformToFill" 
+                                   Height="160" Width="110" Stretch="UniformToFill" 
                                    HorizontalAlignment="Center" VerticalAlignment="Stretch" />
                         <TextBlock Text="{Binding Path=nombreCarta}" 
                                    RelativePanel.AlignLeftWithPanel="True"
