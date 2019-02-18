@@ -179,7 +179,7 @@ namespace QuienEsQuien.Views {
 
         public static async void Position(clsSala info) {
             
-            if (info.usuariosConectados != 2) {
+            if (info.usuariosConectados < 2) {
 
                 if (conn.State == Microsoft.AspNet.SignalR.Client.ConnectionState.Connected) {
 
@@ -194,6 +194,7 @@ namespace QuienEsQuien.Views {
                 }
 
             } else {
+
 
                 ContentDialog noFunca = new ContentDialog();
                 noFunca.Title = "Sala llena";

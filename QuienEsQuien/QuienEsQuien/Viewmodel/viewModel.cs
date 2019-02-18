@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Windows.UI.Xaml;
+using Windows.UI.Xaml.Controls;
 
 namespace QuienEsQuien.Viewmodel {
     public class viewModel : clsBase {
@@ -58,11 +59,44 @@ namespace QuienEsQuien.Viewmodel {
             get { return _salaSeleccionada; }
             set {
                 _salaSeleccionada = value;
-                _visibilidad = "Visible";
-                NotifyPropertyChanged("visibilidad");
+
+                if (_salaSeleccionada != null) {
+
+                    if (_salaSeleccionada.usuariosConectados < 2)
+                    {
+
+                        _visibilidad = "Visible";
+                        NotifyPropertyChanged("visibilidad");
+                        myApp.sala = _salaSeleccionada.nombre;
+                        Views.lobby_screen.Position(_salaSeleccionada);
+                    }
+                    else
+                    {
+
+                        MostrarQueEsTonto();
+
+                    }
+
+                }
+              
+                
+                /*
                 myApp.sala = _salaSeleccionada.nombre;
-                Views.lobby_screen.Position(_salaSeleccionada);
+                Views.lobby_screen.Position(_salaSeleccionada);*/
             }
+        }
+
+        private async void MostrarQueEsTonto()
+        {
+
+            //Cambiar esto porque peta
+            ContentDialog noFunca = new ContentDialog();
+            noFunca.Title = "No puedes conectarte a sala con 2 personas";
+            noFunca.Content = "Eres tela de tonto";
+            noFunca.PrimaryButtonText = "Salir";
+
+            ContentDialogResult resultado = await noFunca.ShowAsync();
+
         }
 
         public String nickJugador {
