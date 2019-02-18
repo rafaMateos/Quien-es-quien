@@ -108,6 +108,8 @@ namespace QuienEsQuien.Views {
 
             await Windows.ApplicationModel.Core.CoreApplication.MainView.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, async () => {
 
+              
+
                 if (vm.personageGanador.nombreCarta.Equals(obj.nombreCarta)) {
 
                     if (conn.State == Microsoft.AspNet.SignalR.Client.ConnectionState.Connected) {
@@ -119,6 +121,8 @@ namespace QuienEsQuien.Views {
                     if (conn.State == Microsoft.AspNet.SignalR.Client.ConnectionState.Connected)
                     {
                         await ChatProxy.Invoke("Perdedor", myApp.sala);
+
+                      
                     }
 
                 } 
@@ -154,6 +158,12 @@ namespace QuienEsQuien.Views {
 
                 }
             });
+
+            if (vm.intentos == 3) {
+
+                //Ejecutar algo en el server para que muestre en en los dos la info necesaria
+            }
+            
         }
 
         private async void cambiarTurno() {
