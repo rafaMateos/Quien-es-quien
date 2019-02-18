@@ -21,7 +21,7 @@
 
         <TextBlock HorizontalAlignment="Center" Text="Bienvenido, introduce tu nick:"/>
         <TextBlock Text="{Binding nickJugador, Mode=TwoWay}"/>
-        <TextBox Name="txtNickJugador" MaxWidth="350" Margin="0,0,0,20"/>
+        <TextBox Name="txtNickJugador" KeyDown="TxtNickJugador_KeyDown" MaxWidth="350" Margin="0,0,0,20"/>
         <Button Content="Entrar"
                  Click="HyperButton_Click"
                  HorizontalAlignment="Center"

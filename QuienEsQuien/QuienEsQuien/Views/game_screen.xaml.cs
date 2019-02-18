@@ -150,10 +150,19 @@ namespace QuienEsQuien.Views {
                 }
             });
 
-            if (vm.intentos == 3) {
+            if (vm.intentos == 3)
+            {
 
-                if (conn.State == Microsoft.AspNet.SignalR.Client.ConnectionState.Connected) {
+                if (conn.State == Microsoft.AspNet.SignalR.Client.ConnectionState.Connected)
+                {
                     await ChatProxy.Invoke("GanadorPorFallos", myApp.sala, myApp.nickJugador);
+                }
+            }
+            else
+            {
+                if (conn.State == Microsoft.AspNet.SignalR.Client.ConnectionState.Connected)
+                {
+                    await ChatProxy.Invoke("pasarTurno", myApp.sala);
                 }
             }
 

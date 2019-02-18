@@ -34,5 +34,14 @@ namespace QuienEsQuien.Views {
             myApp.nickJugador = txtNickJugador.Text;
             this.Frame.Navigate(typeof(lobby_screen));
         }
+
+        private void TxtNickJugador_KeyDown(object sender, KeyRoutedEventArgs e)
+        {
+            if (e.Key == Windows.System.VirtualKey.Enter)
+            {
+                myApp.nickJugador = txtNickJugador.Text;
+                this.Frame.Navigate(typeof(lobby_screen));
+            }
+        }
     }
 }
