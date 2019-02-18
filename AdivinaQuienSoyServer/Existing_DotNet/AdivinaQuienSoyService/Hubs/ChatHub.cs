@@ -47,7 +47,7 @@ namespace AdivinaQuienSoyService.Hubs
 
         public void Perdedor(string grupo) {
 
-            Clients.Group(grupo, Context.ConnectionId).falloAdivinar();
+            Clients.Group(grupo,Context.ConnectionId).falloAdivinar();
         }
 
         /// <summary>
