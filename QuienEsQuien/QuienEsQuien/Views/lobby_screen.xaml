@@ -16,7 +16,8 @@
     
         <StackPanel Name="botoneraSuperior" Padding="10" HorizontalAlignment="Stretch" Margin="0,10,0,0" VerticalAlignment="Stretch" Orientation="Horizontal">
             <Button Content="Volver al menú" Click="Button_VolverMenu_Click"  Background="#D32F2F" Margin="10,0,10,0" Foreground="White"/>
-            <Button Content="Recargar salas" Click="Button_RecargarSalas_Click"  Background="#D32F2F" Margin="10,0,10,0" Foreground="White"/>
+            <Button Content="Recargar salas" Click="Button_RecargarSalas_Click"  Background="#D32F2F" Margin="10,0,10,0" Foreground="White"
+                    Command="{Binding Path=actualizarListadoSalas}"/>
             <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="Bienvenido " Margin="10,0,10,0"/>
             <TextBlock Name ="nickPlayer" HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding nickJugador, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
         </StackPanel>

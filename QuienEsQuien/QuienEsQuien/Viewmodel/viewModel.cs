@@ -251,5 +251,15 @@ namespace QuienEsQuien.Viewmodel {
 
             NotifyPropertyChanged("listadoDeCartas");
         }
+
+        public DelegateCommand actualizarListadoSalas {
+            get{
+                return new DelegateCommand(actualizarListadoSalas_Executed);
+            }
+        }
+
+        private async void actualizarListadoSalas_Executed() {
+            rellenarListaSalasAsync();
+        }
     }
 }

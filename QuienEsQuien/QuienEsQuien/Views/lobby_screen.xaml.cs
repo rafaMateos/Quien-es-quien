@@ -65,8 +65,6 @@ namespace QuienEsQuien.Views {
             }
             //Aqui invokar al LeeveRoom segun el parametro que pasemo.
 
-
-
         }
 
         public lobby_screen() {
