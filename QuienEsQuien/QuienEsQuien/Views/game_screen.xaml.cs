@@ -77,6 +77,7 @@ namespace QuienEsQuien.Views {
             ChatProxy.On<clsCarta,string>("comprobarGanador", comprobarGanador);
             ChatProxy.On<string>("finalizarPartidaPorGanador", finalizarPartidaPorGanador);
             ChatProxy.On("falloAdivinar", actualizarIntentos);
+            ChatProxy.On<string>("finalizarPartidaPorFallos", finalizarPartidaPorFallos);
 
             //ChatProxy.On<ChatMessage>("agregarMensaje", addMessage);
 
@@ -129,6 +130,8 @@ namespace QuienEsQuien.Views {
 
         private async void actualizarIntentos()
         {
+
+            
             await Windows.ApplicationModel.Core.CoreApplication.MainView.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, async () =>
             {
 
@@ -169,17 +172,37 @@ namespace QuienEsQuien.Views {
 
         private async void finalizarPartidaPorFallos(string nickNamePerdedor)
         {
+
             await Windows.ApplicationModel.Core.CoreApplication.MainView.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () => {
 
-                if (nickNamePerdedor == myApp.nickJugador)
-                {
+                string textoInfo;
 
-                }
-                else
-                {
+                if (nickNamePerdedor == myApp.nickJugador) {
+                    textoInfo = "Perdiste por fallos";
+                    ActualizarUIPorFallos(textoInfo);
+                } else {
+                    textoInfo = $"Ganaste porque {nickNamePerdedor} falló 3 veces.";
+                    ActualizarUIPorFallos(textoInfo);
 
                 }
             });
+        }
+
+        private async void ActualizarUIPorFallos(string textoInfo) {
+
+            await _dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
+            {
+                TextoGandorOPerdedor.Text = textoInfo;
+                ConfirmarGanadorPorFallos.Visibility = Visibility.Visible;
+            });
+
+            int i = 0;
+            do {
+                Thread.Sleep(1000);
+                i++;
+            } while (i < 1);
+
+
         }
 
         private async void cambiarTurno() {

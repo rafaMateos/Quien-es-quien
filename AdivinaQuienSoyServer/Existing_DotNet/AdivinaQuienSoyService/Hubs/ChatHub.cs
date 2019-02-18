@@ -51,7 +51,7 @@ namespace AdivinaQuienSoyService.Hubs
         }
 
         public void GanadorPorFallos(string grupo,string nickname) {
-
+        
          Clients.Group(grupo).finalizarPartidaPorFallos(nickname);
 
         }

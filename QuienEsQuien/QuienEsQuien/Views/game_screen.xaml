@@ -248,6 +248,33 @@
 
         </RelativePanel>
 
+
+        <RelativePanel
+            Visibility="Collapsed"
+            Name="ConfirmarGanadorPorFallos"
+            HorizontalAlignment="Center" 
+            VerticalAlignment="Center" 
+            Background="White" Width="300" 
+            BorderBrush="Black"
+            BorderThickness="2"
+            Height="300" RelativePanel.AlignHorizontalCenterWithPanel="True"
+            RelativePanel.AlignVerticalCenterWithPanel="True"
+            CornerRadius="10" >
+
+            <TextBlock Name="TextoGandorOPerdedor"
+                       Text=""
+                       RelativePanel.AlignHorizontalCenterWithPanel="True"
+                       RelativePanel.AlignVerticalCenterWithPanel="True"
+                       FontSize="25"
+                       >
+                
+            </TextBlock>
+               
+
+
+
+        </RelativePanel>
+
     </RelativePanel>
 
 </Page>
