@@ -74,7 +74,7 @@ namespace QuienEsQuien.Views {
             ChatProxy.On<ChatMessage>("agregarMensaje", addMessage);
             ChatProxy.On("abandoPartida", volverLobby);
             ChatProxy.On("cambiarTurno", cambiarTurno);
-            ChatProxy.On<clsCarta,string>("comprobarGanador", comprobarGanador);
+            ChatProxy.On<clsCarta, string>("comprobarGanador", comprobarGanador);
             ChatProxy.On<string>("finalizarPartidaPorGanador", finalizarPartidaPorGanador);
             ChatProxy.On("falloAdivinar", actualizarIntentos);
             ChatProxy.On<string>("finalizarPartidaPorFallos", finalizarPartidaPorFallos);
@@ -87,8 +87,7 @@ namespace QuienEsQuien.Views {
 
             await Windows.ApplicationModel.Core.CoreApplication.MainView.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, async () => {
 
-                await _dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
-                {
+                await _dispatcher.RunAsync(CoreDispatcherPriority.Normal, () => {
                     ConfirmarGanador.Visibility = Visibility.Visible;
                 });
 
@@ -98,18 +97,13 @@ namespace QuienEsQuien.Views {
                     i++;
                 } while (i < 1);
 
-
-
             });
-
 
         }
 
-        private async void comprobarGanador(clsCarta obj,string nickname) {
+        private async void comprobarGanador(clsCarta obj, string nickname) {
 
             await Windows.ApplicationModel.Core.CoreApplication.MainView.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, async () => {
-
-              
 
                 if (vm.personageGanador.nombreCarta.Equals(obj.nombreCarta)) {
 
@@ -119,26 +113,22 @@ namespace QuienEsQuien.Views {
                     }
                 } else {
 
-                    if (conn.State == Microsoft.AspNet.SignalR.Client.ConnectionState.Connected)
-                    {
+                    if (conn.State == Microsoft.AspNet.SignalR.Client.ConnectionState.Connected) {
                         await ChatProxy.Invoke("Perdedor", myApp.sala);
                     }
 
-                } 
-            }); 
+                }
+            });
         }
 
-        private async void actualizarIntentos()
-        {
+        private async void actualizarIntentos() {
 
-            
-            await Windows.ApplicationModel.Core.CoreApplication.MainView.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, async () =>
-            {
+
+            await Windows.ApplicationModel.Core.CoreApplication.MainView.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, async () => {
 
                 vm.intentos++;
 
-                switch (vm.intentos)
-                {
+                switch (vm.intentos) {
 
                     case 1:
                         primerIntento.Fill = new SolidColorBrush(Windows.UI.Colors.Red);
@@ -162,26 +152,24 @@ namespace QuienEsQuien.Views {
 
             if (vm.intentos == 3) {
 
-                if (conn.State == Microsoft.AspNet.SignalR.Client.ConnectionState.Connected)
-                {
+                if (conn.State == Microsoft.AspNet.SignalR.Client.ConnectionState.Connected) {
                     await ChatProxy.Invoke("GanadorPorFallos", myApp.sala, myApp.nickJugador);
                 }
             }
-            
+
         }
 
-        private async void finalizarPartidaPorFallos(string nickNamePerdedor)
-        {
+        private async void finalizarPartidaPorFallos(string nickNamePerdedor) {
 
             await Windows.ApplicationModel.Core.CoreApplication.MainView.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () => {
 
                 string textoInfo;
 
                 if (nickNamePerdedor == myApp.nickJugador) {
-                    textoInfo = "Perdiste por fallos";
+                    textoInfo = "Perdiste, has fallado tres veces";
                     ActualizarUIPorFallos(textoInfo);
                 } else {
-                    textoInfo = $"Ganaste porque {nickNamePerdedor} falló 3 veces.";
+                    textoInfo = $"Ganaste porque {nickNamePerdedor} falló tres veces.";
                     ActualizarUIPorFallos(textoInfo);
 
                 }
@@ -190,8 +178,7 @@ namespace QuienEsQuien.Views {
 
         private async void ActualizarUIPorFallos(string textoInfo) {
 
-            await _dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
-            {
+            await _dispatcher.RunAsync(CoreDispatcherPriority.Normal, () => {
                 TextoGandorOPerdedor.Text = textoInfo;
                 ConfirmarGanadorPorFallos.Visibility = Visibility.Visible;
             });
@@ -223,14 +210,10 @@ namespace QuienEsQuien.Views {
 
             await _dispatcher.RunAsync(CoreDispatcherPriority.Normal, () => {
                 ConfirmarGanador.Visibility = Visibility.Collapsed;
-
-
             });
 
             await _dispatcher.RunAsync(CoreDispatcherPriority.Normal, () => {
                 ConfirmarGanadorPorFallos.Visibility = Visibility.Collapsed;
-
-
             });
 
             int i = 0;
@@ -239,36 +222,28 @@ namespace QuienEsQuien.Views {
                 i++;
             } while (i < 1);
 
-            await _dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
-            {
+            await _dispatcher.RunAsync(CoreDispatcherPriority.Normal, () => {
                 Cargando.Visibility = Visibility.Visible;
-
-               
-            });
-
+            }); 
         }
-       
+
 
         private async void volverLobby() {
 
             ActualizarUi();
 
             int i = 0;
-            do
-            {
+            do {
                 Thread.Sleep(1000);
                 i++;
             } while (i < 3);
-
-
+             
             await Windows.ApplicationModel.Core.CoreApplication.MainView.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () => {
-                
+
                 myApp.esVolver = true;
                 this.Frame.Navigate(typeof(lobby_screen));
 
-            });
-
-
+            }); 
         }
 
         private async void cargando() {
@@ -278,19 +253,17 @@ namespace QuienEsQuien.Views {
                 Thread.Sleep(1000);
                 i++;
             } while (i < 10 || !(conn.State == Microsoft.AspNet.SignalR.Client.ConnectionState.Connected));
-
-
-            if (myApp.miTurno)
-
-                turno.Text = "Es mi turno";
-            else
-                turno.Text = "No es mi turno";
-
-
+             
+            if (myApp.miTurno) {
+                turno.Text = "Es tu turno";
+            } else {
+                turno.Text = "NO ES TU TURNO";
+            }
+             
             if (i == 10 && !(conn.State == Microsoft.AspNet.SignalR.Client.ConnectionState.Connected)) {
                 ContentDialog noFunca = new ContentDialog();
-                noFunca.Title = "Error";
-                noFunca.Content = "Ha ocurrido un fallo en la conexion :'(";
+                noFunca.Title = "¡Ups!";
+                noFunca.Content = "Algo ha salido mal :'(";
                 noFunca.PrimaryButtonText = "Salir";
 
                 ContentDialogResult resultado = await noFunca.ShowAsync();
@@ -298,9 +271,7 @@ namespace QuienEsQuien.Views {
                 if (resultado == ContentDialogResult.Primary) {
                     this.Frame.Navigate(typeof(login_screen));
                 }
-            }
-
-
+            } 
         }
 
         private async void addMessage(ChatMessage obj) {
@@ -373,13 +344,13 @@ namespace QuienEsQuien.Views {
 
             if (conn.State == Microsoft.AspNet.SignalR.Client.ConnectionState.Connected) {
                 ChatProxy.Invoke("sendPosibleWinner", vm.cartaGanadoraSeleccionada, myApp.sala, myApp.nickJugador);
-            } 
+            }
         }
 
         private void Button_Click(object sender, RoutedEventArgs e) {
 
             ConfirmarGanador.Visibility = Visibility.Collapsed;
-            
+
             ChatProxy.Invoke("LeaveGroup", myApp.sala);
 
         }

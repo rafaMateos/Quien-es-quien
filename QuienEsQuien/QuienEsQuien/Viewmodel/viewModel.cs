@@ -209,11 +209,13 @@ namespace QuienEsQuien.Viewmodel {
             ChatMessage m = new ChatMessage();
             m.groupName = "";
             m.message = " Bienvenido Usuario...";
-            m.nickName = "Lider Supremo: ";
+            m.nickName = "Sistema: ";
 
             _visibilidad = "Collapsed";
 
             _msgsChat.Add(m);
+            NotifyPropertyChanged("msgsChats");
+
             rellenarListaSalasAsync();
             rellenarListadoDeCartas();
 

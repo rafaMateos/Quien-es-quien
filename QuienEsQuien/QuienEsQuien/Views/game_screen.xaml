@@ -33,7 +33,7 @@
 
             <ComboBox  ItemsSource="{Binding Path=listadoSecundarioDeCartas, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" 
                            PlaceholderText="¿Eres ... ?"
-                           Width="250" Margin="50,0,5,0"
+                           Width="220" Margin="50,0,5,0"
                            SelectedItem="{Binding cartaGanadoraSeleccionada,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}">
 
                 <ComboBox.ItemTemplate>
@@ -66,7 +66,9 @@
                   RelativePanel.LeftOf="contenedorChat"
                   ItemsSource="{Binding listadoDeCartas}"
                   SelectedItem="{Binding cartaSeleccionada, Mode=TwoWay}" 
-                  HorizontalAlignment="Center">
+                  HorizontalAlignment="Center"
+                  VerticalAlignment="Center"
+                  Margin="8">
             <GridView.ItemTemplate>
                 <DataTemplate x:Name="cartitaTemplate" >
                     <RelativePanel x:Name="cartaSelectPanel" 
@@ -74,12 +76,14 @@
                                    Opacity="{Binding Path=estaBajada, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Converter = {StaticResource conversorEstadoCarta}}" 
                                    HorizontalAlignment="Center">
                         <Image Source="{Binding Path=imagenUri}" 
-                                   Height="160" Width="110" Stretch="UniformToFill" 
-                                   HorizontalAlignment="Center" VerticalAlignment="Stretch" />
+                               Height="160" Width="110" Stretch="UniformToFill" 
+                               HorizontalAlignment="Center"
+                               RelativePanel.AlignLeftWithPanel="True"
+                               RelativePanel.AlignRightWithPanel="True"/>
                         <TextBlock Text="{Binding Path=nombreCarta}" 
                                    RelativePanel.AlignLeftWithPanel="True"
                                    RelativePanel.AlignRightWithPanel="True"
-                                   HorizontalAlignment="Center" VerticalAlignment="Center"
+                                   HorizontalAlignment="Center"
                                    Margin="0,4"/>
                     </RelativePanel>
                 </DataTemplate>
@@ -119,32 +123,52 @@
                        Margin="5,0,0,0" >
 
             <RelativePanel Name="contenedorTuyo" 
-                       Background="Aquamarine" Margin="5,0,0,5" Padding="5"
+                       Background="Aquamarine" Margin="0,5" Padding="5"
                        RelativePanel.AlignBottomWithPanel="False"
-                           HorizontalAlignment="Left">
-                <TextBlock Name="tuPersonajeNombre" Text="Tu eres:"
-                       RelativePanel.AlignLeftWithPanel="True"/>
-                <Image Name="tuPersonajeImagen" Source="{Binding personageGanador.imagenUri}" 
-                       MaxHeight="130" HorizontalAlignment="Right"
-                       RelativePanel.Below="tuPersonajeNombre"
-                       RelativePanel.AlignRightWithPanel="True"/>
+                       RelativePanel.AlignRightWithPanel="True"
+                       RelativePanel.AlignLeftWithPanel="True" >
+
                 <TextBlock Name="turno" Text="xXxXxXxX"  
                        HorizontalAlignment="Center"
-                       RelativePanel.Below="tuPersonajeImagen"/>
+                       RelativePanel.AlignHorizontalCenterWithPanel="True"
+                       RelativePanel.AlignTopWithPanel="True"
+                       FontSize="20"/>
+
+                <TextBlock Name="txtTuEres" Text="Tu eres: "
+                       RelativePanel.AlignLeftWithPanel="True"
+                       RelativePanel.Below="turno"/>
+
+                <TextBlock Name="tuPersonajeNombre" Text="{Binding personageGanador.nombreCarta}"
+                       RelativePanel.RightOf="txtTuEres"
+                       Margin="5,0"
+                       RelativePanel.Below="turno"/>
+
+                <Image Name="tuPersonajeImagen" Source="{Binding personageGanador.imagenUri}" 
+                       MaxHeight="130" HorizontalAlignment="Center"
+                       RelativePanel.Below="tuPersonajeNombre"
+                       RelativePanel.AlignRightWithPanel="True"
+                       RelativePanel.AlignLeftWithPanel="True"/>
+                
             </RelativePanel>
 
             <ListView Name="contanierChat" Background="Brown" 
-                       RelativePanel.AlignLeftWithPanel="True"
-                       RelativePanel.AlignRightWithPanel="True"
-                       RelativePanel.Above="contenedorSend"
+                      RelativePanel.AlignLeftWithPanel="True"
+                      RelativePanel.AlignRightWithPanel="True"
+                      RelativePanel.Above="contenedorSend"
                       RelativePanel.Below="contenedorTuyo"
-                       ItemsSource="{Binding msgsChats,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"> 
+                      Margin="0,5"
+                      HorizontalAlignment="Stretch"
+                      ItemsSource="{Binding msgsChats,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"> 
                 <ListView.ItemTemplate> 
-                    <DataTemplate > 
-                        <StackPanel Orientation="Horizontal"> 
-                            <TextBlock Text="{Binding Path=nickName}"></TextBlock>
-                            <TextBlock Text="{Binding Path=message,Mode=TwoWay}"></TextBlock> 
-                        </StackPanel> 
+                    <DataTemplate >
+                        <!--<StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding Path=nickName}"/>
+                            <TextBlock Text="{Binding Path=message, Mode=TwoWay}" TextWrapping="WrapWholeWords"/>
+                        </StackPanel>-->
+                        <Grid>
+                            <TextBlock Text="{Binding Path=nickName}"/>
+                            <TextBlock Text="{Binding Path=message, Mode=TwoWay}" TextWrapping="WrapWholeWords"/>
+                        </Grid>
                     </DataTemplate> 
                 </ListView.ItemTemplate> 
             </ListView>
@@ -154,12 +178,11 @@
 
                 <TextBox KeyDown="Tbx_chat_KeyDown" Name="tbx_chat"
                         RelativePanel.LeftOf="btn_send"
-                        RelativePanel.AlignLeftWithPanel="True"
-                         />
+                        RelativePanel.AlignLeftWithPanel="True" />
 
                 <Button Click="Btn_send_Click" Name="btn_send" 
-                            Content="Send" RelativePanel.AlignRightWithPanel="True"
-                            Background="Purple"/>
+                        Content="Send" RelativePanel.AlignRightWithPanel="True"
+                        Background="Purple"/>
             </RelativePanel>
 
 
