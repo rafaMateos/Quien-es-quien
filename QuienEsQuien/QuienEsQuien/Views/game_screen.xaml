@@ -73,23 +73,24 @@
                   RelativePanel.AlignLeftWithPanel="True"
                   RelativePanel.AlignBottomWithPanel="True"
                   RelativePanel.LeftOf="contenedorChat"
-                ItemsSource="{Binding listadoDeCartas}"
-                SelectedItem="{Binding cartaSeleccionada, Mode=TwoWay}" 
+                  ItemsSource="{Binding listadoDeCartas}"
+                  SelectedItem="{Binding cartaSeleccionada, Mode=TwoWay}" 
                   Background="White">
             <GridView.ItemTemplate>
                 <DataTemplate x:Name="cartitaTemplate" >
-                    <StackPanel x:Name="cartaSelectPanel" 
-                                    Height="200" Width="150" Margin="12"  
-                                    Opacity="{Binding Path=estaBajada, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Converter = {StaticResource conversorEstadoCarta}}"
-                                    >
+                    <RelativePanel x:Name="cartaSelectPanel" 
+                                   Height="170" Width="120" Margin="2"  
+                                   Opacity="{Binding Path=estaBajada, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Converter = {StaticResource conversorEstadoCarta}}" 
+                                   HorizontalAlignment="Center">
                         <Image Source="{Binding Path=imagenUri}" 
-                                   Height="165" Width="165" Stretch="UniformToFill" 
-                                   HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
-                        <StackPanel>
-                            <TextBlock Text="{Binding Path=nombreCarta}"/>
-                            <TextBlock Text="{Binding Path=esGanadora}"/>
-                        </StackPanel>
-                    </StackPanel>
+                                   Height="170" Width="120" Stretch="UniformToFill" 
+                                   HorizontalAlignment="Center" VerticalAlignment="Stretch" />
+                        <TextBlock Text="{Binding Path=nombreCarta}" 
+                                   RelativePanel.AlignLeftWithPanel="True"
+                                   RelativePanel.AlignRightWithPanel="True"
+                                   HorizontalAlignment="Center" VerticalAlignment="Center"
+                                   Margin="0,4"/>
+                    </RelativePanel>
                 </DataTemplate>
             </GridView.ItemTemplate>
 
