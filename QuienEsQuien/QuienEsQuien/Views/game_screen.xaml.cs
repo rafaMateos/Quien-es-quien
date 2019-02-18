@@ -76,6 +76,7 @@ namespace QuienEsQuien.Views {
             ChatProxy.On("cambiarTurno", cambiarTurno);
             ChatProxy.On<clsCarta,string>("comprobarGanador", comprobarGanador);
             ChatProxy.On<string>("finalizarPartidaPorGanador", finalizarPartidaPorGanador);
+            ChatProxy.On("falloAdivinar", actualizarIntentos);
 
             //ChatProxy.On<ChatMessage>("agregarMensaje", addMessage);
 
@@ -115,30 +116,44 @@ namespace QuienEsQuien.Views {
                     }
                 } else {
 
-                    vm.intentos++;
-                    switch (vm.intentos) {
-
-                        case 1:
-                            primerIntento.Fill = new SolidColorBrush(Windows.UI.Colors.Red);
-                            break;
-
-
-                        case 2:
-                            primerIntento.Fill = new SolidColorBrush(Windows.UI.Colors.Red);
-                            segundoIntento.Fill = new SolidColorBrush(Windows.UI.Colors.Red);
-                            break;
-
-                        case 3:
-
-                            primerIntento.Fill = new SolidColorBrush(Windows.UI.Colors.Red);
-                            segundoIntento.Fill = new SolidColorBrush(Windows.UI.Colors.Red);
-                            tercerIntento.Fill = new SolidColorBrush(Windows.UI.Colors.Red);
-                            break;
-
+                    if (conn.State == Microsoft.AspNet.SignalR.Client.ConnectionState.Connected)
+                    {
+                        await ChatProxy.Invoke("Perdedor", myApp.sala);
                     }
-                     
+
                 } 
             }); 
+        }
+
+        private async void actualizarIntentos()
+        {
+            await Windows.ApplicationModel.Core.CoreApplication.MainView.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, async () =>
+            {
+
+                vm.intentos++;
+
+                switch (vm.intentos)
+                {
+
+                    case 1:
+                        primerIntento.Fill = new SolidColorBrush(Windows.UI.Colors.Red);
+                        break;
+
+
+                    case 2:
+                        primerIntento.Fill = new SolidColorBrush(Windows.UI.Colors.Red);
+                        segundoIntento.Fill = new SolidColorBrush(Windows.UI.Colors.Red);
+                        break;
+
+                    case 3:
+
+                        primerIntento.Fill = new SolidColorBrush(Windows.UI.Colors.Red);
+                        segundoIntento.Fill = new SolidColorBrush(Windows.UI.Colors.Red);
+                        tercerIntento.Fill = new SolidColorBrush(Windows.UI.Colors.Red);
+                        break;
+
+                }
+            });
         }
 
         private async void cambiarTurno() {
