@@ -35,12 +35,12 @@ namespace AdivinaQuienSoyService.Hubs
         public void sendPosibleWinner(clsCarta carta, string grupo,string nickname) {
 
             Clients.Group(grupo,Context.ConnectionId).comprobarGanador(carta,nickname);//vaya sacada de polla v2 by dylan nene
-
-          
         }
 
         public void Ganador(string nickname, string groupname) {
 
+
+     
             Clients.Group(groupname).finalizarPartidaPorGanador(nickname);
         }
 
@@ -50,7 +50,11 @@ namespace AdivinaQuienSoyService.Hubs
             Clients.Group(grupo,Context.ConnectionId).falloAdivinar();
         }
 
-       
+        public void GanadorPorFallos(string grupo,string nickname) {
+
+         Clients.Group(grupo).finalizarPartidaPorFallos(nickname);
+
+        }
 
         /// <summary>
         /// Elimina una conexion del grupo
