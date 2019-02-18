@@ -281,6 +281,7 @@ namespace QuienEsQuien.Views {
 
 
             if (myApp.miTurno)
+
                 turno.Text = "Es mi turno";
             else
                 turno.Text = "No es mi turno";
@@ -344,7 +345,9 @@ namespace QuienEsQuien.Views {
         private void Btn_Pasar_Click(object sender, RoutedEventArgs e) {
 
             if (myApp.miTurno) {
+
                 if (conn.State == Microsoft.AspNet.SignalR.Client.ConnectionState.Connected) {
+
                     ChatProxy.Invoke("pasarTurno", myApp.sala);
                 }
             }
