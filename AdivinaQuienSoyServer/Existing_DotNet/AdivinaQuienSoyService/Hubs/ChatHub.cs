@@ -50,6 +50,8 @@ namespace AdivinaQuienSoyService.Hubs
             Clients.Group(grupo,Context.ConnectionId).falloAdivinar();
         }
 
+       
+
         /// <summary>
         /// Elimina una conexion del grupo
         /// </summary>
