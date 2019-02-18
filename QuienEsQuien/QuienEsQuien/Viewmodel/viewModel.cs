@@ -37,6 +37,8 @@ namespace QuienEsQuien.Viewmodel {
 
         private clsCarta _cartaGanadoraSeleccionada;
 
+        private int _intentos = 0;
+
         #endregion
         #region propiedades publicas
         public List<clsSala> listadoDeSalas {
@@ -151,6 +153,19 @@ namespace QuienEsQuien.Viewmodel {
 
                 _visibilidad = value;
                 NotifyPropertyChanged("Visibilidad");
+            }
+        }
+
+        public int intentos {
+
+            get {
+
+                return _intentos;
+            }
+            set {
+
+                _intentos = value;
+                NotifyPropertyChanged("intentos");
             }
         }
         #endregion

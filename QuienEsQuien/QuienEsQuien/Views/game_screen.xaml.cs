@@ -114,6 +114,28 @@ namespace QuienEsQuien.Views {
                         await ChatProxy.Invoke("Ganador", nickname, myApp.sala);
                     }
                 } else {
+
+                    vm.intentos++;
+                    switch (vm.intentos) {
+
+                        case 1:
+                            primerIntento.Fill = new SolidColorBrush(Windows.UI.Colors.Red);
+                            break;
+
+
+                        case 2:
+                            primerIntento.Fill = new SolidColorBrush(Windows.UI.Colors.Red);
+                            segundoIntento.Fill = new SolidColorBrush(Windows.UI.Colors.Red);
+                            break;
+
+                        case 3:
+
+                            primerIntento.Fill = new SolidColorBrush(Windows.UI.Colors.Red);
+                            segundoIntento.Fill = new SolidColorBrush(Windows.UI.Colors.Red);
+                            tercerIntento.Fill = new SolidColorBrush(Windows.UI.Colors.Red);
+                            break;
+
+                    }
                      
                 } 
             }); 
