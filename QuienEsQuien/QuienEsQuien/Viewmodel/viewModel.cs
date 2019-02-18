@@ -38,7 +38,6 @@ namespace QuienEsQuien.Viewmodel {
         private clsCarta _cartaGanadoraSeleccionada;
 
         #endregion
-
         #region propiedades publicas
         public List<clsSala> listadoDeSalas {
             get { return _ListadoDeSalas; }

@@ -188,6 +188,54 @@
 
         </RelativePanel>
 
+
+        <RelativePanel
+            Visibility="Collapsed"
+            Name="ConfirmarGanador"
+            HorizontalAlignment="Center" 
+            VerticalAlignment="Center" 
+            Background="White" Width="300" 
+            BorderBrush="Black"
+            BorderThickness="2"
+            Height="300" RelativePanel.AlignHorizontalCenterWithPanel="True"
+            RelativePanel.AlignVerticalCenterWithPanel="True"
+            CornerRadius="10" >
+
+            <StackPanel Orientation="Horizontal" RelativePanel.AlignHorizontalCenterWithPanel="True"
+                RelativePanel.AlignVerticalCenterWithPanel="True">
+
+                <TextBlock  
+               
+                Text="El ganador es:" 
+                FontSize="25" 
+                 />
+
+                <TextBlock  
+               Name="nombreGanador"
+                Text=" Rafael" 
+                FontSize="25" 
+                 Foreground="Green"
+                 />
+
+            </StackPanel>
+
+
+            <StackPanel RelativePanel.AlignVerticalCenterWithPanel="True"
+                        RelativePanel.AlignBottomWithPanel="True"
+                        RelativePanel.AlignHorizontalCenterWithPanel="True"
+                        Margin="0,0,0,10">
+
+                <Button Content="Volver a jugar" Click="Button_Click">
+                </Button>
+                
+                
+            </StackPanel>
+            
+
+
+
+        </RelativePanel>
+
     </RelativePanel>
 
 </Page>

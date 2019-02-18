@@ -85,18 +85,16 @@ namespace QuienEsQuien.Views {
 
             await Windows.ApplicationModel.Core.CoreApplication.MainView.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, async () => {
 
-                ContentDialog noFunca = new ContentDialog();
-                noFunca.Title = "Ganador!!!!!!!!";
-                noFunca.Content = "El ganador es: " + obj;
-                noFunca.PrimaryButtonText = "Volver a jugar";
+                await _dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
+                {
+                    ConfirmarGanador.Visibility = Visibility.Visible;
+                });
 
-                ContentDialogResult resultado = await noFunca.ShowAsync();
-
-                if (resultado == ContentDialogResult.Primary) {
-
-                    Cargando.Visibility = Visibility.Visible;
-                    ChatProxy.Invoke("LeaveGroup", myApp.sala);
-                }
+                int i = 0;
+                do {
+                    Thread.Sleep(1000);
+                    i++;
+                } while (i < 1);
 
 
 
@@ -269,6 +267,14 @@ namespace QuienEsQuien.Views {
             if (conn.State == Microsoft.AspNet.SignalR.Client.ConnectionState.Connected) {
                 ChatProxy.Invoke("sendPosibleWinner", vm.cartaGanadoraSeleccionada, myApp.sala, myApp.nickJugador);
             } 
-        } 
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e) {
+
+            ConfirmarGanador.Visibility = Visibility.Collapsed;
+            
+            ChatProxy.Invoke("LeaveGroup", myApp.sala);
+
+        }
     }
 }
