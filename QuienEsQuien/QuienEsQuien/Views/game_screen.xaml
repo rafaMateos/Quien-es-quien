@@ -240,10 +240,9 @@
 
                 <Button Content="Volver a jugar" Click="Button_Click">
                 </Button>
-                
-                
+
+
             </StackPanel>
-            
 
 
 

@@ -121,8 +121,6 @@ namespace QuienEsQuien.Views {
                     if (conn.State == Microsoft.AspNet.SignalR.Client.ConnectionState.Connected)
                     {
                         await ChatProxy.Invoke("Perdedor", myApp.sala);
-
-                      
                     }
 
                 } 
@@ -161,9 +159,27 @@ namespace QuienEsQuien.Views {
 
             if (vm.intentos == 3) {
 
-                //Ejecutar algo en el server para que muestre en en los dos la info necesaria
+                if (conn.State == Microsoft.AspNet.SignalR.Client.ConnectionState.Connected)
+                {
+                    await ChatProxy.Invoke("GanadoPorFallos", myApp.sala, myApp.nickJugador);
+                }
             }
             
+        }
+
+        private async void finalizarPartidaPorFallos(string nickNamePerdedor)
+        {
+            await Windows.ApplicationModel.Core.CoreApplication.MainView.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () => {
+
+                if (nickNamePerdedor == myApp.nickJugador)
+                {
+
+                }
+                else
+                {
+
+                }
+            });
         }
 
         private async void cambiarTurno() {
