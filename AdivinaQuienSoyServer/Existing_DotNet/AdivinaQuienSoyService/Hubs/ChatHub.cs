@@ -43,7 +43,12 @@ namespace AdivinaQuienSoyService.Hubs
 
             Clients.Group(groupname).finalizarPartidaPorGanador(nickname);
         }
-       
+
+
+        public void Perdedor(string grupo) {
+
+            Clients.Group(grupo, Context.ConnectionId).falloAdivinar();
+        }
 
         /// <summary>
         /// Elimina una conexion del grupo
