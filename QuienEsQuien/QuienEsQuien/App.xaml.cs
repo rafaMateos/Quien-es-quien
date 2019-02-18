@@ -53,7 +53,7 @@ namespace QuienEsQuien
         protected override void OnLaunched(LaunchActivatedEventArgs e)
         {
 
-            cargarMusikita();
+            //cargarMusikita();
 
             Frame rootFrame = Window.Current.Content as Frame;
 
@@ -120,7 +120,7 @@ namespace QuienEsQuien
             player.AutoPlay = false;
             player.Source = MediaSource.CreateFromStorageFile(file);
             player.Play();
-            player.Volume = 0.5;
+            player.Volume = 0.3;
         }
 
         /// <summary>
