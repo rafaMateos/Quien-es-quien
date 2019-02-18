@@ -38,8 +38,8 @@ namespace QuienEsQuien.Views {
 
         viewModel miVM = new viewModel();
         Boolean estaSala = false;
-         static App myApp = (Application.Current as App);
-        string nick = "ERROR" ;
+        static App myApp = (Application.Current as App);
+        string nick = "ERROR";
 
         int contadorCargando = 0;
 
@@ -50,7 +50,7 @@ namespace QuienEsQuien.Views {
 
             if (!myApp.esVolver) {
 
-               // miVM.nickJugador = (string)e.Parameter;
+                // miVM.nickJugador = (string)e.Parameter;
 
             } else {
                 myApp.esVolver = false;
@@ -59,10 +59,8 @@ namespace QuienEsQuien.Views {
                 cargando();
 
                 if (conn.State == Microsoft.AspNet.SignalR.Client.ConnectionState.Connected) {
-
                     SalasProxy.Invoke("LeaveRoom", myApp.sala);
                     myApp.sala = "";
-
                 }
             }
             //Aqui invokar al LeeveRoom segun el parametro que pasemo.
@@ -98,30 +96,22 @@ namespace QuienEsQuien.Views {
         //Aqui descontaremos igual que en onInfo 
         private async void onDescontar(string sala) {
 
-                cargando2();
+            cargando2();
             //¿Esto no lo hace si ponemos await????????
-               
-                await Windows.ApplicationModel.Core.CoreApplication.MainView.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, async () => {
 
-                    int id = ObtenerIDSala(sala);
+            await Windows.ApplicationModel.Core.CoreApplication.MainView.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, async () => {
 
-                    var salaEdit = (clsSala)listSalas.Items[id - 1];
+                int id = ObtenerIDSala(sala);
 
-                    if (salaEdit.usuariosConectados > 0) {
+                var salaEdit = (clsSala)listSalas.Items[id - 1];
 
-                        salaEdit.usuariosConectados = salaEdit.usuariosConectados - 1;
-                        clsManejadora manejadora = new clsManejadora();
-                        manejadora.actualizarUsuariosSala(salaEdit);
-                    }
-                   
+                if (salaEdit.usuariosConectados > 0) {
 
-
-
-                });
-
-            
-
-
+                    salaEdit.usuariosConectados = salaEdit.usuariosConectados - 1;
+                    clsManejadora manejadora = new clsManejadora();
+                    manejadora.actualizarUsuariosSala(salaEdit);
+                }
+            });
         }
 
         public int ObtenerIDSala(string nombre) {
@@ -176,40 +166,28 @@ namespace QuienEsQuien.Views {
         }
 
         private async void PasarAJugar(string salaNombre) {
-
-
+            
             await Windows.ApplicationModel.Core.CoreApplication.MainView.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, async () => {
 
                 if (!myApp.sala.Equals("") && !estaSala) {
-
                     estaSala = true;
                     this.Frame.Navigate(typeof(game_screen));
 
                 }
-               
-
             });
-
         }
 
 
 
         public static async void Position(clsSala info) {
+            
+            if (info.usuariosConectados != 2) {
 
-           
+                if (conn.State == Microsoft.AspNet.SignalR.Client.ConnectionState.Connected) {
 
-            if (info.usuariosConectados != 2)
-            {
-
-                if (conn.State == Microsoft.AspNet.SignalR.Client.ConnectionState.Connected)
-                {
-
-                    if (info.usuariosConectados == 0)
-                    {
+                    if (info.usuariosConectados == 0) {
                         myApp.miTurno = true;
-                    }
-                    else
-                    {
+                    } else {
                         myApp.miTurno = false;
                     }
 
@@ -217,38 +195,29 @@ namespace QuienEsQuien.Views {
 
                 }
 
-            }
-            else {
+            } else {
 
                 ContentDialog noFunca = new ContentDialog();
                 noFunca.Title = "Sala llena";
                 noFunca.Content = "Utilize otra sala para jugar";
                 noFunca.PrimaryButtonText = "OK";
                 ContentDialogResult resultado = await noFunca.ShowAsync();
-
                 
-
             }
-          
-
-           
         }
 
-        private async void cargando2()
-        {
-            
+        private async void cargando2() {
+
             int i = 0;
-            do
-            {
+            do {
                 Thread.Sleep(1000);
                 i++;
             } while (i < 5);
-            
+
 
             //Probar porque esto no actualiza y no entr<a en el onDescontar
-            
-            if (!(miVM.listadoDeSalas != null))
-            {
+
+            if (!(miVM.listadoDeSalas != null)) {
 
                 //Cambiar esto porque peta
                 ContentDialog noFunca = new ContentDialog();
@@ -258,26 +227,20 @@ namespace QuienEsQuien.Views {
 
                 ContentDialogResult resultado = await noFunca.ShowAsync();
 
-                if (resultado == ContentDialogResult.Primary)
-                {
+                if (resultado == ContentDialogResult.Primary) {
                     this.Frame.Navigate(typeof(login_screen));
                 }
             }
         }
 
-        private async void cargando()
-        {
+        private async void cargando() {
             int i = 0;
-            do
-            {
+            do {
                 Thread.Sleep(1000);
                 i++;
             } while (i < 10 || !(conn.State == Microsoft.AspNet.SignalR.Client.ConnectionState.Connected));
-
-
-
-            if (i == 10 && !(conn.State == Microsoft.AspNet.SignalR.Client.ConnectionState.Connected))
-            {
+            
+            if (i == 10 && !(conn.State == Microsoft.AspNet.SignalR.Client.ConnectionState.Connected)) {
                 ContentDialog noFunca = new ContentDialog();
                 noFunca.Title = "Error";
                 noFunca.Content = "Ha ocurrido un fallo en la conexion :'(";
@@ -285,8 +248,7 @@ namespace QuienEsQuien.Views {
 
                 ContentDialogResult resultado = await noFunca.ShowAsync();
 
-                if (resultado == ContentDialogResult.Primary)
-                {
+                if (resultado == ContentDialogResult.Primary) {
                     this.Frame.Navigate(typeof(login_screen));
                 }
             }
@@ -310,25 +272,28 @@ namespace QuienEsQuien.Views {
                     Cargando.Visibility = Visibility.Visible;
                 }
                 */
-               
+
                 clsManejadora manejadora = new clsManejadora();
                 manejadora.actualizarUsuariosSala(obj);
 
                 var sala = (clsSala)listSalas.Items[obj.id - 1];
                 sala.usuariosConectados = obj.usuariosConectados;
-
-
             });
 
 
             if (conn.State == Microsoft.AspNet.SignalR.Client.ConnectionState.Connected) {
-
                 SalasProxy.Invoke("PasarAsalaServer", obj.nombre);
-
             }
 
 
         }
 
+        private void Button_VolverMenu_Click(object sender, RoutedEventArgs e) {
+            this.Frame.Navigate(typeof(home_screen));
+        }
+
+        private void Button_RecargarSalas_Click(object sender, RoutedEventArgs e) {
+
+        }
     }
 }
