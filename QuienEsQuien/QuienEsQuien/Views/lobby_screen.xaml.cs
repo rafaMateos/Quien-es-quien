@@ -107,7 +107,7 @@ namespace QuienEsQuien.Views {
 
                     salaEdit.usuariosConectados = salaEdit.usuariosConectados - 1;
                     clsManejadora manejadora = new clsManejadora();
-                    manejadora.actualizarUsuariosSala(salaEdit);
+                    await manejadora.actualizarUsuariosSala(salaEdit);
                 }
             });
         }
