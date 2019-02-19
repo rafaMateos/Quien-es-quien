@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNet.SignalR.Client;
+﻿using Manejadoras;
+using Microsoft.AspNet.SignalR.Client;
 using QuienEsQuien.Modelos;
 using QuienEsQuien.Viewmodel;
 using System;
@@ -34,6 +35,7 @@ namespace QuienEsQuien.Views {
 
         ChatMessage send = new ChatMessage();
         viewModel vm = new viewModel();
+        clsManejadora maneja = new clsManejadora();
         public static HubConnection conn { get; set; }
         public IHubProxy ChatProxy { get; set; }
         string sala;
@@ -44,6 +46,27 @@ namespace QuienEsQuien.Views {
         public game_screen() {
 
             this.InitializeComponent();
+
+
+         Windows.UI.Core.Preview.SystemNavigationManagerPreview.GetForCurrentView().CloseRequested +=
+            async (sender, args) => {
+                args.Handled = true;
+
+
+
+
+               
+
+
+            };
+
+
+
+
+
+
+
+
             _dispatcher = Window.Current.Dispatcher;
             vm = (viewModel)this.DataContext;
             SignalR();
@@ -57,6 +80,9 @@ namespace QuienEsQuien.Views {
 
                 ChatProxy.Invoke("JoinGroup", myApp.sala);
             }
+
+
+
         }
 
 

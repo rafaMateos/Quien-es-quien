@@ -1,4 +1,6 @@
-﻿using QuienEsQuien.Views;
+﻿using Manejadoras;
+using QuienEsQuien.Modelos;
+using QuienEsQuien.Views;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -37,6 +39,7 @@ namespace QuienEsQuien
         public bool esVolver = false;
         MediaPlayer player;
         public bool miTurno = false;
+        clsManejadora maneja = new clsManejadora();
 
         public App()
         {
@@ -106,8 +109,14 @@ namespace QuienEsQuien
             if (result == ContentDialogResult.Primary)
             {
 
-                game_screen salir = new game_screen();
-                salir.SalirPaSiempre();
+                clsSala sala = new clsSala();
+                sala.id = maneja.ObtenerIDSala(this.sala);
+                sala.nombre = this.sala;
+                sala.usuariosConectados = 0;
+                await maneja.actualizarUsuariosSala(sala);
+
+
+                App.Current.Exit();
 
             }
 
@@ -146,6 +155,8 @@ namespace QuienEsQuien
             //TODO: Guardar el estado de la aplicación y detener toda actividad en segundo plano
             deferral.Complete();
         }
+
+        
 
          
     }
