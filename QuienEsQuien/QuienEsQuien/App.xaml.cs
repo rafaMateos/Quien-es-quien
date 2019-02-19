@@ -117,7 +117,7 @@ namespace QuienEsQuien
 
                 //LLamar a un metodo del serveer
                 game_screen salir = new game_screen();
-                salir.SalirPaSiempre();
+                salir.salirAbruptamente();
 
                 App.Current.Exit();
 

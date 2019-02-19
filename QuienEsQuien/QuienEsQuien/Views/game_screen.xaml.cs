@@ -113,8 +113,12 @@ namespace QuienEsQuien.Views {
 
         private void salirPorAbandono()
         {
+            if (conn.State == Microsoft.AspNet.SignalR.Client.ConnectionState.Connected)
+            {
 
-            ChatProxy.Invoke("LeaveGroup", myApp.sala);
+                ChatProxy.Invoke("LeaveGroup", myApp.sala);
+            }
+            
         }
         
 

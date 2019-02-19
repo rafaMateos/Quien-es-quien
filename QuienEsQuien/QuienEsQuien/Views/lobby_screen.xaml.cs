@@ -99,17 +99,22 @@ namespace QuienEsQuien.Views {
 
             await Windows.ApplicationModel.Core.CoreApplication.MainView.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, async () => {
 
-                int id = ObtenerIDSala(sala);
+                if (!sala.Equals(""))
+                {
+                    int id = ObtenerIDSala(sala);
 
-                var salaEdit = (clsSala)listSalas.Items[id - 1];
+                    var salaEdit = (clsSala)listSalas.Items[id - 1];
 
-                if (salaEdit.usuariosConectados > 0) {
+                    if (salaEdit.usuariosConectados > 0)
+                    {
 
-                    salaEdit.usuariosConectados = salaEdit.usuariosConectados - 1;
-                    clsManejadora manejadora = new clsManejadora();
-                    await manejadora.actualizarUsuariosSala(salaEdit);
+                        salaEdit.usuariosConectados = salaEdit.usuariosConectados - 1;
+                        clsManejadora manejadora = new clsManejadora();
+                        await manejadora.actualizarUsuariosSala(salaEdit);
+                    }
                 }
             });
+
         }
 
         public int ObtenerIDSala(string nombre) {
