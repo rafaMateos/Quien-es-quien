@@ -18,6 +18,7 @@ using Windows.UI.Xaml.Controls.Primitives;
 using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
+using Windows.UI.Xaml.Media.Animation;
 using Windows.UI.Xaml.Navigation;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
@@ -176,18 +177,13 @@ namespace QuienEsQuien.Views {
                 }
             });
 
-            if (vm.intentos == 3)
-            {
+            if (vm.intentos == 3) {
 
-                if (conn.State == Microsoft.AspNet.SignalR.Client.ConnectionState.Connected)
-                {
+                if (conn.State == Microsoft.AspNet.SignalR.Client.ConnectionState.Connected) {
                     await ChatProxy.Invoke("GanadorPorFallos", myApp.sala, myApp.nickJugador);
                 }
-            }
-            else
-            {
-                if (conn.State == Microsoft.AspNet.SignalR.Client.ConnectionState.Connected)
-                {
+            } else {
+                if (conn.State == Microsoft.AspNet.SignalR.Client.ConnectionState.Connected) {
                     await ChatProxy.Invoke("pasarTurno", myApp.sala);
                 }
             }
@@ -259,7 +255,7 @@ namespace QuienEsQuien.Views {
 
             await _dispatcher.RunAsync(CoreDispatcherPriority.Normal, () => {
                 Cargando.Visibility = Visibility.Visible;
-            }); 
+            });
         }
 
 
@@ -272,13 +268,13 @@ namespace QuienEsQuien.Views {
                 Thread.Sleep(1000);
                 i++;
             } while (i < 3);
-             
+
             await Windows.ApplicationModel.Core.CoreApplication.MainView.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () => {
 
                 myApp.esVolver = true;
                 this.Frame.Navigate(typeof(lobby_screen));
 
-            }); 
+            });
         }
 
         private async void cargando() {
@@ -288,13 +284,13 @@ namespace QuienEsQuien.Views {
                 Thread.Sleep(1000);
                 i++;
             } while (i < 10 || !(conn.State == Microsoft.AspNet.SignalR.Client.ConnectionState.Connected));
-             
+
             if (myApp.miTurno) {
                 turno.Text = "Es tu turno";
             } else {
                 turno.Text = "NO ES TU TURNO";
             }
-             
+
             if (i == 10 && !(conn.State == Microsoft.AspNet.SignalR.Client.ConnectionState.Connected)) {
                 ContentDialog noFunca = new ContentDialog();
                 noFunca.Title = "¡Ups!";
@@ -306,7 +302,7 @@ namespace QuienEsQuien.Views {
                 if (resultado == ContentDialogResult.Primary) {
                     this.Frame.Navigate(typeof(login_screen));
                 }
-            } 
+            }
         }
 
         private async void addMessage(ChatMessage obj) {
@@ -321,11 +317,31 @@ namespace QuienEsQuien.Views {
 
         }
 
+        private void Btn_Salir_Click(object sender, RoutedEventArgs e) {
+            vm.visibilidad = "Visible";
+            ChatProxy.Invoke("LeaveGroup", myApp.sala);
+
+        }
+
+        public void SalirPaSiempre() {
+            ChatProxy.Invoke("LeaveGroup", myApp.sala);
+        }
+
+        private void Btn_Pasar_Click(object sender, RoutedEventArgs e) {
+
+            if (myApp.miTurno) {
+                if (conn.State == Microsoft.AspNet.SignalR.Client.ConnectionState.Connected) {
+                    ChatProxy.Invoke("pasarTurno", myApp.sala);
+                }
+            }
+
+        }
+
         private void Btn_send_Click(object sender, RoutedEventArgs e) {
 
-            send.message = myApp.nickJugador + ": " + tbx_chat.Text;
+            send.message = " " + tbx_chat.Text;
             send.groupName = myApp.sala;
-            send.nickName = vm.nickJugador;
+            send.nickName = vm.nickJugador + ": ";
 
             if (conn.State == Microsoft.AspNet.SignalR.Client.ConnectionState.Connected) {
 
@@ -335,38 +351,13 @@ namespace QuienEsQuien.Views {
             tbx_chat.Text = "";
         }
 
-        private void Btn_Salir_Click(object sender, RoutedEventArgs e) {
-
-
-            vm.visibilidad = "Visible";
-            ChatProxy.Invoke("LeaveGroup", myApp.sala);
-
-        }
-
-        public void SalirPaSiempre() {
-
-            ChatProxy.Invoke("LeaveGroup", myApp.sala);
-        }
-
-        private void Btn_Pasar_Click(object sender, RoutedEventArgs e) {
-
-            if (myApp.miTurno) {
-
-                if (conn.State == Microsoft.AspNet.SignalR.Client.ConnectionState.Connected) {
-
-                    ChatProxy.Invoke("pasarTurno", myApp.sala);
-                }
-            }
-
-        }
-
         private void Tbx_chat_KeyDown(object sender, KeyRoutedEventArgs e) {
 
             if (e.Key == Windows.System.VirtualKey.Enter) {
 
-                send.message = myApp.nickJugador + ": " + tbx_chat.Text;
+                send.message = " " + tbx_chat.Text;
                 send.groupName = myApp.sala;
-                send.nickName = vm.nickJugador;
+                send.nickName = vm.nickJugador + ": ";
 
                 if (conn.State == Microsoft.AspNet.SignalR.Client.ConnectionState.Connected) {
                     ChatProxy.Invoke("SendToGroup", send);
@@ -396,6 +387,19 @@ namespace QuienEsQuien.Views {
 
             ChatProxy.Invoke("LeaveGroup", myApp.sala);
 
+        }
+
+        private void CartaSelectPanel_PointerPressed(object sender, PointerRoutedEventArgs e) {
+            Storyboard myStory = new Storyboard();
+
+            RelativePanel clickedElement = sender as RelativePanel;
+
+            Object value = null;
+            clickedElement?.Resources.TryGetValue("volteaImagen", out value);
+
+            myStory = value as Storyboard;
+            //myStory = (Storyboard) gridImagenes.FindName("volteaImagen");
+            myStory?.Begin();
         }
     }
 }

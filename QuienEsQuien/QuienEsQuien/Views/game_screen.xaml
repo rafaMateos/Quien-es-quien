@@ -69,23 +69,39 @@
                   SelectedItem="{Binding cartaSeleccionada, Mode=TwoWay}" 
                   HorizontalAlignment="Center"
                   VerticalAlignment="Center"
-                  Margin="8">
+                  Margin="0,8,0,0">
             <GridView.ItemTemplate>
                 <DataTemplate x:Name="cartitaTemplate" >
+
                     <RelativePanel x:Name="cartaSelectPanel" 
                                    Height="160" Width="120" Margin="2"  
                                    Opacity="{Binding Path=estaBajada, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Converter = {StaticResource conversorEstadoCarta}}" 
-                                   HorizontalAlignment="Center">
-                        <Image Source="{Binding Path=imagenUri}" 
+                                   HorizontalAlignment="Center"
+                                   PointerPressed="CartaSelectPanel_PointerPressed">
+                        <RelativePanel.Resources>
+                            <Storyboard x:Name="volteaImagen">
+                                <DoubleAnimation Storyboard.TargetName="img_personaje" 
+                                 Storyboard.TargetProperty="(Projection).(PlaneProjection.RotationX)" 
+                                 From="0" To="-70"  Duration="00:00:00.650"/>
+                            </Storyboard>
+                        </RelativePanel.Resources>
+
+                        <Image x:Name="img_personaje" 
+                               Source="{Binding Path=imagenUri}" 
                                Height="160" Width="110" Stretch="UniformToFill" 
                                HorizontalAlignment="Center"
                                RelativePanel.AlignLeftWithPanel="True"
-                               RelativePanel.AlignRightWithPanel="True"/>
+                               RelativePanel.AlignRightWithPanel="True">
+                            <Image.Projection>
+                                <PlaneProjection RotationX="0"/>
+                            </Image.Projection>
+                        </Image>
                         <TextBlock Text="{Binding Path=nombreCarta}" 
                                    RelativePanel.AlignLeftWithPanel="True"
                                    RelativePanel.AlignRightWithPanel="True"
                                    HorizontalAlignment="Center"
                                    Margin="0,4"/>
+
                     </RelativePanel>
                 </DataTemplate>
             </GridView.ItemTemplate>
@@ -95,6 +111,11 @@
                     <ItemsWrapGrid MaximumRowsOrColumns="6" Orientation="Horizontal"/>
                 </ItemsPanelTemplate>
             </GridView.ItemsPanel>
+
+            <GridView.Projection>
+                <PlaneProjection RotationX="0"/>
+            </GridView.Projection>
+            
         </GridView>
 
 
@@ -172,8 +193,12 @@
                             <TextBlock Text="{Binding Path=message, Mode=TwoWay}" TextWrapping="WrapWholeWords"/>
                         </StackPanel>-->
                         <Grid>
-                            <TextBlock Text="{Binding Path=nickName}" Foreground="white" FontWeight="ExtraBlack"/>
-                            <TextBlock Text="{Binding Path=message, Mode=TwoWay}" TextWrapping="Wrap" Foreground="white"/>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="0" Text="{Binding Path=nickName}" Foreground="white" FontWeight="ExtraBlack"/>
+                            <TextBlock Grid.Column="1" Text="{Binding Path=message, Mode=TwoWay}" TextWrapping="Wrap" Foreground="white"/>
                         </Grid>
                     </DataTemplate>
                 </ListView.ItemTemplate>
