@@ -39,11 +39,13 @@ namespace AdivinaQuienSoyService.Hubs
 
         public void Ganador(string nickname, string groupname) {
 
-
-     
             Clients.Group(groupname).finalizarPartidaPorGanador(nickname);
         }
 
+        public void SalirAbruptamente(string groupName) {
+
+            Clients.Group(groupName, Context.ConnectionId).salirAbriptamente();
+        }
 
         public void Perdedor(string grupo) {
 

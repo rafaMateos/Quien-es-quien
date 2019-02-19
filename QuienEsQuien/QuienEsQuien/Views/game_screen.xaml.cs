@@ -105,10 +105,18 @@ namespace QuienEsQuien.Views {
             ChatProxy.On<string>("finalizarPartidaPorGanador", finalizarPartidaPorGanador);
             ChatProxy.On("falloAdivinar", actualizarIntentos);
             ChatProxy.On<string>("finalizarPartidaPorFallos", finalizarPartidaPorFallos);
+            ChatProxy.On("salirAbriptamente", salirPorAbandono);
 
             //ChatProxy.On<ChatMessage>("agregarMensaje", addMessage);
 
         }
+
+        private void salirPorAbandono()
+        {
+
+            ChatProxy.Invoke("LeaveGroup", myApp.sala);
+        }
+        
 
         private async void finalizarPartidaPorGanador(string obj) {
 
@@ -324,6 +332,7 @@ namespace QuienEsQuien.Views {
         }
 
         public void SalirPaSiempre() {
+
             ChatProxy.Invoke("LeaveGroup", myApp.sala);
         }
 
@@ -333,6 +342,15 @@ namespace QuienEsQuien.Views {
                 if (conn.State == Microsoft.AspNet.SignalR.Client.ConnectionState.Connected) {
                     ChatProxy.Invoke("pasarTurno", myApp.sala);
                 }
+            }
+
+        }
+
+        public void salirAbruptamente() {
+
+            if (conn.State == Microsoft.AspNet.SignalR.Client.ConnectionState.Connected)
+            {
+                ChatProxy.Invoke("SalirAbruptamente", myApp.sala);
             }
 
         }
