@@ -91,7 +91,7 @@
                             </Storyboard>
                             
                             <Storyboard x:Name="revelaImagen" >
-                                <DoubleAnimation Completed="DoubleAnimation_Completed" Storyboard.TargetName="img_volteada" 
+                                <DoubleAnimation Storyboard.TargetName="img_volteada" 
                                  Storyboard.TargetProperty="(Projection).(PlaneProjection.RotationX)" 
                                  From="0" To="-90" Duration="00:00:1"/>
                                 <DoubleAnimation Storyboard.TargetName="img_personaje" 

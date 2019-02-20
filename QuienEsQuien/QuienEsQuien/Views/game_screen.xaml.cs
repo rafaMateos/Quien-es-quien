@@ -509,8 +509,8 @@ namespace QuienEsQuien.Views {
 
             clsCarta miCartaV2 = vm.listadoDeCartas[miCarta.idCarta];
 
-            Image imgPers = clickedElement.FindName("img_personaje") as Image;
-            Image imgVolt = clickedElement.FindName("img_volteada") as Image;
+            //Image imgPers = clickedElement.FindName("img_personaje") as Image;
+            //Image imgVolt = clickedElement.FindName("img_volteada") as Image;
 
             Object value = null;
             if (!miCartaV2.estaBajada) {
@@ -522,13 +522,5 @@ namespace QuienEsQuien.Views {
             myStory = value as Storyboard;
             myStory?.Begin();
         }
-
-        private void DoubleAnimation_Completed(object sender, object e) {
-            
-        }
-
-        //private void RevelaImagen_Completed(object sender, object e) {
-
-        //}
     }
 }
