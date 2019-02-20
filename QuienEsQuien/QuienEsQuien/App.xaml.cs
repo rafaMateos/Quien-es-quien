@@ -98,7 +98,6 @@ namespace QuienEsQuien
         private async void App_CloseRequested(object sender, SystemNavigationCloseRequestedPreviewEventArgs e)
         {
 
-
             ContentDialog noFunca = new ContentDialog();
             noFunca.Title = "¿Estas seguro de quieres salir?";
             noFunca.Content = "Vas a salir del juego..";
@@ -113,7 +112,7 @@ namespace QuienEsQuien
                 sala.id = maneja.ObtenerIDSala(this.sala);
                 sala.nombre = this.sala;
                 sala.usuariosConectados = 0;
-                //await maneja.actualizarUsuariosSala(sala);
+                await maneja.actualizarUsuariosSala(sala);
 
                 //LLamar a un metodo del serveer
                 game_screen salir = new game_screen();

@@ -320,12 +320,51 @@
                 <Button Content="Volver al lobby" Click="Button_Click_1"/>
             </StackPanel >
 
+        </RelativePanel>
 
 
 
+
+        <RelativePanel
+            Visibility="Visible"
+            Name="SalirAbruptuamenteRelative"
+            HorizontalAlignment="Center" 
+            VerticalAlignment="Center" 
+            Background="White" Width="300" 
+            BorderBrush="Black"
+            BorderThickness="2"
+            Height="300" RelativePanel.AlignHorizontalCenterWithPanel="True"
+            RelativePanel.AlignVerticalCenterWithPanel="True"
+            CornerRadius="10" >
+
+            <StackPanel 
+                RelativePanel.AlignHorizontalCenterWithPanel="True"
+                RelativePanel.AlignVerticalCenterWithPanel="True" >
+
+
+                <TextBlock
+                    Text="Vas a salir de la partida porque el otro usuario abandono la sala"
+                    TextWrapping="Wrap">
+                </TextBlock>
+
+
+                <Button 
+                    Content="Volver al lobby"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Center"
+                    Margin="0,15,0,0"
+                    Click="Button_Click_2">
+                </Button>
+                
+            </StackPanel>
 
         </RelativePanel>
 
+
+
     </RelativePanel>
+    
+    
+    
 
 </Page>

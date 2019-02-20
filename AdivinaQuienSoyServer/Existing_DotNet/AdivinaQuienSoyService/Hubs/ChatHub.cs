@@ -44,7 +44,7 @@ namespace AdivinaQuienSoyService.Hubs
 
         public void SalirAbruptamente(string groupName) {
 
-            Clients.Group(groupName, Context.ConnectionId).salirAbriptamente();
+            Clients.Group(groupName,Context.ConnectionId).salirAbriptamente();
         }
 
         public void Perdedor(string grupo) {

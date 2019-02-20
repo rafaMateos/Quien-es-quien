@@ -49,23 +49,17 @@ namespace QuienEsQuien.Views {
             this.InitializeComponent();
 
 
-         Windows.UI.Core.Preview.SystemNavigationManagerPreview.GetForCurrentView().CloseRequested +=
-            async (sender, args) => {
-                args.Handled = true;
-
-
-
-
-               
-
-
-            };
+            Windows.UI.Core.Preview.SystemNavigationManagerPreview.GetForCurrentView().CloseRequested +=
+               async (sender, args) => {
+                   args.Handled = true;
 
 
 
 
 
 
+
+               };
 
 
             _dispatcher = Window.Current.Dispatcher;
@@ -111,16 +105,27 @@ namespace QuienEsQuien.Views {
 
         }
 
-        private void salirPorAbandono()
-        {
-            if (conn.State == Microsoft.AspNet.SignalR.Client.ConnectionState.Connected)
-            {
+        private async void salirPorAbandono() {
 
-                ChatProxy.Invoke("LeaveGroup", myApp.sala);
-            }
-            
+            await Windows.ApplicationModel.Core.CoreApplication.MainView.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, async () => {
+
+                await _dispatcher.RunAsync(CoreDispatcherPriority.Normal, () => {
+
+                    SalirAbruptuamenteRelative.Visibility = Visibility.Visible;
+
+                    int i = 0;
+                    do {
+                        Thread.Sleep(1000);
+                        i++;
+                    } while (i < 1);
+                });
+
+
+            });
+
+
         }
-        
+
 
         private async void finalizarPartidaPorGanador(string obj) {
 
@@ -352,8 +357,16 @@ namespace QuienEsQuien.Views {
 
         public void salirAbruptamente() {
 
-            if (conn.State == Microsoft.AspNet.SignalR.Client.ConnectionState.Connected)
-            {
+
+
+            int i = 0;
+            do {
+                Thread.Sleep(1000);
+                i++;
+            } while (i < 2);
+
+
+            if (conn.State == Microsoft.AspNet.SignalR.Client.ConnectionState.Connected) {
                 ChatProxy.Invoke("SalirAbruptamente", myApp.sala);
             }
 
@@ -422,6 +435,22 @@ namespace QuienEsQuien.Views {
             myStory = value as Storyboard;
             //myStory = (Storyboard) gridImagenes.FindName("volteaImagen");
             myStory?.Begin();
+        }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e) {
+
+
+            SalirAbruptuamenteRelative.Visibility = Visibility.Collapsed;
+            Cargando.Visibility = Visibility.Visible;
+
+            int i = 0;
+            do {
+                Thread.Sleep(1000);
+                i++;
+            } while (i < 2);
+
+            this.Frame.Navigate(typeof(login_screen));
+
         }
     }
 }
