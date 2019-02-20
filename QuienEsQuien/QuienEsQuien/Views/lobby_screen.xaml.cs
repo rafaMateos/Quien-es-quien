@@ -54,6 +54,8 @@ namespace QuienEsQuien.Views {
 
             } else {
                 myApp.esVolver = false;
+               
+                myApp.miTurno = false;
 
                 //Llegamos hasta aqui
                 cargando();

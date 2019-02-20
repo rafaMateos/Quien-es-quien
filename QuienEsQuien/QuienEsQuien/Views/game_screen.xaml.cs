@@ -119,6 +119,7 @@ namespace QuienEsQuien.Views {
             await Windows.ApplicationModel.Core.CoreApplication.MainView.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, async () => {
 
                 await _dispatcher.RunAsync(CoreDispatcherPriority.Normal, () => {
+                    nombreGanador.Text = obj;
                     ConfirmarGanador.Visibility = Visibility.Visible;
                 });
 

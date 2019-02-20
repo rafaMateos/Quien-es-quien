@@ -35,7 +35,8 @@
                 RelativePanel.Below="botoneraSuperior"
                 RelativePanel.AlignRightWithPanel="True"
                 RelativePanel.AlignLeftWithPanel="True"
-                HorizontalAlignment="Center">
+                HorizontalAlignment="Center"
+                >
             <ListView.ItemTemplate>
                 <DataTemplate x:Name="dataTemplateList">
                       

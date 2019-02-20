@@ -69,7 +69,8 @@
                   SelectedItem="{Binding cartaSeleccionada, Mode=TwoWay}" 
                   HorizontalAlignment="Center"
                   VerticalAlignment="Center"
-                  Margin="0,8,0,0">
+                  Margin="0,8,0,0"
+                  >
             <GridView.ItemTemplate>
                 <DataTemplate x:Name="cartitaTemplate" >
 
