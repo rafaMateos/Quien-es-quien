@@ -326,7 +326,7 @@
 
 
         <RelativePanel
-            Visibility="Visible"
+            Visibility="Collapsed"
             Name="SalirAbruptuamenteRelative"
             HorizontalAlignment="Center" 
             VerticalAlignment="Center" 
