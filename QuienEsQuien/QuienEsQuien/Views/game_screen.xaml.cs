@@ -439,9 +439,17 @@ namespace QuienEsQuien.Views {
             Storyboard myStory = new Storyboard();
 
             RelativePanel clickedElement = sender as RelativePanel;
+            clsCarta miCarta = vm.cartaSeleccionada as clsCarta;
+            //clsCarta miCarta = clickedElement.DataContext as clsCarta;
 
             Object value = null;
-            clickedElement?.Resources.TryGetValue("volteaImagen", out value);
+            if (miCarta.estaBajada) {
+                clickedElement?.Resources.TryGetValue("revelaImagen", out value);
+                miCarta.estaBajada = false;
+            } else {
+                clickedElement?.Resources.TryGetValue("volteaImagen", out value);
+                miCarta.estaBajada = true;
+            }
 
             myStory = value as Storyboard;
             //myStory = (Storyboard) gridImagenes.FindName("volteaImagen");
