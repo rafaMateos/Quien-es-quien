@@ -58,6 +58,22 @@
 
             <Button Click="Btn_Pasar_Click" Name="btn_Pasar" Content="Pasar turno"
                         Background="Yellow" Margin="50,0,5,0"/>
+
+
+            <TextBlock Text="Jugadores conectados: " 
+                       VerticalAlignment="Center"
+                        Margin="10,0,0,0">
+
+            </TextBlock>
+
+            <TextBlock 
+                Name="ConnectedPlayers"
+                Text="89"
+                FontSize="25"
+                VerticalAlignment="Center"
+                Margin="10,0,0,0">
+
+            </TextBlock>
         </StackPanel>
 
         <GridView Name="gridImagenes"
