@@ -281,6 +281,8 @@ namespace QuienEsQuien.Views {
                 manejadora.actualizarUsuariosSala(obj);
 
                 var sala = (clsSala)listSalas.Items[obj.id - 1];
+
+                if(sala != null)
                 sala.usuariosConectados = obj.usuariosConectados;
             });
 

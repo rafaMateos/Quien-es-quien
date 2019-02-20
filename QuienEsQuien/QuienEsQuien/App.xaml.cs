@@ -98,29 +98,41 @@ namespace QuienEsQuien
         private async void App_CloseRequested(object sender, SystemNavigationCloseRequestedPreviewEventArgs e)
         {
 
-            ContentDialog noFunca = new ContentDialog();
-            noFunca.Title = "¿Estas seguro de quieres salir?";
-            noFunca.Content = "Vas a salir del juego..";
-            noFunca.PrimaryButtonText = "Aceptar";
-            noFunca.SecondaryButtonText = "Cancelar";
-            ContentDialogResult result = await noFunca.ShowAsync();
-
-            if (result == ContentDialogResult.Primary)
-            {
-
-                clsSala sala = new clsSala();
-                sala.id = maneja.ObtenerIDSala(this.sala);
-                sala.nombre = this.sala;
-                sala.usuariosConectados = 0;
-                await maneja.actualizarUsuariosSala(sala);
-
-                //LLamar a un metodo del serveer
-                game_screen salir = new game_screen();
-                salir.salirAbruptamente();
+            if (this.sala.Equals("")) {
 
                 App.Current.Exit();
 
+            } else {
+
+                ContentDialog noFunca = new ContentDialog();
+                noFunca.Title = "¿Estas seguro de quieres salir?";
+                noFunca.Content = "Vas a salir del juego..";
+                noFunca.PrimaryButtonText = "Aceptar";
+                noFunca.SecondaryButtonText = "Cancelar";
+                ContentDialogResult result = await noFunca.ShowAsync();
+
+                if (result == ContentDialogResult.Primary) {
+                    game_screen salir = new game_screen();
+                    clsSala sala = new clsSala();
+                    sala.id = maneja.ObtenerIDSala(this.sala);
+                    sala.nombre = this.sala;
+                    sala.usuariosConectados = 0;
+
+                    //Mostrar saliendo de sala
+                    //salir.MostrarSalir();
+
+                    await maneja.actualizarUsuariosSala(sala);
+                    //LLamar a un metodo del serveer
+
+                    salir.salirAbruptamente();
+
+                    App.Current.Exit();
+
+                }
+
+
             }
+
 
         }
 

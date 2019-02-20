@@ -53,12 +53,6 @@ namespace QuienEsQuien.Views {
                async (sender, args) => {
                    args.Handled = true;
 
-
-
-
-
-
-
                };
 
 
@@ -352,6 +346,23 @@ namespace QuienEsQuien.Views {
                     ChatProxy.Invoke("pasarTurno", myApp.sala);
                 }
             }
+
+        }
+
+        public void MostrarSalir() {
+
+                Cargando.Visibility = Visibility.Visible;
+
+                int i = 0;
+                do {
+                    Thread.Sleep(1000);
+                    i++;
+                } while (i < 2);
+          
+
+           
+
+
 
         }
 
