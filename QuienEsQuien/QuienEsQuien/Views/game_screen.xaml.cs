@@ -449,7 +449,7 @@ namespace QuienEsQuien.Views {
                 i++;
             } while (i < 2);
 
-            this.Frame.Navigate(typeof(login_screen));
+            this.Frame.Navigate(typeof(lobby_screen));
 
         }
     }
