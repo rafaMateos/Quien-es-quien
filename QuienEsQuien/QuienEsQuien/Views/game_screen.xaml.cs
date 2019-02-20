@@ -28,12 +28,9 @@ namespace QuienEsQuien.Views {
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
     /// 
-
-
-
+    
     public sealed partial class game_screen : Page {
-
-
+        
         ChatMessage send = new ChatMessage();
         viewModel vm = new viewModel();
         clsManejadora maneja = new clsManejadora();
@@ -47,29 +44,21 @@ namespace QuienEsQuien.Views {
         public game_screen() {
 
             this.InitializeComponent();
-
-
+            
             Windows.UI.Core.Preview.SystemNavigationManagerPreview.GetForCurrentView().CloseRequested +=
                async (sender, args) => {
                    args.Handled = true;
-
-
+                   
                    await _dispatcher.RunAsync(CoreDispatcherPriority.Normal, () => {
-
                        salirDelJuego.Visibility = Visibility.Visible; //El secrreto del quien es quien
-
-
                        int i = 0;
                        do {
                            Thread.Sleep(1000);
                            i++;
                        } while (i < 1);
                    });
-
-
                };
-
-
+            
             _dispatcher = Window.Current.Dispatcher;
             vm = (viewModel)this.DataContext;
             SignalR();
@@ -83,15 +72,10 @@ namespace QuienEsQuien.Views {
 
                 ChatProxy.Invoke("JoinGroup", myApp.sala);
             }
-
-
-
         }
 
 
         private void SignalR() {
-
-
             //Connect to the url 
             conn = new HubConnection("https://adivinaquiensoy.azurewebsites.net/");
             //conn = new HubConnection("http://localhost:50268/");
@@ -110,7 +94,6 @@ namespace QuienEsQuien.Views {
             ChatProxy.On("salirAbriptamente", salirPorAbandono);
 
             //ChatProxy.On<ChatMessage>("agregarMensaje", addMessage);
-
         }
 
         private async void salirPorAbandono() {
@@ -127,11 +110,7 @@ namespace QuienEsQuien.Views {
                         i++;
                     } while (i < 1);
                 });
-
-
             });
-
-
         }
 
 
@@ -168,7 +147,6 @@ namespace QuienEsQuien.Views {
                     if (conn.State == Microsoft.AspNet.SignalR.Client.ConnectionState.Connected) {
                         await ChatProxy.Invoke("Perdedor", myApp.sala);
                     }
-
                 }
             });
         }
@@ -193,12 +171,10 @@ namespace QuienEsQuien.Views {
                         break;
 
                     case 3:
-
                         primerIntento.Fill = new SolidColorBrush(Windows.UI.Colors.Red);
                         segundoIntento.Fill = new SolidColorBrush(Windows.UI.Colors.Red);
                         tercerIntento.Fill = new SolidColorBrush(Windows.UI.Colors.Red);
                         break;
-
                 }
             });
 
@@ -212,7 +188,6 @@ namespace QuienEsQuien.Views {
                     await ChatProxy.Invoke("pasarTurno", myApp.sala);
                 }
             }
-
         }
 
         private async void finalizarPartidaPorFallos(string nickNamePerdedor) {
@@ -227,7 +202,6 @@ namespace QuienEsQuien.Views {
                 } else {
                     textoInfo = $"Ganaste porque {nickNamePerdedor} falló tres veces.";
                     ActualizarUIPorFallos(textoInfo);
-
                 }
             });
         }
@@ -339,7 +313,6 @@ namespace QuienEsQuien.Views {
 
                 contanierChat.SelectedItem = contanierChat.Items.Count - 1;
             });
-
         }
 
         private void Btn_Salir_Click(object sender, RoutedEventArgs e) {
@@ -349,7 +322,6 @@ namespace QuienEsQuien.Views {
         }
 
         public void SalirPaSiempre() {
-
             ChatProxy.Invoke("LeaveGroup", myApp.sala);
         }
 
@@ -360,7 +332,6 @@ namespace QuienEsQuien.Views {
                     ChatProxy.Invoke("pasarTurno", myApp.sala);
                 }
             }
-
         }
 
         public async void MostrarSalir() {
@@ -370,29 +341,19 @@ namespace QuienEsQuien.Views {
 
                 Cargando.Visibility = Visibility.Visible;
             });
-
-           
-
-
-
-
         }
 
         public void salirAbruptamente() {
-
-
-
+            
             int i = 0;
             do {
                 Thread.Sleep(1000);
                 i++;
             } while (i < 2);
-
-
+            
             if (conn.State == Microsoft.AspNet.SignalR.Client.ConnectionState.Connected) {
                 ChatProxy.Invoke("SalirAbruptamente", myApp.sala);
             }
-
         }
 
         private void Btn_send_Click(object sender, RoutedEventArgs e) {
@@ -427,64 +388,31 @@ namespace QuienEsQuien.Views {
         private async void ConfirmarSeleccion_Click(object sender, RoutedEventArgs e) {
 
             if (myApp.miTurno) {
-
                 if (conn.State == Microsoft.AspNet.SignalR.Client.ConnectionState.Connected) {
                     ChatProxy.Invoke("sendPosibleWinner", vm.cartaGanadoraSeleccionada, myApp.sala, myApp.nickJugador);
                 }
             } else {
-
                 ContentDialog noFunca = new ContentDialog();
                 noFunca.Title = "¡No!";
                 noFunca.Content = "No puedes confirmar personaje si no es tu turno";
                 noFunca.PrimaryButtonText = "Salir";
 
                 ContentDialogResult resultado = await noFunca.ShowAsync();
-
-
             }
-
-           
         }
 
         private void Button_Click(object sender, RoutedEventArgs e) {
 
             ConfirmarGanador.Visibility = Visibility.Collapsed;
-
             ChatProxy.Invoke("LeaveGroup", myApp.sala);
 
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e) {
-
             ConfirmarGanadorPorFallos.Visibility = Visibility.Collapsed;
-
             ChatProxy.Invoke("LeaveGroup", myApp.sala);
 
         }
-
-        private void CartaSelectPanel_PointerPressed(object sender, PointerRoutedEventArgs e) {
-            Storyboard myStory = new Storyboard();
-
-            RelativePanel clickedElement = sender as RelativePanel;
-            //clsCarta miCarta = vm.cartaSeleccionada as clsCarta;
-            clsCarta miCarta = clickedElement.DataContext as clsCarta;
-
-            clsCarta miCartaV2 = vm.listadoDeCartas[miCarta.idCarta];
-
-            Object value = null;
-            if (miCartaV2.estaBajada) {
-                clickedElement?.Resources.TryGetValue("revelaImagen", out value);
-                //miCartaV2.estaBajada = false;
-            } else {
-                clickedElement?.Resources.TryGetValue("volteaImagen", out value);
-               // miCartaV2.estaBajada = true;
-            }
-
-            myStory = value as Storyboard;
-            //myStory = (Storyboard) gridImagenes.FindName("volteaImagen");
-            myStory?.Begin();
-        }
-
         private void Button_Click_2(object sender, RoutedEventArgs e) {
 
 
