@@ -72,7 +72,6 @@
                 FontSize="25"
                 VerticalAlignment="Center"
                 Margin="10,0,0,0">
-
             </TextBlock>
         </StackPanel>
 
