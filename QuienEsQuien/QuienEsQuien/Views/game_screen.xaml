@@ -82,7 +82,19 @@
                             <Storyboard x:Name="volteaImagen">
                                 <DoubleAnimation Storyboard.TargetName="img_personaje" 
                                  Storyboard.TargetProperty="(Projection).(PlaneProjection.RotationX)" 
-                                 From="0" To="-70"  Duration="00:00:00.650"/>
+                                 From="0" To="90"  Duration="00:00:00.650"/>
+                                <DoubleAnimation Storyboard.TargetName="img_volteada" 
+                                 Storyboard.TargetProperty="(Projection).(PlaneProjection.RotationX)" 
+                                 From="-90" To="0" BeginTime="0:0:0.650" Duration="00:00:00.650"/>
+                            </Storyboard>
+
+                            <Storyboard x:Name="revelaImagen">
+                                <DoubleAnimation Storyboard.TargetName="img_personaje" 
+                                 Storyboard.TargetProperty="(Projection).(PlaneProjection.RotationX)" 
+                                 From="90" To="0"  Duration="00:00:00.650"/>
+                                <DoubleAnimation Storyboard.TargetName="img_volteada" 
+                                 Storyboard.TargetProperty="(Projection).(PlaneProjection.RotationX)" 
+                                 From="0" To="-90" BeginTime="0:0:0.650" Duration="00:00:00.650"/>
                             </Storyboard>
                         </RelativePanel.Resources>
 
@@ -94,6 +106,17 @@
                                RelativePanel.AlignRightWithPanel="True">
                             <Image.Projection>
                                 <PlaneProjection RotationX="0"/>
+                            </Image.Projection>
+                        </Image>
+
+                        <Image x:Name="img_volteada" 
+                               Source="../Assets/QS_volteada.png" 
+                               Height="160" Width="110" Stretch="UniformToFill" 
+                               HorizontalAlignment="Center"
+                               RelativePanel.AlignLeftWithPanel="True"
+                               RelativePanel.AlignRightWithPanel="True">
+                            <Image.Projection>
+                                <PlaneProjection RotationX="-90"/>
                             </Image.Projection>
                         </Image>
                         <TextBlock Text="{Binding Path=nombreCarta}" 
