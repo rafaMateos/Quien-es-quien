@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Threading;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 using Windows.Foundation;
@@ -119,7 +120,7 @@ namespace QuienEsQuien
                     sala.usuariosConectados = 0;
 
                     //Mostrar saliendo de sala
-                    //salir.MostrarSalir();
+                   
 
                     await maneja.actualizarUsuariosSala(sala);
                     //LLamar a un metodo del serveer

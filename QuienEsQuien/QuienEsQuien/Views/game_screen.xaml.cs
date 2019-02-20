@@ -53,6 +53,20 @@ namespace QuienEsQuien.Views {
                async (sender, args) => {
                    args.Handled = true;
 
+
+                   await _dispatcher.RunAsync(CoreDispatcherPriority.Normal, () => {
+
+                       salirDelJuego.Visibility = Visibility.Visible; //El secrreto del quien es quien
+
+
+                       int i = 0;
+                       do {
+                           Thread.Sleep(1000);
+                           i++;
+                       } while (i < 1);
+                   });
+
+
                };
 
 
@@ -349,18 +363,16 @@ namespace QuienEsQuien.Views {
 
         }
 
-        public void MostrarSalir() {
+        public async void MostrarSalir() {
+
+
+            await _dispatcher.RunAsync(CoreDispatcherPriority.Normal, () => {
 
                 Cargando.Visibility = Visibility.Visible;
-
-                int i = 0;
-                do {
-                    Thread.Sleep(1000);
-                    i++;
-                } while (i < 2);
-          
+            });
 
            
+
 
 
 

@@ -34,7 +34,7 @@ namespace AdivinaQuienSoyService.Hubs
 
         public void sendPosibleWinner(clsCarta carta, string grupo,string nickname) {
 
-            Clients.Group(grupo,Context.ConnectionId).comprobarGanador(carta,nickname);//vaya sacada de polla v2 by dylan nene
+            Clients.Group(grupo,Context.ConnectionId).comprobarGanador(carta,nickname);
         }
 
         public void Ganador(string nickname, string groupname) {
