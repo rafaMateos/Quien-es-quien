@@ -454,16 +454,18 @@ namespace QuienEsQuien.Views {
             Storyboard myStory = new Storyboard();
 
             RelativePanel clickedElement = sender as RelativePanel;
-            clsCarta miCarta = vm.cartaSeleccionada as clsCarta;
-            //clsCarta miCarta = clickedElement.DataContext as clsCarta;
+            //clsCarta miCarta = vm.cartaSeleccionada as clsCarta;
+            clsCarta miCarta = clickedElement.DataContext as clsCarta;
+
+            clsCarta miCartaV2 = vm.listadoDeCartas[miCarta.idCarta];
 
             Object value = null;
-            if (miCarta.estaBajada) {
+            if (miCartaV2.estaBajada) {
                 clickedElement?.Resources.TryGetValue("revelaImagen", out value);
-                miCarta.estaBajada = false;
+                //miCartaV2.estaBajada = false;
             } else {
                 clickedElement?.Resources.TryGetValue("volteaImagen", out value);
-                miCarta.estaBajada = true;
+               // miCartaV2.estaBajada = true;
             }
 
             myStory = value as Storyboard;
@@ -486,5 +488,35 @@ namespace QuienEsQuien.Views {
             this.Frame.Navigate(typeof(lobby_screen));
 
         }
+
+        private void CartaSelectPanel_Tapped(object sender, TappedRoutedEventArgs e) {
+            Storyboard myStory = new Storyboard();
+
+            RelativePanel clickedElement = sender as RelativePanel;
+            clsCarta miCarta = clickedElement.DataContext as clsCarta;
+
+            clsCarta miCartaV2 = vm.listadoDeCartas[miCarta.idCarta];
+
+            Image imgPers = clickedElement.FindName("img_personaje") as Image;
+            Image imgVolt = clickedElement.FindName("img_volteada") as Image;
+
+            Object value = null;
+            if (!miCartaV2.estaBajada) {
+                clickedElement?.Resources.TryGetValue("revelaImagen", out value);
+            } else {
+                clickedElement?.Resources.TryGetValue("volteaImagen", out value);
+            }
+
+            myStory = value as Storyboard;
+            myStory?.Begin();
+        }
+
+        private void DoubleAnimation_Completed(object sender, object e) {
+            
+        }
+
+        //private void RevelaImagen_Completed(object sender, object e) {
+
+        //}
     }
 }

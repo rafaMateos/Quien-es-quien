@@ -73,29 +73,32 @@
             <GridView.ItemTemplate>
                 <DataTemplate x:Name="cartitaTemplate" >
 
+                    <!--Opacity="{Binding Path=estaBajada, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Converter = {StaticResource conversorEstadoCarta}}"-->
+
                     <RelativePanel x:Name="cartaSelectPanel" 
-                                   Height="160" Width="120" Margin="2"  
-                                   Opacity="{Binding Path=estaBajada, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Converter = {StaticResource conversorEstadoCarta}}" 
+                                   Height="160" Width="120" Margin="2"
                                    HorizontalAlignment="Center"
-                                   PointerPressed="CartaSelectPanel_PointerPressed">
+                                   Tapped="CartaSelectPanel_Tapped">
                         <RelativePanel.Resources>
+
                             <Storyboard x:Name="volteaImagen">
                                 <DoubleAnimation Storyboard.TargetName="img_personaje" 
                                  Storyboard.TargetProperty="(Projection).(PlaneProjection.RotationX)" 
-                                 From="0" To="90"  Duration="00:00:00.650"/>
+                                 From="0" To="90"  Duration="00:00:01"/>
                                 <DoubleAnimation Storyboard.TargetName="img_volteada" 
                                  Storyboard.TargetProperty="(Projection).(PlaneProjection.RotationX)" 
-                                 From="-90" To="0" BeginTime="0:0:0.650" Duration="00:00:00.650"/>
+                                 From="-90" To="0" BeginTime="0:0:1" Duration="00:00:1"/>
                             </Storyboard>
-
-                            <Storyboard x:Name="revelaImagen">
+                            
+                            <Storyboard x:Name="revelaImagen" >
+                                <DoubleAnimation Completed="DoubleAnimation_Completed" Storyboard.TargetName="img_volteada" 
+                                 Storyboard.TargetProperty="(Projection).(PlaneProjection.RotationX)" 
+                                 From="0" To="-90" Duration="00:00:1"/>
                                 <DoubleAnimation Storyboard.TargetName="img_personaje" 
                                  Storyboard.TargetProperty="(Projection).(PlaneProjection.RotationX)" 
-                                 From="90" To="0"  Duration="00:00:00.650"/>
-                                <DoubleAnimation Storyboard.TargetName="img_volteada" 
-                                 Storyboard.TargetProperty="(Projection).(PlaneProjection.RotationX)" 
-                                 From="0" To="-90" BeginTime="0:0:0.650" Duration="00:00:00.650"/>
+                                 From="90" To="0" BeginTime="0:0:1" Duration="00:00:1"/>
                             </Storyboard>
+                            
                         </RelativePanel.Resources>
 
                         <Image x:Name="img_personaje" 
