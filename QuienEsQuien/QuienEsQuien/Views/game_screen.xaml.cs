@@ -412,11 +412,26 @@ namespace QuienEsQuien.Views {
             }
         }
 
-        private void ConfirmarSeleccion_Click(object sender, RoutedEventArgs e) {
+        private async void ConfirmarSeleccion_Click(object sender, RoutedEventArgs e) {
 
-            if (conn.State == Microsoft.AspNet.SignalR.Client.ConnectionState.Connected) {
-                ChatProxy.Invoke("sendPosibleWinner", vm.cartaGanadoraSeleccionada, myApp.sala, myApp.nickJugador);
+            if (myApp.miTurno) {
+
+                if (conn.State == Microsoft.AspNet.SignalR.Client.ConnectionState.Connected) {
+                    ChatProxy.Invoke("sendPosibleWinner", vm.cartaGanadoraSeleccionada, myApp.sala, myApp.nickJugador);
+                }
+            } else {
+
+                ContentDialog noFunca = new ContentDialog();
+                noFunca.Title = "¡No!";
+                noFunca.Content = "No puedes confirmar personaje si no es tu turno";
+                noFunca.PrimaryButtonText = "Salir";
+
+                ContentDialogResult resultado = await noFunca.ShowAsync();
+
+
             }
+
+           
         }
 
         private void Button_Click(object sender, RoutedEventArgs e) {
