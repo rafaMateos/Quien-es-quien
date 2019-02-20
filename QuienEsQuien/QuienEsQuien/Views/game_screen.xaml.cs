@@ -28,9 +28,9 @@ namespace QuienEsQuien.Views {
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
     /// 
-    
+
     public sealed partial class game_screen : Page {
-        
+
         ChatMessage send = new ChatMessage();
         viewModel vm = new viewModel();
         clsManejadora maneja = new clsManejadora();
@@ -44,11 +44,11 @@ namespace QuienEsQuien.Views {
         public game_screen() {
 
             this.InitializeComponent();
-            
+
             Windows.UI.Core.Preview.SystemNavigationManagerPreview.GetForCurrentView().CloseRequested +=
                async (sender, args) => {
                    args.Handled = true;
-                   
+
                    await _dispatcher.RunAsync(CoreDispatcherPriority.Normal, () => {
                        salirDelJuego.Visibility = Visibility.Visible; //El secrreto del quien es quien
                        int i = 0;
@@ -58,7 +58,7 @@ namespace QuienEsQuien.Views {
                        } while (i < 1);
                    });
                };
-            
+
             _dispatcher = Window.Current.Dispatcher;
             vm = (viewModel)this.DataContext;
             SignalR();
@@ -73,7 +73,6 @@ namespace QuienEsQuien.Views {
                 ChatProxy.Invoke("JoinGroup", myApp.sala);
             }
         }
-
 
         private void SignalR() {
             //Connect to the url 
@@ -98,11 +97,29 @@ namespace QuienEsQuien.Views {
 
         private async void salirPorAbandono() {
 
-            await Windows.ApplicationModel.Core.CoreApplication.MainView.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, async () => {
+            await Windows.ApplicationModel.Core.CoreApplication.MainView.Dispatcher
+                .RunAsync(CoreDispatcherPriority.Normal, async () => {
+                    await _dispatcher.RunAsync(CoreDispatcherPriority.Normal, () => {
+                        SalirAbruptuamenteRelative.Visibility = Visibility.Visible;
 
-                await _dispatcher.RunAsync(CoreDispatcherPriority.Normal, () => {
+                        int i = 0;
+                        do {
+                            Thread.Sleep(1000);
+                            i++;
+                        } while (i < 1);
+                    });
+                });
+        }
+        
+        private async void finalizarPartidaPorGanador(string obj) {
 
-                    SalirAbruptuamenteRelative.Visibility = Visibility.Visible;
+            await Windows.ApplicationModel.Core.CoreApplication.MainView.Dispatcher
+                .RunAsync(CoreDispatcherPriority.Normal, async () => {
+
+                    await _dispatcher.RunAsync(CoreDispatcherPriority.Normal, () => {
+                        nombreGanador.Text = obj;
+                        ConfirmarGanador.Visibility = Visibility.Visible;
+                    });
 
                     int i = 0;
                     do {
@@ -110,27 +127,6 @@ namespace QuienEsQuien.Views {
                         i++;
                     } while (i < 1);
                 });
-            });
-        }
-
-
-        private async void finalizarPartidaPorGanador(string obj) {
-
-            await Windows.ApplicationModel.Core.CoreApplication.MainView.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, async () => {
-
-                await _dispatcher.RunAsync(CoreDispatcherPriority.Normal, () => {
-                    nombreGanador.Text = obj;
-                    ConfirmarGanador.Visibility = Visibility.Visible;
-                });
-
-                int i = 0;
-                do {
-                    Thread.Sleep(1000);
-                    i++;
-                } while (i < 1);
-
-            });
-
         }
 
         private async void comprobarGanador(clsCarta obj, string nickname) {
@@ -154,30 +150,27 @@ namespace QuienEsQuien.Views {
 
         private async void actualizarIntentos() {
 
+            await Windows.ApplicationModel.Core.CoreApplication.MainView.Dispatcher
+                .RunAsync(CoreDispatcherPriority.Normal, async () => {
+                    vm.intentos++;
+                    switch (vm.intentos) {
 
-            await Windows.ApplicationModel.Core.CoreApplication.MainView.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, async () => {
+                        case 1:
+                            primerIntento.Fill = new SolidColorBrush(Windows.UI.Colors.Red);
+                            break;
 
-                vm.intentos++;
+                        case 2:
+                            primerIntento.Fill = new SolidColorBrush(Windows.UI.Colors.Red);
+                            segundoIntento.Fill = new SolidColorBrush(Windows.UI.Colors.Red);
+                            break;
 
-                switch (vm.intentos) {
-
-                    case 1:
-                        primerIntento.Fill = new SolidColorBrush(Windows.UI.Colors.Red);
-                        break;
-
-
-                    case 2:
-                        primerIntento.Fill = new SolidColorBrush(Windows.UI.Colors.Red);
-                        segundoIntento.Fill = new SolidColorBrush(Windows.UI.Colors.Red);
-                        break;
-
-                    case 3:
-                        primerIntento.Fill = new SolidColorBrush(Windows.UI.Colors.Red);
-                        segundoIntento.Fill = new SolidColorBrush(Windows.UI.Colors.Red);
-                        tercerIntento.Fill = new SolidColorBrush(Windows.UI.Colors.Red);
-                        break;
-                }
-            });
+                        case 3:
+                            primerIntento.Fill = new SolidColorBrush(Windows.UI.Colors.Red);
+                            segundoIntento.Fill = new SolidColorBrush(Windows.UI.Colors.Red);
+                            tercerIntento.Fill = new SolidColorBrush(Windows.UI.Colors.Red);
+                            break;
+                    }
+                });
 
             if (vm.intentos == 3) {
 
@@ -228,15 +221,14 @@ namespace QuienEsQuien.Views {
 
                 if (myApp.miTurno) {
                     myApp.miTurno = false;
-                    turno.Text = "No es mi turno";
+                    turno.Text = "NO ES TU TURNO";
                 } else {
                     myApp.miTurno = true;
-                    turno.Text = "Es mi turno";
+                    turno.Text = "Es tu turno";
                 }
             });
         }
-
-
+        
         public async void ActualizarUi() {
 
             await _dispatcher.RunAsync(CoreDispatcherPriority.Normal, () => {
@@ -257,8 +249,7 @@ namespace QuienEsQuien.Views {
                 Cargando.Visibility = Visibility.Visible;
             });
         }
-
-
+        
         private async void volverLobby() {
 
             ActualizarUi();
@@ -336,8 +327,6 @@ namespace QuienEsQuien.Views {
         }
 
         public async void MostrarSalir() {
-
-
             await _dispatcher.RunAsync(CoreDispatcherPriority.Normal, () => {
 
                 Cargando.Visibility = Visibility.Visible;
@@ -345,13 +334,13 @@ namespace QuienEsQuien.Views {
         }
 
         public void salirAbruptamente() {
-            
+
             int i = 0;
             do {
                 Thread.Sleep(1000);
                 i++;
             } while (i < 2);
-            
+
             if (conn.State == Microsoft.AspNet.SignalR.Client.ConnectionState.Connected) {
                 ChatProxy.Invoke("SalirAbruptamente", myApp.sala);
             }
@@ -403,7 +392,6 @@ namespace QuienEsQuien.Views {
         }
 
         private void Button_Click(object sender, RoutedEventArgs e) {
-
             ConfirmarGanador.Visibility = Visibility.Collapsed;
             ChatProxy.Invoke("LeaveGroup", myApp.sala);
 
@@ -414,9 +402,8 @@ namespace QuienEsQuien.Views {
             ChatProxy.Invoke("LeaveGroup", myApp.sala);
 
         }
+
         private void Button_Click_2(object sender, RoutedEventArgs e) {
-
-
             SalirAbruptuamenteRelative.Visibility = Visibility.Collapsed;
             Cargando.Visibility = Visibility.Visible;
 
