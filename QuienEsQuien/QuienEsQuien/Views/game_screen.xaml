@@ -84,19 +84,19 @@
                             <Storyboard x:Name="volteaImagen">
                                 <DoubleAnimation Storyboard.TargetName="img_personaje" 
                                  Storyboard.TargetProperty="(Projection).(PlaneProjection.RotationX)" 
-                                 From="0" To="90"  Duration="00:00:01"/>
+                                 From="0" To="90"  Duration="00:00:0.07"/>
                                 <DoubleAnimation Storyboard.TargetName="img_volteada" 
                                  Storyboard.TargetProperty="(Projection).(PlaneProjection.RotationX)" 
-                                 From="-90" To="0" BeginTime="0:0:1" Duration="00:00:1"/>
+                                 From="-90" To="0" BeginTime="0:0:0.07" Duration="00:00:0.07"/>
                             </Storyboard>
                             
                             <Storyboard x:Name="revelaImagen" >
                                 <DoubleAnimation Storyboard.TargetName="img_volteada" 
                                  Storyboard.TargetProperty="(Projection).(PlaneProjection.RotationX)" 
-                                 From="0" To="-90" Duration="00:00:1"/>
+                                 From="0" To="-90" Duration="00:00:0.07"/>
                                 <DoubleAnimation Storyboard.TargetName="img_personaje" 
                                  Storyboard.TargetProperty="(Projection).(PlaneProjection.RotationX)" 
-                                 From="90" To="0" BeginTime="0:0:1" Duration="00:00:1"/>
+                                 From="90" To="0" BeginTime="0:0:0.07" Duration="00:00:0.07"/>
                             </Storyboard>
                             
                         </RelativePanel.Resources>

@@ -501,26 +501,27 @@ namespace QuienEsQuien.Views {
 
         }
 
-        private void CartaSelectPanel_Tapped(object sender, TappedRoutedEventArgs e) {
-            Storyboard myStory = new Storyboard();
+        private async void CartaSelectPanel_Tapped(object sender, TappedRoutedEventArgs e) {
+            if (myApp.miTurno) {
+                await _dispatcher.RunAsync(CoreDispatcherPriority.Low, () => {
+                    Storyboard myStory = new Storyboard();
 
-            RelativePanel clickedElement = sender as RelativePanel;
-            clsCarta miCarta = clickedElement.DataContext as clsCarta;
+                    RelativePanel clickedElement = sender as RelativePanel;
+                    clsCarta miCarta = clickedElement.DataContext as clsCarta;
 
-            clsCarta miCartaV2 = vm.listadoDeCartas[miCarta.idCarta];
+                    clsCarta miCartaV2 = vm.listadoDeCartas[miCarta.idCarta];
 
-            //Image imgPers = clickedElement.FindName("img_personaje") as Image;
-            //Image imgVolt = clickedElement.FindName("img_volteada") as Image;
+                    Object value = null;
+                    if (!miCartaV2.estaBajada) {
+                        clickedElement?.Resources.TryGetValue("revelaImagen", out value);
+                    } else {
+                        clickedElement?.Resources.TryGetValue("volteaImagen", out value);
+                    }
 
-            Object value = null;
-            if (!miCartaV2.estaBajada) {
-                clickedElement?.Resources.TryGetValue("revelaImagen", out value);
-            } else {
-                clickedElement?.Resources.TryGetValue("volteaImagen", out value);
+                    myStory = value as Storyboard;
+                    myStory?.Begin();
+                });
             }
-
-            myStory = value as Storyboard;
-            myStory?.Begin();
         }
     }
 }
