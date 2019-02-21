@@ -130,6 +130,7 @@ namespace QuienEsQuien
 
                 } else {
 
+                    UIElement algo = Window.Current.Content;
 
                    //Salir del juego
                 }

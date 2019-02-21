@@ -50,7 +50,7 @@ namespace QuienEsQuien.Views {
                    args.Handled = true;
 
                    await _dispatcher.RunAsync(CoreDispatcherPriority.Normal, () => {
-                       salirDelJuego.Visibility = Visibility.Visible; //El secrreto del quien es quien
+                       salirDelJuego.Visibility = Visibility.Visible; //Cambiar aqui, cambiar desde el vm
                        int i = 0;
                        do {
                            Thread.Sleep(1000);
@@ -78,7 +78,6 @@ namespace QuienEsQuien.Views {
 
         public async void NoMostrarSalir() {
 
-            
                 vm.visibilidadSalir = "Collapsed";
 
                 int i = 0;
