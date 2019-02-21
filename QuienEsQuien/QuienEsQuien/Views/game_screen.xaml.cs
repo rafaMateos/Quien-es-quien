@@ -180,8 +180,8 @@ namespace QuienEsQuien.Views {
                 .RunAsync(CoreDispatcherPriority.Normal, async () => {
                     vm.intentos++;
                     var rojito = GetSolidColorBrush("#FF5252").Color;
-                    var naranjita = GetSolidColorBrush("#FF5252").Color;
-                    var amarillo = GetSolidColorBrush("#FF5252").Color;
+                    var naranjita = GetSolidColorBrush("#FF9800").Color;
+                    var amarillo = GetSolidColorBrush("#FFC107").Color;
 
                     switch (vm.intentos) {
                         case 1:
