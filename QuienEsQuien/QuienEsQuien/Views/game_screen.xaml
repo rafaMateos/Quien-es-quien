@@ -28,9 +28,18 @@
                     RelativePanel.AlignLeftWithPanel="True"
                     Padding="0,5">
 
-            <Button Click="Btn_Salir_Click" Name="btn_Salir" Content="Salir"
-                        Background="#D32F2F" Margin="0,0,5,0" Foreground="White"
-                    FontWeight="Bold"/>
+            <Button Background="#D32F2F" Foreground="White">
+                <StackPanel Orientation="Horizontal">
+                    <SymbolIcon Symbol="Cancel"/>
+                    <TextBlock Margin="5,0">Salir</TextBlock>
+                </StackPanel>
+            </Button>
+
+            <!-- https://docs.microsoft.com/es-es/windows/uwp/design/style/segoe-ui-symbol-font -->
+
+            <!--<Button Click="Btn_Salir_Click" Name="btn_Salir" Content="Salir"
+                    Background="#D32F2F" Margin="0,0,5,0" Foreground="White"
+                    FontWeight="Bold"/>-->
 
             <ComboBox  ItemsSource="{Binding Path=listadoSecundarioDeCartas, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" 
                            PlaceholderText="Preguntar por..."
