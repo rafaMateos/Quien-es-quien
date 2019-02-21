@@ -295,7 +295,8 @@ namespace QuienEsQuien.Viewmodel {
             listadoDeCartas.Add(new clsCarta(23, "Samuel", "../Assets/QS_samuel.png"));
 
             Random rnd = new Random();
-            cartaGanadora = rnd.Next(0, 24);
+            //cartaGanadora = rnd.Next(0, 24);
+            cartaGanadora = 1;
 
             listadoDeCartas[cartaGanadora].esGanadora = true;
             _personajeGanador = listadoDeCartas[cartaGanadora];
