@@ -6,11 +6,11 @@
     xmlns:local="using:QuienEsQuien.Views"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
     mc:Ignorable="d"
     xmlns:vm="using:QuienEsQuien.Viewmodel"
     Background="#2196F3"
-    xmlns:ConverterCarta="using:QuienEsQuien.Converters"
-    >
+    xmlns:ConverterCarta="using:QuienEsQuien.Converters" >
 
     <Page.DataContext>
         <vm:viewModel/>
@@ -29,76 +29,83 @@
                     RelativePanel.AlignLeftWithPanel="True"
                     Padding="0,5">
 
-            <Button Background="#AD1714" Foreground="White" Click="Btn_Salir_Click" Name="btn_Salir">
+            <!--<Button Background="#AD1714" Foreground="White" Click="Btn_Salir_Click" Name="btn_Salir">
                 <StackPanel Orientation="Horizontal">
                     <SymbolIcon Symbol="Cancel"/>
                     <TextBlock Margin="5,0">Salir</TextBlock>
                 </StackPanel>
-            </Button>
+            </Button>-->
 
-            <!-- https://docs.microsoft.com/es-es/windows/uwp/design/style/segoe-ui-symbol-font -->
-
-            <!--<Button Click="Btn_Salir_Click" Name="btn_Salir" Content="Salir"
-                    Background="#D32F2F" Margin="0,0,5,0" Foreground="White"
-                    FontWeight="Bold"/>-->
+            <controls:DropShadowPanel Color="Black"
+                          OffsetX="-3"
+                          OffsetY="-3"
+                          BlurRadius="15"
+                          ShadowOpacity=".35"
+                          HorizontalContentAlignment="Stretch"
+                          VerticalContentAlignment="Stretch">
+                <Button Background="#AD1714" Foreground="White" Click="Btn_Salir_Click" Name="btn_Salir">
+                    <StackPanel Orientation="Horizontal">
+                        <SymbolIcon Symbol="Cancel"/>
+                        <TextBlock Margin="5,0">Salir</TextBlock>
+                    </StackPanel>
+                </Button>
+            </controls:DropShadowPanel>
 
             <ComboBox  ItemsSource="{Binding Path=listadoSecundarioDeCartas, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" 
-                           PlaceholderText="Preguntar por..."
-                           Width="220" Margin="50,0,5,0"
-                           SelectedItem="{Binding cartaGanadoraSeleccionada,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}">
+                        PlaceholderText="Preguntar por..."
+                        Width="220" Margin="50,0,5,0"
+                        SelectedItem="{Binding cartaGanadoraSeleccionada,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}">
 
                 <ComboBox.ItemTemplate>
                     <DataTemplate>
                         <StackPanel Orientation="Horizontal" ScrollViewer.VerticalScrollMode="Enabled">
                             <Image Source="{Binding Path=imagenUri}" 
-                                       Height="25" Width="25" Stretch="UniformToFill" 
-                                       HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                    Height="25" Width="25" Stretch="UniformToFill" 
+                                    HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
                             <TextBlock Text="{Binding Path=nombreCarta}" VerticalAlignment="Center" Padding="10,0,0,0"/>
                         </StackPanel>
                     </DataTemplate>
                 </ComboBox.ItemTemplate>
             </ComboBox>
 
-            <!--<Button Content="Adivinar personaje" Background="#D32F2F" 
-                    Foreground="White" Margin="0,0,5,0" Click="ConfirmarSeleccion_Click"/>-->
+            <controls:DropShadowPanel Color="Black"
+                          OffsetX="-3"
+                          OffsetY="-3"
+                          BlurRadius="15"
+                          ShadowOpacity=".35"
+                          HorizontalContentAlignment="Stretch"
+                          VerticalContentAlignment="Stretch">
 
-            <Button Background="#AD1714" Foreground="White" Margin="0,0,5,0" Click="ConfirmarSeleccion_Click">
-                <StackPanel Orientation="Horizontal">
-                    <SymbolIcon Symbol="Help"/>
-                    <TextBlock Margin="5,0">Adivinar personaje</TextBlock>
-                    <Ellipse Margin="10,0,0,0" x:Name="primerIntento" Width="15" Height="15" Fill="#FF5CEA5C"/>
-                    <Ellipse  Margin="5,0,0,0"  x:Name="segundoIntento" Width="15" Height="15" Fill="#FF5CEA5C"/>
-                    <Ellipse  Margin="5,0,0,0"  x:Name="tercerIntento" Width="15" Height="15" Fill="#FF5CEA5C"/>
-                </StackPanel>
-            </Button>
+                <Button Background="#AD1714" Foreground="White" Margin="0,0,5,0" Click="ConfirmarSeleccion_Click">
+                    <StackPanel Orientation="Horizontal">
+                        <SymbolIcon Symbol="Help"/>
+                        <TextBlock Margin="5,0">Adivinar personaje</TextBlock>
+                        <Ellipse Margin="10,0,0,0" x:Name="primerIntento" Width="15" Height="15" Fill="#FF5CEA5C"/>
+                        <Ellipse  Margin="5,0,0,0"  x:Name="segundoIntento" Width="15" Height="15" Fill="#FF5CEA5C"/>
+                        <Ellipse  Margin="5,0,0,0"  x:Name="tercerIntento" Width="15" Height="15" Fill="#FF5CEA5C"/>
+                    </StackPanel>
+                </Button>
 
-            <!--<Ellipse Margin="15,0,0,0" x:Name="primerIntento" Width="25" Height="25" Fill="#FF5CEA5C"/>
-            <Ellipse  Margin="5,0,0,0"  x:Name="segundoIntento" Width="25" Height="25" Fill="#FF5CEA5C"/>
-            <Ellipse  Margin="5,0,0,0"  x:Name="tercerIntento" Width="25" Height="25" Fill="#FF5CEA5C"/>-->
+            </controls:DropShadowPanel>
 
-            <!--<Button Click="Btn_Pasar_Click" Name="btn_Pasar" Content="Pasar turno"
-                        Background="Yellow" Margin="50,0,5,0"/>-->
+            <controls:DropShadowPanel Color="Black" Margin="50,0,5,0"
+                          OffsetX="-3"
+                          OffsetY="-3"
+                          BlurRadius="15"
+                          ShadowOpacity=".35"
+                          HorizontalContentAlignment="Stretch"
+                          VerticalContentAlignment="Stretch">
 
-            <Button Foreground="Black" Click="Btn_Pasar_Click" Name="btn_Pasar" Margin="50,0,5,0" Background="#FFBA08">
-                <StackPanel Orientation="Horizontal">
-                    <SymbolIcon Symbol="Sort"/>
-                    <TextBlock Margin="5,0">Pasar turno</TextBlock>
-                </StackPanel>
-            </Button>
+                <Button Foreground="Black" Click="Btn_Pasar_Click" Name="btn_Pasar"  Background="#FFBA08">
+                    <StackPanel Orientation="Horizontal">
+                        <SymbolIcon Symbol="Sort"/>
+                        <TextBlock Margin="5,0">Pasar turno</TextBlock>
+                    </StackPanel>
+                </Button>
+            </controls:DropShadowPanel>
 
-            <!--<TextBlock Text="Jugadores conectados: " 
-                       VerticalAlignment="Center"
-                        Margin="10,0,0,0">
+            
 
-            </TextBlock>
-
-            <TextBlock 
-                Name="ConnectedPlayers"
-                Text="0"
-                FontSize="18"
-                VerticalAlignment="Center"
-                Margin="10,0,0,0">
-            </TextBlock>-->
         </StackPanel>
 
         <GridView Name="gridImagenes"
@@ -110,17 +117,22 @@
                   SelectedItem="{Binding cartaSeleccionada, Mode=TwoWay}" 
                   HorizontalAlignment="Center"
                   VerticalAlignment="Center"
-                  Margin="0,8,0,0"
-                  
-                
-                  >
+                  Margin="0,8,0,0" >
             <GridView.ItemTemplate>
                 <DataTemplate x:Name="cartitaTemplate" >
 
                     <!--Opacity="{Binding Path=estaBajada, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Converter = {StaticResource conversorEstadoCarta}}"-->
 
+                    <controls:DropShadowPanel Color="Black"
+                          OffsetX="-2"
+                          OffsetY="-2"
+                          BlurRadius="50"
+                          ShadowOpacity="0"
+                          HorizontalContentAlignment="Stretch"
+                          VerticalContentAlignment="Stretch">
+
                     <RelativePanel x:Name="cartaSelectPanel" CornerRadius="20"
-                                   Height="160" Width="120" Margin="2"
+                                   Height="160" Width="120" Margin="0,1,0,0"
                                    HorizontalAlignment="Center"
                                    Tapped="CartaSelectPanel_Tapped">
                         <RelativePanel.Resources>
@@ -174,6 +186,7 @@
                                    Visibility="{Binding Path=estaBajada, Converter={StaticResource converterBoolean}}"/>
 
                     </RelativePanel>
+                    </controls:DropShadowPanel>
                 </DataTemplate>
             </GridView.ItemTemplate>
 
@@ -192,56 +205,68 @@
         <RelativePanel Name="contenedorChat" 
                        RelativePanel.AlignRightWithPanel="True"
                        RelativePanel.AlignBottomWithPanel="True"
-                       RelativePanel.AlignTopWithPanel="True"
-                       Width="330"
+                       RelativePanel.Below="botoneraSuperior"
+                       Width="380"
                        Margin="5,0,0,0" >
 
-            <RelativePanel Name="contenedorTuyo" CornerRadius="10"
-                       Background="#2E5EAA" Margin="0,5" Padding="5"
-                       RelativePanel.AlignBottomWithPanel="False"
-                       RelativePanel.AlignRightWithPanel="True"
-                       RelativePanel.AlignLeftWithPanel="True" >
-
-                <TextBlock Name="txtNickJugador" Text="{Binding Path=nickJugador, Mode=TwoWay}"
-                       HorizontalAlignment="Center"
-                       RelativePanel.AlignHorizontalCenterWithPanel="True"
-                       RelativePanel.AlignTopWithPanel="True"
-                           Foreground="white"/>
+            <controls:DropShadowPanel Color="Black" Name="contenedorTuyo"
+                          OffsetX="10"
+                          OffsetY="-3"
+                          BlurRadius="50"
+                          ShadowOpacity="0.35"
+                          HorizontalContentAlignment="Stretch"
+                          VerticalContentAlignment="Stretch" Margin="0,5" Padding="5"
+                           RelativePanel.AlignBottomWithPanel="False"
+                           RelativePanel.AlignRightWithPanel="True"
+                           RelativePanel.AlignLeftWithPanel="True">
                 
-                <TextBlock Name="turno" Text="xXxXxXxX"  
-                       HorizontalAlignment="Center"
-                       RelativePanel.AlignHorizontalCenterWithPanel="True"
-                       RelativePanel.Below="txtNickJugador"
-                       FontSize="20" Foreground="white"/>
+                <RelativePanel  CornerRadius="10"
+                           Background="#2E5EAA" Margin="0,5" Padding="5"
+                           RelativePanel.AlignBottomWithPanel="False"
+                           RelativePanel.AlignRightWithPanel="True"
+                           RelativePanel.AlignLeftWithPanel="True" >
 
-                <Grid Name="varios" RelativePanel.Below="turno"
-                      RelativePanel.AlignLeftWithPanel="True"
-                      RelativePanel.AlignRightWithPanel="True"
-                      HorizontalAlignment="Center">
-
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="*"></RowDefinition>
-                        <RowDefinition Height="*"></RowDefinition>
-                    </Grid.RowDefinitions>
-
-                    <StackPanel Orientation="Horizontal" Grid.Row="0">
-                        <TextBlock Text="Jugadores: " Margin="10,0,0,0" Foreground="white"/>
-                        <TextBlock Name="ConnectedPlayers" Text="0" FontWeight="Bold"  Margin="5,0" Foreground="white"/>
-                    </StackPanel>
-
-                    <StackPanel Orientation="Horizontal"  Grid.Row="1" HorizontalAlignment="Center">
-                        <TextBlock Name="txtTuEres" Text="Tu eres: " Foreground="white"/>
-                        <TextBlock Name="tuPersonajeNombre" Text="{Binding personageGanador.nombreCarta}" Margin="5,0" Foreground="white"/>
-                    </StackPanel>
-                </Grid>
+                    <TextBlock Name="txtNickJugador" Text="{Binding Path=nickJugador, Mode=TwoWay}"
+                           HorizontalAlignment="Center"
+                           RelativePanel.AlignHorizontalCenterWithPanel="True"
+                           RelativePanel.AlignTopWithPanel="True"
+                               Foreground="white"/>
                 
-                <Image Name="tuPersonajeImagen" Source="{Binding personageGanador.imagenUri}"
-                       MaxHeight="130" HorizontalAlignment="Center"
-                       RelativePanel.Below="varios"
-                       RelativePanel.AlignRightWithPanel="True"
-                       RelativePanel.AlignLeftWithPanel="True"/>
+                    <TextBlock Name="turno" Text="xXxXxXxX"  
+                           HorizontalAlignment="Center"
+                           RelativePanel.AlignHorizontalCenterWithPanel="True"
+                           RelativePanel.Below="txtNickJugador"
+                           FontSize="20" Foreground="white"/>
 
-            </RelativePanel>
+                    <Grid Name="varios" RelativePanel.Below="turno"
+                          RelativePanel.AlignLeftWithPanel="True"
+                          RelativePanel.AlignRightWithPanel="True"
+                          HorizontalAlignment="Center">
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
+                        </Grid.RowDefinitions>
+
+                        <StackPanel Orientation="Horizontal" Grid.Row="0">
+                            <TextBlock Text="Jugadores: " Margin="10,0,0,0" Foreground="white"/>
+                            <TextBlock Name="ConnectedPlayers" Text="0" FontWeight="Bold"  Margin="5,0" Foreground="white"/>
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal"  Grid.Row="1" HorizontalAlignment="Center">
+                            <TextBlock Name="txtTuEres" Text="Tu eres: " Foreground="white"/>
+                            <TextBlock Name="tuPersonajeNombre" Text="{Binding personageGanador.nombreCarta}" Margin="5,0" Foreground="white"/>
+                        </StackPanel>
+                    </Grid>
+                
+                    <Image Name="tuPersonajeImagen" Source="{Binding personageGanador.imagenUri}"
+                           MaxHeight="130" HorizontalAlignment="Center"
+                           RelativePanel.Below="varios"
+                           RelativePanel.AlignRightWithPanel="True"
+                           RelativePanel.AlignLeftWithPanel="True"/>
+
+                </RelativePanel>
+            </controls:DropShadowPanel>
 
             <ListView Name="contanierChat" Background="#AD1714" 
                       RelativePanel.AlignLeftWithPanel="True"
