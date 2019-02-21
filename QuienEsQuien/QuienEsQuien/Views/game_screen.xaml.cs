@@ -179,22 +179,24 @@ namespace QuienEsQuien.Views {
             await Windows.ApplicationModel.Core.CoreApplication.MainView.Dispatcher
                 .RunAsync(CoreDispatcherPriority.Normal, async () => {
                     vm.intentos++;
-                    var color = GetSolidColorBrush("#FF5252").Color;
+                    var rojito = GetSolidColorBrush("#FF5252").Color;
+                    var naranjita = GetSolidColorBrush("#FF5252").Color;
+                    var amarillo = GetSolidColorBrush("#FF5252").Color;
 
                     switch (vm.intentos) {
                         case 1:
-                            primerIntento.Fill = new SolidColorBrush(color);
+                            primerIntento.Fill = new SolidColorBrush(amarillo);
                             break;
 
                         case 2:
-                            primerIntento.Fill = new SolidColorBrush(Windows.UI.Colors.Red);
-                            segundoIntento.Fill = new SolidColorBrush(Windows.UI.Colors.Red);
+                            primerIntento.Fill = new SolidColorBrush(amarillo);
+                            segundoIntento.Fill = new SolidColorBrush(naranjita);
                             break;
 
                         case 3:
-                            primerIntento.Fill = new SolidColorBrush(Windows.UI.Colors.Red);
-                            segundoIntento.Fill = new SolidColorBrush(Windows.UI.Colors.Red);
-                            tercerIntento.Fill = new SolidColorBrush(color);
+                            primerIntento.Fill = new SolidColorBrush(amarillo);
+                            segundoIntento.Fill = new SolidColorBrush(naranjita);
+                            tercerIntento.Fill = new SolidColorBrush(rojito);
                             break;
                     }
                 });
