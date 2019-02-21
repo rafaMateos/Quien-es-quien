@@ -179,9 +179,9 @@ namespace QuienEsQuien.Views {
             await Windows.ApplicationModel.Core.CoreApplication.MainView.Dispatcher
                 .RunAsync(CoreDispatcherPriority.Normal, async () => {
                     vm.intentos++;
-                    var rojito = GetSolidColorBrush("#FF5252FF").Color;
-                    var naranjita = GetSolidColorBrush("#FF980000").Color;
-                    var amarillito = GetSolidColorBrush("#FFC107FF").Color;
+                    var rojito = GetSolidColorBrush("#FFFF5252").Color;
+                    var naranjita = GetSolidColorBrush("#FFFF9800").Color;
+                    var amarillito = GetSolidColorBrush("#FFFFC107").Color;
 
                     switch (vm.intentos) {
                         case 1:
