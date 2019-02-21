@@ -137,5 +137,25 @@ namespace Manejadoras {
 
             return sala;
         }
+
+        public async Task<int> obtenerUsuariosSala (String salita)
+        {
+            clsSala sala = new clsSala();
+
+            int idSala = ObtenerIDSala(salita);
+
+            Uri miUri = new Uri($"{stringURIapi}/{idSala}");
+
+            String res;
+            HttpClient client = new HttpClient();
+            HttpResponseMessage response = await client.GetAsync(miUri);
+
+            if (response.IsSuccessStatusCode)
+            {
+                res = await response.Content.ReadAsStringAsync();
+                sala = JsonConvert.DeserializeObject<clsSala>(res);
+            }
+            return sala.usuariosConectados;
+        }
     }
 }

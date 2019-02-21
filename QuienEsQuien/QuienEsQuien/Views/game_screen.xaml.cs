@@ -72,6 +72,7 @@ namespace QuienEsQuien.Views {
 
                 ChatProxy.Invoke("JoinGroup", myApp.sala);
             }
+            sumarmeAJugadoresConectados();
         }
 
 
@@ -105,6 +106,7 @@ namespace QuienEsQuien.Views {
             ChatProxy.On("falloAdivinar", actualizarIntentos);
             ChatProxy.On<string>("finalizarPartidaPorFallos", finalizarPartidaPorFallos);
             ChatProxy.On("salirAbriptamente", salirPorAbandono);
+            ChatProxy.On("actualizarJugadoresConectados", actualizarJugadoresConectados);
 
             //ChatProxy.On<ChatMessage>("agregarMensaje", addMessage);
         }
@@ -358,6 +360,23 @@ namespace QuienEsQuien.Views {
             if (conn.State == Microsoft.AspNet.SignalR.Client.ConnectionState.Connected) {
                 ChatProxy.Invoke("SalirAbruptamente", myApp.sala);
             }
+        }
+
+        public void sumarmeAJugadoresConectados()
+        {
+            if (conn.State == Microsoft.AspNet.SignalR.Client.ConnectionState.Connected)
+            {
+                ChatProxy.Invoke("MandarInfoJugadoresConectados", myApp.sala);
+            }
+        }
+
+        public async void actualizarJugadoresConectados()
+        {
+            await _dispatcher.RunAsync(CoreDispatcherPriority.Normal, async () => {
+
+                int usuarios = await maneja.obtenerUsuariosSala(myApp.sala);
+                ConnectedPlayers.Text = usuarios.ToString();
+            });
         }
 
         private void Btn_send_Click(object sender, RoutedEventArgs e) {
