@@ -4,6 +4,7 @@ using QuienEsQuien.Modelos;
 using QuienEsQuien.Viewmodel;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -163,15 +164,26 @@ namespace QuienEsQuien.Views {
             });
         }
 
+        public SolidColorBrush GetSolidColorBrush(string hex) {
+            hex = hex.Replace("#", string.Empty);
+            byte a = (byte)(Convert.ToUInt32(hex.Substring(0, 2), 16));
+            byte r = (byte)(Convert.ToUInt32(hex.Substring(2, 2), 16));
+            byte g = (byte)(Convert.ToUInt32(hex.Substring(4, 2), 16));
+            byte b = (byte)(Convert.ToUInt32(hex.Substring(6, 2), 16));
+            SolidColorBrush myBrush = new SolidColorBrush(Windows.UI.Color.FromArgb(a, r, g, b));
+            return myBrush;
+        }
+
         private async void actualizarIntentos() {
 
             await Windows.ApplicationModel.Core.CoreApplication.MainView.Dispatcher
                 .RunAsync(CoreDispatcherPriority.Normal, async () => {
                     vm.intentos++;
-                    switch (vm.intentos) {
+                    var color = GetSolidColorBrush("#FF5252").Color;
 
+                    switch (vm.intentos) {
                         case 1:
-                            primerIntento.Fill = new SolidColorBrush(Windows.UI.Colors.Red);
+                            primerIntento.Fill = new SolidColorBrush(color);
                             break;
 
                         case 2:
@@ -182,7 +194,7 @@ namespace QuienEsQuien.Views {
                         case 3:
                             primerIntento.Fill = new SolidColorBrush(Windows.UI.Colors.Red);
                             segundoIntento.Fill = new SolidColorBrush(Windows.UI.Colors.Red);
-                            tercerIntento.Fill = new SolidColorBrush(Windows.UI.Colors.Red);
+                            tercerIntento.Fill = new SolidColorBrush(color);
                             break;
                     }
                 });

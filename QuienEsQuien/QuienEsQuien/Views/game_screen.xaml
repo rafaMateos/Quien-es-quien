@@ -8,7 +8,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     xmlns:vm="using:QuienEsQuien.Viewmodel"
-    Background="#536DFE"
+    Background="#2196F3"
     xmlns:ConverterCarta="using:QuienEsQuien.Converters"
     >
 
@@ -29,7 +29,7 @@
                     RelativePanel.AlignLeftWithPanel="True"
                     Padding="0,5">
 
-            <Button Background="#D32F2F" Foreground="White" Click="Btn_Salir_Click" Name="btn_Salir">
+            <Button Background="#AD1714" Foreground="White" Click="Btn_Salir_Click" Name="btn_Salir">
                 <StackPanel Orientation="Horizontal">
                     <SymbolIcon Symbol="Cancel"/>
                     <TextBlock Margin="5,0">Salir</TextBlock>
@@ -62,21 +62,24 @@
             <!--<Button Content="Adivinar personaje" Background="#D32F2F" 
                     Foreground="White" Margin="0,0,5,0" Click="ConfirmarSeleccion_Click"/>-->
 
-            <Button Background="#D32F2F" Foreground="White" Margin="0,0,5,0" Click="ConfirmarSeleccion_Click">
+            <Button Background="#AD1714" Foreground="White" Margin="0,0,5,0" Click="ConfirmarSeleccion_Click">
                 <StackPanel Orientation="Horizontal">
                     <SymbolIcon Symbol="Help"/>
                     <TextBlock Margin="5,0">Adivinar personaje</TextBlock>
+                    <Ellipse Margin="10,0,0,0" x:Name="primerIntento" Width="15" Height="15" Fill="#FF5CEA5C"/>
+                    <Ellipse  Margin="5,0,0,0"  x:Name="segundoIntento" Width="15" Height="15" Fill="#FF5CEA5C"/>
+                    <Ellipse  Margin="5,0,0,0"  x:Name="tercerIntento" Width="15" Height="15" Fill="#FF5CEA5C"/>
                 </StackPanel>
             </Button>
 
-            <Ellipse Margin="15,0,0,0" x:Name="primerIntento" Width="25" Height="25" Fill="#FF5CEA5C"/>
+            <!--<Ellipse Margin="15,0,0,0" x:Name="primerIntento" Width="25" Height="25" Fill="#FF5CEA5C"/>
             <Ellipse  Margin="5,0,0,0"  x:Name="segundoIntento" Width="25" Height="25" Fill="#FF5CEA5C"/>
-            <Ellipse  Margin="5,0,0,0"  x:Name="tercerIntento" Width="25" Height="25" Fill="#FF5CEA5C"/>
+            <Ellipse  Margin="5,0,0,0"  x:Name="tercerIntento" Width="25" Height="25" Fill="#FF5CEA5C"/>-->
 
             <!--<Button Click="Btn_Pasar_Click" Name="btn_Pasar" Content="Pasar turno"
                         Background="Yellow" Margin="50,0,5,0"/>-->
 
-            <Button Foreground="Black" Click="Btn_Pasar_Click" Name="btn_Pasar" Margin="50,0,5,0" Background="Yellow">
+            <Button Foreground="Black" Click="Btn_Pasar_Click" Name="btn_Pasar" Margin="50,0,5,0" Background="#FFBA08">
                 <StackPanel Orientation="Horizontal">
                     <SymbolIcon Symbol="Upload"/>
                     <TextBlock Margin="5,0">Pasar turno</TextBlock>
@@ -116,7 +119,7 @@
 
                     <!--Opacity="{Binding Path=estaBajada, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Converter = {StaticResource conversorEstadoCarta}}"-->
 
-                    <RelativePanel x:Name="cartaSelectPanel" 
+                    <RelativePanel x:Name="cartaSelectPanel" CornerRadius="20"
                                    Height="160" Width="120" Margin="2"
                                    HorizontalAlignment="Center"
                                    Tapped="CartaSelectPanel_Tapped">
@@ -193,8 +196,8 @@
                        Width="330"
                        Margin="5,0,0,0" >
 
-            <RelativePanel Name="contenedorTuyo" 
-                       Background="#D32F2F" Margin="0,5" Padding="5"
+            <RelativePanel Name="contenedorTuyo" CornerRadius="10"
+                       Background="#2E5EAA" Margin="0,5" Padding="5"
                        RelativePanel.AlignBottomWithPanel="False"
                        RelativePanel.AlignRightWithPanel="True"
                        RelativePanel.AlignLeftWithPanel="True" >
@@ -232,7 +235,7 @@
                     </StackPanel>
                 </Grid>
                 
-                <Image Name="tuPersonajeImagen" Source="{Binding personageGanador.imagenUri}" 
+                <Image Name="tuPersonajeImagen" Source="{Binding personageGanador.imagenUri}"
                        MaxHeight="130" HorizontalAlignment="Center"
                        RelativePanel.Below="varios"
                        RelativePanel.AlignRightWithPanel="True"
@@ -240,7 +243,7 @@
 
             </RelativePanel>
 
-            <ListView Name="contanierChat" Background="#D32F2F" 
+            <ListView Name="contanierChat" Background="#AD1714" 
                       RelativePanel.AlignLeftWithPanel="True"
                       RelativePanel.AlignRightWithPanel="True"
                       RelativePanel.Above="contenedorSend"
@@ -263,7 +266,7 @@
                                 <ColumnDefinition Width="auto" />
                                 <ColumnDefinition Width="*" />
                             </Grid.ColumnDefinitions>
-                            <TextBlock Grid.Column="0" Text="{Binding Path=nickName}" Foreground="white" FontWeight="ExtraBlack"/>
+                            <TextBlock Grid.Column="0" Text="{Binding Path=nickName}" Foreground="white" FontWeight="Bold"/>
                             <TextBlock Grid.Column="1" Text="{Binding Path=message, Mode=TwoWay}" TextWrapping="Wrap" Foreground="white"/>
                         </Grid>
                     </DataTemplate>
@@ -285,7 +288,7 @@
                         Content="Enviar" RelativePanel.AlignRightWithPanel="True"
                         Background="#D32F2F" Foreground="White"/>-->
 
-                <Button Background="#D32F2F" Foreground="White" Click="Btn_send_Click" Name="btn_send" RelativePanel.AlignRightWithPanel="True">
+                <Button Background="#AD1714" Foreground="White" Click="Btn_send_Click" Name="btn_send" RelativePanel.AlignRightWithPanel="True">
                     <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
                         <SymbolIcon Symbol="Message"/>
                         <TextBlock Margin="5,0">Enviar</TextBlock>
