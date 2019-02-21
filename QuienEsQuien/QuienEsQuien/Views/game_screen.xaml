@@ -60,7 +60,7 @@
                         Background="Yellow" Margin="50,0,5,0"/>
 
 
-            <TextBlock Text="Jugadores conectados: " 
+            <!--<TextBlock Text="Jugadores conectados: " 
                        VerticalAlignment="Center"
                         Margin="10,0,0,0">
 
@@ -72,7 +72,7 @@
                 FontSize="18"
                 VerticalAlignment="Center"
                 Margin="10,0,0,0">
-            </TextBlock>
+            </TextBlock>-->
         </StackPanel>
 
         <GridView Name="gridImagenes"
@@ -160,24 +160,6 @@
             
         </GridView>
 
-
-
-        <!--<RelativePanel Name="contenedorTuyo" 
-                       Background="Aquamarine" Margin="5,0,0,5" Padding="5"
-                       RelativePanel.AlignRightWithPanel="True"
-                       RelativePanel.AlignLeftWith="contenedorChat">
-            <TextBlock Name="tuPersonajeNombre" Text="Tu eres:"  
-                       HorizontalAlignment="Center"
-                       RelativePanel.AlignLeftWithPanel="True"/>
-            <Image Name="tuPersonajeImagen" Source="../Assets/QS_Rafa.jpg" 
-                       MaxHeight="130" HorizontalAlignment="Right"
-                       RelativePanel.Below="tuPersonajeNombre"
-                       RelativePanel.AlignRightWithPanel="True"/>
-            <TextBlock Name="turno" Text="xXxXxXxX"  
-                           HorizontalAlignment="Center"
-                       RelativePanel.Below="tuPersonajeImagen"/>
-        </RelativePanel>-->
-
         <RelativePanel Name="contenedorChat" 
                        RelativePanel.AlignRightWithPanel="True"
                        RelativePanel.AlignBottomWithPanel="True"
@@ -203,18 +185,30 @@
                        RelativePanel.Below="txtNickJugador"
                        FontSize="20" Foreground="white"/>
 
-                <TextBlock Name="txtTuEres" Text="Tu eres: "
-                       RelativePanel.AlignLeftWithPanel="True"
-                       RelativePanel.Below="turno" Foreground="white"/>
+                <Grid Name="varios" RelativePanel.Below="turno"
+                      RelativePanel.AlignLeftWithPanel="True"
+                      RelativePanel.AlignRightWithPanel="True"
+                      HorizontalAlignment="Center">
 
-                <TextBlock Name="tuPersonajeNombre" Text="{Binding personageGanador.nombreCarta}"
-                       RelativePanel.RightOf="txtTuEres"
-                       Margin="5,0"
-                       RelativePanel.Below="turno" Foreground="white"/>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                    </Grid.RowDefinitions>
 
+                    <StackPanel Orientation="Horizontal" Grid.Row="0">
+                        <TextBlock Text="Jugadores: " Margin="10,0,0,0" Foreground="white"/>
+                        <TextBlock Name="ConnectedPlayers" Text="0" FontWeight="Bold"  Margin="5,0" Foreground="white"/>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal"  Grid.Row="1" HorizontalAlignment="Center">
+                        <TextBlock Name="txtTuEres" Text="Tu eres: " Foreground="white"/>
+                        <TextBlock Name="tuPersonajeNombre" Text="{Binding personageGanador.nombreCarta}" Margin="5,0" Foreground="white"/>
+                    </StackPanel>
+                </Grid>
+                
                 <Image Name="tuPersonajeImagen" Source="{Binding personageGanador.imagenUri}" 
                        MaxHeight="130" HorizontalAlignment="Center"
-                       RelativePanel.Below="tuPersonajeNombre"
+                       RelativePanel.Below="varios"
                        RelativePanel.AlignRightWithPanel="True"
                        RelativePanel.AlignLeftWithPanel="True"/>
 
