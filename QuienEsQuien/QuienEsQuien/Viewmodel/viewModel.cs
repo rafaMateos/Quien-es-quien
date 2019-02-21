@@ -40,8 +40,23 @@ namespace QuienEsQuien.Viewmodel {
 
         private int _intentos = 0;
 
+        private string _visibilidadSalir;
+
         #endregion
         #region propiedades publicas
+
+        public string visibilidadSalir {
+
+            get {
+
+                return _visibilidadSalir;
+            }
+            set {
+
+                _visibilidadSalir = value;
+                NotifyPropertyChanged("visibilidadSalir");
+            }
+        }
         public List<clsSala> listadoDeSalas {
             get { return _ListadoDeSalas; }
             set { _ListadoDeSalas = value; }
@@ -209,6 +224,7 @@ namespace QuienEsQuien.Viewmodel {
             nickJugador = myApp.nickJugador;
 
             _visibilidad = "Collapsed";
+            _visibilidadSalir = "Collapsed";
             rellenarListaSalasAsync();
             rellenarListadoDeCartas();
             listadoSecundarioDeCartas = listadoDeCartas;

@@ -99,6 +99,8 @@ namespace QuienEsQuien
         private async void App_CloseRequested(object sender, SystemNavigationCloseRequestedPreviewEventArgs e)
         {
 
+           
+
             if (this.sala.Equals("")) {
 
                 App.Current.Exit();
@@ -120,15 +122,16 @@ namespace QuienEsQuien
                     sala.usuariosConectados = 0;
 
                     //Mostrar saliendo de sala
-                   
-
                     await maneja.actualizarUsuariosSala(sala);
                     //LLamar a un metodo del serveer
-
                     salir.salirAbruptamente();
 
                     App.Current.Exit();
 
+                } else {
+
+
+                   //Salir del juego
                 }
 
 

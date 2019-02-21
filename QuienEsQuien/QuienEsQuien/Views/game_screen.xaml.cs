@@ -74,6 +74,20 @@ namespace QuienEsQuien.Views {
             }
         }
 
+
+        public async void NoMostrarSalir() {
+
+            
+                vm.visibilidadSalir = "Collapsed";
+
+                int i = 0;
+                do {
+                    Thread.Sleep(1000);
+                    i++;
+                } while (i < 1);
+           
+
+        }
         private void SignalR() {
             //Connect to the url 
             conn = new HubConnection("https://adivinaquiensoy.azurewebsites.net/");

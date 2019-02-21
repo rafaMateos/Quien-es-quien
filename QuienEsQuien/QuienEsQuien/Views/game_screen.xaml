@@ -404,7 +404,7 @@
 
 
         <RelativePanel
-            Visibility="Collapsed"
+            Visibility="{Binding visibilidadSalir,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
             Name="salirDelJuego"
             HorizontalAlignment="Center" 
             VerticalAlignment="Center" 
