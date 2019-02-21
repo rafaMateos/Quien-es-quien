@@ -144,6 +144,7 @@ namespace QuienEsQuien.Viewmodel {
                 if (myApp.miTurno) {
                     _cartaSeleccionada = value;
                     listadoDeCartas[cartaSeleccionada.idCarta].estaBajada = !listadoDeCartas[cartaSeleccionada.idCarta].estaBajada;
+                    _cartaSeleccionada = null;
                     NotifyPropertyChanged("cartaSeleccionada");
                     NotifyPropertyChanged("listadoDeCartas");
                     //petara aqui?
@@ -157,6 +158,7 @@ namespace QuienEsQuien.Viewmodel {
                             listadoSecundarioDeCartas.Add(cartita);
                         }
                     }
+
                     NotifyPropertyChanged("listadoSecundarioDeCartas");
                 }
                 else {
@@ -295,8 +297,8 @@ namespace QuienEsQuien.Viewmodel {
             listadoDeCartas.Add(new clsCarta(23, "Samuel", "../Assets/QS_samuel.png"));
 
             Random rnd = new Random();
-            //cartaGanadora = rnd.Next(0, 24);
-            cartaGanadora = 1;
+            cartaGanadora = rnd.Next(0, 24);
+            //cartaGanadora = 1;
 
             listadoDeCartas[cartaGanadora].esGanadora = true;
             _personajeGanador = listadoDeCartas[cartaGanadora];

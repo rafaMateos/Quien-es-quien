@@ -452,6 +452,7 @@ namespace QuienEsQuien.Views {
 
         private async void CartaSelectPanel_Tapped(object sender, TappedRoutedEventArgs e) {
             if (myApp.miTurno) {
+               
                 await _dispatcher.RunAsync(CoreDispatcherPriority.Low, () => {
                     Storyboard myStory = new Storyboard();
 
@@ -461,16 +462,36 @@ namespace QuienEsQuien.Views {
                     clsCarta miCartaV2 = vm.listadoDeCartas[miCarta.idCarta];
 
                     Object value = null;
+                  
+                      
+                  
+
                     if (!miCartaV2.estaBajada) {
+
                         clickedElement?.Resources.TryGetValue("revelaImagen", out value);
+                       
+
                     } else {
+
                         clickedElement?.Resources.TryGetValue("volteaImagen", out value);
+                        
                     }
 
                     myStory = value as Storyboard;
                     myStory?.Begin();
                 });
+
+
+                
             }
+        }
+
+        private void GridImagenes_ItemClick(object sender, ItemClickEventArgs e) {
+
+            //contanierChat.SelectedItem = contanierChat.Items.Count - 1;
+            gridImagenes.SelectedItem = -1;
+
+
         }
     }
 }
