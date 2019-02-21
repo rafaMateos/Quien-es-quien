@@ -22,12 +22,18 @@
         <TextBlock HorizontalAlignment="Center" Text="Bienvenido, introduce tu nick:"/>
         <TextBlock Text="{Binding nickJugador, Mode=TwoWay}"/>
         <TextBox Name="txtNickJugador" KeyDown="TxtNickJugador_KeyDown" MaxWidth="350" Margin="0,0,0,20"/>
-        <Button Content="Entrar"
+        <!--<Button Content="Entrar"
                  Click="HyperButton_Click"
                  HorizontalAlignment="Center"
                 Background="#D32F2F"
-               
-                Foreground="White"/>
+                Foreground="White"/>-->
+
+        <Button Background="#D32F2F" Foreground="White" Click="HyperButton_Click" HorizontalAlignment="Center">
+            <StackPanel Orientation="Horizontal">
+                <SymbolIcon Symbol="Forward"/>
+                <TextBlock Margin="5,0">Entrar</TextBlock>
+            </StackPanel>
+        </Button>
     </StackPanel>
 
 </Page>

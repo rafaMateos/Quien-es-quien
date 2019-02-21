@@ -19,6 +19,7 @@
 
     <Page.Resources>
         <ConverterCarta:converterEstadoCarta x:Key="conversorEstadoCarta"></ConverterCarta:converterEstadoCarta>
+        <ConverterCarta:InverseBooleanConverter x:Key="converterBoolean"></ConverterCarta:InverseBooleanConverter>
     </Page.Resources>
 
     <RelativePanel Padding="10" Margin="10">
@@ -28,7 +29,7 @@
                     RelativePanel.AlignLeftWithPanel="True"
                     Padding="0,5">
 
-            <Button Background="#D32F2F" Foreground="White">
+            <Button Background="#D32F2F" Foreground="White" Click="Btn_Salir_Click" Name="btn_Salir">
                 <StackPanel Orientation="Horizontal">
                     <SymbolIcon Symbol="Cancel"/>
                     <TextBlock Margin="5,0">Salir</TextBlock>
@@ -58,16 +59,29 @@
                 </ComboBox.ItemTemplate>
             </ComboBox>
 
-            <Button Content="Adivinar personaje" Background="#D32F2F" 
-                    Foreground="White" Margin="0,0,5,0" Click="ConfirmarSeleccion_Click"/>
+            <!--<Button Content="Adivinar personaje" Background="#D32F2F" 
+                    Foreground="White" Margin="0,0,5,0" Click="ConfirmarSeleccion_Click"/>-->
+
+            <Button Background="#D32F2F" Foreground="White" Margin="0,0,5,0" Click="ConfirmarSeleccion_Click">
+                <StackPanel Orientation="Horizontal">
+                    <SymbolIcon Symbol="Help"/>
+                    <TextBlock Margin="5,0">Adivinar personaje</TextBlock>
+                </StackPanel>
+            </Button>
 
             <Ellipse Margin="15,0,0,0" x:Name="primerIntento" Width="25" Height="25" Fill="#FF5CEA5C"/>
             <Ellipse  Margin="5,0,0,0"  x:Name="segundoIntento" Width="25" Height="25" Fill="#FF5CEA5C"/>
             <Ellipse  Margin="5,0,0,0"  x:Name="tercerIntento" Width="25" Height="25" Fill="#FF5CEA5C"/>
 
-            <Button Click="Btn_Pasar_Click" Name="btn_Pasar" Content="Pasar turno"
-                        Background="Yellow" Margin="50,0,5,0"/>
+            <!--<Button Click="Btn_Pasar_Click" Name="btn_Pasar" Content="Pasar turno"
+                        Background="Yellow" Margin="50,0,5,0"/>-->
 
+            <Button Foreground="Black" Click="Btn_Pasar_Click" Name="btn_Pasar" Margin="50,0,5,0" Background="Yellow">
+                <StackPanel Orientation="Horizontal">
+                    <SymbolIcon Symbol="Upload"/>
+                    <TextBlock Margin="5,0">Pasar turno</TextBlock>
+                </StackPanel>
+            </Button>
 
             <!--<TextBlock Text="Jugadores conectados: " 
                        VerticalAlignment="Center"
@@ -153,7 +167,8 @@
                                    RelativePanel.AlignLeftWithPanel="True"
                                    RelativePanel.AlignRightWithPanel="True"
                                    HorizontalAlignment="Center"
-                                   Margin="0,4"/>
+                                   Margin="0,4"
+                                   Visibility="{Binding Path=estaBajada, Converter={StaticResource converterBoolean}}"/>
 
                     </RelativePanel>
                 </DataTemplate>
@@ -266,9 +281,17 @@
                          RelativePanel.LeftOf="btn_send" 
                          RelativePanel.AlignLeftWithPanel="True" />
 
-                <Button Click="Btn_send_Click" Name="btn_send" 
+                <!--<Button Click="Btn_send_Click" Name="btn_send" 
                         Content="Enviar" RelativePanel.AlignRightWithPanel="True"
-                        Background="#D32F2F" Foreground="White"/>
+                        Background="#D32F2F" Foreground="White"/>-->
+
+                <Button Background="#D32F2F" Foreground="White" Click="Btn_send_Click" Name="btn_send" RelativePanel.AlignRightWithPanel="True">
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
+                        <SymbolIcon Symbol="Message"/>
+                        <TextBlock Margin="5,0">Enviar</TextBlock>
+                    </StackPanel>
+                </Button>
+
             </RelativePanel>
 
 
@@ -428,15 +451,9 @@
                 RelativePanel.AlignHorizontalCenterWithPanel="True"
                 RelativePanel.AlignVerticalCenterWithPanel="True" >
 
-
-                <TextBlock
-                    Text="Saliendo del juego.."
-                    TextWrapping="Wrap"
-                    FontSize="25">
-                </TextBlock>
-
-
-
+                <TextBlock  Text="Saliendo del juego.." TextWrapping="Wrap" FontSize="25"
+                            TextAlignment="Center"/>
+                <ProgressBar IsIndeterminate="True" Margin="0,15,0,0"/>
             </StackPanel>
 
         </RelativePanel>

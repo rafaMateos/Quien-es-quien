@@ -18,13 +18,21 @@
 
         <Image Source="../Assets/SplashScreen.scale-200.png" Height="303" Width="766" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin=" 0,0,0,150"/>
 
-        <Button Content="Entrar al juego" Margin="10"
+        <!--<Button Content="Entrar al juego" Margin="10"
                  Click="HyperButton_EntrarJuego_Click"
                  HorizontalAlignment="Center"
                 Background="#D32F2F"
                 Foreground="White"
                 FontSize="25"
-               />
+               />-->
+
+        <Button Background="#D32F2F" Foreground="White" Click="HyperButton_EntrarJuego_Click" HorizontalAlignment="Center" FontSize="25">
+            <StackPanel Orientation="Horizontal">
+                <SymbolIcon Symbol="Forward"/>
+                <TextBlock Margin="5,0">Entrar al juego</TextBlock>
+            </StackPanel>
+        </Button>
+
         <Button Content="Sobre nosotros" Margin="10"
                  Click="HyperButton_About_Click"
                  HorizontalAlignment="Center"
