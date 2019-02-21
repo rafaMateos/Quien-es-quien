@@ -280,17 +280,17 @@ namespace QuienEsQuien.Viewmodel {
             listadoDeCartas.Add(new clsCarta(8, "Yeray", "../Assets/QS_yeray.png"));
             listadoDeCartas.Add(new clsCarta(9, "Rafa", "../Assets/QS_Rafa.png"));
             listadoDeCartas.Add(new clsCarta(10, "Asun", "../Assets/QS_asun.png"));
-            listadoDeCartas.Add(new clsCarta(11, "1", "../Assets/QS_Rafa.png"));
+            listadoDeCartas.Add(new clsCarta(11, "Dolores", "../Assets/QS_dolores.png"));
             listadoDeCartas.Add(new clsCarta(12, "Luis", "../Assets/QS_luis.png"));
-            listadoDeCartas.Add(new clsCarta(13, "2", "../Assets/QS_Rafa.png"));
-            listadoDeCartas.Add(new clsCarta(14, "3", "../Assets/QS_Rafa.png"));
+            listadoDeCartas.Add(new clsCarta(13, "Eva", "../Assets/QS_eva.png"));
+            listadoDeCartas.Add(new clsCarta(14, "Alexa", "../Assets/QS_alexa.png"));
             listadoDeCartas.Add(new clsCarta(15, "Rosario", "../Assets/QS_rosario.png"));
-            listadoDeCartas.Add(new clsCarta(16, "4", "../Assets/QS_Rafa.png"));
+            listadoDeCartas.Add(new clsCarta(16, "Raimunda", "../Assets/QS_raimunda.png"));
             listadoDeCartas.Add(new clsCarta(17, "José", "../Assets/QS_jose.png"));
-            listadoDeCartas.Add(new clsCarta(18, "5", "../Assets/QS_Rafa.png"));
+            listadoDeCartas.Add(new clsCarta(18, "Raquel", "../Assets/QS_raquel.png"));
             listadoDeCartas.Add(new clsCarta(19, "Leo", "../Assets/QS_leo.png"));
             listadoDeCartas.Add(new clsCarta(20, "Sefran", "../Assets/QS_sefran.png"));
-            listadoDeCartas.Add(new clsCarta(21, "6", "../Assets/QS_Rafa.png"));
+            listadoDeCartas.Add(new clsCarta(21, "Teresa", "../Assets/QS_Teresa.png"));
             listadoDeCartas.Add(new clsCarta(22, "Vicky", "../Assets/QS_vicky.png"));
             listadoDeCartas.Add(new clsCarta(23, "Samuel", "../Assets/QS_samuel.png"));
 

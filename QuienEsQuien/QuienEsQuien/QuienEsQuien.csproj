@@ -162,10 +162,13 @@
     <Content Include="Assets\icono-88.scale-200.png" />
     <Content Include="Assets\icono-app-300.scale-200.png" />
     <Content Include="Assets\icono-quiensoy.png" />
+    <Content Include="Assets\QS_alexa.png" />
     <Content Include="Assets\QS_angel.png" />
     <Content Include="Assets\QS_angela.png" />
     <Content Include="Assets\QS_asun.png" />
+    <Content Include="Assets\QS_dolores.png" />
     <Content Include="Assets\QS_dylan.png" />
+    <Content Include="Assets\QS_eva.png" />
     <Content Include="Assets\QS_fernando.png" />
     <Content Include="Assets\QS_jorge.png" />
     <Content Include="Assets\QS_jose.png" />
@@ -175,9 +178,12 @@
     <Content Include="Assets\QS_nacho.png" />
     <Content Include="Assets\QS_oscar.png" />
     <Content Include="Assets\QS_rafa.png" />
+    <Content Include="Assets\QS_raimunda.png" />
+    <Content Include="Assets\QS_raquel.png" />
     <Content Include="Assets\QS_rosario.png" />
     <Content Include="Assets\QS_samuel.png" />
     <Content Include="Assets\QS_sefran.png" />
+    <Content Include="Assets\QS_Teresa.png" />
     <Content Include="Assets\QS_vicky.png" />
     <Content Include="Assets\QS_volteada.png" />
     <Content Include="Assets\QS_yeray.png" />
