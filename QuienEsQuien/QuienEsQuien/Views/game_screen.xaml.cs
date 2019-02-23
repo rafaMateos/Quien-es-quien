@@ -354,6 +354,12 @@ namespace QuienEsQuien.Views {
                 i++;
             } while (i < 3);
 
+            clsSala sala = new clsSala();
+            sala.id = maneja.ObtenerIDSala(myApp.sala);
+            sala.nombre = myApp.sala;
+            sala.usuariosConectados = 0;
+            await maneja.actualizarUsuariosSala(sala);
+
             await Windows.ApplicationModel.Core.CoreApplication.MainView.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () => {
 
                 myApp.esVolver = true;
@@ -402,6 +408,7 @@ namespace QuienEsQuien.Views {
         }
 
         private void Btn_Salir_Click(object sender, RoutedEventArgs e) {
+
             vm.visibilidad = "Visible";
             ChatProxy.Invoke("LeaveGroup", myApp.sala);
 
