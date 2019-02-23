@@ -6,6 +6,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
+    xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
     xmlns:vm="using:QuienEsQuien.Viewmodel"
     Background="#536DFE">
 
@@ -19,21 +20,33 @@
 
         <Image Source="../Assets/SplashScreen.scale-200.png" Height="303" Width="766" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin=" 0,0,0,150"/>
 
-        <TextBlock HorizontalAlignment="Center" Text="Bienvenido, introduce tu nick:"/>
-        <TextBlock Text="{Binding nickJugador, Mode=TwoWay}"/>
-        <TextBox Name="txtNickJugador" KeyDown="TxtNickJugador_KeyDown" MaxWidth="350" Margin="0,0,0,20"/>
+        <TextBlock HorizontalAlignment="Center" Text="Bienvenido, introduce tu nick:" FontSize="16"/>
+        
+        <TextBox Name="txtNickJugador" KeyDown="TxtNickJugador_KeyDown" MaxWidth="350" Margin="0,20,0,20"/>
         <!--<Button Content="Entrar"
                  Click="HyperButton_Click"
                  HorizontalAlignment="Center"
                 Background="#D32F2F"
                 Foreground="White"/>-->
 
-        <Button Background="#D32F2F" Foreground="White" Click="HyperButton_Click" HorizontalAlignment="Center">
-            <StackPanel Orientation="Horizontal">
-                <SymbolIcon Symbol="Forward"/>
-                <TextBlock Margin="5,0">Entrar</TextBlock>
-            </StackPanel>
-        </Button>
+        <controls:DropShadowPanel Color="Black"
+                              OffsetX="-3"
+                              OffsetY="-3"
+                              BlurRadius="15"
+                              ShadowOpacity=".35"
+                              HorizontalContentAlignment="Stretch"
+                              VerticalContentAlignment="Stretch"
+                            HorizontalAlignment="Center"
+                            Margin="0,50,0,0">
+            <Button Background="#D32F2F" Foreground="White" Click="HyperButton_Click" HorizontalAlignment="Center">
+                <StackPanel Orientation="Horizontal">
+                    <SymbolIcon Symbol="Forward"/>
+                    <TextBlock Margin="8,0">Entrar</TextBlock>
+                </StackPanel>
+            </Button>
+        </controls:DropShadowPanel>
+        
+        
     </StackPanel>
 
 </Page>

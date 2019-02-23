@@ -4,6 +4,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
     mc:Ignorable="d"
     xmlns:vm="using:QuienEsQuien.Viewmodel"
     Background="#536DFE">
@@ -13,79 +14,89 @@
     </Page.DataContext>
 
     <RelativePanel>
-    
+
         <StackPanel Name="botoneraSuperior" Padding="10" HorizontalAlignment="Stretch" Margin="0,10,0,0" VerticalAlignment="Stretch" Orientation="Horizontal">
-            <!--<Button Content="Volver al menú" FontWeight="Bold" Click="Button_VolverMenu_Click"  Background="#D32F2F" Margin="10,0,10,0" Foreground="White"/>-->
+            <controls:DropShadowPanel Color="Black"
+                        OffsetX="-2"
+                        OffsetY="-2"
+                        BlurRadius="15"
+                        ShadowOpacity=".35"
+                        HorizontalContentAlignment="Stretch"
+                        VerticalContentAlignment="Stretch" >
+                <Button Background="#D32F2F" Foreground="White" Click="Button_VolverMenu_Click" Margin="10,0,10,0">
+                    <StackPanel Orientation="Horizontal" >
+                        <SymbolIcon Symbol="Cancel"/>
+                        <TextBlock Margin="5,0" FontWeight="Bold">Volver al menú</TextBlock>
+                    </StackPanel>
+                </Button>
+            </controls:DropShadowPanel>
 
-            <Button Background="#D32F2F" Foreground="White" Click="Button_VolverMenu_Click" Margin="10,0,10,0">
-                <StackPanel Orientation="Horizontal" >
-                    <SymbolIcon Symbol="Cancel"/>
-                    <TextBlock Margin="5,0" FontWeight="Bold">Volver al menú</TextBlock>
-                </StackPanel>
-            </Button>
-
-            <!--<Button Content="Recargar salas" Click="Button_RecargarSalas_Click"  Background="#D32F2F" Margin="10,0,10,0" Foreground="White"
-                    Command="{Binding Path=actualizarListadoSalas}"/>-->
-
-            <Button Background="#D32F2F" Foreground="White" Click="Button_RecargarSalas_Click" Margin="10,0,10,0" Command="{Binding Path=actualizarListadoSalas}">
-                <StackPanel Orientation="Horizontal" >
-                    <SymbolIcon Symbol="Sync"/>
-                    <TextBlock Margin="5,0" >Recargar salas</TextBlock>
-                </StackPanel>
-            </Button>
-
-            
+            <controls:DropShadowPanel Color="Black"
+                        OffsetX="-2"
+                        OffsetY="-2"
+                        BlurRadius="15"
+                        ShadowOpacity=".35"
+                        HorizontalContentAlignment="Stretch"
+                        VerticalContentAlignment="Stretch" >
+                <Button Background="#D32F2F" Foreground="White" Click="Button_RecargarSalas_Click" Margin="10,0,10,0" Command="{Binding Path=actualizarListadoSalas}">
+                    <StackPanel Orientation="Horizontal" >
+                        <SymbolIcon Symbol="Sync"/>
+                        <TextBlock Margin="5,0" >Recargar salas</TextBlock>
+                    </StackPanel>
+                </Button>
+            </controls:DropShadowPanel>
             <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="Bienvenido " Margin="10,0,10,0"/>
             <TextBlock Name ="nickPlayer" HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding nickJugador, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
         </StackPanel>
 
-  
-
-        <!--SALAS-->
-            <!--RightTapped="listilla_RightTapped"-->
-            
-            <ListView 
-                Name="listSalas"  
-                ItemsSource="{Binding listadoDeSalas}" 
-                SelectedItem="{Binding salaSeleccionada, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
-                Margin="5,5,20,5"
-                RelativePanel.Below="botoneraSuperior"
-                RelativePanel.AlignRightWithPanel="True"
-                RelativePanel.AlignLeftWithPanel="True"
-                HorizontalAlignment="Center"
-                >
-            <ListView.ItemTemplate>
-                <DataTemplate x:Name="dataTemplateList">
-                      
-                    <RelativePanel Background="White" Width="600px" 
-                                   HorizontalAlignment="Center" Padding="20" Margin="5"
-                                   CornerRadius="10">
-                        <TextBlock Name="nombreSala" Text="{Binding Path=nombre}"
-                                    RelativePanel.AlignLeftWithPanel="True"  
-                                    HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                        <TextBlock Name="usuariosConectados" Text="{Binding Path=usuariosConectados}"
-                                    RelativePanel.LeftOf="topeUsuarios"  
-                                    HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                        <TextBlock Name="topeUsuarios" Text="/2"
-                                    HorizontalAlignment="Center" VerticalAlignment="Center"
-                                   RelativePanel.AlignRightWithPanel="True"/>
-                        <TextBlock Name="txtUnirse" Text="Haz clic para unirte a la sala"
-                                   HorizontalAlignment="Center" VerticalAlignment="Center"
-                                   RelativePanel.LeftOf="usuariosConectados"
-                                   RelativePanel.RightOf="nombreSala"
-                                   Foreground="Gray"/>
-                    </RelativePanel>
-
+        <ListView 
+            Name="listSalas"  
+            ItemsSource="{Binding listadoDeSalas}" 
+            SelectedItem="{Binding salaSeleccionada, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+            Margin="5,5,20,5"
+            RelativePanel.Below="botoneraSuperior"
+            RelativePanel.AlignRightWithPanel="True"
+            RelativePanel.AlignLeftWithPanel="True"
+            HorizontalAlignment="Center"
+            >
+        <ListView.ItemTemplate>
+            <DataTemplate x:Name="dataTemplateList">
+                    <controls:DropShadowPanel Color="Black"
+                        OffsetX="-2"
+                        OffsetY="-2"
+                        BlurRadius="15"
+                        ShadowOpacity=".35"
+                        HorizontalContentAlignment="Stretch"
+                        VerticalContentAlignment="Stretch" >
+                        <RelativePanel Background="White" Width="600px" 
+                                HorizontalAlignment="Center" Padding="20" Margin="5"
+                                CornerRadius="10">
+                            <TextBlock Name="nombreSala" Text="{Binding Path=nombre}"
+                                RelativePanel.AlignLeftWithPanel="True"  
+                                HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            <TextBlock Name="usuariosConectados" Text="{Binding Path=usuariosConectados}"
+                                RelativePanel.LeftOf="topeUsuarios"  
+                                HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            <TextBlock Name="topeUsuarios" Text="/2"
+                                HorizontalAlignment="Center" VerticalAlignment="Center"
+                                RelativePanel.AlignRightWithPanel="True"/>
+                            <TextBlock Name="txtUnirse" Text="Haz clic para unirte a la sala"
+                                HorizontalAlignment="Center" VerticalAlignment="Center"
+                                RelativePanel.LeftOf="usuariosConectados"
+                                RelativePanel.RightOf="nombreSala"
+                                Foreground="Gray"/>
+                        </RelativePanel>
+                    </controls:DropShadowPanel>
                 </DataTemplate>
-            </ListView.ItemTemplate>
+        </ListView.ItemTemplate>
 
-                <!--<ListView.Resources>
-                    <MenuFlyout x:Name="miMenuFlyoutListado">
-                        <MenuFlyoutItem Command="{Binding Path=modificarPersonaCommand}" Icon="Edit" Text="Guardar cambios"/>
-                        <MenuFlyoutItem Command="{Binding Path=eliminarCommand}" Icon="Delete" Text="Eliminar"/>
-                    </MenuFlyout>
-                </ListView.Resources>-->
-            </ListView>
+            <!--<ListView.Resources>
+                <MenuFlyout x:Name="miMenuFlyoutListado">
+                    <MenuFlyoutItem Command="{Binding Path=modificarPersonaCommand}" Icon="Edit" Text="Guardar cambios"/>
+                    <MenuFlyoutItem Command="{Binding Path=eliminarCommand}" Icon="Delete" Text="Eliminar"/>
+                </MenuFlyout>
+            </ListView.Resources>-->
+        </ListView>
 
 
         <RelativePanel
