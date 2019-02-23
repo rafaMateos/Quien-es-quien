@@ -107,13 +107,18 @@ namespace QuienEsQuien.Views {
 
                     var salaEdit = (clsSala)listSalas.Items[id - 1];
 
-                    if (salaEdit.usuariosConectados > 0)
-                    {
+                    if (salaEdit != null) {
 
-                        salaEdit.usuariosConectados = salaEdit.usuariosConectados - 1;
-                        clsManejadora manejadora = new clsManejadora();
-                        await manejadora.actualizarUsuariosSala(salaEdit);
+                        if (salaEdit.usuariosConectados > 0)
+                        {
+
+                            salaEdit.usuariosConectados = salaEdit.usuariosConectados - 1;
+                            clsManejadora manejadora = new clsManejadora();
+                            await manejadora.actualizarUsuariosSala(salaEdit);
+                        }
+
                     }
+                   
                 }
             });
 

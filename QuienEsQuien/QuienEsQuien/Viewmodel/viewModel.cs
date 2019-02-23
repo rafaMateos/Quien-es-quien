@@ -189,7 +189,6 @@ namespace QuienEsQuien.Viewmodel {
             }
             set {
 
-
                 _cartaGanadoraSeleccionada = value;
             }
         }
@@ -269,6 +268,8 @@ namespace QuienEsQuien.Viewmodel {
             _ListadoDeSalas = await manejadora.GetSalas();
             NotifyPropertyChanged("listadoDeSalas");
         }
+
+
 
         public void rellenarListadoDeCartas() {
             listadoDeCartas.Add(new clsCarta(0, "Ángel", "../Assets/QS_angel.png"));
