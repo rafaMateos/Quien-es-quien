@@ -223,7 +223,7 @@ namespace QuienEsQuien.Views {
             do {
                 Thread.Sleep(1000);
                 i++;
-            } while (i < 5);
+            } while (i < 2);
 
 
             //Probar porque esto no actualiza y no entr<a en el onDescontar
