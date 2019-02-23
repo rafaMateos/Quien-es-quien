@@ -53,7 +53,6 @@ namespace QuienEsQuien.Views {
                    if (!myApp.sala.Equals(""))
                    {
 
-
                        ContentDialog noFunca = new ContentDialog();
                        noFunca.Title = "¿Estas seguro de quieres salir?";
                        noFunca.Content = "Vas a salir del juego..";
@@ -63,7 +62,6 @@ namespace QuienEsQuien.Views {
 
                        if (result == ContentDialogResult.Primary)
                        {
-
 
                            clsSala sala = new clsSala();
                            sala.id = maneja.ObtenerIDSala(myApp.sala);
@@ -232,7 +230,7 @@ namespace QuienEsQuien.Views {
             await Windows.ApplicationModel.Core.CoreApplication.MainView.Dispatcher
                 .RunAsync(CoreDispatcherPriority.Normal, async () => {
 
-
+                    if(vm.cartaGanadoraSeleccionada != null)
                     send.message = " " + myApp.nickJugador + " falló, se creia que eras " + vm.cartaGanadoraSeleccionada.nombreCarta;
                     send.groupName = myApp.sala;
                     send.nickName = "Sistema" + ": ";

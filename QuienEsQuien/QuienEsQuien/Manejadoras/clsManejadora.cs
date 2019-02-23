@@ -119,7 +119,7 @@ namespace Manejadoras {
         }
 
         public async Task<List<clsSala>> GetSalas() {
-            Boolean veredicto = false;
+            
 
             List<clsSala> sala = new List<clsSala>();
             Uri UriApi = new Uri("https://adivinaquiensoyapirest.azurewebsites.net/api/Salas");

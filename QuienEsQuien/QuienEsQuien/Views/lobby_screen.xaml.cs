@@ -200,19 +200,10 @@ namespace QuienEsQuien.Views {
                         myApp.miTurno = false;
                     }
 
-                    SalasProxy.Invoke("JoinRoomAsync", info);
+                    await SalasProxy.Invoke("JoinRoomAsync", info);
 
                 }
-                else {
-
-                    ContentDialog noFunca = new ContentDialog();
-                    noFunca.Title = "Algo esta saliendo mal";
-                    noFunca.Content = "Comprueba tu conexion a internet porfavor";
-                    noFunca.PrimaryButtonText = "Salir";
-
-                    ContentDialogResult result = await noFunca.ShowAsync();
-
-                }
+               
 
             }  
         }
@@ -228,20 +219,7 @@ namespace QuienEsQuien.Views {
 
             //Probar porque esto no actualiza y no entr<a en el onDescontar
 
-            if (!(miVM.listadoDeSalas != null)) {
-
-                //Cambiar esto porque peta
-                ContentDialog noFunca = new ContentDialog();
-                noFunca.Title = "Error";
-                noFunca.Content = "Ha ocurrido un fallo en la conexion :'(";
-                noFunca.PrimaryButtonText = "Salir";
-
-                ContentDialogResult resultado = await noFunca.ShowAsync();
-
-                if (resultado == ContentDialogResult.Primary) {
-                    this.Frame.Navigate(typeof(login_screen));
-                }
-            }
+          
         }
 
         private async void cargando() {
@@ -251,18 +229,7 @@ namespace QuienEsQuien.Views {
                 i++;
             } while (i < 10 || !(conn.State == Microsoft.AspNet.SignalR.Client.ConnectionState.Connected));
             
-            if (i == 10 && !(conn.State == Microsoft.AspNet.SignalR.Client.ConnectionState.Connected)) {
-                ContentDialog noFunca = new ContentDialog();
-                noFunca.Title = "Error";
-                noFunca.Content = "Ha ocurrido un fallo en la conexion :'(";
-                noFunca.PrimaryButtonText = "Salir";
-
-                ContentDialogResult resultado = await noFunca.ShowAsync();
-
-                if (resultado == ContentDialogResult.Primary) {
-                    this.Frame.Navigate(typeof(login_screen));
-                }
-            }
+         
         }
 
         /*private void addToGroup(string groupName)
