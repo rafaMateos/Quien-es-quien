@@ -50,14 +50,59 @@ namespace QuienEsQuien.Views {
                async (sender, args) => {
                    args.Handled = true;
 
+                       ContentDialog noFunca = new ContentDialog();
+                       noFunca.Title = "¿Estas seguro de quieres salir?";
+                       noFunca.Content = "Vas a salir del juego..";
+                       noFunca.PrimaryButtonText = "Aceptar";
+                       noFunca.SecondaryButtonText = "Cancelar";
+                       ContentDialogResult result = await noFunca.ShowAsync();
+
+                       if (result == ContentDialogResult.Primary)
+                       {
+
+                       
+                      await _dispatcher.RunAsync(CoreDispatcherPriority.Normal, () => {
+
+
+                          salirDelJuego.Visibility = Visibility.Visible; //Cambiar aqui, cambiar desde el vm
+                          int i = 0;
+                          do {
+                              Thread.Sleep(1000);
+                              i++;
+                          } while (i < 1);
+                          });
+
+                           clsSala sala = new clsSala();
+                           sala.id = maneja.ObtenerIDSala(this.sala);
+                           sala.nombre = this.sala;
+                           sala.usuariosConectados = 0;
+                           //Mostrar saliendo de sala
+                           await maneja.actualizarUsuariosSala(sala);
+                           //LLamar a un metodo del serveer
+                            salirAbruptamente();
+
+                            App.Current.Exit();
+                            
+
+
+                   }
+
+
+
+
+
+
+                   /*
                    await _dispatcher.RunAsync(CoreDispatcherPriority.Normal, () => {
+
+
                        salirDelJuego.Visibility = Visibility.Visible; //Cambiar aqui, cambiar desde el vm
                        int i = 0;
                        do {
                            Thread.Sleep(1000);
                            i++;
                        } while (i < 1);
-                   });
+                   });*/
                };
 
             _dispatcher = Window.Current.Dispatcher;

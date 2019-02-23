@@ -99,47 +99,30 @@ namespace QuienEsQuien
         private async void App_CloseRequested(object sender, SystemNavigationCloseRequestedPreviewEventArgs e)
         {
 
-           
+            //Estabamos planteandolo mal, aqui no debe de estar este metodo.
+            /*
+                    if (!this.sala.Equals("")) {
 
-            if (this.sala.Equals("")) {
+                        clsSala sala = new clsSala();
+                        sala.id = maneja.ObtenerIDSala(this.sala);
+                        sala.nombre = this.sala;
+                        sala.usuariosConectados = 0;
 
-                App.Current.Exit();
+                        //Mostrar saliendo de sala
+                        await maneja.actualizarUsuariosSala(sala);
 
-            } else {
-
-                ContentDialog noFunca = new ContentDialog();
-                noFunca.Title = "¿Estas seguro de quieres salir?";
-                noFunca.Content = "Vas a salir del juego..";
-                noFunca.PrimaryButtonText = "Aceptar";
-                noFunca.SecondaryButtonText = "Cancelar";
-                ContentDialogResult result = await noFunca.ShowAsync();
-
-                if (result == ContentDialogResult.Primary) {
-                    game_screen salir = new game_screen();
-                    clsSala sala = new clsSala();
-                    sala.id = maneja.ObtenerIDSala(this.sala);
-                    sala.nombre = this.sala;
-                    sala.usuariosConectados = 0;
-
-                    //Mostrar saliendo de sala
-                    await maneja.actualizarUsuariosSala(sala);
-                    //LLamar a un metodo del serveer
-                    salir.salirAbruptamente();
-
-                    App.Current.Exit();
-
-                } else {
-
-                    UIElement algo = Window.Current.Content;
-
-                   //Salir del juego
-                }
+                        //LLamar a un metodo del serveer
+                        App.Current.Exit();
 
 
             }
+            */
 
 
         }
+            
+
+        
 
         private async void cargarMusikita() {
             Windows.Storage.StorageFolder folder = await Windows.ApplicationModel.Package.Current.InstalledLocation.GetFolderAsync(@"Assets");
