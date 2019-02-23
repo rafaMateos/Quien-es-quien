@@ -32,6 +32,11 @@ namespace AdivinaQuienSoyService.Hubs
             Clients.Group(groupName).cambiarTurno();
         }
 
+        public void MandarInfoJugadoresConectados(string nombresala) {
+
+            Clients.Group(nombresala).actualizarJugadoresConectados();
+        }
+
         public void sendPosibleWinner(clsCarta carta, string grupo,string nickname) {
 
             Clients.Group(grupo,Context.ConnectionId).comprobarGanador(carta,nickname);

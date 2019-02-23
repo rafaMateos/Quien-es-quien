@@ -188,28 +188,33 @@ namespace QuienEsQuien.Views {
             
             if (info.usuariosConectados < 2) {
 
-                if (conn.State == Microsoft.AspNet.SignalR.Client.ConnectionState.Connected) {
+                if (conn.State == Microsoft.AspNet.SignalR.Client.ConnectionState.Connected)
+                {
 
-                    if (info.usuariosConectados == 0) {
+                    if (info.usuariosConectados == 0)
+                    {
                         myApp.miTurno = true;
-                    } else {
+                    }
+                    else
+                    {
                         myApp.miTurno = false;
                     }
 
                     SalasProxy.Invoke("JoinRoomAsync", info);
 
                 }
+                else {
 
-            } else {
+                    ContentDialog noFunca = new ContentDialog();
+                    noFunca.Title = "Algo esta saliendo mal";
+                    noFunca.Content = "Comprueba tu conexion a internet porfavor";
+                    noFunca.PrimaryButtonText = "Salir";
 
+                    ContentDialogResult result = await noFunca.ShowAsync();
 
-                ContentDialog noFunca = new ContentDialog();
-                noFunca.Title = "Sala llena";
-                noFunca.Content = "Utilize otra sala para jugar";
-                noFunca.PrimaryButtonText = "OK";
-                ContentDialogResult resultado = await noFunca.ShowAsync();
-                
-            }
+                }
+
+            }  
         }
 
         private async void cargando2() {

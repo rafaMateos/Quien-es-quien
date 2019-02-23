@@ -50,6 +50,11 @@ namespace QuienEsQuien.Views {
                async (sender, args) => {
                    args.Handled = true;
 
+                   if (!myApp.sala.Equals(""))
+                   {
+
+
+
                        ContentDialog noFunca = new ContentDialog();
                        noFunca.Title = "¿Estas seguro de quieres salir?";
                        noFunca.Content = "Vas a salir del juego..";
@@ -60,33 +65,26 @@ namespace QuienEsQuien.Views {
                        if (result == ContentDialogResult.Primary)
                        {
 
-                       
-                      await _dispatcher.RunAsync(CoreDispatcherPriority.Normal, () => {
-
-
-                          salirDelJuego.Visibility = Visibility.Visible; //Cambiar aqui, cambiar desde el vm
-                          int i = 0;
-                          do {
-                              Thread.Sleep(1000);
-                              i++;
-                          } while (i < 1);
-                          });
 
                            clsSala sala = new clsSala();
-                           sala.id = maneja.ObtenerIDSala(this.sala);
-                           sala.nombre = this.sala;
+                           sala.id = maneja.ObtenerIDSala(myApp.sala);
+                           sala.nombre = myApp.sala;
                            sala.usuariosConectados = 0;
                            //Mostrar saliendo de sala
-                           await maneja.actualizarUsuariosSala(sala);
+                           ActualizarApi(sala);
                            //LLamar a un metodo del serveer
-                            salirAbruptamente();
+                           salirAbruptamente();
 
-                            App.Current.Exit();
-                            
+                           App.Current.Exit();
 
 
+
+                       }
                    }
+                   else {
 
+                       App.Current.Exit();
+                   }
 
 
 
@@ -105,6 +103,8 @@ namespace QuienEsQuien.Views {
                    });*/
                };
 
+
+
             _dispatcher = Window.Current.Dispatcher;
             vm = (viewModel)this.DataContext;
             SignalR();
@@ -121,6 +121,12 @@ namespace QuienEsQuien.Views {
             sumarmeAJugadoresConectados();
         }
 
+
+        public async void ActualizarApi(clsSala salaActu) {
+
+            clsManejadora maneja = new clsManejadora();
+            await maneja.actualizarUsuariosSala(salaActu);
+        }
 
         public async void NoMostrarSalir() {
 

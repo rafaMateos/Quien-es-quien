@@ -6,6 +6,7 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.Networking.Connectivity;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -39,9 +40,27 @@ namespace QuienEsQuien.Views {
         {
             if (e.Key == Windows.System.VirtualKey.Enter)
             {
-                myApp.nickJugador = txtNickJugador.Text;
-                this.Frame.Navigate(typeof(lobby_screen));
+
+                if (IsInternet())
+                {
+
+                    myApp.nickJugador = txtNickJugador.Text;
+                    this.Frame.Navigate(typeof(lobby_screen));
+                }
+                else {
+
+                  
+                }
+                
             }
+        }
+
+
+        public bool IsInternet()
+        {
+            ConnectionProfile connections = NetworkInformation.GetInternetConnectionProfile();
+            bool internet = connections != null && connections.GetNetworkConnectivityLevel() == NetworkConnectivityLevel.InternetAccess;
+            return internet;
         }
     }
 }
