@@ -210,11 +210,7 @@ namespace QuienEsQuien.Views {
                     if (conn.State == Microsoft.AspNet.SignalR.Client.ConnectionState.Connected) {
                         await ChatProxy.Invoke("Perdedor", myApp.sala);
 
-                        send.message = " " + myApp.nickJugador + " falló, se creia que eras " + vm.cartaGanadoraSeleccionada.nombreCarta;
-                        send.groupName = myApp.sala;
-                        send.nickName = "Sistema" + ": ";
-
-                        ChatProxy.Invoke("SendToGroup", send);
+                        
 
                     }
                 }
@@ -235,6 +231,18 @@ namespace QuienEsQuien.Views {
 
             await Windows.ApplicationModel.Core.CoreApplication.MainView.Dispatcher
                 .RunAsync(CoreDispatcherPriority.Normal, async () => {
+
+
+                    send.message = " " + myApp.nickJugador + " falló, se creia que eras " + vm.cartaGanadoraSeleccionada.nombreCarta;
+                    send.groupName = myApp.sala;
+                    send.nickName = "Sistema" + ": ";
+
+                   
+                    if (conn.State == Microsoft.AspNet.SignalR.Client.ConnectionState.Connected)
+                    {
+                        ChatProxy.Invoke("SendToGroup", send);
+                    }
+
                     vm.intentos++;
                     var rojito = GetSolidColorBrush("#FFFF5252").Color;
                     var naranjita = GetSolidColorBrush("#FFFF9800").Color;
