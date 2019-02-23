@@ -54,7 +54,6 @@ namespace QuienEsQuien.Views {
                    {
 
 
-
                        ContentDialog noFunca = new ContentDialog();
                        noFunca.Title = "¿Estas seguro de quieres salir?";
                        noFunca.Content = "Vas a salir del juego..";
@@ -210,6 +209,13 @@ namespace QuienEsQuien.Views {
 
                     if (conn.State == Microsoft.AspNet.SignalR.Client.ConnectionState.Connected) {
                         await ChatProxy.Invoke("Perdedor", myApp.sala);
+
+                        send.message = " " + myApp.nickJugador + " falló, se creia que eras " + vm.cartaGanadoraSeleccionada.nombreCarta;
+                        send.groupName = myApp.sala;
+                        send.nickName = "Sistema" + ": ";
+
+                        ChatProxy.Invoke("SendToGroup", send);
+
                     }
                 }
             });
@@ -477,6 +483,14 @@ namespace QuienEsQuien.Views {
             if (myApp.miTurno) {
                 if (conn.State == Microsoft.AspNet.SignalR.Client.ConnectionState.Connected) {
                     ChatProxy.Invoke("sendPosibleWinner", vm.cartaGanadoraSeleccionada, myApp.sala, myApp.nickJugador);
+
+                    /*
+                    send.message = " " + myApp.nickJugador + " dice que tu personaje es...  " + vm.cartaGanadoraSeleccionada.nombreCarta;
+                    send.groupName = myApp.sala;
+                    send.nickName = "Sistema" + ": ";
+
+                    ChatProxy.Invoke("SendToGroup", send);
+                    */
                 }
             } else {
                 ContentDialog noFunca = new ContentDialog();
