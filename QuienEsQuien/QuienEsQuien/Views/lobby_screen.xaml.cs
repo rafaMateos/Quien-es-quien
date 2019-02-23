@@ -104,7 +104,6 @@ namespace QuienEsQuien.Views {
                 if (!sala.Equals(""))
                 {
                     int id = ObtenerIDSala(sala);
-
                     var salaEdit = (clsSala)listSalas.Items[id - 1];
 
                     if (salaEdit != null) {
