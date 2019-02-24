@@ -74,6 +74,13 @@ namespace AdivinaQuienSoyService.Hubs
             Groups.Remove(Context.ConnectionId, groupName);  
 
         }
+
+        public void LeaveGroupDef(string groupName)
+        {
+           
+            Groups.Remove(Context.ConnectionId, groupName);
+            
+        }
         /// <summary>
         /// Envia el mensaje a los clientes conectados al grupo
         /// </summary>

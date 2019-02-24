@@ -364,6 +364,11 @@ namespace QuienEsQuien.Views {
 
             await Windows.ApplicationModel.Core.CoreApplication.MainView.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () => {
 
+                if (conn.State == Microsoft.AspNet.SignalR.Client.ConnectionState.Connected)
+                {
+                    ChatProxy.Invoke("LeaveGroupDef", myApp.sala);
+                }
+
                 myApp.esVolver = true;//Debemos hacer que abandonen el grupo aqui tambn 
                 this.Frame.Navigate(typeof(lobby_screen));
 
@@ -381,7 +386,7 @@ namespace QuienEsQuien.Views {
             if (myApp.miTurno) {
                 vm.turno = "Es tu turno";
             } else {
-                vm.turno = "NO ES TU TURNO";
+                vm.turno = "NO es tu turno";
             }
 
             if (i == 10 && !(conn.State == Microsoft.AspNet.SignalR.Client.ConnectionState.Connected)) {
