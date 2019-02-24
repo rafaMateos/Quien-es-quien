@@ -232,7 +232,7 @@
                            RelativePanel.AlignTopWithPanel="True"
                                Foreground="white"/>
                 
-                    <TextBlock Name="turno" Text="xXxXxXxX"  
+                    <TextBlock Name="turno" Text="{Binding turno,Mode=TwoWay}"  
                            HorizontalAlignment="Center"
                            RelativePanel.AlignHorizontalCenterWithPanel="True"
                            RelativePanel.Below="txtNickJugador"

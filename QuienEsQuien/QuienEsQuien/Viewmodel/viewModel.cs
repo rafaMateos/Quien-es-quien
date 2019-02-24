@@ -41,9 +41,25 @@ namespace QuienEsQuien.Viewmodel {
         private int _intentos = 0;
 
         private string _visibilidadSalir;
+        private string _turno;
 
         #endregion
         #region propiedades publicas
+
+
+        public string turno {
+
+            get {
+
+                return _turno;
+            }
+            set {
+
+                _turno = value;
+                NotifyPropertyChanged("turno");
+
+            }
+        }
 
         public string visibilidadSalir {
 

@@ -296,14 +296,31 @@ namespace QuienEsQuien.Views {
         }
 
         private async void cambiarTurno() {
-            await Windows.ApplicationModel.Core.CoreApplication.MainView.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () => {
 
-                if (myApp.miTurno) {
-                    myApp.miTurno = false;
-                    turno.Text = "NO ES TU TURNO";
-                } else {
-                    myApp.miTurno = true;
-                    turno.Text = "Es tu turno";
+            await Windows.ApplicationModel.Core.CoreApplication.MainView.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, async () => {
+
+                    if (myApp.miTurno)
+                    {
+                        myApp.miTurno = false;
+                        vm.turno = "NO es tu turno";
+                    int i = 0;
+                    do
+                    {
+                        Thread.Sleep(1000);
+                        i++;
+                    } while (i < 2);
+                }
+                    else
+                    {
+                        myApp.miTurno = true;
+                        vm.turno = "Es tu turno";
+
+                    int i = 0;
+                    do
+                    {
+                        Thread.Sleep(1000);
+                        i++;
+                    } while (i < 2);
                 }
             });
         }
@@ -347,7 +364,7 @@ namespace QuienEsQuien.Views {
 
             await Windows.ApplicationModel.Core.CoreApplication.MainView.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () => {
 
-                myApp.esVolver = true;
+                myApp.esVolver = true;//Debemos hacer que abandonen el grupo aqui tambn 
                 this.Frame.Navigate(typeof(lobby_screen));
 
             });
@@ -362,9 +379,9 @@ namespace QuienEsQuien.Views {
             } while (i < 10 || !(conn.State == Microsoft.AspNet.SignalR.Client.ConnectionState.Connected));
 
             if (myApp.miTurno) {
-                turno.Text = "Es tu turno";
+                vm.turno = "Es tu turno";
             } else {
-                turno.Text = "NO ES TU TURNO";
+                vm.turno = "NO ES TU TURNO";
             }
 
             if (i == 10 && !(conn.State == Microsoft.AspNet.SignalR.Client.ConnectionState.Connected)) {
