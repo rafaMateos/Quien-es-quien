@@ -50,54 +50,40 @@ namespace QuienEsQuien.Views {
                async (sender, args) => {
                    args.Handled = true;
 
+                   //salirDelJuego.Visibility = Visibility.Visible;
+
+                   
+                  await _dispatcher.RunAsync(CoreDispatcherPriority.Normal, () => {
+
+                      salirDelJuego.Visibility = Visibility.Visible; //Cambiar aqui, cambiar desde el vm
+                      int i = 0;
+                      do {
+                          Thread.Sleep(1000);
+                          i++;
+                      } while (i < 1);
+                  });
+
                    if (!myApp.sala.Equals(""))
                    {
 
-                       ContentDialog noFunca = new ContentDialog();
-                       noFunca.Title = "¿Estas seguro de quieres salir?";
-                       noFunca.Content = "Vas a salir del juego..";
-                       noFunca.PrimaryButtonText = "Aceptar";
-                       noFunca.SecondaryButtonText = "Cancelar";
-                       ContentDialogResult result = await noFunca.ShowAsync();
-
-                       if (result == ContentDialogResult.Primary)
-                       {
-
+                           //Quitamos content dialog porque son una basura
                            clsSala sala = new clsSala();
                            sala.id = maneja.ObtenerIDSala(myApp.sala);
                            sala.nombre = myApp.sala;
                            sala.usuariosConectados = 0;
+
                            //Mostrar saliendo de sala
                            ActualizarApi(sala);
+
                            //LLamar a un metodo del serveer
                            salirAbruptamente();
 
                            App.Current.Exit();
-
-
-
-                       }
                    }
                    else {
 
                        App.Current.Exit();
                    }
-
-
-
-
-
-                   /*
-                   await _dispatcher.RunAsync(CoreDispatcherPriority.Normal, () => {
-
-
-                       salirDelJuego.Visibility = Visibility.Visible; //Cambiar aqui, cambiar desde el vm
-                       int i = 0;
-                       do {
-                           Thread.Sleep(1000);
-                           i++;
-                       } while (i < 1);
-                   });*/
                };
 
 
@@ -163,6 +149,7 @@ namespace QuienEsQuien.Views {
 
             await Windows.ApplicationModel.Core.CoreApplication.MainView.Dispatcher
                 .RunAsync(CoreDispatcherPriority.Normal, async () => {
+
                     await _dispatcher.RunAsync(CoreDispatcherPriority.Normal, () => {
                         SalirAbruptuamenteRelative.Visibility = Visibility.Visible;
 
