@@ -159,6 +159,12 @@
     <None Include="QuienEsQuien_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\1080_1080.png" />
+    <Content Include="Assets\1240_600_WideTile.scale-400.png" />
+    <Content Include="Assets\150_150.png" />
+    <Content Include="Assets\1920_1080.png" />
+    <Content Include="Assets\300_300.png" />
+    <Content Include="Assets\71_71.png" />
     <Content Include="Assets\cancion.mp3" />
     <Content Include="Assets\icono-88.scale-200.png" />
     <Content Include="Assets\icono-app-300.scale-200.png" />
@@ -189,6 +195,8 @@
     <Content Include="Assets\QS_vicky.png" />
     <Content Include="Assets\QS_volteada.png" />
     <Content Include="Assets\QS_yeray.png" />
+    <Content Include="Assets\Square150x150Logo.scale-100.png" />
+    <Content Include="Assets\WideTile.scale-200.png" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />

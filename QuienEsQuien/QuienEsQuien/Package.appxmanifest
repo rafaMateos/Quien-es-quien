@@ -1,12 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Package 
-  xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10" 
-  xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest" 
-  xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10" 
-  xmlns:rescap="http://schemas.microsoft.com/appx/manifest/foundation/windows10/restrictedcapabilities" 
-   IgnorableNamespaces="uap mp rescap" >
-  
-  
+<Package xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10" xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest" xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10" xmlns:rescap="http://schemas.microsoft.com/appx/manifest/foundation/windows10/restrictedcapabilities" IgnorableNamespaces="uap mp rescap">
   <Identity Name="d60a5419-5bda-4b58-ae3e-e22787aaca48" Publisher="CN=rmateos" Version="1.0.0.0" />
   <mp:PhoneIdentity PhoneProductId="d60a5419-5bda-4b58-ae3e-e22787aaca48" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
   <Properties>
@@ -23,9 +16,12 @@
   <Applications>
     <Application Id="App" Executable="$targetnametoken$.exe" EntryPoint="adivina-quien-soy.App">
       <uap:VisualElements DisplayName="Adivina quién soy" Square150x150Logo="Assets\Square150x150Logo.png" Square44x44Logo="Assets\icono-88.png" Description="Adivina quién soy, un divertido juego." BackgroundColor="transparent">
-        <uap:DefaultTile Wide310x150Logo="Assets\Wide310x150Logo.png">
+        <uap:DefaultTile Wide310x150Logo="Assets\1240_600_WideTile.png">
+          <uap:ShowNameOnTiles>
+            <uap:ShowOn Tile="wide310x150Logo" />
+          </uap:ShowNameOnTiles>
         </uap:DefaultTile>
-        <uap:SplashScreen Image="Assets\splashScreen.png" />
+        <uap:SplashScreen Image="Assets\WideTile.png" />
         <uap:InitialRotationPreference>
           <uap:Rotation Preference="landscape" />
         </uap:InitialRotationPreference>
@@ -34,6 +30,6 @@
   </Applications>
   <Capabilities>
     <Capability Name="internetClient" />
-    <rescap:Capability Name="confirmAppClose"/>
+    <rescap:Capability Name="confirmAppClose" />
   </Capabilities>
 </Package>
