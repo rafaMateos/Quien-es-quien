@@ -260,22 +260,22 @@
                         </StackPanel>
                     </Grid>
 
-                    <Rectangle Width="30"
+                    <Rectangle Width="20"
                                Height="130"
-                               RadiusX="15"
-                               RadiusY="15"
-                               Margin="8,0"
-                               RelativePanel.AlignRightWith="tuPersonajeImagen"
+                               RadiusX="8"
+                               RadiusY="8"
+                               Margin="26,0"
+                               RelativePanel.LeftOf="tuPersonajeImagen"
                                RelativePanel.AlignBottomWith="tuPersonajeImagen"
                                RelativePanel.AlignTopWith="tuPersonajeImagen"
                                Fill="{Binding turnoBool, Mode=TwoWay, Converter={StaticResource converterTurno}}"/>
                     
-                    <Rectangle Width="30"
+                    <Rectangle Width="20"
                                Height="130"
-                               RadiusX="15"
-                               RadiusY="15"
-                               Margin="8,0"
-                               RelativePanel.AlignLeftWith="tuPersonajeImagen"
+                               RadiusX="8"
+                               RadiusY="8"
+                               Margin="26,0"
+                               RelativePanel.RightOf="tuPersonajeImagen"
                                RelativePanel.AlignBottomWith="tuPersonajeImagen"
                                RelativePanel.AlignTopWith="tuPersonajeImagen"
                                Fill="{Binding turnoBool, Mode=TwoWay, Converter={StaticResource converterTurno}}"/>
@@ -283,8 +283,9 @@
                     <Image Name="tuPersonajeImagen" Source="{Binding personageGanador.imagenUri}"
                            MaxHeight="130" HorizontalAlignment="Center"
                            RelativePanel.Below="varios"
-                           RelativePanel.AlignRightWithPanel="True"
-                           RelativePanel.AlignLeftWithPanel="True"/>
+                           RelativePanel.AlignHorizontalCenterWithPanel="True"
+                           RelativePanel.AlignRightWithPanel="false"
+                           RelativePanel.AlignLeftWithPanel="false"/>
 
                 </RelativePanel>
             </controls:DropShadowPanel>
