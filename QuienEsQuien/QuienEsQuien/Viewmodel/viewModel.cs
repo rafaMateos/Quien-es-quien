@@ -41,34 +41,38 @@ namespace QuienEsQuien.Viewmodel {
         private int _intentos = 0;
 
         private string _visibilidadSalir;
+
         private string _turno;
+
+        private bool _turnoBool;
 
         #endregion
         #region propiedades publicas
 
+        public bool turnoBool {
+            get { return _turnoBool; }
+            set { _turnoBool = value;
+                NotifyPropertyChanged("turnoBool");
+            }
+        }
 
         public string turno {
 
-            get {
-
+            get { 
                 return _turno;
             }
-            set {
-
+            set { 
                 _turno = value;
-                NotifyPropertyChanged("turno");
-
+                NotifyPropertyChanged("turno"); 
             }
         }
 
         public string visibilidadSalir {
 
-            get {
-
+            get { 
                 return _visibilidadSalir;
             }
-            set {
-
+            set { 
                 _visibilidadSalir = value;
                 NotifyPropertyChanged("visibilidadSalir");
             }
@@ -93,32 +97,28 @@ namespace QuienEsQuien.Viewmodel {
 
                 if (_salaSeleccionada != null) {
 
-                    if (_salaSeleccionada.usuariosConectados < 2)
-                    {
+                    if (_salaSeleccionada.usuariosConectados < 2) {
 
                         _visibilidad = "Visible";
                         NotifyPropertyChanged("visibilidad");
                         myApp.sala = _salaSeleccionada.nombre;
                         Views.lobby_screen.Position(_salaSeleccionada);
-                    }
-                    else
-                    {
+                    } else {
 
                         MostrarQueEsTonto();
 
                     }
 
                 }
-              
-                
+
+
                 /*
                 myApp.sala = _salaSeleccionada.nombre;
                 Views.lobby_screen.Position(_salaSeleccionada);*/
             }
         }
 
-        private async void MostrarQueEsTonto()
-        {
+        private async void MostrarQueEsTonto() {
 
             //Cambiar esto porque peta
             ContentDialog noFunca = new ContentDialog();
@@ -176,12 +176,11 @@ namespace QuienEsQuien.Viewmodel {
                     }
 
                     NotifyPropertyChanged("listadoSecundarioDeCartas");
-                }
-                else {
+                } else {
 
                     //Nothing
                 }
-                
+
             }
         }
 
@@ -237,7 +236,7 @@ namespace QuienEsQuien.Viewmodel {
         #endregion
 
         public viewModel() {
-            
+
             nickJugador = myApp.nickJugador;
 
             _visibilidad = "Collapsed";
@@ -324,7 +323,7 @@ namespace QuienEsQuien.Viewmodel {
         }
 
         public DelegateCommand actualizarListadoSalas {
-            get{
+            get {
                 return new DelegateCommand(actualizarListadoSalas_Executed);
             }
         }

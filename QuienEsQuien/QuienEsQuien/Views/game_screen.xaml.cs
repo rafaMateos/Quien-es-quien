@@ -52,35 +52,33 @@ namespace QuienEsQuien.Views {
 
                    //salirDelJuego.Visibility = Visibility.Visible;
 
-                   
-                  await _dispatcher.RunAsync(CoreDispatcherPriority.Normal, () => {
 
-                      salirDelJuego.Visibility = Visibility.Visible; //Cambiar aqui, cambiar desde el vm
-                      int i = 0;
-                      do {
-                          Thread.Sleep(1000);
-                          i++;
-                      } while (i < 1);
-                  });
+                   await _dispatcher.RunAsync(CoreDispatcherPriority.Normal, () => {
 
-                   if (!myApp.sala.Equals(""))
-                   {
+                       salirDelJuego.Visibility = Visibility.Visible; //Cambiar aqui, cambiar desde el vm
+                       int i = 0;
+                       do {
+                           Thread.Sleep(1000);
+                           i++;
+                       } while (i < 1);
+                   });
 
-                           //Quitamos content dialog porque son una basura
-                           clsSala sala = new clsSala();
-                           sala.id = maneja.ObtenerIDSala(myApp.sala);
-                           sala.nombre = myApp.sala;
-                           sala.usuariosConectados = 0;
+                   if (!myApp.sala.Equals("")) {
 
-                           //Mostrar saliendo de sala
-                           ActualizarApi(sala);
+                       //Quitamos content dialog porque son una basura
+                       clsSala sala = new clsSala();
+                       sala.id = maneja.ObtenerIDSala(myApp.sala);
+                       sala.nombre = myApp.sala;
+                       sala.usuariosConectados = 0;
 
-                           //LLamar a un metodo del serveer
-                           salirAbruptamente();
+                       //Mostrar saliendo de sala
+                       ActualizarApi(sala);
 
-                           App.Current.Exit();
-                   }
-                   else {
+                       //LLamar a un metodo del serveer
+                       salirAbruptamente();
+
+                       App.Current.Exit();
+                   } else {
 
                        App.Current.Exit();
                    }
@@ -102,6 +100,13 @@ namespace QuienEsQuien.Views {
                 ChatProxy.Invoke("JoinGroup", myApp.sala);
             }
             sumarmeAJugadoresConectados();
+
+            if (myApp.miTurno) {
+                vm.turnoBool = true;
+            } else {
+                vm.turnoBool = false;
+            }
+
         }
 
 
@@ -113,14 +118,14 @@ namespace QuienEsQuien.Views {
 
         public async void NoMostrarSalir() {
 
-                vm.visibilidadSalir = "Collapsed";
+            vm.visibilidadSalir = "Collapsed";
 
-                int i = 0;
-                do {
-                    Thread.Sleep(1000);
-                    i++;
-                } while (i < 1);
-           
+            int i = 0;
+            do {
+                Thread.Sleep(1000);
+                i++;
+            } while (i < 1);
+
 
         }
         private void SignalR() {
@@ -161,7 +166,7 @@ namespace QuienEsQuien.Views {
                     });
                 });
         }
-        
+
         private async void finalizarPartidaPorGanador(string obj) {
 
             await Windows.ApplicationModel.Core.CoreApplication.MainView.Dispatcher
@@ -195,7 +200,7 @@ namespace QuienEsQuien.Views {
                     if (conn.State == Microsoft.AspNet.SignalR.Client.ConnectionState.Connected) {
                         await ChatProxy.Invoke("Perdedor", myApp.sala);
 
-                        
+
 
                     }
                 }
@@ -217,14 +222,13 @@ namespace QuienEsQuien.Views {
             await Windows.ApplicationModel.Core.CoreApplication.MainView.Dispatcher
                 .RunAsync(CoreDispatcherPriority.Normal, async () => {
 
-                    if(vm.cartaGanadoraSeleccionada != null)
-                    send.message = " " + myApp.nickJugador + " falló, se creia que eras " + vm.cartaGanadoraSeleccionada.nombreCarta;
+                    if (vm.cartaGanadoraSeleccionada != null)
+                        send.message = " " + myApp.nickJugador + " falló, se creia que eras " + vm.cartaGanadoraSeleccionada.nombreCarta;
                     send.groupName = myApp.sala;
                     send.nickName = "Sistema" + ": ";
 
-                   
-                    if (conn.State == Microsoft.AspNet.SignalR.Client.ConnectionState.Connected)
-                    {
+
+                    if (conn.State == Microsoft.AspNet.SignalR.Client.ConnectionState.Connected) {
                         ChatProxy.Invoke("SendToGroup", send);
                     }
 
@@ -299,32 +303,29 @@ namespace QuienEsQuien.Views {
 
             await Windows.ApplicationModel.Core.CoreApplication.MainView.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, async () => {
 
-                    if (myApp.miTurno)
-                    {
-                        myApp.miTurno = false;
-                        vm.turno = "NO es tu turno";
+                if (myApp.miTurno) {
+                    myApp.miTurno = false;
+                    vm.turnoBool = false;
+                    vm.turno = "NO ES TU TURNO";
                     int i = 0;
-                    do
-                    {
+                    do {
                         Thread.Sleep(1000);
                         i++;
                     } while (i < 2);
-                }
-                    else
-                    {
-                        myApp.miTurno = true;
-                        vm.turno = "Es tu turno";
+                } else {
+                    myApp.miTurno = true;
+                    vm.turnoBool = true;
+                    vm.turno = "Es tu turno";
 
                     int i = 0;
-                    do
-                    {
+                    do {
                         Thread.Sleep(1000);
                         i++;
                     } while (i < 2);
                 }
             });
         }
-        
+
         public async void ActualizarUi() {
 
             await _dispatcher.RunAsync(CoreDispatcherPriority.Normal, () => {
@@ -345,7 +346,7 @@ namespace QuienEsQuien.Views {
                 Cargando.Visibility = Visibility.Visible;
             });
         }
-        
+
         private async void volverLobby() {
 
             ActualizarUi();
@@ -364,8 +365,7 @@ namespace QuienEsQuien.Views {
 
             await Windows.ApplicationModel.Core.CoreApplication.MainView.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () => {
 
-                if (conn.State == Microsoft.AspNet.SignalR.Client.ConnectionState.Connected)
-                {
+                if (conn.State == Microsoft.AspNet.SignalR.Client.ConnectionState.Connected) {
                     ChatProxy.Invoke("LeaveGroupDef", myApp.sala);
                 }
 
@@ -454,16 +454,13 @@ namespace QuienEsQuien.Views {
             }
         }
 
-        public void sumarmeAJugadoresConectados()
-        {
-            if (conn.State == Microsoft.AspNet.SignalR.Client.ConnectionState.Connected)
-            {
+        public void sumarmeAJugadoresConectados() {
+            if (conn.State == Microsoft.AspNet.SignalR.Client.ConnectionState.Connected) {
                 ChatProxy.Invoke("MandarInfoJugadoresConectados", myApp.sala);
             }
         }
 
-        public async void actualizarJugadoresConectados()
-        {
+        public async void actualizarJugadoresConectados() {
             await _dispatcher.RunAsync(CoreDispatcherPriority.Normal, async () => {
 
                 int usuarios = await maneja.obtenerUsuariosSala(myApp.sala);
@@ -552,7 +549,7 @@ namespace QuienEsQuien.Views {
 
         private async void CartaSelectPanel_Tapped(object sender, TappedRoutedEventArgs e) {
             if (myApp.miTurno) {
-               
+
                 await _dispatcher.RunAsync(CoreDispatcherPriority.Low, () => {
                     Storyboard myStory = new Storyboard();
 
@@ -562,19 +559,19 @@ namespace QuienEsQuien.Views {
                     clsCarta miCartaV2 = vm.listadoDeCartas[miCarta.idCarta];
 
                     Object value = null;
-                  
-                      
-                  
+
+
+
 
                     if (!miCartaV2.estaBajada) {
 
                         clickedElement?.Resources.TryGetValue("revelaImagen", out value);
-                       
+
 
                     } else {
 
                         clickedElement?.Resources.TryGetValue("volteaImagen", out value);
-                        
+
                     }
 
                     myStory = value as Storyboard;
@@ -582,7 +579,7 @@ namespace QuienEsQuien.Views {
                 });
 
 
-                
+
             }
         }
 

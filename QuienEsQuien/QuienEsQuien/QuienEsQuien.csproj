@@ -119,7 +119,7 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Converters\converterIntentos.cs" />
+    <Compile Include="Converters\converterEsTuTurno.cs" />
     <Compile Include="Converters\InverseBooleanConverter.cs" />
     <Compile Include="Manejadoras\clsManejadora.cs" />
     <Compile Include="Modelos\ChatMessage.cs" />

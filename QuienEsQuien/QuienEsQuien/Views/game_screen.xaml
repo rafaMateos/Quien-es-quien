@@ -1,5 +1,4 @@
 ﻿<Page Name="Principal"
-      
     x:Class="QuienEsQuien.Views.game_screen"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -20,6 +19,7 @@
     <Page.Resources>
         <ConverterCarta:converterEstadoCarta x:Key="conversorEstadoCarta"></ConverterCarta:converterEstadoCarta>
         <ConverterCarta:InverseBooleanConverter x:Key="converterBoolean"></ConverterCarta:InverseBooleanConverter>
+        <ConverterCarta:converterEsTuTurno x:Key="converterTurno"></ConverterCarta:converterEsTuTurno>
     </Page.Resources>
 
     <RelativePanel Padding="10" Margin="10">
@@ -216,15 +216,16 @@
                           ShadowOpacity="0.35"
                           HorizontalContentAlignment="Stretch"
                           VerticalContentAlignment="Stretch" Margin="0,5" Padding="5"
-                           RelativePanel.AlignBottomWithPanel="False"
-                           RelativePanel.AlignRightWithPanel="True"
-                           RelativePanel.AlignLeftWithPanel="True">
+                          RelativePanel.AlignBottomWithPanel="False"
+                          RelativePanel.AlignRightWithPanel="True"
+                          RelativePanel.AlignLeftWithPanel="True">
                 
-                <RelativePanel  CornerRadius="10"
-                           Background="#2E5EAA" Margin="0,5" Padding="5"
-                           RelativePanel.AlignBottomWithPanel="False"
-                           RelativePanel.AlignRightWithPanel="True"
-                           RelativePanel.AlignLeftWithPanel="True" >
+                <RelativePanel  
+                    CornerRadius="10"
+                    Background="#2E5EAA" Margin="0,5" Padding="5"
+                    RelativePanel.AlignBottomWithPanel="False"
+                    RelativePanel.AlignRightWithPanel="True"
+                    RelativePanel.AlignLeftWithPanel="True" >
 
                     <TextBlock Name="txtNickJugador" Text="{Binding Path=nickJugador, Mode=TwoWay}"
                            HorizontalAlignment="Center"
@@ -258,7 +259,27 @@
                             <TextBlock Name="tuPersonajeNombre" Text="{Binding personageGanador.nombreCarta}" Margin="5,0" Foreground="white"/>
                         </StackPanel>
                     </Grid>
-                
+
+                    <Rectangle Width="30"
+                               Height="130"
+                               RadiusX="15"
+                               RadiusY="15"
+                               Margin="8,0"
+                               RelativePanel.AlignRightWith="tuPersonajeImagen"
+                               RelativePanel.AlignBottomWith="tuPersonajeImagen"
+                               RelativePanel.AlignTopWith="tuPersonajeImagen"
+                               Fill="{Binding turnoBool, Mode=TwoWay, Converter={StaticResource converterTurno}}"/>
+                    
+                    <Rectangle Width="30"
+                               Height="130"
+                               RadiusX="15"
+                               RadiusY="15"
+                               Margin="8,0"
+                               RelativePanel.AlignLeftWith="tuPersonajeImagen"
+                               RelativePanel.AlignBottomWith="tuPersonajeImagen"
+                               RelativePanel.AlignTopWith="tuPersonajeImagen"
+                               Fill="{Binding turnoBool, Mode=TwoWay, Converter={StaticResource converterTurno}}"/>
+
                     <Image Name="tuPersonajeImagen" Source="{Binding personageGanador.imagenUri}"
                            MaxHeight="130" HorizontalAlignment="Center"
                            RelativePanel.Below="varios"
@@ -282,10 +303,6 @@
                 </ListView.ItemContainerTransitions>
                 <ListView.ItemTemplate>
                     <DataTemplate >
-                        <!--<StackPanel Orientation="Horizontal">
-                            <TextBlock Text="{Binding Path=nickName}"/>
-                            <TextBlock Text="{Binding Path=message, Mode=TwoWay}" TextWrapping="WrapWholeWords"/>
-                        </StackPanel>-->
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="auto" />
@@ -298,7 +315,6 @@
                 </ListView.ItemTemplate>
             </ListView>
 
-
             <RelativePanel Name="contenedorSend" 
                            RelativePanel.AlignBottomWithPanel="True" 
                            RelativePanel.AlignRightWithPanel="True" 
@@ -308,10 +324,6 @@
                          Margin="0,0,5,0"
                          RelativePanel.LeftOf="btn_send" 
                          RelativePanel.AlignLeftWithPanel="True" />
-
-                <!--<Button Click="Btn_send_Click" Name="btn_send" 
-                        Content="Enviar" RelativePanel.AlignRightWithPanel="True"
-                        Background="#D32F2F" Foreground="White"/>-->
 
                 <Button Background="#AD1714" Foreground="White" Click="Btn_send_Click" Name="btn_send" RelativePanel.AlignRightWithPanel="True">
                     <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
@@ -334,13 +346,14 @@
             Background="White" Width="300" 
             BorderBrush="Black"
             BorderThickness="2"
+            Padding="5"
             Height="300" RelativePanel.AlignHorizontalCenterWithPanel="True"
             RelativePanel.AlignVerticalCenterWithPanel="True"
             CornerRadius="10" >
 
             <TextBlock  
                 Name="textito"
-                Text="Saliendo de la sala..." 
+                Text="Volviendo al lobby" 
                 FontSize="25" 
                 RelativePanel.AlignHorizontalCenterWithPanel="True"
                 RelativePanel.AlignVerticalCenterWithPanel="True" />
@@ -362,6 +375,7 @@
             Background="White" Width="300" 
             BorderBrush="Black"
             BorderThickness="2"
+            Padding="5"
             Height="300" RelativePanel.AlignHorizontalCenterWithPanel="True"
             RelativePanel.AlignVerticalCenterWithPanel="True"
             CornerRadius="10" >
@@ -369,35 +383,21 @@
             <StackPanel Orientation="Horizontal" RelativePanel.AlignHorizontalCenterWithPanel="True"
                 RelativePanel.AlignVerticalCenterWithPanel="True">
 
-                <TextBlock  
-               
-                Text="El ganador es:" 
-                FontSize="25" 
-                 />
+                <TextBlock Text="El ganador es: " FontSize="25" />
 
-                <TextBlock  
-               Name="nombreGanador"
-                Text=" Rafael" 
-                FontSize="25" 
-                 Foreground="Green"
-                 />
+                <TextBlock  Name="nombreGanador" Text=" Rafael" 
+                            FontSize="25"  Foreground="Green" />
 
             </StackPanel>
-
 
             <StackPanel RelativePanel.AlignVerticalCenterWithPanel="True"
                         RelativePanel.AlignBottomWithPanel="True"
                         RelativePanel.AlignHorizontalCenterWithPanel="True"
                         Margin="0,0,0,10">
 
-                <Button Content="Volver a jugar" Click="Button_Click">
-                </Button>
-
+                <Button Content="Volver al lobby" Click="Button_Click"/>
 
             </StackPanel>
-
-
-
         </RelativePanel>
 
 
@@ -409,6 +409,7 @@
             Background="White" Width="300" 
             BorderBrush="Black"
             BorderThickness="2"
+            Padding="5"
             Height="300" RelativePanel.AlignHorizontalCenterWithPanel="True"
             RelativePanel.AlignVerticalCenterWithPanel="True"
             CornerRadius="10" >
@@ -435,6 +436,7 @@
             Background="White" Width="300" 
             BorderBrush="Black"
             BorderThickness="2"
+            Padding="5"
             Height="300" RelativePanel.AlignHorizontalCenterWithPanel="True"
             RelativePanel.AlignVerticalCenterWithPanel="True"
             CornerRadius="10" >
@@ -443,21 +445,17 @@
                 RelativePanel.AlignHorizontalCenterWithPanel="True"
                 RelativePanel.AlignVerticalCenterWithPanel="True" >
 
-
                 <TextBlock
-                    Text="Vas a salir de la partida porque el otro usuario abandono la sala"
-                    TextWrapping="Wrap">
-                </TextBlock>
-
+                    Text="Vas a al lobby porque el otro jugador abandonó la sala"
+                    TextWrapping="Wrap"/>
 
                 <Button 
                     Content="Volver al lobby"
                     VerticalAlignment="Center"
                     HorizontalAlignment="Center"
                     Margin="0,15,0,0"
-                    Click="Button_Click_2">
-                </Button>
-                
+                    Click="Button_Click_2"/>
+
             </StackPanel>
 
         </RelativePanel>
@@ -468,10 +466,11 @@
             Name="salirDelJuego"
             HorizontalAlignment="Center" 
             VerticalAlignment="Center" 
-            Background="White" Width="200" 
+            Background="White" Width="300" 
             BorderBrush="Black"
             BorderThickness="2"
-            Height="150" RelativePanel.AlignHorizontalCenterWithPanel="True"
+            Padding="5"
+            Height="300" RelativePanel.AlignHorizontalCenterWithPanel="True"
             RelativePanel.AlignVerticalCenterWithPanel="True"
             CornerRadius="10" >
 
@@ -479,7 +478,7 @@
                 RelativePanel.AlignHorizontalCenterWithPanel="True"
                 RelativePanel.AlignVerticalCenterWithPanel="True" >
 
-                <TextBlock  Text="Saliendo del juego.." TextWrapping="Wrap" FontSize="25"
+                <TextBlock  Text="Saliendo del juego" TextWrapping="Wrap" FontSize="25"
                             TextAlignment="Center"/>
                 <ProgressBar IsIndeterminate="True" Margin="0,15,0,0"/>
             </StackPanel>
