@@ -22,7 +22,7 @@ using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Media.Animation;
 using Windows.UI.Xaml.Navigation;
 
-// The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
+//The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
 namespace QuienEsQuien.Views {
     /// <summary>
