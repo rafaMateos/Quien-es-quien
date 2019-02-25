@@ -10,11 +10,11 @@ using System.Web;
 
 namespace AdivinaQuienSoyService.Hubs
 {
-    public class ChatHub : Hub
-    {
+    public class ChatHub : Hub {
 
         clsManejadora maneja = new clsManejadora();
         int id = 0;
+        int[] UsuariosConectados = new int[10];
         /// <summary>
         /// Añade una conexion a un grupo
         /// </summary>
@@ -23,6 +23,8 @@ namespace AdivinaQuienSoyService.Hubs
 
         public Task JoinGroup(string groupName)
         {
+            int id = maneja.ObtenerIDSala(groupName);
+            UsuariosConectados[id]++;
             return Groups.Add(Context.ConnectionId, groupName);
 
         }
@@ -74,6 +76,7 @@ namespace AdivinaQuienSoyService.Hubs
             Groups.Remove(Context.ConnectionId, groupName);  
 
         }
+
 
         public void LeaveGroupDef(string groupName)
         {
