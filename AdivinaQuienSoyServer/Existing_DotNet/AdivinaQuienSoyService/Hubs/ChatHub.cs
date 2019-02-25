@@ -14,18 +14,23 @@ namespace AdivinaQuienSoyService.Hubs
 
         clsManejadora maneja = new clsManejadora();
         int id = 0;
-        int[] UsuariosConectados = new int[10];
+        static int[] UsuariosConectados = new int[10];
         /// <summary>
         /// Añade una conexion a un grupo
         /// </summary>
         /// <param name="groupName"></param>
         /// <returns></returns>
 
-        public Task JoinGroup(string groupName)
+        public void JoinGroup(string groupName)
         {
             int id = maneja.ObtenerIDSala(groupName);
             UsuariosConectados[id]++;
-            return Groups.Add(Context.ConnectionId, groupName);
+            Groups.Add(Context.ConnectionId, groupName);
+
+            if(UsuariosConectados[id] == 2) {
+
+                Clients.Caller().cambiarMiTurno();
+            }
 
         }
 
@@ -72,6 +77,8 @@ namespace AdivinaQuienSoyService.Hubs
         /// <returns></returns>
         public void LeaveGroup(string groupName)
         {
+            int id = maneja.ObtenerIDSala(groupName);
+            UsuariosConectados[id] = 0;
             Clients.Group(groupName).abandoPartida();
             Groups.Remove(Context.ConnectionId, groupName);  
 
@@ -80,7 +87,8 @@ namespace AdivinaQuienSoyService.Hubs
 
         public void LeaveGroupDef(string groupName)
         {
-           
+            int id = maneja.ObtenerIDSala(groupName);
+            UsuariosConectados[id] = 0;
             Groups.Remove(Context.ConnectionId, groupName);
             
         }

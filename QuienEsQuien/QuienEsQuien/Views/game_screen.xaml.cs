@@ -130,8 +130,8 @@ namespace QuienEsQuien.Views {
         }
         private void SignalR() {
             //Connect to the url 
-            //conn = new HubConnection("https://adivinaquiensoy.azurewebsites.net/");
-            conn = new HubConnection("http://localhost:50268/");
+            conn = new HubConnection("https://adivinaquiensoy.azurewebsites.net/");
+            //conn = new HubConnection("http://localhost:50268/");
             //ChatHub is the hub name defined in the host program. 
 
             ChatProxy = conn.CreateHubProxy("ChatHub");
@@ -146,8 +146,26 @@ namespace QuienEsQuien.Views {
             ChatProxy.On<string>("finalizarPartidaPorFallos", finalizarPartidaPorFallos);
             ChatProxy.On("salirAbriptamente", salirPorAbandono);
             ChatProxy.On("actualizarJugadoresConectados", actualizarJugadoresConectados);
+            ChatProxy.On("cambiarMiTurno", cambiarMiTurno);
 
             //ChatProxy.On<ChatMessage>("agregarMensaje", addMessage);
+        }
+
+
+        private async void cambiarMiTurno() {
+            await Windows.ApplicationModel.Core.CoreApplication.MainView.Dispatcher
+                .RunAsync(CoreDispatcherPriority.Normal, async () => {
+
+                    myApp.miTurno = false;
+                    vm.turnoBool = false;
+                    vm.turno = "NO ES TU TURNO";
+                    int i = 0;
+                    do {
+                        Thread.Sleep(1000);
+                        i++;
+                    } while (i < 2);
+
+                });
         }
 
         private async void salirPorAbandono() {
