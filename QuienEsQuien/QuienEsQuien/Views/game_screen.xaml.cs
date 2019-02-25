@@ -146,24 +146,30 @@ namespace QuienEsQuien.Views {
             ChatProxy.On<string>("finalizarPartidaPorFallos", finalizarPartidaPorFallos);
             ChatProxy.On("salirAbriptamente", salirPorAbandono);
             ChatProxy.On("actualizarJugadoresConectados", actualizarJugadoresConectados);
-            ChatProxy.On("cambiarMiTurno", cambiarMiTurno);
+            ChatProxy.On<int>("cambiarMiTurno", cambiarMiTurno);
 
             //ChatProxy.On<ChatMessage>("agregarMensaje", addMessage);
         }
 
 
-        private async void cambiarMiTurno() {
+        private async void cambiarMiTurno(int userConected) {
             await Windows.ApplicationModel.Core.CoreApplication.MainView.Dispatcher
                 .RunAsync(CoreDispatcherPriority.Normal, async () => {
 
-                    myApp.miTurno = false;
-                    vm.turnoBool = false;
-                    vm.turno = "NO ES TU TURNO";
-                    int i = 0;
-                    do {
-                        Thread.Sleep(1000);
-                        i++;
-                    } while (i < 2);
+                    if (userConected == 2) {
+
+                        myApp.miTurno = false;
+                        vm.turnoBool = false;
+                        vm.turno = "NO ES TU TURNO";
+                        int i = 0;
+                        do
+                        {
+                            Thread.Sleep(1000);
+                            i++;
+                        } while (i < 2);
+
+                    }
+                   
 
                 });
         }
