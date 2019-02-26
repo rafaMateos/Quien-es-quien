@@ -567,6 +567,9 @@ namespace QuienEsQuien.Views {
                 i++;
             } while (i < 2);
 
+            if (conn.State == Microsoft.AspNet.SignalR.Client.ConnectionState.Connected) {
+                ChatProxy.Invoke("LeaveGroupDef", myApp.sala);
+            }
             this.Frame.Navigate(typeof(lobby_screen));
 
         }

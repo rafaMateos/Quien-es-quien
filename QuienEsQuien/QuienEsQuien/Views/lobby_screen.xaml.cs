@@ -79,8 +79,9 @@ namespace QuienEsQuien.Views {
         private void SignalR() {
 
             //Connect to the url 
+            //
             conn = new HubConnection("https://adivinaquiensoy.azurewebsites.net/");
-            //conn = new HubConnection("http://localhost:50268/");
+           // conn = new HubConnection("http://localhost:50268/");
             //ChatHub is the hub name defined in the host program. 
             SalasProxy = conn.CreateHubProxy("SalasHub");
             //ChatProxy = conn.CreateHubProxy("ChatHub");

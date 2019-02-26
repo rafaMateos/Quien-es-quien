@@ -26,19 +26,24 @@ namespace AdivinaQuienSoyService.Hubs
 
         public void JoinGroup(string groupName)
         {
+
             lock (lockFlama) {
+
                 int id = maneja.ObtenerIDSala(groupName);
                 UsuariosConectados[id]++;
                 Groups.Add(Context.ConnectionId, groupName);
 
-                UsuariosConectados[id]++;
+                
 
                 if (UsuariosConectados[id] == 2) {
 
-                    Clients.Caller.cambiarMiTurno();
+                    Clients.Caller.cambiarMiTurno(UsuariosConectados[id]);
                 }
 
             }
+              
+
+            
 
         }
 
