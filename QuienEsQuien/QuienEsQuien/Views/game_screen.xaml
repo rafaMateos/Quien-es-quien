@@ -43,9 +43,9 @@
                           ShadowOpacity=".35"
                           HorizontalContentAlignment="Stretch"
                           VerticalContentAlignment="Stretch">
-                <Button Background="#AD1714" Foreground="White" Click="Btn_Salir_Click" Name="btn_Salir">
+                <Button Background="#AD1714" Foreground="White" Click="Btn_Salir_Click" Name="btn_Salir" CornerRadius="10">
                     <StackPanel Orientation="Horizontal">
-                        <SymbolIcon Symbol="Cancel"/>
+                        <SymbolIcon Symbol="Back"/>
                         <TextBlock Margin="5,0">Salir</TextBlock>
                     </StackPanel>
                 </Button>
@@ -76,7 +76,7 @@
                           HorizontalContentAlignment="Stretch"
                           VerticalContentAlignment="Stretch">
 
-                <Button Background="#AD1714" Foreground="White" Margin="0,0,5,0" Click="ConfirmarSeleccion_Click">
+                <Button Background="#AD1714" Foreground="White" Margin="0,0,5,0" Click="ConfirmarSeleccion_Click" CornerRadius="10">
                     <StackPanel Orientation="Horizontal">
                         <SymbolIcon Symbol="Help"/>
                         <TextBlock Margin="5,0">Adivinar personaje</TextBlock>
@@ -96,7 +96,7 @@
                           HorizontalContentAlignment="Stretch"
                           VerticalContentAlignment="Stretch">
 
-                <Button Foreground="Black" Click="Btn_Pasar_Click" Name="btn_Pasar"  Background="#FFBA08">
+                <Button Foreground="Black" Click="Btn_Pasar_Click" Name="btn_Pasar"  Background="#FFBA08" CornerRadius="10">
                     <StackPanel Orientation="Horizontal">
                         <SymbolIcon Symbol="Sort"/>
                         <TextBlock Margin="5,0">Pasar turno</TextBlock>
@@ -295,7 +295,7 @@
                       RelativePanel.AlignRightWithPanel="True"
                       RelativePanel.Above="contenedorSend"
                       RelativePanel.Below="contenedorTuyo"
-                      Margin="0,5"
+                      Margin="0,5" CornerRadius="10"
                       HorizontalAlignment="Stretch"
                       ItemsSource="{Binding msgsChats,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}">
 
@@ -321,12 +321,12 @@
                            RelativePanel.AlignRightWithPanel="True" 
                            RelativePanel.AlignLeftWithPanel="True">
 
-                <TextBox KeyDown="Tbx_chat_KeyDown" Name="tbx_chat" 
+                <TextBox KeyDown="Tbx_chat_KeyDown" Name="tbx_chat" CornerRadius="10"
                          Margin="0,0,5,0"
                          RelativePanel.LeftOf="btn_send" 
                          RelativePanel.AlignLeftWithPanel="True" />
 
-                <Button Background="#AD1714" Foreground="White" Click="Btn_send_Click" Name="btn_send" RelativePanel.AlignRightWithPanel="True">
+                <Button Background="#AD1714" Foreground="White" Click="Btn_send_Click" CornerRadius="10" Name="btn_send" RelativePanel.AlignRightWithPanel="True">
                     <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
                         <SymbolIcon Symbol="Message"/>
                         <TextBlock Margin="5,0">Enviar</TextBlock>
@@ -334,10 +334,7 @@
                 </Button>
 
             </RelativePanel>
-
-
         </RelativePanel>
-
 
         <RelativePanel
             Visibility="Collapsed"
@@ -357,7 +354,7 @@
                 Text="Volviendo al lobby" 
                 FontSize="25" 
                 RelativePanel.AlignHorizontalCenterWithPanel="True"
-                RelativePanel.AlignVerticalCenterWithPanel="True" />
+                RelativePanel.AlignVerticalCenterWithPanel="True" Margin="0,20"/>
 
 
             <ProgressBar IsIndeterminate="True" Margin="20" RelativePanel.Below="textito"
@@ -366,7 +363,6 @@
 
 
         </RelativePanel>
-
 
         <RelativePanel
             Visibility="Collapsed"
@@ -387,20 +383,39 @@
                 <TextBlock Text="El ganador es: " FontSize="25" />
 
                 <TextBlock  Name="nombreGanador" Text=" Rafael" 
-                            FontSize="25"  Foreground="Green" />
+                            FontSize="25"  Foreground="Green" TextWrapping="Wrap" />
 
             </StackPanel>
 
-            <StackPanel RelativePanel.AlignVerticalCenterWithPanel="True"
+            <!--<StackPanel RelativePanel.AlignVerticalCenterWithPanel="True"
                         RelativePanel.AlignBottomWithPanel="True"
                         RelativePanel.AlignHorizontalCenterWithPanel="True"
                         Margin="0,0,0,10">
 
                 <Button Content="Volver al lobby" Click="Button_Click"/>
 
-            </StackPanel>
-        </RelativePanel>
+            </StackPanel>-->
 
+            <controls:DropShadowPanel Color="Black"
+                        OffsetX="-3"
+                        OffsetY="-3"
+                        BlurRadius="15"
+                        ShadowOpacity=".35"
+                        HorizontalContentAlignment="Stretch"
+                        VerticalContentAlignment="Stretch"
+                    RelativePanel.AlignVerticalCenterWithPanel="True"
+                    RelativePanel.AlignBottomWithPanel="True"
+                    RelativePanel.AlignHorizontalCenterWithPanel="True"
+                    Margin="0,15">
+                <Button Background="#AD1714" Foreground="White" Click="Button_Click" CornerRadius="10">
+                    <StackPanel Orientation="Horizontal">
+                        <SymbolIcon Symbol="Back"/>
+                        <TextBlock Margin="5,0">Volver al lobby</TextBlock>
+                    </StackPanel>
+                </Button>
+            </controls:DropShadowPanel>
+
+        </RelativePanel>
 
         <RelativePanel
             Visibility="Collapsed"
@@ -417,17 +432,31 @@
 
             <StackPanel  RelativePanel.AlignHorizontalCenterWithPanel="True"
                          RelativePanel.AlignVerticalCenterWithPanel="True" >
-                <TextBlock Name="TextoGandorOPerdedor"
-                       Text="" 
-                       FontSize="25" >
+                <TextBlock Name="TextoGandorOPerdedor" Text="" 
+                       FontSize="25" TextWrapping="Wrap" >
                 </TextBlock>
-                <Button Content="Volver al lobby" Click="Button_Click_1"/>
             </StackPanel >
 
+            <controls:DropShadowPanel Color="Black"
+                    OffsetX="-3"
+                    OffsetY="-3"
+                    BlurRadius="15"
+                    ShadowOpacity=".35"
+                    HorizontalContentAlignment="Stretch"
+                    VerticalContentAlignment="Stretch"
+                    RelativePanel.AlignVerticalCenterWithPanel="True"
+                    RelativePanel.AlignBottomWithPanel="True"
+                    RelativePanel.AlignHorizontalCenterWithPanel="True"
+                    Margin="0,15">
+                <Button Background="#AD1714" Foreground="White" Click="Button_Click_1" CornerRadius="10">
+                    <StackPanel Orientation="Horizontal">
+                        <SymbolIcon Symbol="Back"/>
+                        <TextBlock Margin="5,0">Volver al lobby</TextBlock>
+                    </StackPanel>
+                </Button>
+            </controls:DropShadowPanel>
+
         </RelativePanel>
-
-
-
 
         <RelativePanel
             Visibility="Collapsed"
@@ -448,20 +477,32 @@
 
                 <TextBlock
                     Text="Vas a al lobby porque el otro jugador abandonó la sala"
-                    TextWrapping="Wrap"/>
-
-                <Button 
-                    Content="Volver al lobby"
-                    VerticalAlignment="Center"
-                    HorizontalAlignment="Center"
-                    Margin="0,15,0,0"
-                    Click="Button_Click_2"/>
+                    TextWrapping="Wrap" TextAlignment="Center"/>
 
             </StackPanel>
 
+            <controls:DropShadowPanel Color="Black"
+                    OffsetX="-3"
+                    OffsetY="-3"
+                    BlurRadius="15"
+                    ShadowOpacity=".35"
+                    HorizontalContentAlignment="Stretch"
+                    VerticalContentAlignment="Stretch"
+                    RelativePanel.AlignVerticalCenterWithPanel="True"
+                    RelativePanel.AlignBottomWithPanel="True"
+                    RelativePanel.AlignHorizontalCenterWithPanel="True"
+                    Margin="0,15">
+                <Button Background="#AD1714" Foreground="White" Click="Button_Click_2" CornerRadius="10">
+                    <StackPanel Orientation="Horizontal">
+                        <SymbolIcon Symbol="Back"/>
+                        <TextBlock Margin="5,0">Volver al lobby</TextBlock>
+                    </StackPanel>
+                </Button>
+            </controls:DropShadowPanel>
+
         </RelativePanel>
 
-
+        <!--{Binding visibilidadSalir,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}-->
         <RelativePanel
             Visibility="{Binding visibilidadSalir,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
             Name="salirDelJuego"
@@ -480,7 +521,7 @@
                 RelativePanel.AlignVerticalCenterWithPanel="True" >
 
                 <TextBlock  Text="Saliendo del juego" TextWrapping="Wrap" FontSize="25"
-                            TextAlignment="Center"/>
+                            TextAlignment="Center" Margin="0,20"/>
                 <ProgressBar IsIndeterminate="True" Margin="0,15,0,0"/>
             </StackPanel>
 

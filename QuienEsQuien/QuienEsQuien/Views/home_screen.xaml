@@ -26,7 +26,8 @@
                 FontSize="25"
                />-->
 
-        <Button Background="#D32F2F" Foreground="White" Click="HyperButton_EntrarJuego_Click" HorizontalAlignment="Center" FontSize="25">
+        <Button Background="#D32F2F" Foreground="White" Click="HyperButton_EntrarJuego_Click" HorizontalAlignment="Center" FontSize="25"
+                CornerRadius="10">
             <StackPanel Orientation="Horizontal">
                 <SymbolIcon Symbol="Forward"/>
                 <TextBlock Margin="5,0">Entrar al juego</TextBlock>
@@ -34,9 +35,9 @@
         </Button>
 
         <Button Content="Sobre nosotros" Margin="10"
-                 Click="HyperButton_About_Click"
-                 HorizontalAlignment="Center"
-                />
+                Click="HyperButton_About_Click"
+                HorizontalAlignment="Center"
+                CornerRadius="10" />
     </StackPanel>
 
 </Page>

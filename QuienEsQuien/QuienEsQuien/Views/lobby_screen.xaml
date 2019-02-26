@@ -23,9 +23,9 @@
                         ShadowOpacity=".35"
                         HorizontalContentAlignment="Stretch"
                         VerticalContentAlignment="Stretch" >
-                <Button Background="#D32F2F" Foreground="White" Click="Button_VolverMenu_Click" Margin="10,0,10,0">
+                <Button Background="#D32F2F" Foreground="White" Click="Button_VolverMenu_Click" Margin="10,0,10,0" CornerRadius="10">
                     <StackPanel Orientation="Horizontal" >
-                        <SymbolIcon Symbol="Cancel"/>
+                        <SymbolIcon Symbol="Back"/>
                         <TextBlock Margin="5,0" FontWeight="Bold">Volver al menú</TextBlock>
                     </StackPanel>
                 </Button>
@@ -38,7 +38,7 @@
                         ShadowOpacity=".35"
                         HorizontalContentAlignment="Stretch"
                         VerticalContentAlignment="Stretch" >
-                <Button Background="#D32F2F" Foreground="White" Click="Button_RecargarSalas_Click" Margin="10,0,10,0" Command="{Binding Path=actualizarListadoSalas}">
+                <Button Background="#D32F2F" Foreground="White" Click="Button_RecargarSalas_Click" Margin="10,0,10,0" CornerRadius="10" Command="{Binding Path=actualizarListadoSalas}">
                     <StackPanel Orientation="Horizontal" >
                         <SymbolIcon Symbol="Sync"/>
                         <TextBlock Margin="5,0" >Recargar salas</TextBlock>
@@ -113,7 +113,7 @@
 
             <TextBlock  
                 Name="textito"
-                Text="Uniendo a sala..." 
+                Text="Uniendo a sala" 
                 FontSize="25" 
                 RelativePanel.AlignHorizontalCenterWithPanel="True"
                 RelativePanel.AlignVerticalCenterWithPanel="True" />

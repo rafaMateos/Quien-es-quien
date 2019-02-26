@@ -63,9 +63,9 @@
                               VerticalContentAlignment="Stretch"
                             HorizontalAlignment="Center"
                             Margin="0,50,0,0">
-            <Button Background="#AD1714" Foreground="White" Click="HyperButton_back_Click" Name="btn_Salir">
+            <Button Background="#AD1714" Foreground="White" Click="HyperButton_back_Click" Name="btn_Salir" CornerRadius="10">
                 <StackPanel Orientation="Horizontal">
-                    <SymbolIcon Symbol="Cancel"/>
+                    <SymbolIcon Symbol="Back"/>
                     <TextBlock Margin="5,0">Volver</TextBlock>
                 </StackPanel>
             </Button>

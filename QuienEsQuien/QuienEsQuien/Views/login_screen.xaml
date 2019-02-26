@@ -22,7 +22,7 @@
 
         <TextBlock HorizontalAlignment="Center" Text="Bienvenido, introduce tu nick:" FontSize="16"/>
         
-        <TextBox Name="txtNickJugador" KeyDown="TxtNickJugador_KeyDown" MaxWidth="350" Margin="0,20,0,20"/>
+        <TextBox Name="txtNickJugador" KeyDown="TxtNickJugador_KeyDown" MaxWidth="350" Margin="0,20,0,20" CornerRadius="10"/>
 
         <controls:DropShadowPanel Color="Black"
                               OffsetX="-3"
@@ -33,7 +33,7 @@
                               VerticalContentAlignment="Stretch"
                             HorizontalAlignment="Center"
                             Margin="0,50,0,0">
-            <Button Background="#D32F2F" Foreground="White" Click="HyperButton_Click" HorizontalAlignment="Center">
+            <Button Background="#D32F2F" Foreground="White" Click="HyperButton_Click" HorizontalAlignment="Center" CornerRadius="10">
                 <StackPanel Orientation="Horizontal">
                     <SymbolIcon Symbol="Forward"/>
                     <TextBlock Margin="8,0">Entrar</TextBlock>
