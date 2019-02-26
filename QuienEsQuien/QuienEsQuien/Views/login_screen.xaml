@@ -18,7 +18,7 @@
 
     <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10">
 
-        <Image Source="../Assets/SplashScreen.scale-200.png" Height="303" Width="766" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin=" 0,0,0,150"/>
+        <Image Source="../Assets/LogoTexto.png" Height="303" Width="766" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin=" 0,0,0,150"/>
 
         <TextBlock HorizontalAlignment="Center" Text="Bienvenido, introduce tu nick:" FontSize="16"/>
         

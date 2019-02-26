@@ -159,16 +159,29 @@
     <None Include="QuienEsQuien_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Assets\1080_1080.png" />
-    <Content Include="Assets\1240_600_WideTile.scale-400.png" />
-    <Content Include="Assets\150_150.png" />
-    <Content Include="Assets\1920_1080.png" />
-    <Content Include="Assets\300_300.png" />
-    <Content Include="Assets\71_71.png" />
+    <Content Include="Assets\appicon\176.scale-100.jpg" />
+    <Content Include="Assets\appicon\176.scale-200.jpg" />
+    <Content Include="Assets\appicon\176.scale-400.jpg" />
+    <Content Include="Assets\appicon\44.jpg" />
+    <Content Include="Assets\appicon\88.jpg" />
     <Content Include="Assets\cancion.mp3" />
-    <Content Include="Assets\icono-88.scale-200.png" />
-    <Content Include="Assets\icono-app-300.scale-200.png" />
-    <Content Include="Assets\icono-quiensoy.png" />
+    <Content Include="Assets\Large tile\1240.scale-100.jpg" />
+    <Content Include="Assets\Large tile\1240.scale-200.jpg" />
+    <Content Include="Assets\Large tile\1240.scale-400.jpg" />
+    <Content Include="Assets\Large tile\310.jpg" />
+    <Content Include="Assets\Large tile\620.jpg" />
+    <Content Include="Assets\LogoTexto.png" />
+    <Content Include="Assets\medium tile\150.jpg" />
+    <Content Include="Assets\medium tile\300.jpg" />
+    <Content Include="Assets\medium tile\600.scale-100.jpg" />
+    <Content Include="Assets\medium tile\600.scale-200.jpg" />
+    <Content Include="Assets\medium tile\600.scale-400.jpg" />
+    <Content Include="Assets\packageicon\200.scale-150.jpg" />
+    <Content Include="Assets\packageicon\200.scale-200.jpg" />
+    <Content Include="Assets\packageicon\200.scale-400.jpg" />
+    <Content Include="Assets\packageLogo\100.jpg" />
+    <Content Include="Assets\packageLogo\200.jpg" />
+    <Content Include="Assets\packageLogo\75.jpg" />
     <Content Include="Assets\QS_marina.png" />
     <Content Include="Assets\QS_alexa.png" />
     <Content Include="Assets\QS_angel.png" />
@@ -195,16 +208,19 @@
     <Content Include="Assets\QS_vicky.png" />
     <Content Include="Assets\QS_volteada.png" />
     <Content Include="Assets\QS_yeray.png" />
-    <Content Include="Assets\Square150x150Logo.scale-100.png" />
-    <Content Include="Assets\WideTile.scale-200.png" />
+    <Content Include="Assets\small tile\142.jpg" />
+    <Content Include="Assets\small tile\284.scale-100.jpg" />
+    <Content Include="Assets\small tile\284.scale-200.jpg" />
+    <Content Include="Assets\small tile\284.scale-400.jpg" />
+    <Content Include="Assets\small tile\71.jpg" />
+    <Content Include="Assets\splashScreen\2480.scale-200.jpg" />
+    <Content Include="Assets\splashScreen\2480.scale-400.jpg" />
+    <Content Include="Assets\Wide tile\1240.scale-100.jpg" />
+    <Content Include="Assets\Wide tile\1240.scale-200.jpg" />
+    <Content Include="Assets\Wide tile\1240.scale-400.jpg" />
+    <Content Include="Assets\Wide tile\310.jpg" />
+    <Content Include="Assets\Wide tile\620.jpg" />
     <Content Include="Properties\Default.rd.xml" />
-    <Content Include="Assets\LockScreenLogo.scale-200.png" />
-    <Content Include="Assets\SplashScreen.scale-200.png" />
-    <Content Include="Assets\Square150x150Logo.scale-200.png" />
-    <Content Include="Assets\Square44x44Logo.scale-200.png" />
-    <Content Include="Assets\Square44x44Logo.targetsize-24_altform-unplated.png" />
-    <Content Include="Assets\StoreLogo.png" />
-    <Content Include="Assets\Wide310x150Logo.scale-200.png" />
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
