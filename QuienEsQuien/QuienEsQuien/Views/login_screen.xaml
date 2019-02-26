@@ -8,7 +8,7 @@
     mc:Ignorable="d"
     xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
     xmlns:vm="using:QuienEsQuien.Viewmodel"
-    Background="#536DFE">
+    Background="#2196F3">
 
 
     <Page.DataContext>
@@ -23,11 +23,6 @@
         <TextBlock HorizontalAlignment="Center" Text="Bienvenido, introduce tu nick:" FontSize="16"/>
         
         <TextBox Name="txtNickJugador" KeyDown="TxtNickJugador_KeyDown" MaxWidth="350" Margin="0,20,0,20"/>
-        <!--<Button Content="Entrar"
-                 Click="HyperButton_Click"
-                 HorizontalAlignment="Center"
-                Background="#D32F2F"
-                Foreground="White"/>-->
 
         <controls:DropShadowPanel Color="Black"
                               OffsetX="-3"

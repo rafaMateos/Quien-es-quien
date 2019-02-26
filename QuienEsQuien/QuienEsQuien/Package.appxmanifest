@@ -16,12 +16,12 @@
   <Applications>
     <Application Id="App" Executable="$targetnametoken$.exe" EntryPoint="adivina-quien-soy.App">
       <uap:VisualElements DisplayName="Adivina quién soy" Square150x150Logo="Assets\Square150x150Logo.png" Square44x44Logo="Assets\icono-88.png" Description="Adivina quién soy, un divertido juego." BackgroundColor="transparent">
-        <uap:DefaultTile Wide310x150Logo="Assets\1240_600_WideTile.png">
+        <uap:DefaultTile Wide310x150Logo="Assets\1240_600_WideTile.png" ShortName="¡Adivina quién soy!">
           <uap:ShowNameOnTiles>
             <uap:ShowOn Tile="wide310x150Logo" />
           </uap:ShowNameOnTiles>
         </uap:DefaultTile>
-        <uap:SplashScreen Image="Assets\WideTile.png" />
+        <uap:SplashScreen Image="Assets\WideTile.png" BackgroundColor="#2196F3" />
         <uap:InitialRotationPreference>
           <uap:Rotation Preference="landscape" />
         </uap:InitialRotationPreference>
